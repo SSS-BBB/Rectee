@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7s22ivpvuxi1"]
+
+[ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Assets/Sprites/objects_spritesheet.png" id="1_263ox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q21gm"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_263ox"]
+size = Vector2(48, 10)
+
+[node name="BouncingPlatform" type="Node2D"]
+
+[node name="PlatformBody" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBody"]
+shape = SubResource("RectangleShape2D_q21gm")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlatformBody"]
+texture = ExtResource("1_263ox")
+region_enabled = true
+region_rect = Rect2(0, 64, 48, 16)
+
+[node name="Anchor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_263ox")
+
+[node name="Spring" type="GrooveJoint2D" parent="."]
+node_a = NodePath("../PlatformBody")
+node_b = NodePath("../Anchor")
+length = 40.0
+initial_offset = 1.0

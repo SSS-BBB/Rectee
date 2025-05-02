@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cved48cf2k8kl"]
+
+[ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Assets/Sprites/objects_spritesheet.png" id="1_1jehh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46boh"]
+size = Vector2(48, 5)
+
+[node name="OneWayPlatform" type="StaticBody2D"]
+collision_layer = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_46boh")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1jehh")
+region_enabled = true
+region_rect = Rect2(0, 96, 48, 16)

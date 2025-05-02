@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=4 uid="uid://dhckft25x6wlh"]
+[gd_scene load_steps=11 format=4 uid="uid://dhckft25x6wlh"]
 
 [ext_resource type="PackedScene" uid="uid://cnug4qukfx2e3" path="res://Scenes/Tiles/ground_layer.tscn" id="1_h0jj1"]
 [ext_resource type="PackedScene" uid="uid://dhckf5s0suykl" path="res://Scenes/Tiles/spike_layer.tscn" id="2_wnsp5"]
 [ext_resource type="PackedScene" uid="uid://fn7p4nuob5du" path="res://Scenes/Characters/player.tscn" id="3_pdixw"]
+[ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Scenes/Objects/consumable.tscn" id="4_2nphp"]
+[ext_resource type="Resource" uid="uid://drkbvn1a28jmj" path="res://Resources/basic_jump_potion.tres" id="5_p2lnf"]
+[ext_resource type="Resource" uid="uid://saubjkn7otdv" path="res://Resources/basic_health_potion.tres" id="6_xjpol"]
+[ext_resource type="PackedScene" uid="uid://c8fixtf1k7wfp" path="res://Scenes/Objects/moving_platform.tscn" id="7_k728x"]
+[ext_resource type="PackedScene" uid="uid://cved48cf2k8kl" path="res://Scenes/Objects/one_way_platform.tscn" id="8_5xypr"]
+[ext_resource type="PackedScene" uid="uid://b28kmre3vi0nv" path="res://Scenes/Objects/falling_platform.tscn" id="9_c1jwu"]
+
+[sub_resource type="Curve2D" id="Curve2D_k728x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 450, 0)
+}
+point_count = 2
 
 [node name="BoxTemplate" type="Node2D"]
 
@@ -21,8 +33,38 @@ tile_map_data = PackedByteArray("AABSAEwAAAAAAAQAAABSAE0AAAAAAAUAAABTAEwAAAABAAQ
 tile_map_data = PackedByteArray("AABTAE0AAAANAAUAAABZAE4AAAAOAAQAAABZAE8AAAAOAAUAAABaAE4AAAAOAAQAAABaAE8AAAAOAAUAAABcAE8AAAAPAAMAAABcAFAAAAAPAAQAAABcAFEAAAAPAAUAAABgAFAAAAAOAAQAAABgAFEAAAAOAAUAAABlAE4AAAAOAAQAAABlAE8AAAAOAAUAAABdAE8AAAAKAAMAAABdAFAAAAAKAAQAAABdAFEAAAAKAAUAAABeAE8AAAALAAMAAABeAFAAAAALAAQAAABeAFEAAAALAAUAAAA=")
 
 [node name="Player" parent="." instance=ExtResource("3_pdixw")]
-position = Vector2(108, 476)
+position = Vector2(84, 517)
 scale = Vector2(2, 2)
+normal_jump_velocity = 500
 
 [node name="Camera" type="Camera2D" parent="." groups=["camera"]]
 offset = Vector2(640, 360)
+
+[node name="Consumables" type="Node2D" parent="."]
+
+[node name="Consumable1" parent="Consumables" instance=ExtResource("4_2nphp")]
+position = Vector2(516, 554)
+
+[node name="Consumable2" parent="Consumables" instance=ExtResource("4_2nphp")]
+position = Vector2(214, 556)
+consumable_resource = ExtResource("5_p2lnf")
+
+[node name="Consumable3" parent="Consumables" instance=ExtResource("4_2nphp")]
+position = Vector2(868, 554)
+consumable_resource = ExtResource("6_xjpol")
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="MovingPlatform1" parent="Platforms" instance=ExtResource("7_k728x")]
+position = Vector2(316, 517)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_k728x")
+path_duration = 3.0
+
+[node name="OneWayPlatform" parent="Platforms" instance=ExtResource("8_5xypr")]
+position = Vector2(164, 461)
+scale = Vector2(2, 2)
+
+[node name="FallingPlatform" parent="Platforms" instance=ExtResource("9_c1jwu")]
+position = Vector2(316, 410)
+scale = Vector2(2, 2)

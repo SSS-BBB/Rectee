@@ -10,6 +10,7 @@ var health: int
 # signal
 signal actor_die
 signal health_update
+signal damage_signal
 
 func _ready():
 	health = max_health
@@ -17,10 +18,10 @@ func _ready():
 	
 func take_damage(damage: int):
 	health -= damage
+	damage_signal.emit(damage)
 	if health <= 0:
 		actor_die.emit()
 		health = 0
-		
 	health_update.emit(health)
 	
 func gain_health(health_gain: int):

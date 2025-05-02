@@ -1,12 +1,54 @@
-[gd_scene load_steps=8 format=3 uid="uid://fn7p4nuob5du"]
+[gd_scene load_steps=20 format=3 uid="uid://fn7p4nuob5du"]
 
 [ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Assets/Sprites/objects_spritesheet.png" id="1_3etf2"]
 [ext_resource type="Script" uid="uid://cg3kvmtxikyob" path="res://Scripts/player.gd" id="1_al8ar"]
 [ext_resource type="Script" uid="uid://0f4ghtbdtepr" path="res://Scripts/health_component.gd" id="3_al8ar"]
 [ext_resource type="Script" uid="uid://ca7runxgkw4g" path="res://Scripts/health_display.gd" id="4_gy20a"]
+[ext_resource type="AudioStream" uid="uid://bfi3v5v06b6xy" path="res://Assets/SFXs/spike_damaged.wav" id="5_cqrjx"]
+[ext_resource type="Script" uid="uid://cjft18v1fp6ma" path="res://Scripts/effect_component.gd" id="5_gdgf0"]
+[ext_resource type="AudioStream" uid="uid://cwxls4usqvhxb" path="res://Assets/SFXs/bullet_damaged.wav" id="6_khnq4"]
+[ext_resource type="AudioStream" uid="uid://cw8vkaltwad0g" path="res://Assets/SFXs/landing.wav" id="7_utp2y"]
+[ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Assets/SFXs/drinking.wav" id="9_xo8ps"]
+[ext_resource type="Script" uid="uid://3ki3hcgasg4u" path="res://Scripts/state_machine.gd" id="10_cueqf"]
+[ext_resource type="Script" uid="uid://b15wai8qt6htk" path="res://Scripts/on_ground_state.gd" id="10_fcmex"]
+[ext_resource type="Script" uid="uid://drhlh34cp6qv1" path="res://Scripts/on_air_state.gd" id="11_25bbb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3etf2"]
 size = Vector2(16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khnq4"]
+atlas = ExtResource("1_3etf2")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utp2y"]
+atlas = ExtResource("1_3etf2")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy20a"]
+atlas = ExtResource("1_3etf2")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_al8ar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khnq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utp2y")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy20a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_al8ar"]
 
@@ -15,15 +57,16 @@ bg_color = Color(0, 0.501961, 0, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 770
+platform_on_leave = 2
 script = ExtResource("1_al8ar")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3etf2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3etf2")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 32)
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_al8ar")
+animation = &"damaged"
+autoplay = "default"
 
 [node name="Health" type="Node2D" parent="."]
 
@@ -47,6 +90,7 @@ offset_bottom = -18.0
 color = Color(0, 0, 0, 1)
 
 [node name="EmptyRect" type="ColorRect" parent="Health/HealthDisplay"]
+layout_mode = 0
 offset_left = -12.0
 offset_top = -27.0
 offset_right = 12.0
@@ -64,4 +108,43 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_gy20a")
 value = 15.0
 show_percentage = false
 
-[node name="ApplyEffectComponent" type="Node2D" parent="."]
+[node name="EffectComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_gdgf0")
+health_component = NodePath("../Health/HealthComponent")
+
+[node name="SpeedTimer" type="Timer" parent="EffectComponent"]
+
+[node name="JumpTimer" type="Timer" parent="EffectComponent"]
+
+[node name="SFXs" type="Node2D" parent="."]
+
+[node name="SpikeDamageAudio" type="AudioStreamPlayer2D" parent="SFXs"]
+stream = ExtResource("5_cqrjx")
+
+[node name="BulletDamageAudio" type="AudioStreamPlayer2D" parent="SFXs"]
+stream = ExtResource("6_khnq4")
+
+[node name="LandingAudio" type="AudioStreamPlayer2D" parent="SFXs"]
+stream = ExtResource("7_utp2y")
+
+[node name="DrinkingAudio" type="AudioStreamPlayer2D" parent="SFXs"]
+stream = ExtResource("9_xo8ps")
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("10_cueqf")
+actor = NodePath("..")
+
+[node name="OnGroundState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("state_machine", "landingAudio", "next_state")]
+script = ExtResource("10_fcmex")
+state_machine = NodePath("..")
+landingAudio = NodePath("../../SFXs/LandingAudio")
+next_state = NodePath("../OnAirState")
+
+[node name="OnAirState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("state_machine", "next_state")]
+script = ExtResource("11_25bbb")
+state_machine = NodePath("..")
+next_state = NodePath("../OnGroundState")
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="timeout" from="EffectComponent/SpeedTimer" to="EffectComponent" method="_on_speed_timer_timeout"]
+[connection signal="timeout" from="EffectComponent/JumpTimer" to="EffectComponent" method="_on_jump_timer_timeout"]
