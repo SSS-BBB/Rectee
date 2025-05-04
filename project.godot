@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Rectee"
-run/main_scene="uid://dhckft25x6wlh"
+run/main_scene="uid://cmi2p3rb3qo3v"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Scenes/Globals/game_manager.tscn"
 
 [display]
 

@@ -14,19 +14,23 @@ class_name Player extends CharacterBody2D
 @onready var bullet_damage_audio = $SFXs/BulletDamageAudio as AudioStreamPlayer2D
 @onready var drinking_audio = $SFXs/DrinkingAudio as AudioStreamPlayer2D
 @onready var landing_audio = $SFXs/LandingAudio as AudioStreamPlayer2D
-#@onready var state_machine = $StateMachine as StateMachine
-#@onready var on_ground_state = $StateMachine/OnGroundState as State
-#@onready var on_air_state = $StateMachine/OnAirState as State
-
+@onready var key_retrive_audio = $SFXs/KeyRetriveAudio as AudioStreamPlayer2D
 
 # Player variables
 var time_counter: float
 var speed: int
 var jump_velocity: int
+var keys: int:
+	set(keys_update):
+		# Keys retrived
+		if keys_update > keys:
+			key_retrive_audio.play()
+		keys = keys_update
 
 # Game functions
 func _ready():
 	time_counter = 0.0
+	keys = 0
 	health_component.damage_signal.connect(_on_take_damage)
 
 func _input(event):
@@ -62,7 +66,7 @@ func _physics_process(delta):
 	
 	time_counter += delta
 
-# Component functions
+# Class functions
 func jump(init_velocity: int = 0):
 	if init_velocity == 0:
 		velocity.y = jump_velocity * -1
@@ -83,7 +87,7 @@ func take_consumable(consumable_resource: ConsumableResource):
 	drinking_audio.play()
 	effect_component.apply_effect(consumable_resource)
 
-# Sigmal functions
+# Signal functions
 func _on_take_damage(_damage):
 	sprite.play("damaged")
 

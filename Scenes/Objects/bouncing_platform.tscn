@@ -1,35 +1,75 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7s22ivpvuxi1"]
+[gd_scene load_steps=8 format=3 uid="uid://b7s22ivpvuxi1"]
 
 [ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Assets/Sprites/objects_spritesheet.png" id="1_263ox"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q21gm"]
-size = Vector2(48, 16)
+[ext_resource type="Script" uid="uid://gcuid17eevlb" path="res://Scripts/bouncing_platform.gd" id="1_q21gm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_263ox"]
-size = Vector2(48, 10)
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q21gm"]
+size = Vector2(43, 3)
+
+[sub_resource type="Animation" id="Animation_263ox"]
+resource_name = "bounce"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 4), Vector2(0, 8), Vector2(0, 4), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q21gm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q21gm"]
+_data = {
+&"RESET": SubResource("Animation_q21gm"),
+&"bounce": SubResource("Animation_263ox")
+}
 
 [node name="BouncingPlatform" type="Node2D"]
+script = ExtResource("1_q21gm")
 
-[node name="PlatformBody" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
-lock_rotation = true
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBody"]
-shape = SubResource("RectangleShape2D_q21gm")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_263ox")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlatformBody"]
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 texture = ExtResource("1_263ox")
 region_enabled = true
 region_rect = Rect2(0, 64, 48, 16)
 
-[node name="Anchor" type="StaticBody2D" parent="."]
+[node name="TriggerArea" type="Area2D" parent="."]
+position = Vector2(0, -10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor"]
-position = Vector2(0, 40)
-shape = SubResource("RectangleShape2D_263ox")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+shape = SubResource("RectangleShape2D_q21gm")
 
-[node name="Spring" type="GrooveJoint2D" parent="."]
-node_a = NodePath("../PlatformBody")
-node_b = NodePath("../Anchor")
-length = 40.0
-initial_offset = 1.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q21gm")
+}
+
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

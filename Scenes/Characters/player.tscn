@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://fn7p4nuob5du"]
+[gd_scene load_steps=22 format=3 uid="uid://fn7p4nuob5du"]
 
 [ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Assets/Sprites/objects_spritesheet.png" id="1_3etf2"]
 [ext_resource type="Script" uid="uid://cg3kvmtxikyob" path="res://Scripts/player.gd" id="1_al8ar"]
@@ -6,9 +6,11 @@
 [ext_resource type="Script" uid="uid://ca7runxgkw4g" path="res://Scripts/health_display.gd" id="4_gy20a"]
 [ext_resource type="AudioStream" uid="uid://bfi3v5v06b6xy" path="res://Assets/SFXs/spike_damaged.wav" id="5_cqrjx"]
 [ext_resource type="Script" uid="uid://cjft18v1fp6ma" path="res://Scripts/effect_component.gd" id="5_gdgf0"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="5_xccyk"]
 [ext_resource type="AudioStream" uid="uid://cwxls4usqvhxb" path="res://Assets/SFXs/bullet_damaged.wav" id="6_khnq4"]
 [ext_resource type="AudioStream" uid="uid://cw8vkaltwad0g" path="res://Assets/SFXs/landing.wav" id="7_utp2y"]
 [ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Assets/SFXs/drinking.wav" id="9_xo8ps"]
+[ext_resource type="AudioStream" uid="uid://bjywf7k1dti8q" path="res://Assets/SFXs/key_retrive.wav" id="10_01b8d"]
 [ext_resource type="Script" uid="uid://3ki3hcgasg4u" path="res://Scripts/state_machine.gd" id="10_cueqf"]
 [ext_resource type="Script" uid="uid://b15wai8qt6htk" path="res://Scripts/on_ground_state.gd" id="10_fcmex"]
 [ext_resource type="Script" uid="uid://drhlh34cp6qv1" path="res://Scripts/on_air_state.gd" id="11_25bbb"]
@@ -103,10 +105,25 @@ offset_left = -12.0
 offset_top = -27.0
 offset_right = 12.0
 offset_bottom = -19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 5
 theme_override_styles/background = SubResource("StyleBoxEmpty_al8ar")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gy20a")
 value = 15.0
 show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="Health/HealthDisplay"]
+layout_mode = 1
+offset_left = -12.0
+offset_top = -45.0
+offset_right = 12.0
+offset_bottom = -27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_xccyk")
+theme_override_font_sizes/font_size = 15
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EffectComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("5_gdgf0")
@@ -129,6 +146,9 @@ stream = ExtResource("7_utp2y")
 
 [node name="DrinkingAudio" type="AudioStreamPlayer2D" parent="SFXs"]
 stream = ExtResource("9_xo8ps")
+
+[node name="KeyRetriveAudio" type="AudioStreamPlayer2D" parent="SFXs"]
+stream = ExtResource("10_01b8d")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("10_cueqf")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dukqpshp4uud1"]
+
+[ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Scenes/Boxes/box_template.tscn" id="1_c1sfh"]
+[ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Scenes/Objects/consumable.tscn" id="2_63eft"]
+[ext_resource type="PackedScene" uid="uid://b28kmre3vi0nv" path="res://Scenes/Objects/falling_platform.tscn" id="2_po76r"]
+[ext_resource type="Resource" uid="uid://drkbvn1a28jmj" path="res://Resources/Consumables/basic_jump_potion.tres" id="3_cuu8l"]
+[ext_resource type="PackedScene" uid="uid://bmf4ukrb1dgev" path="res://Scenes/Objects/key.tscn" id="5_cuu8l"]
+
+[node name="Box2" instance=ExtResource("1_c1sfh")]
+box_level = 2
+
+[node name="Door" parent="." index="1"]
+keys_need = 2
+next_scene_path = "res://Scenes/Boxes/box_1.tscn"
+
+[node name="Consumable" parent="Consumables" index="0" instance=ExtResource("2_63eft")]
+position = Vector2(606, 454)
+consumable_resource = ExtResource("3_cuu8l")
+
+[node name="FallingPlatform" parent="Platforms" index="0" instance=ExtResource("2_po76r")]
+position = Vector2(608, 489)
+scale = Vector2(2, 2)
+
+[node name="Key2" parent="Keys" index="1" instance=ExtResource("5_cuu8l")]
+position = Vector2(1104, 441)
+scale = Vector2(1.5, 1.5)

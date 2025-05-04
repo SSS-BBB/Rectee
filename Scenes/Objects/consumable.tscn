@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsi5r3mbdc2yc"]
 
 [ext_resource type="Script" uid="uid://cja5gxlskkf0e" path="res://Scripts/consumable.gd" id="1_obpyj"]
-[ext_resource type="Resource" uid="uid://bsirk3o4eo6m7" path="res://Resources/basic_speed_potion.tres" id="2_e60q3"]
+[ext_resource type="Resource" uid="uid://bsirk3o4eo6m7" path="res://Resources/Consumables/basic_speed_potion.tres" id="2_e60q3"]
 [ext_resource type="Texture2D" uid="uid://quxobky4ikd5" path="res://Assets/Sprites/Consumables/speed_drink.png" id="3_l8tlp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e60q3"]
