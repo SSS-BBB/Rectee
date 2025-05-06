@@ -2,37 +2,26 @@
 
 [ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Assets/Sprites/spikes.png" id="1_duktt"]
 [ext_resource type="Script" uid="uid://b0j1ow2wsomep" path="res://Scripts/spike.gd" id="1_xxn00"]
-[ext_resource type="Resource" uid="uid://coc3r7q2a31u5" path="res://Resources/Spikes/small_spike_1.tres" id="2_v5lm5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5lm5"]
-size = Vector2(1, 8.90744)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyj4l"]
-size = Vector2(1, 8.90744)
+[ext_resource type="Resource" uid="uid://caw3yhari8x6h" path="res://Resources/Spikes/large_spike_1.tres" id="2_v5lm5"]
+[ext_resource type="PackedScene" uid="uid://dbp23c5d254n5" path="res://Scenes/Components/spike_hitbox.tscn" id="4_nwgwp"]
+[ext_resource type="PackedScene" uid="uid://ce574ftkie425" path="res://Scenes/Components/spike_damage.tscn" id="5_nwgwp"]
 
 [node name="Spike" type="StaticBody2D" groups=["spikes"]]
 collision_layer = 256
 script = ExtResource("1_xxn00")
 resource = ExtResource("2_v5lm5")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionArea1" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2.35, -1)
-rotation = 0.41241
-shape = SubResource("RectangleShape2D_v5lm5")
-
-[node name="CollisionArea2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.35, -1)
-rotation = -0.41241
-shape = SubResource("RectangleShape2D_eyj4l")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-2.5, 3, 2.5, 3, 0, -3)
+polygon = PackedVector2Array(-6.5, 7, 6.5, 7, 0, -7)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_duktt")
 region_enabled = true
-region_rect = Rect2(104, 40, 7, 8)
+region_rect = Rect2(0, 32, 15, 16)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="SpikeHitbox" parent="." node_paths=PackedStringArray("spike") instance=ExtResource("4_nwgwp")]
+spike = NodePath("..")
+
+[node name="SpikeDamage" parent="." node_paths=PackedStringArray("spike", "hitbox") instance=ExtResource("5_nwgwp")]
+spike = NodePath("..")
+hitbox = NodePath("../SpikeHitbox")

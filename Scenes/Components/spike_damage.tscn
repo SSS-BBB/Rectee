@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce574ftkie425"]
+
+[ext_resource type="Script" uid="uid://brcnwdurpsj37" path="res://Scripts/spike_damage.gd" id="1_heny0"]
+
+[node name="SpikeDamage" type="Node2D" node_paths=PackedStringArray("spike", "hit_area")]
+script = ExtResource("1_heny0")
+spike = NodePath("")
+hit_area = NodePath("")

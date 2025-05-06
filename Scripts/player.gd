@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 # Exports
 @export var normal_speed: int = 300
 @export var normal_jump_velocity: int = 400
+@export var knockback_deceleration: int = 25
 
 # Components
 @onready var health_component = $Health/HealthComponent as HealthComponent
@@ -20,6 +21,9 @@ class_name Player extends CharacterBody2D
 var time_counter: float
 var speed: int
 var jump_velocity: int
+var knockback_power: float
+var knockback_power_max: float
+var knockback_direction: Vector2
 var keys: int:
 	set(keys_update):
 		# Keys retrived
@@ -31,6 +35,7 @@ var keys: int:
 func _ready():
 	time_counter = 0.0
 	keys = 0
+	knockback_power = 0
 	health_component.damage_signal.connect(_on_take_damage)
 
 func _input(event):
@@ -40,14 +45,26 @@ func _input(event):
 		set_collision_mask_value(10, true)
 
 func _physics_process(delta):
-	# set variables
-	speed = normal_speed + effect_component.extra_speed
-	jump_velocity = normal_jump_velocity + effect_component.extra_jump
+	update_variables()
 	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	if knockback_power > knockback_power_max / 2.0:
+		# if there is knockback, we will not listen to the input
+		knockback_process(delta)
+		return
+	
+	handle_process_input(delta)
 
+# Class functions
+func update_variables():
+	# set variables
+	speed = normal_speed + effect_component.extra_speed
+	jump_velocity = normal_jump_velocity + effect_component.extra_jump
+
+func handle_process_input(_delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
 		jump()
@@ -60,22 +77,33 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
-	
+
+func knockback_process(_delta):
+	velocity = knockback_direction * knockback_power
+	knockback_power = move_toward(knockback_power, 0, knockback_deceleration)
+	move_and_slide()
+
+func time_loop(delta):
+	# do logic every fixed time
 	if time_counter >= 1.5:
 		time_counter = 0
 	
 	time_counter += delta
 
-# Class functions
 func jump(init_velocity: int = 0):
 	if init_velocity == 0:
 		velocity.y = jump_velocity * -1
 	else:
 		velocity.y = init_velocity * -1
+		
+func knockback(object_position: Vector2, knockback_force: float):
+	knockback_direction = object_position.direction_to(global_position)
+	knockback_power = knockback_force
+	knockback_power_max = knockback_force
 
-func take_spike_damage(damage: int, jump_from_spike: int):
+func take_spike_damage(damage: int, object_position: Vector2, knockback_force: float):
 	health_component.take_damage(damage)
-	jump(jump_from_spike)
+	knockback(object_position, knockback_force)
 	spike_damage_audio.play()
 
 func take_bullet_damage(damage: int, _knock_back: int):
