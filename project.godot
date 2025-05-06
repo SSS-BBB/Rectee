@@ -62,6 +62,8 @@ interact={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="objects"
+2d_physics/layer_3="item"
+2d_physics/layer_4="area"
 2d_physics/layer_9="platform"
 2d_physics/layer_10="one_way_platform"
 

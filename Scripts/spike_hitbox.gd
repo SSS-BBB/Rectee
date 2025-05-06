@@ -3,6 +3,7 @@ class_name SpikeHitbox extends Node2D
 
 # Export variables
 @export var spike: Spike
+@export var spike_damage: SpikeDamage
 
 # Component variable
 @onready var hit_area = $Area2D
@@ -23,6 +24,15 @@ func _process(_delta):
 	if Engine.is_editor_hint() and spike:
 		set_variables()
 		set_area_collision()
+		
+func _get_configuration_warnings():
+	var warnings: Array[String] = []
+	if not spike:
+		warnings.append("Warning: No spike added to this component.")
+	if not spike_damage:
+		warnings.append("Warning: No spike damage component added to this component.")
+		
+	return warnings
 
 # Class functions
 func set_variables():
@@ -42,7 +52,7 @@ func set_area_collision():
 	
 	collision_area_1.rotation = theta
 	
-	var offset_1 := 0.6*Vector2.LEFT + Vector2.UP
+	var offset_1 := get_collision_offset(Vector2.LEFT)
 	collision_area_1.position = collision_position + offset_1
 	
 	# 2 (right)
@@ -52,7 +62,7 @@ func set_area_collision():
 	
 	collision_area_2.rotation = -theta
 	
-	var offset_2 :=  0.6*Vector2.RIGHT + Vector2.UP
+	var offset_2 :=  get_collision_offset(Vector2.RIGHT)
 	collision_area_2.position = -collision_position + offset_2
 
 func get_collision_size() -> Vector2:
@@ -66,3 +76,12 @@ func get_collision_angle() -> float:
 	
 func get_collision_position() -> Vector2:
 	return Vector2(-sprite_width / 4.0, 0.0)
+	
+func get_collision_offset(horizontal_direction: Vector2) -> Vector2:
+	return 0.6*horizontal_direction + Vector2.UP
+
+# Signal functions
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("player") and spike_damage:
+		var player := body as Player
+		spike_damage.hit_player(player)

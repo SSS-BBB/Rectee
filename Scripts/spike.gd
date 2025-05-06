@@ -1,5 +1,5 @@
 @tool
-class_name Spike extends StaticBody2D
+class_name Spike extends PhysicsBody2D
 
 # Export variables
 @export var resource: SpikeResource
@@ -28,24 +28,26 @@ func _process(_delta):
 		set_variables()
 		set_sprite()
 		set_collision_polygon()
-		
+
 # Class functions
 func set_variables():
-	sprite_width = resource.texture_region.size.x
-	sprite_height = resource.texture_region.size.y
-	
-	left = -sprite_width/2.0 + 1.0
-	right = sprite_width/2.0 - 1.0
-	up = -sprite_height/2.0 + 1.0
-	down = sprite_height/2.0 - 1.0
+	if resource:
+		sprite_width = resource.texture_region.size.x
+		sprite_height = resource.texture_region.size.y
+		
+		left = -sprite_width/2.0 + 1.0
+		right = sprite_width/2.0 - 1.0
+		up = -sprite_height/2.0 + 1.0
+		down = sprite_height/2.0 - 1.0
 
 func set_collision_polygon():
-	# Points
-	var points := PackedVector2Array()
-	points.append(Vector2(left, down))
-	points.append(Vector2(right, down))
-	points.append(Vector2(0, up))
-	collision_polygon.polygon = points
+	if collision_polygon:
+		# Points
+		var points := PackedVector2Array()
+		points.append(Vector2(left, down))
+		points.append(Vector2(right, down))
+		points.append(Vector2(0, up))
+		collision_polygon.polygon = points
 	
 func set_sprite():
 	if resource:

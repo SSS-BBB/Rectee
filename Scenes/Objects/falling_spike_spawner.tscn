@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpovx7vughv8v"]
+
+[ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Assets/Sprites/objects_spritesheet.png" id="1_4rpn0"]
+[ext_resource type="Script" uid="uid://b6wauygvdlo4p" path="res://Scripts/falling_spike_spawner.gd" id="1_rahng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rahng"]
+size = Vector2(16, 16)
+
+[node name="FallingSpikeSpawner" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_rahng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rahng")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4rpn0")
+region_enabled = true
+region_rect = Rect2(112, 32, 16, 16)

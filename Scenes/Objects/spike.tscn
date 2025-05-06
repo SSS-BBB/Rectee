@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ce574ftkie425" path="res://Scenes/Components/spike_damage.tscn" id="5_nwgwp"]
 
 [node name="Spike" type="StaticBody2D" groups=["spikes"]]
-collision_layer = 256
+collision_layer = 2
 script = ExtResource("1_xxn00")
 resource = ExtResource("2_v5lm5")
 
@@ -19,9 +19,9 @@ texture = ExtResource("1_duktt")
 region_enabled = true
 region_rect = Rect2(0, 32, 15, 16)
 
-[node name="SpikeHitbox" parent="." node_paths=PackedStringArray("spike") instance=ExtResource("4_nwgwp")]
+[node name="SpikeHitbox" parent="." node_paths=PackedStringArray("spike", "spike_damage") instance=ExtResource("4_nwgwp")]
 spike = NodePath("..")
+spike_damage = NodePath("../SpikeDamage")
 
-[node name="SpikeDamage" parent="." node_paths=PackedStringArray("spike", "hitbox") instance=ExtResource("5_nwgwp")]
+[node name="SpikeDamage" parent="." node_paths=PackedStringArray("spike") instance=ExtResource("5_nwgwp")]
 spike = NodePath("..")
-hitbox = NodePath("../SpikeHitbox")

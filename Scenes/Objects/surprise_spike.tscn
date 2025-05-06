@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bitl6hkljphpw"]
+
+[ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Scenes/Objects/spike.tscn" id="1_lgbbm"]
+[ext_resource type="PackedScene" uid="uid://bvqroby1huw0p" path="res://Scenes/Components/surprise_component.tscn" id="2_1yo5c"]
+
+[node name="SurpriseSpike" instance=ExtResource("1_lgbbm")]
+
+[node name="SurpriseComponent" parent="." index="4" node_paths=PackedStringArray("node") instance=ExtResource("2_1yo5c")]
+node = NodePath("..")

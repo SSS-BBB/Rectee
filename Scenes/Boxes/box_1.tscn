@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmi2p3rb3qo3v"]
+[gd_scene load_steps=10 format=3 uid="uid://cmi2p3rb3qo3v"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Scenes/Boxes/box_template.tscn" id="1_2gup7"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Scenes/Objects/consumable.tscn" id="2_31nnr"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Scenes/Objects/spike.tscn" id="5_dbw2i"]
 [ext_resource type="Resource" uid="uid://c45tx25wmokxh" path="res://Resources/Spikes/large_spike_2.tres" id="6_pd6pn"]
 [ext_resource type="Resource" uid="uid://dhr6cgctn7u7e" path="res://Resources/Spikes/large_spike_3.tres" id="7_4sus7"]
+[ext_resource type="PackedScene" uid="uid://bitl6hkljphpw" path="res://Scenes/Objects/surprise_spike.tscn" id="8_ie62t"]
+[ext_resource type="PackedScene" uid="uid://bpovx7vughv8v" path="res://Scenes/Objects/falling_spike_spawner.tscn" id="10_bxipm"]
 
 [node name="Box1" instance=ExtResource("1_2gup7")]
 box_level = 1
@@ -38,3 +40,15 @@ scale = Vector2(2, 2)
 position = Vector2(665, 530)
 scale = Vector2(2, 2)
 resource = ExtResource("7_4sus7")
+
+[node name="SurpriseSpike" parent="Spikes" index="3" instance=ExtResource("8_ie62t")]
+position = Vector2(855, 560)
+scale = Vector2(2, 2)
+
+[node name="FallingSpikeSpawner" parent="FallingSpikeSpawner" index="0" instance=ExtResource("10_bxipm")]
+position = Vector2(250, 31)
+scale = Vector2(2, 2)
+
+[node name="FallingSpikeSpawner2" parent="FallingSpikeSpawner" index="1" instance=ExtResource("10_bxipm")]
+position = Vector2(300, 31)
+scale = Vector2(2, 2)

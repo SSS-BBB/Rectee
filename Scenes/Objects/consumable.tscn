@@ -8,6 +8,7 @@
 radius = 8.0
 
 [node name="Consumable" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_obpyj")
 consumable_resource = ExtResource("2_e60q3")
 

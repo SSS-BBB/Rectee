@@ -1,17 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbamfgva0lcmk"]
+[gd_scene load_steps=7 format=3 uid="uid://bbamfgva0lcmk"]
 
 [ext_resource type="Script" uid="uid://b7e2vkitak7rc" path="res://Scripts/falling_spike.gd" id="1_d4nq0"]
-[ext_resource type="Resource" uid="uid://caw3yhari8x6h" path="res://Resources/Spikes/large_spike_1.tres" id="2_h2wwa"]
+[ext_resource type="Resource" uid="uid://sfkh5k2xf7ye" path="res://Resources/Spikes/falling_large_spike_1.tres" id="2_86edh"]
 [ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Assets/Sprites/spikes.png" id="3_h2wwa"]
+[ext_resource type="PackedScene" uid="uid://bm40bkfndejrp" path="res://Scenes/Components/falling_spike_hitbox.tscn" id="4_a3bhp"]
+[ext_resource type="PackedScene" uid="uid://ce574ftkie425" path="res://Scenes/Components/spike_damage.tscn" id="5_l0r1s"]
+[ext_resource type="Script" uid="uid://cbh5tsjtmc66k" path="res://Scripts/falling_movement.gd" id="6_s6nmy"]
 
-[node name="FallingSpike" type="AnimatableBody2D"]
+[node name="FallingSpike" type="StaticBody2D"]
+collision_layer = 2
 script = ExtResource("1_d4nq0")
-resource = ExtResource("2_h2wwa")
+resource = ExtResource("2_86edh")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-6.5, 7, 6.5, 7, 0, -7)
+polygon = PackedVector2Array(-6.5, -7, 6.5, -7, 0, 7)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_h2wwa")
 region_enabled = true
-region_rect = Rect2(0, 32, 15, 16)
+region_rect = Rect2(0, 64, 15, 16)
+
+[node name="FallingSpikeHitbox" parent="." node_paths=PackedStringArray("spike", "spike_damage") instance=ExtResource("4_a3bhp")]
+spike = NodePath("..")
+spike_damage = NodePath("../SpikeDamage")
+
+[node name="SpikeDamage" parent="." node_paths=PackedStringArray("spike") instance=ExtResource("5_l0r1s")]
+spike = NodePath("..")
+
+[node name="FallingMovement" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("6_s6nmy")
+actor = NodePath("..")
