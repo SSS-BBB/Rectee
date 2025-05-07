@@ -52,3 +52,5 @@ grow_vertical = 1
 [node name="FallingSpikes" type="Node2D" parent="." groups=["falling_spike_container"]]
 
 [node name="FallingSpikeSpawner" type="Node2D" parent="."]
+
+[node name="Shooters" type="Node2D" parent="."]

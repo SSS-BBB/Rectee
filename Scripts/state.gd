@@ -7,5 +7,5 @@ func enter_state():
 func exit_state():
 	pass
 	
-func update():
+func update(_delta: float):
 	pass

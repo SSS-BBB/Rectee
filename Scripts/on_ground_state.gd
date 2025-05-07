@@ -10,6 +10,6 @@ func enter_state():
 func exit_state():
 	pass
 	
-func update():
+func update(_delta: float):
 	if not state_machine.actor.is_on_floor():
 		state_machine.change_state(next_state)

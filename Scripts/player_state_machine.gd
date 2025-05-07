@@ -1,4 +1,4 @@
-class_name StateMachine extends Node2D
+class_name PlayerStateMachine extends StateMachine
 
 # Export variables
 @export var actor: CharacterBody2D
@@ -7,8 +7,6 @@ class_name StateMachine extends Node2D
 @onready var on_ground_state = $OnGroundState as State
 @onready var on_air_state = $OnAirState as State
 
-# Class variables
-var current_state: State
 
 # Game functions
 func _ready():
@@ -16,18 +14,3 @@ func _ready():
 		current_state = on_ground_state
 	else:
 		current_state = on_air_state
-		
-
-func _process(_delta):
-	current_state.update()
-
-# Class functions
-func change_state(new_state: State):
-	current_state.exit_state()
-	current_state = new_state
-	new_state.enter_state()
-		
-		
-		
-		
-		

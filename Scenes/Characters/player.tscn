@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cw8vkaltwad0g" path="res://Assets/SFXs/landing.wav" id="7_utp2y"]
 [ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Assets/SFXs/drinking.wav" id="9_xo8ps"]
 [ext_resource type="AudioStream" uid="uid://bjywf7k1dti8q" path="res://Assets/SFXs/key_retrive.wav" id="10_01b8d"]
-[ext_resource type="Script" uid="uid://3ki3hcgasg4u" path="res://Scripts/state_machine.gd" id="10_cueqf"]
+[ext_resource type="Script" uid="uid://3ki3hcgasg4u" path="res://Scripts/player_state_machine.gd" id="10_cueqf"]
 [ext_resource type="Script" uid="uid://b15wai8qt6htk" path="res://Scripts/on_ground_state.gd" id="10_fcmex"]
 [ext_resource type="Script" uid="uid://drhlh34cp6qv1" path="res://Scripts/on_air_state.gd" id="11_25bbb"]
 
@@ -150,17 +150,17 @@ stream = ExtResource("9_xo8ps")
 [node name="KeyRetriveAudio" type="AudioStreamPlayer2D" parent="SFXs"]
 stream = ExtResource("10_01b8d")
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
+[node name="PlayerStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("10_cueqf")
 actor = NodePath("..")
 
-[node name="OnGroundState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("state_machine", "landingAudio", "next_state")]
+[node name="OnGroundState" type="Node2D" parent="PlayerStateMachine" node_paths=PackedStringArray("state_machine", "landingAudio", "next_state")]
 script = ExtResource("10_fcmex")
 state_machine = NodePath("..")
 landingAudio = NodePath("../../SFXs/LandingAudio")
 next_state = NodePath("../OnAirState")
 
-[node name="OnAirState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("state_machine", "next_state")]
+[node name="OnAirState" type="Node2D" parent="PlayerStateMachine" node_paths=PackedStringArray("state_machine", "next_state")]
 script = ExtResource("11_25bbb")
 state_machine = NodePath("..")
 next_state = NodePath("../OnGroundState")
