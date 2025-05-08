@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmi2p3rb3qo3v"]
+[gd_scene load_steps=11 format=3 uid="uid://cmi2p3rb3qo3v"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Scenes/Boxes/box_template.tscn" id="1_2gup7"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Scenes/Objects/consumable.tscn" id="2_31nnr"]
@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Scenes/Objects/spike.tscn" id="5_dbw2i"]
 [ext_resource type="Resource" uid="uid://c45tx25wmokxh" path="res://Resources/Spikes/large_spike_2.tres" id="6_pd6pn"]
 [ext_resource type="Resource" uid="uid://dhr6cgctn7u7e" path="res://Resources/Spikes/large_spike_3.tres" id="7_4sus7"]
+[ext_resource type="PackedScene" uid="uid://m235qtmjqyt0" path="res://Scenes/Characters/boss_shooter.tscn" id="9_bxipm"]
 [ext_resource type="PackedScene" uid="uid://gfqsgo8ihn7c" path="res://Scenes/Characters/shooter.tscn" id="9_ie62t"]
 
-[sub_resource type="Curve2D" id="Curve2D_eobmg"]
+[sub_resource type="Curve2D" id="Curve2D_ie62t"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -150)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -120)
 }
 point_count = 2
 
@@ -46,9 +47,16 @@ position = Vector2(665, 530)
 scale = Vector2(2, 2)
 resource = ExtResource("7_4sus7")
 
-[node name="Shooter" parent="Shooters" index="0" instance=ExtResource("9_ie62t")]
-position = Vector2(407, 553)
+[node name="BossShooter" parent="Shooters" index="0" instance=ExtResource("9_bxipm")]
+position = Vector2(411, 348)
+scale = Vector2(2, 2)
+
+[node name="WanderingArea" parent="Shooters/BossShooter/BossShooterStateMachine/WanderingState" index="0"]
+position = Vector2(106.5, -91.5)
+
+[node name="Shooter" parent="Shooters" index="1" instance=ExtResource("9_ie62t")]
+position = Vector2(1244, 213)
 scale = Vector2(3, 3)
-flip_h = false
-selected_state = 0
-path_curve = SubResource("Curve2D_eobmg")
+path_curve = SubResource("Curve2D_ie62t")
+
+[editable path="Shooters/BossShooter"]

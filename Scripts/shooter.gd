@@ -30,8 +30,8 @@ enum ShooterState { IDLE, PATH_MOVE, FOLLOW_MOVE }
 
 # Component variables
 @onready var ray_cast_container = $ShooterPathMove/ShooterBody/RayCastContainer as RayCastContainer
-@onready var shoot_position = $ShooterPathMove/ShooterBody/ShooterShooting/ShootPosition as Node2D
-@onready var sprite = $ShooterPathMove/ShooterBody/Sprite2D as Sprite2D
+@onready var sprite = $ShooterPathMove/ShooterBody/Sprite2D as Sprite2D as Sprite2D
+@onready var shooter_shooting = $ShooterPathMove/ShooterBody/ShooterShooting as ShooterShooting
 
 @onready var shooter_state_machine = $ShooterStateMachine as ShooterStateMachine
 @onready var shooter_idle_state = $ShooterStateMachine/ShooterIdleState as State
@@ -55,9 +55,7 @@ func _ready():
 		return
 	
 	if flip_h:
-		sprite.flip_h = !sprite.flip_h
-		ray_cast_container.flip_h_ray()
-		shoot_position.position.x *= -1
+		flip()
 	
 	state_change.connect(_on_state_changed)
 	
@@ -70,7 +68,19 @@ func _ready():
 			state_change.emit(ShooterState.FOLLOW_MOVE)
 		_:
 			state_change.emit(ShooterState.IDLE)
-			
+
+# Class functions
+func flip():
+	sprite.flip_h = !sprite.flip_h
+	ray_cast_container.flip_h_ray()
+	shooter_shooting.position.x *= -1
+	
+func flip_sprite(h: bool, v: bool, value: bool):
+	if h:
+		sprite.flip_h = value
+	if v:
+		sprite.flip_v = value
+
 # Signal functions
 func _on_state_changed(new_state_select: ShooterState):
 	match new_state_select:
