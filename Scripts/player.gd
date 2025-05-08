@@ -101,14 +101,16 @@ func knockback(object_position: Vector2, knockback_force: float):
 	knockback_power = knockback_force
 	knockback_power_max = knockback_force
 
-func take_spike_damage(damage: int, object_position: Vector2, knockback_force: float):
+func take_damage(damage: int, object_position: Vector2, knockback_force: float):
 	health_component.take_damage(damage)
 	knockback(object_position, knockback_force)
+
+func take_spike_damage(damage: int, object_position: Vector2, knockback_force: float):
+	take_damage(damage, object_position, knockback_force)
 	spike_damage_audio.play()
 
-func take_bullet_damage(damage: int, _knock_back: int):
-	health_component.take_damage(damage)
-	# TODO: knockback player
+func take_bullet_damage(damage: int, object_position: Vector2, knockback_force: float):
+	take_damage(damage, object_position, knockback_force)
 	bullet_damage_audio.play()
 	
 func take_consumable(consumable_resource: ConsumableResource):

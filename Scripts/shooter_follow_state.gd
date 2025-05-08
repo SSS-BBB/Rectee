@@ -2,6 +2,7 @@ class_name ShooterFollowState extends State
 
 # Export variables
 @export var shooter_body: ShooterBody
+@export var shooting_component: ShooterShooting
 
 # Class variables
 var move_speed: float
@@ -20,6 +21,10 @@ func exit_state():
 func _follow_player(player: Player, delta: float):
 	if shooter_body.global_position.distance_to(player.global_position) < follow_distance:
 		return
-	
+	# move
 	shooter_body.global_position = shooter_body.global_position.move_toward(player.global_position, move_speed * delta)
-	shooter_body.move_and_slide()
+	
+	# shoot
+	shooting_component.shoot(shooter_body.global_position.direction_to(player.global_position))
+	
+	

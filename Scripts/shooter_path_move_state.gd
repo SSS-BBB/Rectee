@@ -4,6 +4,7 @@ class_name ShooterPathMoveState extends State
 # Export variables
 @export var shooter: Shooter
 @export var shooter_path: ShooterPathMove
+@export var shooting_component: ShooterShooting
 
 # Game functions
 func _process(_delta):
@@ -14,7 +15,10 @@ func _process(_delta):
 func enter_state():
 	set_path_property()
 	shooter_path.move()
-	
+
+func update(_delta):
+	shooting_component.shoot()
+
 func exit_state():
 	shooter_path.stop_move()
 	

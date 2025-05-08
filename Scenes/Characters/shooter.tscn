@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://gfqsgo8ihn7c"]
+[gd_scene load_steps=12 format=3 uid="uid://gfqsgo8ihn7c"]
 
 [ext_resource type="Script" uid="uid://c45ci7wuxovsb" path="res://Scripts/shooter.gd" id="1_1n2al"]
 [ext_resource type="Script" uid="uid://cdi4x1erw2phs" path="res://Scripts/shooter_path_move.gd" id="1_x4cfi"]
 [ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Assets/Sprites/objects_spritesheet.png" id="1_xq051"]
+[ext_resource type="Script" uid="uid://cl7fmtc2t6yb3" path="res://Scripts/shooter_shooting.gd" id="2_hj20y"]
 [ext_resource type="Script" uid="uid://b4o5rb6vsna8j" path="res://Scripts/shooter_state_machine.gd" id="3_3wxs3"]
 [ext_resource type="Script" uid="uid://c7q0hcns8j3x7" path="res://Scripts/shooter_idle_state.gd" id="3_8hqu6"]
 [ext_resource type="Script" uid="uid://bn4dg3uoaja2a" path="res://Scripts/shooter_body.gd" id="3_hxdro"]
@@ -15,10 +16,10 @@ size = Vector2(16, 16)
 
 [node name="Shooter" type="Node2D"]
 script = ExtResource("1_1n2al")
-follow_speed = 100.0
-follow_distance = 10.0
-
-[node name="ShootingComponent" type="Node2D" parent="."]
+flip_h = null
+selected_state = 2
+follow_speed = 20.0
+follow_distance = 80.0
 
 [node name="ShooterPathMove" type="Path2D" parent="."]
 script = ExtResource("1_x4cfi")
@@ -45,18 +46,33 @@ region_rect = Rect2(112, 0, 16, 16)
 
 [node name="RayCastContainer" type="Node2D" parent="ShooterPathMove/ShooterBody"]
 script = ExtResource("5_8sv8x")
+ray_size = 100.0
+
+[node name="ShooterShooting" type="Node2D" parent="ShooterPathMove/ShooterBody" node_paths=PackedStringArray("shooter_body")]
+script = ExtResource("2_hj20y")
+shooter_body = NodePath("..")
+
+[node name="Timer" type="Timer" parent="ShooterPathMove/ShooterBody/ShooterShooting"]
+
+[node name="ShootPosition" type="Node2D" parent="ShooterPathMove/ShooterBody/ShooterShooting"]
+position = Vector2(-12, 0)
 
 [node name="ShooterStateMachine" type="Node2D" parent="."]
 script = ExtResource("3_3wxs3")
 
-[node name="ShooterIdleState" type="Node2D" parent="ShooterStateMachine"]
+[node name="ShooterIdleState" type="Node2D" parent="ShooterStateMachine" node_paths=PackedStringArray("shooting_component")]
 script = ExtResource("3_8hqu6")
+shooting_component = NodePath("../../ShooterPathMove/ShooterBody/ShooterShooting")
 
-[node name="ShooterPathMoveState" type="Node2D" parent="ShooterStateMachine" node_paths=PackedStringArray("shooter", "shooter_path")]
+[node name="ShooterPathMoveState" type="Node2D" parent="ShooterStateMachine" node_paths=PackedStringArray("shooter", "shooter_path", "shooting_component")]
 script = ExtResource("4_36pbl")
 shooter = NodePath("../..")
 shooter_path = NodePath("../../ShooterPathMove")
+shooting_component = NodePath("../../ShooterPathMove/ShooterBody/ShooterShooting")
 
-[node name="ShooterFollowState" type="Node2D" parent="ShooterStateMachine" node_paths=PackedStringArray("shooter_body")]
+[node name="ShooterFollowState" type="Node2D" parent="ShooterStateMachine" node_paths=PackedStringArray("shooter_body", "shooting_component")]
 script = ExtResource("5_gbi7a")
 shooter_body = NodePath("../../ShooterPathMove/ShooterBody")
+shooting_component = NodePath("../../ShooterPathMove/ShooterBody/ShooterShooting")
+
+[connection signal="timeout" from="ShooterPathMove/ShooterBody/ShooterShooting/Timer" to="ShooterPathMove/ShooterBody/ShooterShooting" method="_on_timer_timeout"]
