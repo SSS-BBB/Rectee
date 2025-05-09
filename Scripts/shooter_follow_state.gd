@@ -7,13 +7,19 @@ class_name ShooterFollowState extends State
 # Class variables
 var move_speed: float
 var follow_distance: float
+var player_to_follow: Player
 
-# Override functions
+# State functions
 func enter_state():
+	player_to_follow = get_tree().get_first_node_in_group("player")
 	move_speed = shooter_body.shooter_container.follow_speed
 	follow_distance = shooter_body.shooter_container.follow_distance
 	shooter_body.see_player.connect(_follow_player)
-	
+
+func physics_update(delta):
+	if shooter_body.shooter_container.ignore_raycast:
+		_follow_player(player_to_follow, delta)
+
 func exit_state():
 	shooter_body.see_player.disconnect(_follow_player)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://gfqsgo8ihn7c"]
+[gd_scene load_steps=21 format=3 uid="uid://gfqsgo8ihn7c"]
 
 [ext_resource type="Script" uid="uid://c45ci7wuxovsb" path="res://Scripts/shooter.gd" id="1_1n2al"]
 [ext_resource type="Script" uid="uid://cdi4x1erw2phs" path="res://Scripts/shooter_path_move.gd" id="1_x4cfi"]
@@ -7,17 +7,66 @@
 [ext_resource type="Script" uid="uid://c7q0hcns8j3x7" path="res://Scripts/shooter_idle_state.gd" id="3_8hqu6"]
 [ext_resource type="Script" uid="uid://bn4dg3uoaja2a" path="res://Scripts/shooter_body.gd" id="3_hxdro"]
 [ext_resource type="Script" uid="uid://x41es8li5hp1" path="res://Scripts/shooter_path_move_state.gd" id="4_36pbl"]
+[ext_resource type="Shader" uid="uid://dnugd63sqssow" path="res://Others/shooter_hit_flash.tres" id="4_mid7e"]
 [ext_resource type="Script" uid="uid://d1f21ittq8plt" path="res://Scripts/ray_cast_container.gd" id="5_8sv8x"]
 [ext_resource type="Script" uid="uid://dsvir0pjmx5s0" path="res://Scripts/shooter_follow_state.gd" id="5_gbi7a"]
 [ext_resource type="PackedScene" uid="uid://dd2ljo0wnvbgg" path="res://Scenes/Components/shooter_shooting.tscn" id="6_hj20y"]
+[ext_resource type="PackedScene" uid="uid://de5okmp0mcinf" path="res://Scenes/Components/damage_component.tscn" id="7_xcshw"]
+[ext_resource type="AudioStream" uid="uid://bfi3v5v06b6xy" path="res://Assets/SFXs/spike_damaged.wav" id="9_qeh52"]
+[ext_resource type="PackedScene" uid="uid://cj2visvmlh3q6" path="res://Scenes/Components/health_component.tscn" id="11_8xka0"]
+[ext_resource type="PackedScene" uid="uid://c78yrvgxc1ipu" path="res://Scenes/Components/destroy_on_die_component.tscn" id="13_ktnkf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4cfi"]
 size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qeh52"]
+resource_local_to_scene = true
+shader = ExtResource("4_mid7e")
+shader_parameter/flash_enabled = false
+shader_parameter/flash = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_mid7e"]
+resource_name = "flash_on_hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qeh52"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qeh52"]
+_data = {
+&"RESET": SubResource("Animation_qeh52"),
+&"flash_on_hit": SubResource("Animation_mid7e")
+}
 
 [node name="Shooter" type="Node2D"]
 script = ExtResource("1_1n2al")
 follow_speed = 20.0
 follow_distance = 80.0
+ignore_raycast = null
 
 [node name="ShooterPathMove" type="Path2D" parent="."]
 script = ExtResource("1_x4cfi")
@@ -28,7 +77,7 @@ rotates = false
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="ShooterPathMove/PathFollow2D"]
 remote_path = NodePath("../../ShooterBody")
 
-[node name="ShooterBody" type="CharacterBody2D" parent="ShooterPathMove" node_paths=PackedStringArray("shooter_container")]
+[node name="ShooterBody" type="CharacterBody2D" parent="ShooterPathMove" node_paths=PackedStringArray("shooter_container") groups=["shooter_body"]]
 collision_layer = 2
 collision_mask = 771
 script = ExtResource("3_hxdro")
@@ -38,6 +87,7 @@ shooter_container = NodePath("../..")
 shape = SubResource("RectangleShape2D_x4cfi")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShooterPathMove/ShooterBody"]
+material = SubResource("ShaderMaterial_qeh52")
 texture = ExtResource("1_xq051")
 region_enabled = true
 region_rect = Rect2(112, 0, 16, 16)
@@ -49,6 +99,21 @@ ray_size = 100.0
 [node name="ShooterShooting" parent="ShooterPathMove/ShooterBody" node_paths=PackedStringArray("shooter_body") instance=ExtResource("6_hj20y")]
 position = Vector2(-12, 0)
 shooter_body = NodePath("..")
+
+[node name="DamageComponent" parent="ShooterPathMove/ShooterBody" node_paths=PackedStringArray("health_component", "actor", "damage_audio", "hit_animation_player") instance=ExtResource("7_xcshw")]
+health_component = NodePath("../../../HealthComponent")
+actor = NodePath("..")
+damage_audio = NodePath("../SpikeHitAudio")
+hit_animation_player = NodePath("../HitAnimationPlayer")
+knockback_deceleration = 20.0
+
+[node name="HitAnimationPlayer" type="AnimationPlayer" parent="ShooterPathMove/ShooterBody"]
+libraries = {
+&"": SubResource("AnimationLibrary_qeh52")
+}
+
+[node name="SpikeHitAudio" type="AudioStreamPlayer2D" parent="ShooterPathMove/ShooterBody"]
+stream = ExtResource("9_qeh52")
 
 [node name="ShooterStateMachine" type="Node2D" parent="."]
 script = ExtResource("3_3wxs3")
@@ -67,3 +132,10 @@ shooting_component = NodePath("../../ShooterPathMove/ShooterBody/ShooterShooting
 script = ExtResource("5_gbi7a")
 shooter_body = NodePath("../../ShooterPathMove/ShooterBody")
 shooting_component = NodePath("../../ShooterPathMove/ShooterBody/ShooterShooting")
+
+[node name="HealthComponent" parent="." instance=ExtResource("11_8xka0")]
+max_health = 3
+
+[node name="DestroyOnDieComponent" parent="." node_paths=PackedStringArray("parent_node", "health_component") instance=ExtResource("13_ktnkf")]
+parent_node = NodePath("..")
+health_component = NodePath("../HealthComponent")

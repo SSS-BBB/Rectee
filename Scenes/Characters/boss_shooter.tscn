@@ -1,39 +1,82 @@
-[gd_scene load_steps=7 format=3 uid="uid://m235qtmjqyt0"]
+[gd_scene load_steps=22 format=3 uid="uid://m235qtmjqyt0"]
 
 [ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Assets/Sprites/objects_spritesheet.png" id="1_xgvhp"]
+[ext_resource type="PackedScene" uid="uid://dcev1uf25ujlf" path="res://Scenes/Components/boss_shooting.tscn" id="2_yfu3u"]
 [ext_resource type="Script" uid="uid://cf1yw435grvpq" path="res://Scripts/boss_shooter_state_machine.gd" id="3_4o6p3"]
+[ext_resource type="PackedScene" uid="uid://bm6fjupfv0voq" path="res://Scenes/Components/shooter_spawning_component.tscn" id="3_a3pl5"]
 [ext_resource type="Script" uid="uid://dkr6lj1pahktv" path="res://Scripts/wandering_state.gd" id="3_ggyc8"]
 [ext_resource type="Texture2D" uid="uid://42is1xogiwke" path="res://icon.svg" id="4_4o6p3"]
+[ext_resource type="AudioStream" uid="uid://bfi3v5v06b6xy" path="res://Assets/SFXs/spike_damaged.wav" id="4_erj2h"]
+[ext_resource type="Script" uid="uid://cel0ph3qcl5tw" path="res://Scripts/lookat_player_state.gd" id="5_8ldss"]
+[ext_resource type="Script" uid="uid://baiwly8q6g7e2" path="res://Scripts/boss_shooting_state.gd" id="5_u8tnl"]
+[ext_resource type="Script" uid="uid://8uxp4rr8umm7" path="res://Scripts/boss_spawning_state.gd" id="6_avw4x"]
+[ext_resource type="Shader" uid="uid://dnugd63sqssow" path="res://Others/shooter_hit_flash.tres" id="7_uyb2b"]
+[ext_resource type="PackedScene" uid="uid://cj2visvmlh3q6" path="res://Scenes/Components/health_component.tscn" id="11_dd5ju"]
+[ext_resource type="PackedScene" uid="uid://de5okmp0mcinf" path="res://Scenes/Components/damage_component.tscn" id="13_uyb2b"]
+[ext_resource type="PackedScene" uid="uid://bjg7w6dhjabgt" path="res://Scenes/UI/health_display.tscn" id="13_w6lal"]
+[ext_resource type="PackedScene" uid="uid://c78yrvgxc1ipu" path="res://Scenes/Components/destroy_on_die_component.tscn" id="15_uyb2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggyc8"]
+size = Vector2(133, 111.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cim6"]
 size = Vector2(48, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggyc8"]
-size = Vector2(486.5, 135)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyb2b"]
+shader = ExtResource("7_uyb2b")
+shader_parameter/flash_enabled = false
+shader_parameter/flash = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_uyb2b"]
+resource_name = "flash_on_hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_tnro2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tnro2"]
+_data = {
+&"RESET": SubResource("Animation_tnro2"),
+&"flash_on_hit": SubResource("Animation_uyb2b")
+}
 
 [node name="BossShooter" type="Node2D"]
 
-[node name="BossShooterBody" type="CharacterBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BossShooterBody"]
-shape = SubResource("RectangleShape2D_6cim6")
-
-[node name="Sprite2D" type="Sprite2D" parent="BossShooterBody"]
-texture = ExtResource("1_xgvhp")
-region_enabled = true
-region_rect = Rect2(48, 0, 48, 48)
-
-[node name="BossShooterStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("special_state")]
+[node name="BossShooterStateMachine" type="Node2D" parent="."]
 script = ExtResource("3_4o6p3")
-special_state = NodePath("WanderingState")
+number_of_states = 3
 
 [node name="WanderingState" type="Node2D" parent="BossShooterStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ggyc8")
 actor = NodePath("../../BossShooterBody")
-min_distant_to_target = 50.0
 
 [node name="WanderingArea" type="Area2D" parent="BossShooterStateMachine/WanderingState"]
-position = Vector2(-99, -86)
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossShooterStateMachine/WanderingState/WanderingArea"]
 shape = SubResource("RectangleShape2D_ggyc8")
@@ -41,3 +84,92 @@ shape = SubResource("RectangleShape2D_ggyc8")
 [node name="PointDebug" type="Sprite2D" parent="BossShooterStateMachine/WanderingState"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_4o6p3")
+
+[node name="LookatPlayerState" type="Node2D" parent="BossShooterStateMachine" node_paths=PackedStringArray("actor_sprite")]
+script = ExtResource("5_8ldss")
+actor_sprite = NodePath("../../BossShooterBody/Sprite2D")
+
+[node name="BossShootingState" type="Node2D" parent="BossShooterStateMachine" node_paths=PackedStringArray("boss_body", "boss_shooting_component")]
+script = ExtResource("5_u8tnl")
+boss_body = NodePath("../../BossShooterBody")
+boss_shooting_component = NodePath("../../BossShooterBody/Sprite2D/BossShooting")
+
+[node name="BossSpawningState" type="Node2D" parent="BossShooterStateMachine" node_paths=PackedStringArray("spawning_component")]
+script = ExtResource("6_avw4x")
+spawning_component = NodePath("../../BossShooterBody/Sprite2D/ShooterSpawningComponent")
+
+[node name="RandomStateTimer" type="Timer" parent="BossShooterStateMachine"]
+
+[node name="BossShooterBody" type="AnimatableBody2D" parent="." groups=["shooter_body"]]
+collision_layer = 2
+collision_mask = 771
+collision_priority = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossShooterBody"]
+shape = SubResource("RectangleShape2D_6cim6")
+
+[node name="Sprite2D" type="Sprite2D" parent="BossShooterBody"]
+material = SubResource("ShaderMaterial_uyb2b")
+texture = ExtResource("1_xgvhp")
+region_enabled = true
+region_rect = Rect2(48, 0, 48, 48)
+
+[node name="BossShooting" parent="BossShooterBody/Sprite2D" instance=ExtResource("2_yfu3u")]
+position = Vector2(-40, 0)
+
+[node name="ShooterSpawningComponent" parent="BossShooterBody/Sprite2D" node_paths=PackedStringArray("parent_node") instance=ExtResource("3_a3pl5")]
+position = Vector2(-50, 0)
+parent_node = NodePath("../../..")
+shooter_health_range = Vector2i(2, 5)
+shooter_ignore_raycast = true
+spawning_limit = 5
+
+[node name="SpikeDamageAudio" type="AudioStreamPlayer2D" parent="BossShooterBody"]
+stream = ExtResource("4_erj2h")
+
+[node name="HealthDisplay" parent="BossShooterBody" node_paths=PackedStringArray("health_component") instance=ExtResource("13_w6lal")]
+health_component = NodePath("../../HealthComponent")
+
+[node name="BorderRect" parent="BossShooterBody/HealthDisplay" index="0"]
+offset_left = -25.0
+offset_top = -36.0
+offset_right = 25.0
+offset_bottom = -26.0
+
+[node name="EmptyRect" parent="BossShooterBody/HealthDisplay" index="1"]
+offset_left = -24.0
+offset_top = -35.0
+offset_right = 24.0
+offset_bottom = -27.0
+
+[node name="HealthBar" parent="BossShooterBody/HealthDisplay" index="2"]
+offset_left = -24.0
+offset_top = -35.0
+offset_right = 24.0
+offset_bottom = -27.0
+
+[node name="HealthLabel" parent="BossShooterBody/HealthDisplay" index="3"]
+offset_top = -53.0
+offset_bottom = -35.0
+
+[node name="DamageComponent" parent="BossShooterBody" node_paths=PackedStringArray("health_component", "actor", "damage_audio", "hit_animation_player") instance=ExtResource("13_uyb2b")]
+health_component = NodePath("../../HealthComponent")
+actor = NodePath("..")
+damage_audio = NodePath("../SpikeDamageAudio")
+hit_animation_player = NodePath("../HitAnimationPlayer")
+
+[node name="HitAnimationPlayer" type="AnimationPlayer" parent="BossShooterBody"]
+libraries = {
+&"": SubResource("AnimationLibrary_tnro2")
+}
+
+[node name="HealthComponent" parent="." instance=ExtResource("11_dd5ju")]
+max_health = 5
+
+[node name="DestroyOnDieComponent" parent="." node_paths=PackedStringArray("parent_node", "health_component") instance=ExtResource("15_uyb2b")]
+parent_node = NodePath("..")
+health_component = NodePath("../HealthComponent")
+
+[connection signal="timeout" from="BossShooterStateMachine/RandomStateTimer" to="BossShooterStateMachine" method="_on_random_state_timer_timeout"]
+
+[editable path="BossShooterBody/HealthDisplay"]

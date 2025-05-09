@@ -81,7 +81,13 @@ func get_collision_offset(horizontal_direction: Vector2) -> Vector2:
 	return 0.6*horizontal_direction + Vector2.UP
 
 # Signal functions
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("player") and spike_damage:
 		var player := body as Player
 		spike_damage.hit_player(player)
+		return
+	
+	# check for damage component
+	for child in body.get_children():
+		if child is DamageComponent:
+			spike_damage.hit(body.global_position, child)

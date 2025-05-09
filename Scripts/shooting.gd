@@ -1,10 +1,9 @@
 class_name Shooting extends Node2D
 
-# Export variables
-@export var bullet_resource: Resource
-
 # Component variables
 @onready var timer = $Timer as Timer
+@onready var shooting_audio = $ShootingAudio as AudioStreamPlayer2D
+
 
 # Class variables
 var fire_rate: float
@@ -29,18 +28,16 @@ func shoot(shoot_direction: Vector2 = Vector2.ZERO):
 		return
 	
 	# init bullet
-	var bullet := bullet_resource.instantiate() as Bullet
-	bullet.bullet_damage = damage
-	bullet.bullet_speed = bullet_speed
-	bullet.global_position = global_position
-	bullet.bullet_direction = shoot_direction
-	bullet.scale = bullet_scale
+	var bullet := Bullet.new_bullet(damage, bullet_speed, global_position, shoot_direction, bullet_scale)
 	
 	# add bullet to container
 	var bullet_container_node := get_tree().get_first_node_in_group("bullet_container")
 	if not bullet_container_node:
 		return
 	bullet_container_node.add_child(bullet)
+	
+	# play shooting audio
+	shooting_audio.play()
 	
 	# fire rate logic
 	can_shoot = false

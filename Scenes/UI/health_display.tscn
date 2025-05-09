@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjg7w6dhjabgt"]
+
+[ext_resource type="Script" uid="uid://ca7runxgkw4g" path="res://Scripts/health_display.gd" id="1_3mgdb"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="2_i7r6a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_al8ar"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gy20a"]
+bg_color = Color(0, 0.501961, 0, 1)
+
+[node name="HealthDisplay" type="Control" node_paths=PackedStringArray("health_component")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3mgdb")
+health_component = NodePath("")
+
+[node name="BorderRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -28.0
+offset_right = 13.0
+offset_bottom = -18.0
+color = Color(0, 0, 0, 1)
+
+[node name="EmptyRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -27.0
+offset_right = 12.0
+offset_bottom = -19.0
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -27.0
+offset_right = 12.0
+offset_bottom = -19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 5
+theme_override_styles/background = SubResource("StyleBoxEmpty_al8ar")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gy20a")
+value = 15.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = -12.0
+offset_top = -45.0
+offset_right = 12.0
+offset_bottom = -27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i7r6a")
+theme_override_font_sizes/font_size = 15
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1

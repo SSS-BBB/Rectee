@@ -1,6 +1,8 @@
 @tool
 class_name Shooter extends Node2D
 
+const SHOOTER_INSTANCE: PackedScene = preload("res://Scenes/Characters/shooter.tscn")
+
 # Export variables
 enum ShooterState { IDLE, PATH_MOVE, FOLLOW_MOVE }
 @export var flip_h: bool = false
@@ -12,6 +14,9 @@ enum ShooterState { IDLE, PATH_MOVE, FOLLOW_MOVE }
 			state_change.emit(state)
 		else:
 			notify_property_list_changed()
+
+@export_category("Shooter Properties")
+@export var shooter_max_health: int = 3
 
 @export_category("Shooting Properties")
 @export var shooting_damage: int = 1
@@ -27,6 +32,7 @@ enum ShooterState { IDLE, PATH_MOVE, FOLLOW_MOVE }
 @export_group("Follow Movement")
 @export var follow_speed: float = 50.0
 @export var follow_distance: float = 50.0
+@export var ignore_raycast: bool = false # if true shooter will follow player even when they don't see player
 
 # Component variables
 @onready var ray_cast_container = $ShooterPathMove/ShooterBody/RayCastContainer as RayCastContainer
@@ -38,9 +44,30 @@ enum ShooterState { IDLE, PATH_MOVE, FOLLOW_MOVE }
 @onready var shooter_path_move_state = $ShooterStateMachine/ShooterPathMoveState as State
 @onready var shooter_follow_state = $ShooterStateMachine/ShooterFollowState as State
 
+@onready var health_component = $HealthComponent as HealthComponent
 
 # Signals
 signal state_change
+
+# Constructor
+static func new_follow_shooter(damage: int, rate: float, shoot_speed: float, speed: float, shooter_igore_raycast: bool = false, hp: int = 3, dist: float = 50.0) -> Shooter:
+	var new_shooter := SHOOTER_INSTANCE.instantiate() as Shooter
+	
+	# shooter properties
+	new_shooter.shooter_max_health = hp
+	
+	# shooting properties
+	new_shooter.shooting_damage = damage
+	new_shooter.fire_rate = rate
+	new_shooter.bullet_speed = shoot_speed
+	
+	# following properties
+	new_shooter.selected_state = ShooterState.FOLLOW_MOVE
+	new_shooter.follow_speed = speed
+	new_shooter.ignore_raycast = shooter_igore_raycast
+	new_shooter.follow_distance = dist
+	
+	return new_shooter
 
 # Game functions
 func _validate_property(property: Dictionary):
@@ -54,9 +81,12 @@ func _ready():
 	if Engine.is_editor_hint():
 		return
 	
+	# shooter properties
 	if flip_h:
 		flip()
+	health_component.update_max_health(shooter_max_health)
 	
+	# state connect
 	state_change.connect(_on_state_changed)
 	
 	match selected_state:

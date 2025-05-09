@@ -34,3 +34,10 @@ func gain_health(health_gain: int):
 		health = max_health
 		
 	health_update.emit(health)
+
+func update_max_health(value: int, update_health: bool = true):
+	max_health = value
+	if update_health:
+		health = max_health
+	
+	health_update.emit(health)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm6fjupfv0voq"]
+
+[ext_resource type="PackedScene" uid="uid://c1uvi06qbch1x" path="res://Scenes/Components/spawning_component.tscn" id="1_aotsp"]
+[ext_resource type="Script" uid="uid://c3mtqim0fllht" path="res://Scripts/shooter_spawning_component.gd" id="2_6rfmo"]
+
+[node name="ShooterSpawningComponent" instance=ExtResource("1_aotsp")]
+script = ExtResource("2_6rfmo")
+bullet_damage_range = Vector2i(1, 3)
+fire_rate_range = Vector2(0.8, 1.9)
+bullet_speed_range = Vector2(250, 500)
+shooter_speed_range = Vector2(10, 40)
+spawn_container_group = "shooter_container"
