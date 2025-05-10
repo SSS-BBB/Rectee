@@ -30,7 +30,7 @@ normal_jump_velocity = 500
 [node name="CameraSystem" type="Node2D" parent="."]
 
 [node name="Camera" type="Camera2D" parent="CameraSystem" groups=["camera"]]
-offset = Vector2(640, 360)
+position = Vector2(640, 360)
 
 [node name="Consumables" type="Node2D" parent="."]
 

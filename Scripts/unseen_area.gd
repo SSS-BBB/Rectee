@@ -12,8 +12,10 @@ func _on_area_enter_component_target_enter_area(enter_to: AreaEnterComponent.Ent
 	if direction_to_show == enter_to:
 		var tween := get_tree().create_tween()
 		tween.tween_property(hidden_area, "modulate:a", 0.0, enter_area_audio.stream.get_length())
+		tween.bind_node(self)
 		enter_area_audio.play()
 	elif enter_to == AreaEnterComponent.get_opposite(direction_to_show):
 		var tween := get_tree().create_tween()
 		tween.tween_property(hidden_area, "modulate:a", 1.0, exit_area_audio.stream.get_length())
+		tween.bind_node(self)
 		exit_area_audio.play()

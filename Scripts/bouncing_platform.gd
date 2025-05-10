@@ -40,5 +40,6 @@ func bounce():
 		tween.tween_property(platform_body, "position:y", slide, frame_time)
 		tween.tween_property(platform_body, "position:y", 0, frame_time)
 		tween.tween_callback(func(): bouncing = false) # reset bouncing to false after finished animating
+		tween.bind_node(self)
 	else:
 		animation_player.play("bounce")

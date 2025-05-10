@@ -2,6 +2,8 @@ class_name Box extends Node2D
 
 # Export variables
 @export var box_level: int = 0
+@export var shaking: bool = false
+@export var camera_shaking_component: CameraShakingComponent
 
 # Component variables
 @onready var scene_transition = $SceneTransition as SceneTransition
@@ -17,6 +19,11 @@ func _ready():
 	
 	if door:
 		door.enter_door.connect(_on_enter_door)
+
+func _physics_process(_delta):
+	if shaking and camera_shaking_component:
+		camera_shaking_component.shake_camera()
+		
 
 # Signal functions
 func _on_enter_door():

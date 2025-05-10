@@ -16,3 +16,5 @@ func _ready():
 		tween.tween_property(path_follow, "progress_ratio", 0.0, path_duration)
 	else:
 		tween.tween_property(path_follow, "progress_ratio", 0.0, 0.0)
+	
+	tween.bind_node(self)
