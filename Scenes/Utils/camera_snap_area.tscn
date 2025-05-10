@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://curmc5f3wwcax"]
+
+[ext_resource type="Script" uid="uid://dskq01ptwbpb1" path="res://Scripts/camera_snap_area.gd" id="1_huafy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y7oh"]
+resource_local_to_scene = true
+size = Vector2(22, 304.75)
+
+[node name="CameraSnapArea" type="Area2D"]
+script = ExtResource("1_huafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8y7oh")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
