@@ -52,7 +52,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 774
+collision_mask = 782
 platform_on_leave = 2
 script = ExtResource("1_al8ar")
 

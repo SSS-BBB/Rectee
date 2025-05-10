@@ -1,4 +1,4 @@
-class_name CameraSnapArea extends Area2D
+class_name CameraSnapArea extends Node2D
 
 # Export variables
 @export var camera: Camera2D
@@ -6,25 +6,20 @@ class_name CameraSnapArea extends Area2D
 @export var snap_y: bool
 @export var x_camera_offset: Vector2 # left right offset
 @export var y_camera_offset: Vector2 # top bottom offset
-@export var target_group: String = "player"
 
-# Component variables
-@onready var collision_shape = $CollisionShape2D as CollisionShape2D
 
 # Signal functions
-func _on_body_exited(body: Node2D):
-	if not body.is_in_group(target_group) or not camera:
-		return
-	
-	# snap camera
+func _on_area_enter_component_target_enter_area(enter_to: AreaEnterComponent.EnterTo):
 	if snap_x:
-		if body.global_position.x <= collision_shape.global_position.x:
-			camera.offset.x = x_camera_offset.x
-		else:
-			camera.offset.x = x_camera_offset.y
+		match enter_to:
+			AreaEnterComponent.EnterTo.LEFT:
+				camera.offset.x = x_camera_offset.x
+			AreaEnterComponent.EnterTo.RIGHT:
+				camera.offset.x = x_camera_offset.y
 	
 	if snap_y:
-		if body.global_position.y <= collision_shape.global_position.y:
-			camera.offset.y = y_camera_offset.x
-		else:
-			camera.offset.y = y_camera_offset.y
+		match enter_to:
+			AreaEnterComponent.EnterTo.TOP:
+				camera.offset.y = y_camera_offset.x
+			AreaEnterComponent.EnterTo.BOTTOM:
+				camera.offset.y = y_camera_offset.y
