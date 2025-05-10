@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmi2p3rb3qo3v"]
+[gd_scene load_steps=11 format=3 uid="uid://cmi2p3rb3qo3v"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Scenes/Boxes/box_template.tscn" id="1_2gup7"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Scenes/Objects/consumable.tscn" id="2_31nnr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://dhr6cgctn7u7e" path="res://Resources/Spikes/large_spike_3.tres" id="7_4sus7"]
 [ext_resource type="PackedScene" uid="uid://bpovx7vughv8v" path="res://Scenes/Objects/falling_spike_spawner.tscn" id="8_bxipm"]
 [ext_resource type="PackedScene" uid="uid://m235qtmjqyt0" path="res://Scenes/Characters/boss_shooter.tscn" id="9_bxipm"]
+[ext_resource type="PackedScene" uid="uid://doe1ycq0xn2nt" path="res://Scenes/Objects/spike_spawn_button.tscn" id="9_fn4pk"]
 
 [node name="Box1" instance=ExtResource("1_2gup7")]
 box_level = 1
@@ -51,6 +52,13 @@ scale = Vector2(2, 2)
 [node name="FallingSpikeSpawner2" parent="FallingSpikeSpawner" index="1" instance=ExtResource("8_bxipm")]
 position = Vector2(947, 30)
 scale = Vector2(2, 2)
+spawn_rate = 4.0
+spawn_on_button_pressed = true
+
+[node name="SpikeSpawnButton" parent="FallingSpikeSpawner" index="2" node_paths=PackedStringArray("spike_spawner") instance=ExtResource("9_fn4pk")]
+position = Vector2(770, 520)
+scale = Vector2(2, 2)
+spike_spawner = NodePath("../FallingSpikeSpawner2")
 
 [node name="Shooters" parent="." index="11" groups=["shooter_container"]]
 

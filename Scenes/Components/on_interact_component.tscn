@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkxq8sthwshxo"]
+
+[ext_resource type="Script" uid="uid://o3j2fabd2h60" path="res://Scripts/on_interact_component.gd" id="1_rbx53"]
+
+[node name="OnInteractComponent" type="Node2D" node_paths=PackedStringArray("area")]
+script = ExtResource("1_rbx53")
+area = NodePath("")

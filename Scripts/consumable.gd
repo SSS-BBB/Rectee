@@ -19,5 +19,6 @@ func _process(_delta):
 func _on_body_entered(body: CharacterBody2D):
 	if body.is_in_group("player"):
 		var player = body as Player
-		player.take_consumable(consumable_resource)
-		call_deferred("queue_free")
+		var player_take_consumable := player.take_consumable(consumable_resource)
+		if player_take_consumable:
+			call_deferred("queue_free")

@@ -25,6 +25,21 @@ shader = ExtResource("4_mid7e")
 shader_parameter/flash_enabled = false
 shader_parameter/flash = Color(1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_qeh52"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_mid7e"]
 resource_name = "flash_on_hit"
 length = 0.2
@@ -41,21 +56,6 @@ tracks/0/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_qeh52"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qeh52"]
 _data = {
 &"RESET": SubResource("Animation_qeh52"),
@@ -66,7 +66,6 @@ _data = {
 script = ExtResource("1_1n2al")
 follow_speed = 20.0
 follow_distance = 80.0
-ignore_raycast = null
 
 [node name="ShooterPathMove" type="Path2D" parent="."]
 script = ExtResource("1_x4cfi")
@@ -97,7 +96,7 @@ script = ExtResource("5_8sv8x")
 ray_size = 100.0
 
 [node name="ShooterShooting" parent="ShooterPathMove/ShooterBody" node_paths=PackedStringArray("shooter_body") instance=ExtResource("6_hj20y")]
-position = Vector2(-12, 0)
+position = Vector2(-20, 0)
 shooter_body = NodePath("..")
 
 [node name="DamageComponent" parent="ShooterPathMove/ShooterBody" node_paths=PackedStringArray("health_component", "actor", "damage_audio", "hit_animation_player") instance=ExtResource("7_xcshw")]

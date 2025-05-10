@@ -113,9 +113,13 @@ func take_bullet_damage(damage: int, object_position: Vector2, knockback_force: 
 	take_damage(damage, object_position, knockback_force)
 	bullet_damage_audio.play()
 	
-func take_consumable(consumable_resource: ConsumableResource):
+func take_consumable(consumable_resource: ConsumableResource) -> bool:
+	var effect_applied := effect_component.apply_effect(consumable_resource)
+	if not effect_applied:
+		return false
+	
 	drinking_audio.play()
-	effect_component.apply_effect(consumable_resource)
+	return true
 
 # Signal functions
 func _on_take_damage(_damage):

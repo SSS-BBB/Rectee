@@ -11,6 +11,7 @@ var health: int
 signal actor_die
 signal health_update
 signal damage_signal
+signal health_update_failed
 
 func _ready():
 	health = max_health
@@ -24,7 +25,11 @@ func take_damage(damage: int):
 		health = 0
 	health_update.emit(health)
 	
-func gain_health(health_gain: int):
+func gain_health(health_gain: int) -> bool:
+	if health >= max_health:
+		health_update_failed.emit("FullHP")
+		return false
+	
 	health += health_gain
 	
 	if health <= 0:
@@ -34,6 +39,7 @@ func gain_health(health_gain: int):
 		health = max_health
 		
 	health_update.emit(health)
+	return true
 
 func update_max_health(value: int, update_health: bool = true):
 	max_health = value

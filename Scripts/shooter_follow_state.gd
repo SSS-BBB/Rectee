@@ -14,20 +14,17 @@ func enter_state():
 	player_to_follow = get_tree().get_first_node_in_group("player")
 	move_speed = shooter_body.shooter_container.follow_speed
 	follow_distance = shooter_body.shooter_container.follow_distance
-	shooter_body.see_player.connect(_follow_player)
+	shooter_body.see_player.connect(_on_see_player)
 
 func physics_update(delta):
 	if shooter_body.shooter_container.ignore_raycast:
-		_follow_player(player_to_follow, delta)
+		follow_player(player_to_follow, delta)
 
 func exit_state():
-	shooter_body.see_player.disconnect(_follow_player)
+	shooter_body.see_player.disconnect(_on_see_player)
 
-# Signal functions
-func _follow_player(player: Player, delta: float):
-	# shoot
-	shooting_component.shoot(shooter_body.global_position.direction_to(player.global_position))
-	
+# Class functions
+func follow_player(player: Player, delta: float):
 	if shooter_body.global_position.distance_to(player.global_position) < follow_distance:
 		return
 	# move
@@ -46,5 +43,11 @@ func _follow_player(player: Player, delta: float):
 		shooter_body.shooter_container.flip_sprite(false, true, true)
 	else:
 		shooter_body.shooter_container.flip_sprite(false, true, false)
+
+# Signal functions
+func _on_see_player(player: Player, delta: float):
+	follow_player(player, delta)
 	
+	# shoot
+	shooting_component.shoot(shooter_body.global_position.direction_to(player.global_position))
 	

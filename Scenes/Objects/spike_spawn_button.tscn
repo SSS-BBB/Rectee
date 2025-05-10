@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://doe1ycq0xn2nt"]
+
+[ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Assets/Sprites/objects_spritesheet.png" id="1_nrbpv"]
+[ext_resource type="Script" uid="uid://bbrdpspl8kxwf" path="res://Scripts/spike_spawn_button.gd" id="1_pilyh"]
+[ext_resource type="PackedScene" uid="uid://c5jn262pigeup" path="res://Scenes/Components/show_on_enter_component.tscn" id="2_xao7d"]
+[ext_resource type="PackedScene" uid="uid://sqeg3y1xchxj" path="res://Scenes/UI/e_texture.tscn" id="3_ocrac"]
+[ext_resource type="PackedScene" uid="uid://bkxq8sthwshxo" path="res://Scenes/Components/on_interact_component.tscn" id="4_ocrac"]
+[ext_resource type="Script" uid="uid://df8mobtfahonv" path="res://Scripts/time_display.gd" id="5_3rpo3"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="5_jscvf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rebv6"]
+size = Vector2(16, 16)
+
+[node name="SpikeSpawnButton" type="Area2D"]
+script = ExtResource("1_pilyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rebv6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nrbpv")
+region_enabled = true
+region_rect = Rect2(112, 64, 16, 16)
+
+[node name="UIs" type="Node2D" parent="."]
+
+[node name="ShowOnEnterComponent" parent="UIs" node_paths=PackedStringArray("to_show", "enter_area") instance=ExtResource("2_xao7d")]
+to_show = NodePath("../ETexture")
+enter_area = NodePath("../..")
+
+[node name="ETexture" parent="UIs" instance=ExtResource("3_ocrac")]
+offset_top = -11.0
+offset_bottom = 29.0
+
+[node name="TimeDisplay" type="Control" parent="UIs" node_paths=PackedStringArray("to_hide")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -28.0
+offset_right = 20.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_3rpo3")
+to_hide = NodePath("../ETexture")
+
+[node name="TimeLabel" type="Label" parent="UIs/TimeDisplay"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_jscvf")
+theme_override_font_sizes/font_size = 16
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OnInteractComponent" parent="." node_paths=PackedStringArray("area") instance=ExtResource("4_ocrac")]
+area = NodePath("..")

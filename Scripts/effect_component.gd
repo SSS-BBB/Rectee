@@ -17,16 +17,20 @@ func _ready():
 	extra_jump = 0
 
 # Class functions
-func apply_effect(consume_item: ConsumableResource):
+func apply_effect(consume_item: ConsumableResource) -> bool:
 	match consume_item.effect:
 		ConsumableResource.Effect.SPEED:
 			extra_speed += consume_item.value
 			start_timer(speed_timer, consume_item.duration)
+			return true
 		ConsumableResource.Effect.JUMP:
 			extra_jump += consume_item.value
 			start_timer(jump_timer, consume_item.duration)
+			return true
 		ConsumableResource.Effect.HEALTH:
-			health_component.gain_health(consume_item.value)
+			return health_component.gain_health(consume_item.value)
+	
+	return false
 
 func start_timer(timer: Timer, wait_time: float):
 	if timer.is_stopped():

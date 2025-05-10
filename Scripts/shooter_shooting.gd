@@ -12,7 +12,7 @@ func init_variables():
 	fire_rate = shooter.fire_rate
 	damage = shooter.shooting_damage
 	bullet_speed = shooter.bullet_speed
-	bullet_scale = 1.25*Vector2.ONE
+	bullet_scale = 1.1*Vector2.ONE
 	
 func shoot(shoot_direction: Vector2 = Vector2.ZERO):
 	if shoot_direction == Vector2.ZERO:
