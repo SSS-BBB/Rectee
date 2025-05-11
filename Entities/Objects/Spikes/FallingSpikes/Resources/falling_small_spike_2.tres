@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpikeResource" load_steps=3 format=3 uid="uid://md04mopo84kh"]
+
+[ext_resource type="Script" uid="uid://c5uc1pjhih7m1" path="res://Entities/Objects/Spikes/Resource/spike_resource.gd" id="1_yvq8s"]
+[ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="2_n4unb"]
+
+[resource]
+script = ExtResource("1_yvq8s")
+texture = ExtResource("2_n4unb")
+texture_region = Rect2(112, 64, 7, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"

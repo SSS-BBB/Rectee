@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd2ljo0wnvbgg"]
+
+[ext_resource type="Script" uid="uid://cl7fmtc2t6yb3" path="res://Entities/Characters/Shooters/NormalShooter/Components/ShooterShooting/shooter_shooting.gd" id="1_jb6is"]
+[ext_resource type="PackedScene" uid="uid://lf0wks4uvqfp" path="res://Entities/Characters/Shooters/Components/ShootingComponent/shooting.tscn" id="1_li5px"]
+
+[node name="ShooterShooting" instance=ExtResource("1_li5px")]
+script = ExtResource("1_jb6is")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c78yrvgxc1ipu"]
+
+[ext_resource type="Script" uid="uid://cp708cswb0s6m" path="res://Entities/Characters/Components/DestroyOnDieComponent/destroy_on_die_component.gd" id="1_otgex"]
+
+[node name="DestroyOnDieComponent" type="Node2D" node_paths=PackedStringArray("parent_node", "health_component")]
+script = ExtResource("1_otgex")
+parent_node = NodePath("")
+health_component = NodePath("")

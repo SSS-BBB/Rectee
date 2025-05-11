@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://cf6yxq3fkj22w"]
+
+[ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Entities/Textures/objects_spritesheet.png" id="1_54mbb"]
+[ext_resource type="Script" uid="uid://ckf8plfgsq5oc" path="res://Entities/Objects/Interactables/Door/door.gd" id="1_l0b71"]
+[ext_resource type="PackedScene" uid="uid://c5jn262pigeup" path="res://Utils/Components/ShowOnEnterComponent/show_on_enter_component.tscn" id="3_ynea2"]
+[ext_resource type="PackedScene" uid="uid://sqeg3y1xchxj" path="res://UIs/HUDs/ETexture/e_texture.tscn" id="4_gc7pt"]
+[ext_resource type="PackedScene" uid="uid://bkxq8sthwshxo" path="res://Entities/Objects/Interactables/OnInteractComponent/on_interact_component.tscn" id="5_gc7pt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw412"]
+size = Vector2(16, 32)
+
+[sub_resource type="Animation" id="Animation_ynea2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l0b71"]
+resource_name = "shake"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 0), Vector2(0, 0), Vector2(-2, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ynea2"]
+_data = {
+&"RESET": SubResource("Animation_ynea2"),
+&"shake": SubResource("Animation_l0b71")
+}
+
+[node name="Door" type="Area2D"]
+script = ExtResource("1_l0b71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bw412")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_54mbb")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ynea2")
+}
+
+[node name="UIs" type="Node2D" parent="."]
+
+[node name="ShowOnEnterComponent" parent="UIs" node_paths=PackedStringArray("to_show", "enter_area") instance=ExtResource("3_ynea2")]
+to_show = NodePath("../ETexture")
+enter_area = NodePath("../..")
+
+[node name="ETexture" parent="UIs" instance=ExtResource("4_gc7pt")]
+
+[node name="OnInteractComponent" parent="." node_paths=PackedStringArray("area") instance=ExtResource("5_gc7pt")]
+area = NodePath("..")

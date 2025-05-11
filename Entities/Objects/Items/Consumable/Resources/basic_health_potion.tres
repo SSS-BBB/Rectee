@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableResource" load_steps=4 format=3 uid="uid://saubjkn7otdv"]
+
+[ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Entities/Characters/Player/SFXs/drinking.wav" id="1_fomgb"]
+[ext_resource type="Script" uid="uid://cqprexufga7ns" path="res://Entities/Objects/Items/Consumable/Resources/consumable_resource.gd" id="2_fomgb"]
+[ext_resource type="Texture2D" uid="uid://dbv5b5djvmm7r" path="res://Entities/Objects/Items/Consumable/Textures/hp_drink.png" id="2_nlgdk"]
+
+[resource]
+script = ExtResource("2_fomgb")
+texture = ExtResource("2_nlgdk")
+get_audio = ExtResource("1_fomgb")
+effect = 2
+value = 1
+duration = 0.0
+metadata/_custom_type_script = "uid://cqprexufga7ns"

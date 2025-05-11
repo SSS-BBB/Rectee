@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm40bkfndejrp"]
+
+[ext_resource type="PackedScene" uid="uid://dbp23c5d254n5" path="res://Entities/Objects/Spikes/Components/SpikeHitbox/spike_hitbox.tscn" id="1_1nfcc"]
+[ext_resource type="Script" uid="uid://p8n130hfq11u" path="res://Entities/Objects/Spikes/FallingSpikes/Components/FallingSpikeHitbox/falling_spike_hitbox.gd" id="2_1u522"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bniii"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7ief"]
+size = Vector2(0, 0)
+
+[node name="FallingSpikeHitbox" instance=ExtResource("1_1nfcc")]
+script = ExtResource("2_1u522")
+
+[node name="CollisionArea1" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_bniii")
+
+[node name="CollisionArea2" parent="Area2D" index="1"]
+shape = SubResource("RectangleShape2D_o7ief")

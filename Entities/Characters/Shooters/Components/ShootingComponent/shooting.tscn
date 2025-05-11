@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://lf0wks4uvqfp"]
+
+[ext_resource type="Script" uid="uid://0xyibclc1w8y" path="res://Entities/Characters/Shooters/Components/ShootingComponent/shooting.gd" id="1_pagxt"]
+[ext_resource type="AudioStream" uid="uid://br848m585tuko" path="res://Entities/Characters/Shooters/Components/ShootingComponent/SFXs/shooting.wav" id="3_jajrh"]
+
+[node name="Shooting" type="Node2D"]
+script = ExtResource("1_pagxt")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ShootingAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jajrh")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
