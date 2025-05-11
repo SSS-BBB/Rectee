@@ -103,6 +103,7 @@ shooter_body = NodePath("..")
 health_component = NodePath("../../../HealthComponent")
 actor = NodePath("..")
 damage_audio = NodePath("../SpikeHitAudio")
+volume_percentage = 0.3
 hit_animation_player = NodePath("../HitAnimationPlayer")
 knockback_deceleration = 20.0
 

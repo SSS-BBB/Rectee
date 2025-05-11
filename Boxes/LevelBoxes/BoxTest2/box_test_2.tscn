@@ -90,7 +90,7 @@ position = Vector2(16.5, 1.5)
 shape = SubResource("RectangleShape2D_xrwrq")
 
 [node name="CameraSnapArea4" parent="CameraSystem/CameraSnapAreas" index="2" node_paths=PackedStringArray("camera") instance=ExtResource("2_upvd0")]
-position = Vector2(1290, -247)
+position = Vector2(1275, -247)
 camera = NodePath("../../CameraContainer/Camera")
 snap_x = true
 x_camera_position = Vector2(640, 1920)
@@ -182,7 +182,7 @@ consumable_resource = ExtResource("5_1gedd")
 position = Vector2(946, 541)
 
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
-position = Vector2(200, 5)
+position = Vector2(201, -3)
 keys_need = 2
 next_scence_path = "res://Boxes/LevelBoxes/BoxTest1/box_test_1.tscn"
 
@@ -318,6 +318,7 @@ offset_bottom = -2.0
 [editable path="CameraSystem/CameraSnapAreas/CameraSnapArea4/AreaEnterComponent"]
 [editable path="CameraSystem/CameraSnapAreas/CameraSnapArea3"]
 [editable path="CameraSystem/CameraSnapAreas/CameraSnapArea3/AreaEnterComponent"]
+[editable path="Entities/Objects/Interactables/Door/Door"]
 [editable path="Entities/UnseenAreaContainer/UnseenAreaContainer#UnseenArea"]
 [editable path="Entities/UnseenAreaContainer/UnseenAreaContainer#UnseenArea/SectionDoorSprite/AreaEnterComponent"]
 [editable path="Entities/UnseenAreaContainer/UnseenAreaContainer#UnseenArea5"]

@@ -13,6 +13,9 @@ var is_target_in_area: bool
 
 # Game functions
 func _ready():
+	# area connect
+	if not area:
+		return
 	is_target_in_area = false
 	area.body_entered.connect(_on_body_enterd)
 	area.body_exited.connect(_on_body_exited)
@@ -20,7 +23,6 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed(input_map_action) and is_target_in_area:
 		interact.emit()
-
 
 # Signal functions
 func _on_body_enterd(body: Node2D):

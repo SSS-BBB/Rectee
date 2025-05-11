@@ -74,7 +74,8 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Consumables" type="Node2D" parent="Entities/Objects/Items"]
 
-[node name="Interactables" type="Node2D" parent="Entities/Objects"]
+[node name="Interactables" type="CanvasLayer" parent="Entities/Objects"]
+layer = 10
 
 [node name="Door" type="Node2D" parent="Entities/Objects/Interactables"]
 
@@ -101,10 +102,15 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
-[node name="SceneTransition" parent="UIs" instance=ExtResource("5_p2lnf")]
+[node name="SceneTransition" parent="UIs" node_paths=PackedStringArray("canvas_layer_to_hide") instance=ExtResource("5_p2lnf")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+mouse_filter = 2
+canvas_layer_to_hide = [NodePath("../../Entities/Objects/Interactables")]
+
+[editable path="Entities/Objects/Interactables/Door/Door"]

@@ -5,7 +5,7 @@ class_name Door extends Area2D
 @export var next_scence_path: String
 
 # Component variables
-@onready var e_texture = $UIs/ETexture as Control
+@onready var e_control = $UIs/EControl as EControl
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var on_interact_component = $OnInteractComponent as OnInteractComponent
 
@@ -18,7 +18,7 @@ func _ready():
 
 # Signal functions
 func _on_interacted():
-	e_texture.visible = false
+	e_control.visible = false
 	var player = get_tree().get_first_node_in_group("player") as Player
 	if player.keys >= keys_need:
 		enter_door.emit()

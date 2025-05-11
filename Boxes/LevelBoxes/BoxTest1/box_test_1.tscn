@@ -22,11 +22,11 @@ shader_parameter/flash = Color(0.827451, 0.827451, 0.827451, 1)
 box_level = 1
 
 [node name="BossShooter" parent="Entities/Actors/Shooters/BossShooters" index="0" instance=ExtResource("9_bxipm")]
-position = Vector2(288, 301)
+position = Vector2(262, 298)
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" parent="Entities/Actors/Shooters/BossShooters/BossShooter/BossShooterStateMachine/WanderingState/WanderingArea" index="0"]
-position = Vector2(168.5, 0)
+position = Vector2(-7.75, 0)
 
 [node name="Sprite2D" parent="Entities/Actors/Shooters/BossShooters/BossShooter/BossShooterBody" index="1"]
 material = SubResource("ShaderMaterial_7v7ix")
@@ -76,3 +76,4 @@ spike_spawner = NodePath("../../../Spikes/FallingSpikes/FallingSpikeSpawner/Fall
 
 [editable path="Entities/Actors/Shooters/BossShooters/BossShooter"]
 [editable path="Entities/Actors/Shooters/BossShooters/BossShooter/BossShooterBody/HealthDisplay"]
+[editable path="Entities/Objects/Interactables/Door/Door"]

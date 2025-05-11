@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5jn262pigeup"]
 
-[ext_resource type="Script" uid="uid://eu28yf4eprxk" path="res://Utils/Components/ShowOnEnterComponent/show_on_enter_component.gd" id="1_vq0j0"]
+[ext_resource type="Script" uid="uid://eu28yf4eprxk" path="res://Entities/Objects/Interactables/Components/ShowOnEnterComponent/show_on_enter_component.gd" id="1_vq0j0"]
 
 [node name="ShowOnEnterComponent" type="Node2D" node_paths=PackedStringArray("to_show", "enter_area")]
 script = ExtResource("1_vq0j0")

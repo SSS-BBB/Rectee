@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3brxlf5d05qp"]
 
-[ext_resource type="Script" uid="uid://e7i2mku8tw4w" path="res://Utils/Components/AreaEnterComponent/area_enter_component.gd" id="1_248dk"]
+[ext_resource type="Script" uid="uid://e7i2mku8tw4w" path="res://Entities/Objects/Interactables/Components/AreaEnterComponent/area_enter_component.gd" id="1_248dk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ad3yx"]
 resource_local_to_scene = true

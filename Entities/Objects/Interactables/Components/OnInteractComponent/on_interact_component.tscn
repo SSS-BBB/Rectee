@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkxq8sthwshxo"]
+
+[ext_resource type="Script" uid="uid://o3j2fabd2h60" path="res://Entities/Objects/Interactables/Components/OnInteractComponent/on_interact_component.gd" id="1_rbx53"]
+
+[node name="OnInteractComponent" type="Node2D"]
+script = ExtResource("1_rbx53")

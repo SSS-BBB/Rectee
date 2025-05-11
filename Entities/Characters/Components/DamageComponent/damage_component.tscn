@@ -2,11 +2,7 @@
 
 [ext_resource type="Script" uid="uid://yehllpcsu1su" path="res://Entities/Characters/Components/DamageComponent/damage_component.gd" id="1_dh41h"]
 
-[node name="DamageComponent" type="Node2D" node_paths=PackedStringArray("health_component", "actor", "damage_audio", "hit_animation_player")]
+[node name="DamageComponent" type="Node2D"]
 script = ExtResource("1_dh41h")
-health_component = NodePath("")
-actor = NodePath("")
-damage_audio = NodePath("")
-hit_animation_player = NodePath("")
 hit_animation_name = "flash_on_hit"
 knockback_deceleration = 50.0

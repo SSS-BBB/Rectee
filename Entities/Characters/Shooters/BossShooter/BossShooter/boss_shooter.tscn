@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c78yrvgxc1ipu" path="res://Entities/Characters/Components/DestroyOnDieComponent/destroy_on_die_component.tscn" id="15_jathh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggyc8"]
-size = Vector2(522, 111.5)
+size = Vector2(104.5, 111.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cim6"]
 size = Vector2(48, 48)
@@ -158,6 +158,7 @@ offset_bottom = -35.0
 health_component = NodePath("../../HealthComponent")
 actor = NodePath("..")
 damage_audio = NodePath("../SpikeDamageAudio")
+volume_percentage = 0.35
 hit_animation_player = NodePath("../HitAnimationPlayer")
 
 [node name="HitAnimationPlayer" type="AnimationPlayer" parent="BossShooterBody"]
