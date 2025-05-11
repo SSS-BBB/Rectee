@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpsvk3t2c6k72"]
 
 [ext_resource type="Script" uid="uid://ctfx5dyecebdr" path="res://Utils/Globals/GameManager/game_manager.gd" id="1_hargk"]
-[ext_resource type="AudioStream" uid="uid://c752w104a2psw" path="res://Entities/Objects/Interactables/Door/SFXs/door_enter.wav" id="2_hq2b8"]
+[ext_resource type="AudioStream" uid="uid://c752w104a2psw" path="res://Utils/Globals/GameManager/SFXs/door_enter.wav" id="2_hq2b8"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_hargk")

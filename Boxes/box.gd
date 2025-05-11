@@ -4,10 +4,8 @@ class_name Box extends Node2D
 @export var box_level: int = 0
 @export var shaking: bool = false
 @export var camera_shaking_component: CameraShakingComponent
-
-# Component variables
-@onready var scene_transition = $SceneTransition as SceneTransition
-@onready var door = $Door as Door
+@export var scene_transition: SceneTransition
+@export var door: Door
 
 # Game functions
 func _ready():

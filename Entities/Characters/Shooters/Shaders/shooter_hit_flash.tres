@@ -3,6 +3,7 @@
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_7q2k3"]
 parameter_name = "flash"
 default_value_enabled = true
+default_value = Color(0.827451, 0.827451, 0.827451, 1)
 
 [sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_7q2k3"]
 parameter_name = "flash_enabled"
@@ -19,7 +20,7 @@ code = "shader_type canvas_item;
 render_mode blend_mix;
 
 uniform bool flash_enabled = false;
-uniform vec4 flash : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform vec4 flash : source_color = vec4(0.827451, 0.827451, 0.827451, 1.000000);
 
 
 
@@ -60,11 +61,12 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-253.859, 98.0223)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(480, 40)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_7q2k3")
-nodes/fragment/2/position = Vector2(-120, 240)
+nodes/fragment/2/position = Vector2(-140, 240)
 nodes/fragment/3/node = SubResource("VisualShaderNodeBooleanParameter_7q2k3")
 nodes/fragment/3/position = Vector2(-100, 20)
 nodes/fragment/4/node = SubResource("VisualShaderNodeIf_7q2k3")

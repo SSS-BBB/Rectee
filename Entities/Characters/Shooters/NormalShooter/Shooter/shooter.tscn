@@ -19,11 +19,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4cfi"]
 size = Vector2(16, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qeh52"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ra51"]
 resource_local_to_scene = true
 shader = ExtResource("4_mid7e")
 shader_parameter/flash_enabled = false
-shader_parameter/flash = Color(1, 1, 1, 1)
+shader_parameter/flash = Color(0.827451, 0.827451, 0.827451, 1)
 
 [sub_resource type="Animation" id="Animation_qeh52"]
 length = 0.001
@@ -86,7 +86,7 @@ shooter_container = NodePath("../..")
 shape = SubResource("RectangleShape2D_x4cfi")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShooterPathMove/ShooterBody"]
-material = SubResource("ShaderMaterial_qeh52")
+material = SubResource("ShaderMaterial_8ra51")
 texture = ExtResource("1_xq051")
 region_enabled = true
 region_rect = Rect2(112, 0, 16, 16)

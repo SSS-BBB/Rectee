@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmi2p3rb3qo3v"]
+[gd_scene load_steps=13 format=3 uid="uid://cmi2p3rb3qo3v"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_2gup7"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="2_31nnr"]
 [ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="2_206tg"]
 [ext_resource type="Resource" uid="uid://saubjkn7otdv" path="res://Entities/Objects/Items/Consumable/Resources/basic_health_potion.tres" id="3_31nnr"]
+[ext_resource type="Shader" uid="uid://dnugd63sqssow" path="res://Entities/Characters/Shooters/Shaders/shooter_hit_flash.tres" id="3_ywxio"]
 [ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="5_dbw2i"]
 [ext_resource type="Resource" uid="uid://c45tx25wmokxh" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_2.tres" id="6_pd6pn"]
 [ext_resource type="Resource" uid="uid://dhr6cgctn7u7e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_3.tres" id="7_4sus7"]
@@ -11,60 +12,67 @@
 [ext_resource type="PackedScene" uid="uid://m235qtmjqyt0" path="res://Entities/Characters/Shooters/BossShooter/BossShooter/boss_shooter.tscn" id="9_bxipm"]
 [ext_resource type="PackedScene" uid="uid://doe1ycq0xn2nt" path="res://Entities/Objects/Interactables/SpikeSpawnButton/spike_spawn_button.tscn" id="9_fn4pk"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v7ix"]
+resource_local_to_scene = true
+shader = ExtResource("3_ywxio")
+shader_parameter/flash_enabled = false
+shader_parameter/flash = Color(0.827451, 0.827451, 0.827451, 1)
+
 [node name="BoxTest1" instance=ExtResource("1_2gup7")]
 box_level = 1
 
-[node name="Door" parent="." index="1"]
-next_scence_path = "res://Boxes/LevelBoxes/BoxTest2/box_test_2.tscn"
-
-[node name="Player" parent="." index="2"]
-normal_jump_velocity = 700
-
-[node name="Consumable" parent="Consumables" index="0" instance=ExtResource("2_31nnr")]
-position = Vector2(335, 548)
-
-[node name="Consumable2" parent="Consumables" index="1" instance=ExtResource("2_31nnr")]
-position = Vector2(473, 428)
-consumable_resource = ExtResource("3_31nnr")
-
-[node name="BouncingPlatform" parent="Platforms" index="0" instance=ExtResource("2_206tg")]
-position = Vector2(474, 463)
+[node name="BossShooter" parent="Entities/Actors/Shooters/BossShooters" index="0" instance=ExtResource("9_bxipm")]
+position = Vector2(288, 301)
 scale = Vector2(2, 2)
 
-[node name="Spike" parent="Spikes" index="0" instance=ExtResource("5_dbw2i")]
+[node name="CollisionShape2D" parent="Entities/Actors/Shooters/BossShooters/BossShooter/BossShooterStateMachine/WanderingState/WanderingArea" index="0"]
+position = Vector2(168.5, 0)
+
+[node name="Sprite2D" parent="Entities/Actors/Shooters/BossShooters/BossShooter/BossShooterBody" index="1"]
+material = SubResource("ShaderMaterial_7v7ix")
+
+[node name="Spikes#Spike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" instance=ExtResource("5_dbw2i")]
 position = Vector2(609, 546)
 scale = Vector2(2, 2)
 resource = ExtResource("6_pd6pn")
 
-[node name="Spike2" parent="Spikes" index="1" instance=ExtResource("5_dbw2i")]
+[node name="Spikes#Spike2" parent="Entities/Objects/Spikes/NormalSpikes" index="1" instance=ExtResource("5_dbw2i")]
 position = Vector2(637, 563)
 scale = Vector2(2, 2)
 
-[node name="Spike3" parent="Spikes" index="2" instance=ExtResource("5_dbw2i")]
+[node name="Spikes#Spike3" parent="Entities/Objects/Spikes/NormalSpikes" index="2" instance=ExtResource("5_dbw2i")]
 position = Vector2(665, 530)
 scale = Vector2(2, 2)
 resource = ExtResource("7_4sus7")
 
-[node name="FallingSpikeSpawner" parent="FallingSpikeSpawner" index="0" instance=ExtResource("8_bxipm")]
+[node name="FallingSpikeSpawner#FallingSpikeSpawner" parent="Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner" index="0" instance=ExtResource("8_bxipm")]
 position = Vector2(259, 28)
 scale = Vector2(2, 2)
 
-[node name="FallingSpikeSpawner2" parent="FallingSpikeSpawner" index="1" instance=ExtResource("8_bxipm")]
+[node name="FallingSpikeSpawner#FallingSpikeSpawner2" parent="Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner" index="1" instance=ExtResource("8_bxipm")]
 position = Vector2(947, 30)
 scale = Vector2(2, 2)
 spawn_rate = 4.0
 spawn_on_button_pressed = true
 
-[node name="SpikeSpawnButton" parent="FallingSpikeSpawner" index="2" node_paths=PackedStringArray("spike_spawner") instance=ExtResource("9_fn4pk")]
+[node name="Platforms#BouncingPlatform" parent="Entities/Objects/Platforms/BouncingPlatforms" index="0" instance=ExtResource("2_206tg")]
+position = Vector2(474, 463)
+scale = Vector2(2, 2)
+
+[node name="Consumables#Consumable" parent="Entities/Objects/Items/Consumables" index="0" instance=ExtResource("2_31nnr")]
+position = Vector2(335, 548)
+
+[node name="Consumables#Consumable2" parent="Entities/Objects/Items/Consumables" index="1" instance=ExtResource("2_31nnr")]
+position = Vector2(473, 428)
+consumable_resource = ExtResource("3_31nnr")
+
+[node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
+next_scence_path = "res://Boxes/LevelBoxes/BoxTest2/box_test_2.tscn"
+
+[node name="FallingSpikeSpawner#SpikeSpawnButton" parent="Entities/Objects/Interactables/FallingSpikeSpawnButton" index="0" node_paths=PackedStringArray("spike_spawner") instance=ExtResource("9_fn4pk")]
 position = Vector2(770, 520)
 scale = Vector2(2, 2)
-spike_spawner = NodePath("../FallingSpikeSpawner2")
+spike_spawner = NodePath("../../../Spikes/FallingSpikes/FallingSpikeSpawner/FallingSpikeSpawner#FallingSpikeSpawner2")
 
-[node name="Shooters" parent="." index="11" groups=["shooter_container"]]
-
-[node name="BossShooter" parent="Shooters" index="0" instance=ExtResource("9_bxipm")]
-position = Vector2(263, 352)
-scale = Vector2(2, 2)
-
-[editable path="Shooters/BossShooter"]
-[editable path="Shooters/BossShooter/BossShooterBody/HealthDisplay"]
+[editable path="Entities/Actors/Shooters/BossShooters/BossShooter"]
+[editable path="Entities/Actors/Shooters/BossShooters/BossShooter/BossShooterBody/HealthDisplay"]

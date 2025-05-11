@@ -17,15 +17,16 @@
 [ext_resource type="PackedScene" uid="uid://c78yrvgxc1ipu" path="res://Entities/Characters/Components/DestroyOnDieComponent/destroy_on_die_component.tscn" id="15_jathh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggyc8"]
-size = Vector2(133, 111.5)
+size = Vector2(522, 111.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cim6"]
 size = Vector2(48, 48)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyb2b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibbeq"]
+resource_local_to_scene = true
 shader = ExtResource("7_v3ff0")
 shader_parameter/flash_enabled = false
-shader_parameter/flash = Color(1, 1, 1, 1)
+shader_parameter/flash = Color(0.827451, 0.827451, 0.827451, 1)
 
 [sub_resource type="Animation" id="Animation_tnro2"]
 length = 0.001
@@ -109,7 +110,7 @@ collision_priority = 10.0
 shape = SubResource("RectangleShape2D_6cim6")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossShooterBody"]
-material = SubResource("ShaderMaterial_uyb2b")
+material = SubResource("ShaderMaterial_ibbeq")
 texture = ExtResource("8_3flgg")
 region_enabled = true
 region_rect = Rect2(48, 0, 48, 48)
@@ -122,6 +123,7 @@ position = Vector2(-50, 0)
 parent_node = NodePath("../../..")
 shooter_health_range = Vector2i(2, 5)
 shooter_ignore_raycast = true
+spawn_container_group = "shooter_spawned_container"
 spawning_limit = 5
 
 [node name="SpikeDamageAudio" type="AudioStreamPlayer2D" parent="BossShooterBody"]
