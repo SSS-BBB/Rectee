@@ -4,16 +4,16 @@ class_name Box extends Node2D
 @export var box_level: int = 0
 @export var shaking: bool = false
 @export var camera_shaking_component: CameraShakingComponent
-@export var scene_transition: SceneTransition
+# @export var scene_transition: SceneTransition
 @export var door: Door
 
 # Game functions
 func _ready():
 	GameManager.current_box_level = box_level
 	
-	if scene_transition:
-		scene_transition.enter_scene()
-		scene_transition.exit_transition_finished.connect(_on_exit_transition_finished)
+	#if scene_transition:
+		#scene_transition.enter_scene()
+		#scene_transition.exit_transition_finished.connect(_on_exit_transition_finished)
 	
 	if door:
 		door.enter_door.connect(_on_enter_door)
@@ -25,9 +25,13 @@ func _physics_process(_delta):
 
 # Signal functions
 func _on_enter_door():
-	if scene_transition:
-		scene_transition.exit_scene()
+	if door.next_box_path.is_empty():
+		push_error("No path for next box!")
+		return
+	
+	GameManager.current_box_scene = load(door.next_box_path)
 
-func _on_exit_transition_finished():
-	if not door.next_scence_path.is_empty():
-		get_tree().change_scene_to_file(door.next_scence_path)
+#func _on_exit_transition_finished():
+	#if not door.next_scence_path.is_empty():
+		#pass
+		# get_tree().change_scene_to_file(door.next_scence_path)

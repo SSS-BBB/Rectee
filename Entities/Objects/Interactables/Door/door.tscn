@@ -47,6 +47,7 @@ _data = {
 }
 
 [node name="Door" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_l0b71")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -70,7 +71,9 @@ enter_area = NodePath("../..")
 
 [node name="EControl" parent="UIs" instance=ExtResource("4_gc7pt")]
 visible = false
+offset_left = 0.0
 offset_top = -26.0
+offset_right = 0.0
 offset_bottom = 14.0
 
 [node name="OnInteractComponent" parent="." node_paths=PackedStringArray("area") instance=ExtResource("5_gc7pt")]

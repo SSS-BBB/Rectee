@@ -15,6 +15,7 @@ var is_target_in_area: bool
 func _ready():
 	# area connect
 	if not area:
+		push_error("Could not find area to check for interaction")
 		return
 	is_target_in_area = false
 	area.body_entered.connect(_on_body_enterd)

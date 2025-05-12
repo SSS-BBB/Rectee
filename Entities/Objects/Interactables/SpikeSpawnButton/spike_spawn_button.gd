@@ -12,3 +12,5 @@ func _ready():
 	if spike_spawner:
 		on_interact_component.interact.connect(func(): spike_spawner.spawn())
 		spike_spawner.time_left_update.connect(func(t): time_display.change_time(t))
+	else:
+		push_error("Could not find spike spawner to connect with this button")

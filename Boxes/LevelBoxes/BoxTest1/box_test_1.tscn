@@ -67,7 +67,7 @@ position = Vector2(473, 428)
 consumable_resource = ExtResource("3_31nnr")
 
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
-next_scence_path = "res://Boxes/LevelBoxes/BoxTest2/box_test_2.tscn"
+next_box_path = "res://Boxes/LevelBoxes/BoxTest2/box_test_2.tscn"
 
 [node name="FallingSpikeSpawner#SpikeSpawnButton" parent="Entities/Objects/Interactables/FallingSpikeSpawnButton" index="0" node_paths=PackedStringArray("spike_spawner") instance=ExtResource("9_fn4pk")]
 position = Vector2(770, 520)

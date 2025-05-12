@@ -2,7 +2,7 @@ class_name Door extends Area2D
 
 # Export variables
 @export var keys_need: int = 1
-@export var next_scence_path: String
+@export var next_box_path: String
 
 # Component variables
 @onready var e_control = $UIs/EControl as EControl
