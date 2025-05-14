@@ -1,0 +1,137 @@
+[gd_scene load_steps=4 format=3 uid="uid://t3wn8svtywo7"]
+
+[ext_resource type="Script" uid="uid://dto0x51csi6uf" path="res://Commons/PauseAndResumeSystem/PauseUI/pause_ui.gd" id="1_vphq1"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="2_5cfgx"]
+[ext_resource type="StyleBox" uid="uid://b203igfkk6hkr" path="res://Commons/PauseAndResumeSystem/PauseUI/ButtonStyles/flat_white.tres" id="3_5cfgx"]
+
+[node name="PauseUI" type="Control" node_paths=PackedStringArray("canvas_layer")]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vphq1")
+canvas_layer = NodePath("CanvasLayer")
+to_show_layer = 11
+to_hide_layer = -11
+metadata/_custom_type_script = "uid://bovpcynx16cl5"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -11
+visible = false
+
+[node name="BorderRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = -164.0
+offset_right = 121.5
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer/BorderRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = 8.0
+offset_right = 51.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_5cfgx")
+theme_override_font_sizes/font_size = 36
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackgroundRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -106.0
+offset_right = 96.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.827451, 0.827451, 0.827451, 1)
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 13.0
+offset_right = -5.0
+offset_bottom = 57.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5cfgx")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_5cfgx")
+text = "Resume"
+
+[node name="SettingButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 69.0
+offset_right = -5.0
+offset_bottom = 113.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5cfgx")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_5cfgx")
+text = "Setting"
+
+[node name="QuitToMenuButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 125.0
+offset_right = -5.0
+offset_bottom = 169.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5cfgx")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_5cfgx")
+text = "Quit to menu"
+
+[node name="ExitGameButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 181.0
+offset_right = -5.0
+offset_bottom = 225.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5cfgx")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_5cfgx")
+text = "Exit Game"
+
+[connection signal="button_down" from="CanvasLayer/BackgroundRect/ResumeButton" to="." method="_on_resume_button_button_down"]
+[connection signal="button_up" from="CanvasLayer/BackgroundRect/ResumeButton" to="." method="_on_resume_button_button_up"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

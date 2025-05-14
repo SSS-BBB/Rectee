@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dukqpshp4uud1"]
+[gd_scene load_steps=32 format=4 uid="uid://dukqpshp4uud1"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_vcobn"]
 [ext_resource type="PackedScene" uid="uid://curmc5f3wwcax" path="res://Utils/CameraSystem/CameraSnapArea/camera_snap_area.tscn" id="2_upvd0"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="11_1v4i3"]
 [ext_resource type="PackedScene" uid="uid://bnp000d13b8yh" path="res://Entities/Objects/Others/UnseenArea/unseen_area.tscn" id="13_1epuo"]
 [ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/DialogSystem/DialogArea/dialog_area.tscn" id="13_vcobn"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/DialogSystem/dialog_data.gd" id="14_426mc"]
+[ext_resource type="Texture2D" uid="uid://dfdjmoq2w4td2" path="res://UIs/HUDs/DialogSystem/SpeakerTextures/rectee_speaker.png" id="15_1gedd"]
+[ext_resource type="Texture2D" uid="uid://djycx3l63dc2x" path="res://UIs/HUDs/DialogSystem/SpeakerTextures/mysterious_speaker.png" id="16_n2xfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_si3bd"]
 resource_local_to_scene = true
@@ -65,6 +68,20 @@ size = Vector2(8, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gedd"]
 resource_local_to_scene = true
 size = Vector2(8, 48)
+
+[sub_resource type="Resource" id="Resource_athc7"]
+script = ExtResource("14_426mc")
+speaker = ExtResource("15_1gedd")
+text = "It's Me! Rectee"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="Resource" id="Resource_fo6xl"]
+script = ExtResource("14_426mc")
+speaker = ExtResource("16_n2xfs")
+text = "Guess, who I am."
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2xfs"]
 resource_local_to_scene = true
@@ -311,6 +328,7 @@ offset_bottom = 24.0
 
 [node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("13_vcobn")]
 position = Vector2(221, 569)
+dialog_data = Array[ExtResource("14_426mc")]([SubResource("Resource_athc7"), SubResource("Resource_fo6xl")])
 
 [node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
 position = Vector2(0, -122.5)

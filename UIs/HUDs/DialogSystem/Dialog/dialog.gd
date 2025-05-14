@@ -1,13 +1,10 @@
 @tool
-class_name Dialog extends Control
+class_name Dialog extends HudUI
 
 # Export variables
 @export var dialog_speaker: TextureRect
 @export var dialog_text: RichTextLabel
 @export var next_button: Button
-
-# Component variables
-@onready var canvas_layer = $CanvasLayer as CanvasLayer
 
 # Class variables
 var typing: bool
@@ -51,14 +48,3 @@ func show_dialog(dialog_data: Array[DialogData]):
 	# finished dialogs
 	visible = false
 	finished_dialog.emit()
-
-# Signal functions
-func _on_visibility_changed():
-	if not canvas_layer:
-		return
-	
-	canvas_layer.visible = visible
-	if visible:
-		canvas_layer.layer = 11
-	else:
-		canvas_layer.layer = -11

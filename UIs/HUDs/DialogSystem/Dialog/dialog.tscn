@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c6yvmatjtjt3r" path="res://UIs/HUDs/MovementButton/Texture/arrow_right.png" id="4_02ppv"]
 [ext_resource type="Script" uid="uid://diib3mtnv5r3x" path="res://UIs/Commons/NextButton/next_button.gd" id="5_44eip"]
 
-[node name="Dialog" type="Control" node_paths=PackedStringArray("dialog_speaker", "dialog_text", "next_button")]
+[node name="Dialog" type="Control" node_paths=PackedStringArray("dialog_speaker", "dialog_text", "next_button", "canvas_layer")]
 process_mode = 2
 visible = false
 layout_mode = 3
@@ -19,6 +19,9 @@ script = ExtResource("1_knhdo")
 dialog_speaker = NodePath("CanvasLayer/DialogBackground/DialogSpeaker")
 dialog_text = NodePath("CanvasLayer/DialogBackground/DialogText")
 next_button = NodePath("CanvasLayer/DialogBackground/NextButton")
+canvas_layer = NodePath("CanvasLayer")
+to_show_layer = 11
+to_hide_layer = -11
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -11

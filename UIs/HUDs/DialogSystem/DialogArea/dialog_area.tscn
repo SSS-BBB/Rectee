@@ -1,30 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://lm1iatwarheh"]
+[gd_scene load_steps=3 format=3 uid="uid://lm1iatwarheh"]
 
 [ext_resource type="Script" uid="uid://ddqynihqqskd4" path="res://UIs/HUDs/DialogSystem/DialogArea/dialog_area.gd" id="1_ergg6"]
-[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/DialogSystem/dialog_data.gd" id="2_r2a4e"]
-[ext_resource type="Texture2D" uid="uid://doarpickefy66" path="res://Assets/logo.png" id="3_3i866"]
-[ext_resource type="Texture2D" uid="uid://42is1xogiwke" path="res://icon.svg" id="4_2yfyk"]
-
-[sub_resource type="Resource" id="Resource_3i5tu"]
-script = ExtResource("2_r2a4e")
-speaker = ExtResource("3_3i866")
-text = "Test 1"
-text_typing_duration = 0.5
-metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
-
-[sub_resource type="Resource" id="Resource_j4q4d"]
-script = ExtResource("2_r2a4e")
-speaker = ExtResource("4_2yfyk")
-text = "Test 2"
-text_typing_duration = 0.5
-metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmcc1"]
 resource_local_to_scene = true
 
 [node name="DialogArea" type="Area2D"]
 script = ExtResource("1_ergg6")
-dialog_data = Array[ExtResource("2_r2a4e")]([SubResource("Resource_3i5tu"), SubResource("Resource_j4q4d")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fmcc1")

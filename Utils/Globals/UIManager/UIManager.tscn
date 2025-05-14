@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://dmc73d27lcysg" path="res://Utils/Globals/UIManager/ui_manager.gd" id="1_61wwm"]
 
 [node name="UIManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_61wwm")
