@@ -29,7 +29,7 @@ func _on_enter_door():
 		push_error("No path for next box!")
 		return
 	
-	GameManager.current_box_scene = load(door.next_box_path)
+	GameManager.change_box_scene(load(door.next_box_path))
 
 #func _on_exit_transition_finished():
 	#if not door.next_scence_path.is_empty():

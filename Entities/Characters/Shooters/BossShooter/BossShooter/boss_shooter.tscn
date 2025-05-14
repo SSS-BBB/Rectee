@@ -65,7 +65,7 @@ _data = {
 &"flash_on_hit": SubResource("Animation_uyb2b")
 }
 
-[node name="BossShooter" type="Node2D"]
+[node name="BossShooter" type="Node2D" groups=["shooter"]]
 
 [node name="BossShooterStateMachine" type="Node2D" parent="."]
 script = ExtResource("1_ibbeq")

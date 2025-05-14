@@ -10,6 +10,10 @@ func _ready():
 
 # Signal functions
 func _on_bullet_hit(body: Node2D):
+	# bullet goes through shooters
+	if body.is_in_group("shooter_body"):
+		return
+	
 	if body.is_in_group("player"):
 		var player := body as Player
 		var bullet_velocity := bullet.bullet_direction * bullet.bullet_speed

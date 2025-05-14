@@ -34,8 +34,6 @@ func transition_prepare(transition_type: TransitionType):
 	
 	# Exit transition prepare
 	color_rect.modulate.a = 0.0
-	# Audio
-	GameManager.play_door_audio()
 	
 	# hide before animating
 	for to_hide in to_hide_on_exit:

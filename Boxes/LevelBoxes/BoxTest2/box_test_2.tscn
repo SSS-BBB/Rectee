@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dukqpshp4uud1"]
+[gd_scene load_steps=27 format=4 uid="uid://dukqpshp4uud1"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_vcobn"]
 [ext_resource type="PackedScene" uid="uid://curmc5f3wwcax" path="res://Utils/CameraSystem/CameraSnapArea/camera_snap_area.tscn" id="2_upvd0"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bmf4ukrb1dgev" path="res://Entities/Objects/Items/Key/key.tscn" id="10_x2jf4"]
 [ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="11_1v4i3"]
 [ext_resource type="PackedScene" uid="uid://bnp000d13b8yh" path="res://Entities/Objects/Others/UnseenArea/unseen_area.tscn" id="13_1epuo"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/DialogSystem/DialogArea/dialog_area.tscn" id="13_vcobn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_si3bd"]
 resource_local_to_scene = true
@@ -64,6 +65,10 @@ size = Vector2(8, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gedd"]
 resource_local_to_scene = true
 size = Vector2(8, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2xfs"]
+resource_local_to_scene = true
+size = Vector2(20, 265)
 
 [node name="BoxTest2" node_paths=PackedStringArray("camera_shaking_component") instance=ExtResource("1_vcobn")]
 box_level = 2
@@ -304,6 +309,13 @@ offset_top = -24.0
 offset_right = 44.0
 offset_bottom = 24.0
 
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("13_vcobn")]
+position = Vector2(221, 569)
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
+position = Vector2(0, -122.5)
+shape = SubResource("RectangleShape2D_n2xfs")
+
 [editable path="CameraSystem/CameraSnapAreas/CameraSnapArea"]
 [editable path="CameraSystem/CameraSnapAreas/CameraSnapArea/AreaEnterComponent"]
 [editable path="CameraSystem/CameraSnapAreas/CameraSnapArea2"]
@@ -325,3 +337,4 @@ offset_bottom = 24.0
 [editable path="Entities/UnseenAreaContainer/UnseenArea2/SectionDoorSprite/AreaEnterComponent"]
 [editable path="Entities/UnseenAreaContainer/UnseenArea3"]
 [editable path="Entities/UnseenAreaContainer/UnseenArea3/SectionDoorSprite/AreaEnterComponent"]
+[editable path="Areas/DialogAreas/DialogArea"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ciqixffybut"]
+
+[ext_resource type="Script" uid="uid://dtlkrx2368b4q" path="res://Utils/Globals/AudioManager/audio_manager.gd" id="1_3cc72"]
+[ext_resource type="AudioStream" uid="uid://c752w104a2psw" path="res://Utils/Globals/GameManager/SFXs/door_enter.wav" id="2_mbmyj"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_3cc72")
+
+[node name="DoorAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mbmyj")

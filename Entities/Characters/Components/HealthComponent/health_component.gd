@@ -18,6 +18,9 @@ func _ready():
 	health_update.emit(health)
 	
 func take_damage(damage: int):
+	if damage < 0:
+		push_warning("Damage less than 0. This might cause actor to gaining health instead of losing health. If you want actor to gain health, you should use gain_health method instead.")
+	
 	health -= damage
 	damage_signal.emit(damage)
 	if health <= 0:
@@ -26,8 +29,11 @@ func take_damage(damage: int):
 	health_update.emit(health)
 	
 func gain_health(health_gain: int) -> bool:
+	if health_gain < 0:
+		push_warning("Health gain less than 0. This might cause actor to losing health instead of gaining health. If you want actor to lose health, you should use take_damage method instead.")
+	
 	if health >= max_health:
-		health_update_failed.emit("FullHP")
+		health_update_failed.emit("[FullHP]")
 		return false
 	
 	health += health_gain

@@ -46,7 +46,8 @@ func follow_player(player: Player, delta: float):
 
 # Signal functions
 func _on_see_player(player: Player, delta: float):
-	follow_player(player, delta)
+	if not shooter_body.shooter_container.ignore_raycast:
+		follow_player(player, delta)
 	
 	# shoot
 	shooting_component.shoot(shooter_body.global_position.direction_to(player.global_position))

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://tw6plv4myh6e"]
+[gd_scene load_steps=5 format=3 uid="uid://tw6plv4myh6e"]
 
 [ext_resource type="Script" uid="uid://b8agbwpbqsx4x" path="res://Boxes/LevelBoxContainer/level_box_container.gd" id="1_x0hdf"]
 [ext_resource type="PackedScene" uid="uid://c77ygnkf07k6d" path="res://UIs/HUDs/MovementButton/movement_control_button.tscn" id="2_axoqc"]
 [ext_resource type="PackedScene" uid="uid://11knbogl7tk3" path="res://UIs/HUDs/SceneTransition/scene_transition.tscn" id="3_guhsa"]
+[ext_resource type="PackedScene" uid="uid://cvfg4v2yxr18w" path="res://UIs/HUDs/DialogSystem/Dialog/dialog.tscn" id="4_axoqc"]
 
 [node name="LevelBoxContainer" type="Node2D" node_paths=PackedStringArray("scene_transition")]
 script = ExtResource("1_x0hdf")
@@ -21,3 +22,6 @@ layout_mode = 1
 [node name="SceneTransition" parent="UIs" node_paths=PackedStringArray("to_hide_on_exit") instance=ExtResource("3_guhsa")]
 layout_mode = 1
 to_hide_on_exit = [NodePath("../MovementControlButton")]
+
+[node name="Dialog" parent="UIs" instance=ExtResource("4_axoqc")]
+layout_mode = 1

@@ -15,7 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_6gxde")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 11
+layer = 10
 
 [node name="HorizontalButtons" type="Control" parent="CanvasLayer"]
 layout_mode = 3

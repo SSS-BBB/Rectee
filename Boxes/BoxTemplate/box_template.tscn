@@ -94,4 +94,8 @@ tile_map_data = PackedByteArray("AAABACQAAgAAAAEAAAACACQAAgAAAAEAAAADACQAAgAAAAE
 
 [node name="UnseenAreaContainer" type="Node2D" parent="Entities"]
 
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="DialogAreas" type="Node2D" parent="Areas"]
+
 [editable path="Entities/Objects/Interactables/Door/Door"]

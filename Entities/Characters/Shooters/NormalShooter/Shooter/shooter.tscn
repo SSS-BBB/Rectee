@@ -62,7 +62,7 @@ _data = {
 &"flash_on_hit": SubResource("Animation_mid7e")
 }
 
-[node name="Shooter" type="Node2D"]
+[node name="Shooter" type="Node2D" groups=["shooter"]]
 script = ExtResource("1_1n2al")
 follow_speed = 20.0
 follow_distance = 80.0

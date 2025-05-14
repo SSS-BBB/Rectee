@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmi2p3rb3qo3v"]
+[gd_scene load_steps=17 format=3 uid="uid://cmi2p3rb3qo3v"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_2gup7"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="2_31nnr"]
@@ -11,12 +11,22 @@
 [ext_resource type="PackedScene" uid="uid://bpovx7vughv8v" path="res://Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner/falling_spike_spawner.tscn" id="8_bxipm"]
 [ext_resource type="PackedScene" uid="uid://m235qtmjqyt0" path="res://Entities/Characters/Shooters/BossShooter/BossShooter/boss_shooter.tscn" id="9_bxipm"]
 [ext_resource type="PackedScene" uid="uid://doe1ycq0xn2nt" path="res://Entities/Objects/Interactables/SpikeSpawnButton/spike_spawn_button.tscn" id="9_fn4pk"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/DialogSystem/DialogArea/dialog_area.tscn" id="12_sgimk"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/DialogSystem/dialog_data.gd" id="13_5ak2c"]
+[ext_resource type="Texture2D" uid="uid://42is1xogiwke" path="res://icon.svg" id="14_vd2es"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7v7ix"]
 resource_local_to_scene = true
 shader = ExtResource("3_ywxio")
 shader_parameter/flash_enabled = false
 shader_parameter/flash = Color(0.827451, 0.827451, 0.827451, 1)
+
+[sub_resource type="Resource" id="Resource_0w7q3"]
+script = ExtResource("13_5ak2c")
+speaker = ExtResource("14_vd2es")
+text = "Where am I, What is this place"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
 
 [node name="BoxTest1" instance=ExtResource("1_2gup7")]
 box_level = 1
@@ -73,6 +83,10 @@ next_box_path = "res://Boxes/LevelBoxes/BoxTest2/box_test_2.tscn"
 position = Vector2(770, 520)
 scale = Vector2(2, 2)
 spike_spawner = NodePath("../../../Spikes/FallingSpikes/FallingSpikeSpawner/FallingSpikeSpawner#FallingSpikeSpawner2")
+
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("12_sgimk")]
+position = Vector2(261, 567)
+dialog_data = Array[ExtResource("13_5ak2c")]([SubResource("Resource_0w7q3")])
 
 [editable path="Entities/Actors/Shooters/BossShooters/BossShooter"]
 [editable path="Entities/Actors/Shooters/BossShooters/BossShooter/BossShooterBody/HealthDisplay"]
