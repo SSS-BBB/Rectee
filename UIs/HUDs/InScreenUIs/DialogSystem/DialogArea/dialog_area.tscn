@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://lm1iatwarheh"]
+
+[ext_resource type="Script" uid="uid://ddqynihqqskd4" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.gd" id="1_ergg6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmcc1"]
+resource_local_to_scene = true
+
+[node name="DialogArea" type="Area2D"]
+script = ExtResource("1_ergg6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fmcc1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

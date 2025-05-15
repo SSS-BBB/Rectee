@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dcev1uf25ujlf" path="res://Entities/Characters/Shooters/BossShooter/Components/BossShooting/boss_shooting.tscn" id="9_13lgp"]
 [ext_resource type="PackedScene" uid="uid://bm6fjupfv0voq" path="res://Entities/Characters/Shooters/Components/ShooterSpawningComponent/shooter_spawning_component.tscn" id="10_fd66h"]
 [ext_resource type="AudioStream" uid="uid://bfi3v5v06b6xy" path="res://Entities/Objects/Spikes/Components/SpikeDamage/SFXs/spike_damaged.wav" id="11_nc2g3"]
-[ext_resource type="PackedScene" uid="uid://bjg7w6dhjabgt" path="res://UIs/HUDs/HealthDisplay/health_display.tscn" id="12_hv46m"]
+[ext_resource type="PackedScene" uid="uid://bjg7w6dhjabgt" path="res://UIs/HUDs/InGameUIs/HealthDisplay/health_display.tscn" id="12_hv46m"]
 [ext_resource type="PackedScene" uid="uid://de5okmp0mcinf" path="res://Entities/Characters/Components/DamageComponent/damage_component.tscn" id="13_a2hoq"]
 [ext_resource type="PackedScene" uid="uid://cj2visvmlh3q6" path="res://Entities/Characters/Components/HealthComponent/health_component.tscn" id="14_0pyxx"]
 [ext_resource type="PackedScene" uid="uid://c78yrvgxc1ipu" path="res://Entities/Characters/Components/DestroyOnDieComponent/destroy_on_die_component.tscn" id="15_jathh"]

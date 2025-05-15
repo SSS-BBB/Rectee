@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bpovx7vughv8v" path="res://Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner/falling_spike_spawner.tscn" id="8_bxipm"]
 [ext_resource type="PackedScene" uid="uid://m235qtmjqyt0" path="res://Entities/Characters/Shooters/BossShooter/BossShooter/boss_shooter.tscn" id="9_bxipm"]
 [ext_resource type="PackedScene" uid="uid://doe1ycq0xn2nt" path="res://Entities/Objects/Interactables/SpikeSpawnButton/spike_spawn_button.tscn" id="9_fn4pk"]
-[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/DialogSystem/DialogArea/dialog_area.tscn" id="12_sgimk"]
-[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/DialogSystem/dialog_data.gd" id="13_5ak2c"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="12_sgimk"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="13_5ak2c"]
 [ext_resource type="Texture2D" uid="uid://42is1xogiwke" path="res://icon.svg" id="14_vd2es"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7v7ix"]

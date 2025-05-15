@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Entities/Textures/objects_spritesheet.png" id="1_3etf2"]
 [ext_resource type="Script" uid="uid://cg3kvmtxikyob" path="res://Entities/Characters/Player/Player/player.gd" id="1_al8ar"]
 [ext_resource type="PackedScene" uid="uid://cj2visvmlh3q6" path="res://Entities/Characters/Components/HealthComponent/health_component.tscn" id="3_xccyk"]
-[ext_resource type="PackedScene" uid="uid://bjg7w6dhjabgt" path="res://UIs/HUDs/HealthDisplay/health_display.tscn" id="4_01b8d"]
+[ext_resource type="PackedScene" uid="uid://bjg7w6dhjabgt" path="res://UIs/HUDs/InGameUIs/HealthDisplay/health_display.tscn" id="4_01b8d"]
 [ext_resource type="AudioStream" uid="uid://bfi3v5v06b6xy" path="res://Entities/Objects/Spikes/Components/SpikeDamage/SFXs/spike_damaged.wav" id="5_cqrjx"]
 [ext_resource type="Script" uid="uid://cjft18v1fp6ma" path="res://Entities/Characters/Components/EffectComponent/effect_component.gd" id="5_gdgf0"]
 [ext_resource type="AudioStream" uid="uid://cwxls4usqvhxb" path="res://Entities/Objects/Bullets/SFXs/bullet_damaged.wav" id="6_khnq4"]
@@ -112,5 +112,6 @@ state_machine = NodePath("..")
 next_state = NodePath("../OnGroundState")
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="actor_die" from="Health/HealthComponent" to="." method="_on_health_component_actor_die"]
 [connection signal="timeout" from="EffectComponent/SpeedTimer" to="EffectComponent" method="_on_speed_timer_timeout"]
 [connection signal="timeout" from="EffectComponent/JumpTimer" to="EffectComponent" method="_on_jump_timer_timeout"]

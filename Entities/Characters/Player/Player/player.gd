@@ -128,3 +128,6 @@ func _on_take_damage(_damage):
 func _on_sprite_animation_finished():
 	if sprite.animation == "damaged":
 		sprite.play("default")
+
+func _on_health_component_actor_die():
+	UIManager.show_died_ui()

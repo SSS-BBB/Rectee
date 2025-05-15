@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbjwglohdehjv"]
+
+[ext_resource type="Script" uid="uid://88xg7och1657" path="res://UIs/HUDs/InScreenUIs/DiedUI/died_ui.gd" id="1_yscij"]
+[ext_resource type="FontFile" uid="uid://c4jwk71g5pyyk" path="res://Assets/Fonts/arialbd.ttf" id="2_xunjp"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_dworg"]
+[ext_resource type="Script" uid="uid://dfpfhpqny1yk7" path="res://UIs/Commons/ConfirmationSystem/ConfirmationComponent/ConfirmationButtonComponent/confirmation_button_component.gd" id="3_xunjp"]
+[ext_resource type="StyleBox" uid="uid://cti6puea05wvl" path="res://UIs/Styles/ButtonStyles/flat_black.tres" id="4_lawmv"]
+[ext_resource type="Script" uid="uid://b8xrbnhe3i3cl" path="res://UIs/HUDs/InScreenUIs/DiedUI/MenuButton/died_menu_button.gd" id="6_lawmv"]
+[ext_resource type="Script" uid="uid://bfttt8evh6m6y" path="res://UIs/HUDs/InScreenUIs/DiedUI/RestartButton/restart_on_die_button.gd" id="6_ol1x7"]
+[ext_resource type="Script" uid="uid://b2wcg4va5jpsj" path="res://UIs/HUDs/InScreenUIs/DiedUI/ExitButton/exit_button.gd" id="7_lawmv"]
+
+[node name="DiedUI" type="Control" node_paths=PackedStringArray("canvas_layer")]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yscij")
+canvas_layer = NodePath("CanvasLayer")
+metadata/_custom_type_script = "uid://bovpcynx16cl5"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BackgroundRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_top = 62.0
+offset_right = -86.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.827451, 0.827451, 0.827451, 1)
+
+[node name="DiedLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -153.0
+offset_top = 92.0
+offset_right = 153.0
+offset_bottom = 169.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.764706, 0, 0.0627451, 1)
+theme_override_fonts/font = ExtResource("2_xunjp")
+theme_override_font_sizes/font_size = 56
+text = "[DiedLabel]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="Control" parent="CanvasLayer/BackgroundRect" node_paths=PackedStringArray("confirm_button", "button_container")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_xunjp")
+confirm_button = [NodePath("MenuButton"), NodePath("ExitButton")]
+button_container = NodePath(".")
+metadata/_custom_type_script = "uid://dfpfhpqny1yk7"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 202.0
+offset_right = 125.0
+offset_bottom = 292.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_dworg")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_lawmv")
+text = "[RestartButton]"
+script = ExtResource("6_ol1x7")
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 312.0
+offset_right = 125.0
+offset_bottom = 402.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_dworg")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_lawmv")
+text = "[MenuButton]"
+script = ExtResource("6_lawmv")
+topic_text = "[ToMenuTopic]"
+confirm_text = "[QuitToMenuConfirmation]"
+metadata/_custom_type_script = "uid://0moljr0wb5an"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 422.0
+offset_right = 125.0
+offset_bottom = 512.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_dworg")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_lawmv")
+text = "[ExitButton]"
+script = ExtResource("7_lawmv")
+topic_text = "[ExitTopic]"
+confirm_text = "[ExitGameConfirmation]"
+metadata/_custom_type_script = "uid://0moljr0wb5an"
+
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonContainer/RestartButton" to="CanvasLayer/BackgroundRect/ButtonContainer/RestartButton" method="_on_pressed"]

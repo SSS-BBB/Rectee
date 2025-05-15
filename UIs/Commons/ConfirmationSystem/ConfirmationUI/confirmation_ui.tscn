@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8he2wiyy36ix"]
+
+[ext_resource type="Script" uid="uid://cc1b5athly0qt" path="res://UIs/Commons/ConfirmationSystem/ConfirmationUI/confirmation_ui.gd" id="1_es4eh"]
+[ext_resource type="FontFile" uid="uid://c4jwk71g5pyyk" path="res://Assets/Fonts/arialbd.ttf" id="2_1ofiq"]
+[ext_resource type="StyleBox" uid="uid://cti6puea05wvl" path="res://UIs/Styles/ButtonStyles/flat_black.tres" id="3_1ofiq"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_es4eh"]
+
+[node name="ConfirmationUI" type="Control" node_paths=PackedStringArray("topic_label", "confirm_label", "canvas_layer")]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_es4eh")
+topic_label = NodePath("CanvasLayer/BackgroundRect/TopicConfirmationLabel")
+confirm_label = NodePath("CanvasLayer/BackgroundRect/ConfirmationLabel")
+canvas_layer = NodePath("CanvasLayer")
+to_show_layer = 20
+to_hide_layer = -20
+metadata/_custom_type_script = "uid://bovpcynx16cl5"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -20
+visible = false
+
+[node name="BorderRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -97.0
+offset_right = 241.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BackgroundRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -78.5
+offset_right = 224.5
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelBackground" type="ColorRect" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 52.0
+grow_horizontal = 2
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="TopicConfirmationLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 418.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_1ofiq")
+theme_override_font_sizes/font_size = 24
+text = "Exit Game"
+vertical_alignment = 1
+
+[node name="ConfirmationLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -7.5
+offset_right = 299.0
+offset_bottom = 15.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_es4eh")
+theme_override_font_sizes/font_size = 18
+text = "Are you sure you want to exit game?"
+vertical_alignment = 1
+
+[node name="YesButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -109.0
+offset_top = -38.0
+offset_right = -10.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_es4eh")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_1ofiq")
+text = "[YesButton]"
+
+[node name="NoButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = -38.0
+offset_right = -124.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_es4eh")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_1ofiq")
+text = "[NoButton]"
+
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/NoButton" to="." method="_on_no_button_pressed"]

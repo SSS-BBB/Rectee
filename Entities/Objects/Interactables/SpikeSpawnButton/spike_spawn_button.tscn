@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Entities/Textures/objects_spritesheet.png" id="1_nrbpv"]
 [ext_resource type="Script" uid="uid://bbrdpspl8kxwf" path="res://Entities/Objects/Interactables/SpikeSpawnButton/spike_spawn_button.gd" id="1_pilyh"]
 [ext_resource type="PackedScene" uid="uid://c5jn262pigeup" path="res://Entities/Objects/Interactables/Components/ShowOnEnterComponent/show_on_enter_component.tscn" id="2_xao7d"]
-[ext_resource type="PackedScene" uid="uid://sqeg3y1xchxj" path="res://UIs/HUDs/ETexture/e_control.tscn" id="3_ocrac"]
+[ext_resource type="PackedScene" uid="uid://sqeg3y1xchxj" path="res://UIs/HUDs/InGameUIs/ETexture/e_control.tscn" id="3_ocrac"]
 [ext_resource type="PackedScene" uid="uid://bkxq8sthwshxo" path="res://Entities/Objects/Interactables/Components/OnInteractComponent/on_interact_component.tscn" id="4_ocrac"]
-[ext_resource type="Script" uid="uid://df8mobtfahonv" path="res://UIs/HUDs/TimeDisplay/time_display.gd" id="5_3rpo3"]
+[ext_resource type="Script" uid="uid://df8mobtfahonv" path="res://UIs/HUDs/InGameUIs/TimeDisplay/time_display.gd" id="5_3rpo3"]
 [ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="5_jscvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rebv6"]

@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvfg4v2yxr18w"]
+
+[ext_resource type="Script" uid="uid://dp5i71mqecaqj" path="res://UIs/HUDs/InScreenUIs/DialogSystem/Dialog/dialog.gd" id="1_knhdo"]
+[ext_resource type="Texture2D" uid="uid://42is1xogiwke" path="res://icon.svg" id="2_0678q"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_0tj5j"]
+[ext_resource type="Texture2D" uid="uid://c6yvmatjtjt3r" path="res://UIs/HUDs/InScreenUIs/MovementButton/Texture/arrow_right.png" id="4_02ppv"]
+[ext_resource type="Script" uid="uid://diib3mtnv5r3x" path="res://UIs/Commons/NextButton/next_button.gd" id="5_44eip"]
+
+[node name="Dialog" type="Control" node_paths=PackedStringArray("dialog_speaker", "dialog_text", "next_button", "canvas_layer")]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_knhdo")
+dialog_speaker = NodePath("CanvasLayer/DialogBackground/DialogSpeaker")
+dialog_text = NodePath("CanvasLayer/DialogBackground/DialogText")
+next_button = NodePath("CanvasLayer/DialogBackground/NextButton")
+canvas_layer = NodePath("CanvasLayer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+visible = false
+
+[node name="DialogBorder" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 79.0
+offset_top = -243.0
+offset_right = -132.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="DialogBackground" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 111.0
+offset_top = -217.0
+offset_right = -167.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogSpeaker" type="TextureRect" parent="CanvasLayer/DialogBackground"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_right = 24.0
+grow_vertical = 2
+texture = ExtResource("2_0678q")
+stretch_mode = 3
+
+[node name="DialogText" type="RichTextLabel" parent="CanvasLayer/DialogBackground"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -801.0
+offset_top = 31.0
+offset_right = -9.0
+offset_bottom = -51.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_0tj5j")
+theme_override_font_sizes/normal_font_size = 24
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at congue risus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce eget fringilla nunc. Quisque sit amet placerat massa. Fusce sit amet sapien odio. Sed non arcu pulvinar, vulputate sapien non, tempor nisi. Vivamus sed massa mattis, varius est at, porttitor ligula. Phasellus quis felis et massa accumsan venenatis quis vulputate lacus. Pellentesque tincidunt enim vitae orci mattis mattis. Aenean molestie a est quis pulvinar. Curabitur et accumsan eros. Nam facilisis orci vel erat sollicitudin porttitor. Ut gravida euismod lectus."
+
+[node name="NextButton" type="Button" parent="CanvasLayer/DialogBackground"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -41.0
+offset_right = 29.0
+offset_bottom = 31.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+icon = ExtResource("4_02ppv")
+script = ExtResource("5_44eip")
+
+[connection signal="button_down" from="CanvasLayer/DialogBackground/NextButton" to="CanvasLayer/DialogBackground/NextButton" method="_on_button_down"]
+[connection signal="button_up" from="CanvasLayer/DialogBackground/NextButton" to="CanvasLayer/DialogBackground/NextButton" method="_on_button_up"]

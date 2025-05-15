@@ -2,12 +2,13 @@
 extends Node
 
 # Statics
-enum PausingState { NONE, PAUSE, DIALOG }
+enum PausingState { NONE, PAUSE, DIALOG, DIED }
 
 # Class variables
 var pause_ui: PauseUI
 var dialog: Dialog
 var confirmation_ui: ConfirmationUI
+var died_ui: DiedUI
 
 var current_pausing_state: PausingState
 
@@ -20,7 +21,8 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("pause_resume"):
-		pause_or_resume()
+		if current_pausing_state == PausingState.NONE or current_pausing_state == PausingState.PAUSE:
+			pause_or_resume()
 
 # Class functions
 func show_dialog_ui(dialog_data: Array[DialogData]):
@@ -46,14 +48,38 @@ func pause_or_resume():
 		push_error("No pause ui loaded!")
 		return
 	
-	if current_pausing_state != PausingState.NONE and current_pausing_state != PausingState.PAUSE:
-		push_warning("Trying to pause or resume, but the game is on another pausing state")
-		return
-	
 	get_tree().paused = not get_tree().paused
 	pause_ui.visible = get_tree().paused
 	current_pausing_state = PausingState.PAUSE if get_tree().paused else PausingState.NONE
 	finished_pause_or_resume.emit()
+
+func show_died_ui():
+	if not died_ui:
+		push_error("No died ui loaded!")
+		return
+	
+	if current_pausing_state != PausingState.NONE:
+		push_warning("Trying to show died ui, while the game is being paused.")
+		return
+	
+	get_tree().paused = true
+	current_pausing_state = PausingState.DIED
+	
+	died_ui.visible = true
+
+func hide_died_ui():
+	if not died_ui:
+		push_error("No died ui loaded!")
+		return
+	
+	if current_pausing_state != PausingState.DIED:
+		push_warning("Trying to hide died ui, when there is no died ui being shown.")
+		return
+	
+	died_ui.visible = false
+	finished_pause_or_resume.emit()
+	get_tree().paused = false
+	current_pausing_state = PausingState.NONE
 
 func show_confirmation_ui(topic_text: String, confirm_text: String, on_yes_button_pressed: Callable, on_no_button_pressed: Callable = func(): pass):
 	if not confirmation_ui:

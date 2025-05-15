@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://tw6plv4myh6e"]
+[gd_scene load_steps=9 format=3 uid="uid://tw6plv4myh6e"]
 
 [ext_resource type="Script" uid="uid://b8agbwpbqsx4x" path="res://Boxes/LevelBoxContainer/level_box_container.gd" id="1_x0hdf"]
-[ext_resource type="PackedScene" uid="uid://c77ygnkf07k6d" path="res://UIs/HUDs/MovementButton/movement_control_button.tscn" id="2_axoqc"]
+[ext_resource type="PackedScene" uid="uid://c77ygnkf07k6d" path="res://UIs/HUDs/InScreenUIs/MovementButton/movement_control_button.tscn" id="2_axoqc"]
 [ext_resource type="PackedScene" uid="uid://11knbogl7tk3" path="res://UIs/HUDs/SceneTransition/scene_transition.tscn" id="3_guhsa"]
-[ext_resource type="PackedScene" uid="uid://cvfg4v2yxr18w" path="res://UIs/HUDs/DialogSystem/Dialog/dialog.tscn" id="4_axoqc"]
-[ext_resource type="PackedScene" uid="uid://bx3quix7n6acd" path="res://UIs/HUDs/PauseAndResumeSystem/PauseButton/pause_button.tscn" id="5_guhsa"]
-[ext_resource type="PackedScene" uid="uid://t3wn8svtywo7" path="res://UIs/HUDs/PauseAndResumeSystem/PauseUI/pause_ui.tscn" id="6_qyl5l"]
-[ext_resource type="PackedScene" uid="uid://c8he2wiyy36ix" path="res://UIs/HUDs/Commons/ConfirmationUI/confirmation_ui.tscn" id="7_dyp74"]
+[ext_resource type="PackedScene" uid="uid://cvfg4v2yxr18w" path="res://UIs/HUDs/InScreenUIs/DialogSystem/Dialog/dialog.tscn" id="4_axoqc"]
+[ext_resource type="PackedScene" uid="uid://bx3quix7n6acd" path="res://UIs/HUDs/InScreenUIs/PauseAndResumeSystem/PauseButton/pause_button.tscn" id="5_guhsa"]
+[ext_resource type="PackedScene" uid="uid://t3wn8svtywo7" path="res://UIs/HUDs/InScreenUIs/PauseAndResumeSystem/PauseUI/pause_ui.tscn" id="6_qyl5l"]
+[ext_resource type="PackedScene" uid="uid://c8he2wiyy36ix" path="res://UIs/Commons/ConfirmationSystem/ConfirmationUI/confirmation_ui.tscn" id="7_dyp74"]
+[ext_resource type="PackedScene" uid="uid://bbjwglohdehjv" path="res://UIs/HUDs/InScreenUIs/DiedUI/died_ui.tscn" id="8_aihat"]
 
 [node name="LevelBoxContainer" type="Node2D" node_paths=PackedStringArray("scene_transition")]
 script = ExtResource("1_x0hdf")
@@ -37,3 +38,6 @@ visible = false
 to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseButton")]
 
 [node name="ConfirmationUI" parent="UIs" instance=ExtResource("7_dyp74")]
+
+[node name="DiedUI" parent="UIs" node_paths=PackedStringArray("to_hide_on_activate") instance=ExtResource("8_aihat")]
+to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseButton")]
