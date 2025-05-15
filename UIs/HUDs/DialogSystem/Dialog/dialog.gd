@@ -16,6 +16,7 @@ signal finished_dialog
 
 # Game functions
 func _ready():
+	super._ready()
 	UIManager.dialog = self
 	typing = false
 

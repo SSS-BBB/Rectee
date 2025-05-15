@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c752w104a2psw"
-path="res://.godot/imported/door_enter.wav-10030a21d5394af0bbff61b52e3cf1f7.sample"
+path="res://.godot/imported/door_enter.wav-e20b37f5ed8f7aee1d9a052ccd193788.sample"
 
 [deps]
 
-source_file="res://Utils/Globals/GameManager/SFXs/door_enter.wav"
-dest_files=["res://.godot/imported/door_enter.wav-10030a21d5394af0bbff61b52e3cf1f7.sample"]
+source_file="res://Utils/Globals/AudioManager/SFXs/door_enter.wav"
+dest_files=["res://.godot/imported/door_enter.wav-e20b37f5ed8f7aee1d9a052ccd193788.sample"]
 
 [params]
 
