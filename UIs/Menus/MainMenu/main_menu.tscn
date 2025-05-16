@@ -1,0 +1,152 @@
+[gd_scene load_steps=10 format=3 uid="uid://tf45kmur5ae5"]
+
+[ext_resource type="FontFile" uid="uid://d1bhrsfeod1xi" path="res://Assets/Fonts/ariblk.ttf" id="1_h4gum"]
+[ext_resource type="Script" uid="uid://dsrrkn6fy8tge" path="res://UIs/Menus/MainMenu/main_menu.gd" id="1_oa05j"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="2_oemvj"]
+[ext_resource type="StyleBox" uid="uid://cti6puea05wvl" path="res://UIs/Styles/ButtonStyles/flat_black.tres" id="3_en46i"]
+[ext_resource type="Script" uid="uid://drdw1fqfpqmo0" path="res://UIs/Menus/MainMenu/PlayButton/play_button.gd" id="4_en46i"]
+[ext_resource type="PackedScene" uid="uid://11knbogl7tk3" path="res://UIs/HUDs/SceneTransition/scene_transition.tscn" id="6_mevam"]
+[ext_resource type="PackedScene" uid="uid://dym7u240xo7ns" path="res://UIs/HUDs/InScreenUIs/SettingUI/setting_ui.tscn" id="7_1lb8f"]
+[ext_resource type="PackedScene" uid="uid://c8he2wiyy36ix" path="res://UIs/HUDs/InScreenUIs/ConfirmationSystem/ConfirmationUI/confirmation_ui.tscn" id="8_0ayhf"]
+[ext_resource type="PackedScene" uid="uid://c0fy80hc55hvm" path="res://UIs/HUDs/InScreenUIs/CreditHudUI/credit_hud_ui.tscn" id="9_jbtn1"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("scene_transition", "button_container", "credit_hud_ui")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oa05j")
+scene_transition = NodePath("HudUIs/SceneTransition")
+button_container = NodePath("CanvasLayer/BackgroundRect/ButtonBoxContainer")
+credit_hud_ui = NodePath("HudUIs/CreditHudUI")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BorderRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BackgroundRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -590.0
+offset_top = -310.0
+offset_right = 590.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitleLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -199.0
+offset_top = 22.0
+offset_right = 199.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_h4gum")
+theme_override_font_sizes/font_size = 56
+text = "[GameTitle]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonBoxContainer" type="VBoxContainer" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -175.0
+offset_right = 190.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oemvj")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_en46i")
+text = "[PlayButton]"
+script = ExtResource("4_en46i")
+
+[node name="SelectBoxButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oemvj")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_en46i")
+text = "[SelectBoxButton]"
+
+[node name="SettingButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oemvj")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_en46i")
+text = "[SettingButton]"
+
+[node name="CreditButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oemvj")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_en46i")
+text = "[CreditButton]"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oemvj")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_en46i")
+text = "[ExitButton]"
+
+[node name="HudUIs" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SceneTransition" parent="HudUIs" instance=ExtResource("6_mevam")]
+visible = false
+layout_mode = 1
+
+[node name="CanvasLayer" parent="HudUIs/SceneTransition" index="0"]
+layer = -10
+
+[node name="SettingUI" parent="HudUIs" instance=ExtResource("7_1lb8f")]
+
+[node name="ConfirmationUI" parent="HudUIs" instance=ExtResource("8_0ayhf")]
+always_hide = false
+always_show = false
+
+[node name="CreditHudUI" parent="HudUIs" instance=ExtResource("9_jbtn1")]
+
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/SelectBoxButton" to="." method="_on_select_box_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+
+[editable path="HudUIs/SceneTransition"]

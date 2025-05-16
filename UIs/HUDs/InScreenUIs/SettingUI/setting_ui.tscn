@@ -25,6 +25,7 @@ to_hide_layer = -20
 metadata/_custom_type_script = "uid://bovpcynx16cl5"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -20
 visible = false
 
 [node name="BorderRect" type="ColorRect" parent="CanvasLayer"]

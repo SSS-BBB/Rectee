@@ -81,7 +81,7 @@ theme_override_styles/normal = ExtResource("4_lawmv")
 text = "[RestartButton]"
 script = ExtResource("6_ol1x7")
 
-[node name="MenuButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonContainer"]
+[node name="MenuButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonContainer" node_paths=PackedStringArray("to_hide_when_exit")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -97,6 +97,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("4_lawmv")
 text = "[MenuButton]"
 script = ExtResource("6_lawmv")
+to_hide_when_exit = NodePath("../../../..")
 topic_text = "[ToMenuTopic]"
 confirm_text = "[QuitToMenuConfirmation]"
 metadata/_custom_type_script = "uid://0moljr0wb5an"

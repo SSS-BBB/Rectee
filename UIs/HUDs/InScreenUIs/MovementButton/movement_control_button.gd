@@ -3,8 +3,9 @@ class_name MovementControlButton extends HudUI
 
 # Game functions
 func _ready():
-	always_hide = not UIManager.turn_movement_control_ui
-	UIManager.movement_control_setting_changed.connect(func(on: bool): always_hide = not on)
+	if not Engine.is_editor_hint():
+		always_hide = not UIManager.turn_movement_control_ui
+		UIManager.movement_control_setting_changed.connect(func(on: bool): always_hide = not on)
 	super._ready()
 
 # Statics

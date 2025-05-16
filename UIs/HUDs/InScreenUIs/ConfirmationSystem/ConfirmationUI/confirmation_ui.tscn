@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_es4eh"]
 
 [node name="ConfirmationUI" type="Control" node_paths=PackedStringArray("topic_label", "confirm_label", "canvas_layer")]
-process_mode = 2
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -18,6 +18,8 @@ confirm_label = NodePath("CanvasLayer/BackgroundRect/ConfirmationLabel")
 canvas_layer = NodePath("CanvasLayer")
 to_show_layer = 20
 to_hide_layer = -20
+always_hide = null
+always_show = null
 metadata/_custom_type_script = "uid://bovpcynx16cl5"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -12,7 +12,8 @@ var no_func: Callable
 # Game functions
 func _ready():
 	super._ready()
-	UIManager.confirmation_ui = self
+	if not Engine.is_editor_hint():
+		UIManager.confirmation_ui = self
 
 # Class functions
 func show_confirm_ui(topic_text: String, confirm_text: String, on_yes_button_pressed: Callable, on_no_button_pressed: Callable = func(): pass):

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bpw316k5ppoi8" path="res://UIs/HUDs/SceneTransition/scene_transition.gd" id="1_lxr7h"]
 
 [node name="SceneTransition" type="Control" node_paths=PackedStringArray("canvas_layer")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

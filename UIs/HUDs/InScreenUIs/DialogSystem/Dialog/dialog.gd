@@ -17,8 +17,10 @@ signal finished_dialog
 # Game functions
 func _ready():
 	super._ready()
-	UIManager.dialog = self
-	typing = false
+	
+	if not Engine.is_editor_hint():
+		UIManager.dialog = self
+		typing = false
 
 func _input(event):
 	if event.is_action_pressed("next"):

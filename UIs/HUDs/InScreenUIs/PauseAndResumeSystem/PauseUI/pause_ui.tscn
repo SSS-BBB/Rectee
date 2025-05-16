@@ -17,8 +17,6 @@ button_container = NodePath("CanvasLayer/BackgroundRect/ButtonContainer")
 canvas_layer = NodePath("CanvasLayer")
 to_show_layer = 11
 to_hide_layer = -11
-always_hide = null
-always_show = null
 metadata/_custom_type_script = "uid://bovpcynx16cl5"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -1,8 +1,12 @@
 class_name SettingUI extends HudUI
 
+# Export variables
 @export var volume_slider: HSlider
 @export var language_option_button: OptionButton
 @export var movement_check_button: CheckButton
+
+# Class variables
+var on_ok_pressed: Callable
 
 # Game functions
 func _ready():
@@ -39,5 +43,8 @@ func _on_ok_button_pressed():
 		UIManager.turn_movement_control_ui = movement_check_button.button_pressed
 	else:
 		push_warning("No movement check button object, cannot set movement control ui")
+	
+	if on_ok_pressed:
+		on_ok_pressed.call()
 	
 	visible = false

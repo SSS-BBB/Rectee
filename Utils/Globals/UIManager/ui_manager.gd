@@ -5,6 +5,7 @@ extends Node
 enum PausingState { NONE, PAUSE, DIALOG, DIED }
 
 # Class variables
+var scene_transition: SceneTransition
 var pause_ui: PauseUI
 var dialog: Dialog
 var confirmation_ui: ConfirmationUI
@@ -32,6 +33,12 @@ func _input(event):
 			pause_or_resume()
 
 # Class functions
+func exit_scene_transition(on_exit_callback: Callable = func(): pass):
+	scene_transition.visible = true
+	scene_transition.exit_scene()
+	await scene_transition.exit_transition_finished
+	on_exit_callback.call()
+
 func show_dialog_ui(dialog_data: Array[DialogData]):
 	if not dialog:
 		push_error("No dialog ui loaded!")
@@ -69,9 +76,8 @@ func show_died_ui():
 		push_warning("Trying to show died ui, while the game is being paused.")
 		return
 	
-	get_tree().paused = true
 	current_pausing_state = PausingState.DIED
-	
+	get_tree().paused = true
 	died_ui.visible = true
 
 func hide_died_ui():
@@ -95,9 +101,10 @@ func show_confirmation_ui(topic_text: String, confirm_text: String, on_yes_butto
 	
 	confirmation_ui.show_confirm_ui(topic_text, confirm_text, on_yes_button_pressed, on_no_button_pressed)
 
-func show_setting_ui():
+func show_setting_ui(on_ok_pressed: Callable = func(): pass):
 	if not setting_ui:
 		push_error("No setting ui loaded!")
 		return
-
+	
 	setting_ui.visible = true
+	setting_ui.on_ok_pressed = on_ok_pressed

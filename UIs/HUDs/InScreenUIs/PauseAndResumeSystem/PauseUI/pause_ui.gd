@@ -10,8 +10,10 @@ var is_confirming: bool # the button will not do anything if confirmation ui is 
 # Game functions
 func _ready():
 	super._ready()
-	UIManager.pause_ui = self
-	is_confirming = false
+	
+	if not Engine.is_editor_hint():
+		UIManager.pause_ui = self
+		is_confirming = false
 
 func _input(event):
 	if event.is_action_pressed("restart"):
@@ -60,9 +62,9 @@ func _on_quit_to_menu_button_pressed():
 	
 	show_confirmation("[ToMenuTopic]", "[QuitToMenuConfirmation]", 
 		func():
-			# TODO: go to menu
+			visible = false
+			UIManager.exit_scene_transition(func(): get_tree().change_scene_to_file("res://UIs/Menus/MainMenu/main_menu.tscn"))
 			reset_ui()
-			print("Go to main menu!")
 	)
 
 func _on_exit_game_button_pressed():

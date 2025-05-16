@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0fy80hc55hvm"]
+
+[ext_resource type="Script" uid="uid://bawpffhxb4l86" path="res://UIs/HUDs/InScreenUIs/CreditHudUI/credit_hud_ui.gd" id="1_nt1v7"]
+[ext_resource type="FontFile" uid="uid://d1bhrsfeod1xi" path="res://Assets/Fonts/ariblk.ttf" id="2_fk1sb"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_u4qh7"]
+[ext_resource type="FontFile" uid="uid://c4jwk71g5pyyk" path="res://Assets/Fonts/arialbd.ttf" id="4_m71eu"]
+[ext_resource type="Texture2D" uid="uid://c6yvmatjtjt3r" path="res://UIs/HUDs/InScreenUIs/MovementButton/Texture/arrow_right.png" id="5_nt1v7"]
+
+[node name="CreditHudUI" type="Control" node_paths=PackedStringArray("canvas_layer")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_nt1v7")
+canvas_layer = NodePath("CanvasLayer")
+to_show_layer = 20
+to_hide_layer = -20
+metadata/_custom_type_script = "uid://bovpcynx16cl5"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -20
+visible = false
+
+[node name="BorderRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -533.333
+offset_top = -300.0
+offset_right = 533.333
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="BackgroundRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -493.333
+offset_top = -260.0
+offset_right = 493.333
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.933333, 0.933333, 0.933333, 1)
+
+[node name="CreditTitleLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -231.5
+offset_top = 17.0
+offset_right = 231.5
+offset_bottom = 85.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fk1sb")
+theme_override_font_sizes/font_size = 48
+text = "[CreditTitleLabel]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -58.0
+offset_right = 187.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="ArtCreditLabel" type="Label" parent="CanvasLayer/BackgroundRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u4qh7")
+theme_override_font_sizes/font_size = 32
+text = "[ArtCreditLabel]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundCreditLabel" type="Label" parent="CanvasLayer/BackgroundRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u4qh7")
+theme_override_font_sizes/font_size = 32
+text = "[SoundCreditLabel]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgrammingCreditLabel" type="Label" parent="CanvasLayer/BackgroundRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u4qh7")
+theme_override_font_sizes/font_size = 32
+text = "[ProgrammingCreditLabel]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LinkLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.5005
+offset_top = -69.0
+offset_right = 85.4995
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_m71eu")
+theme_override_font_sizes/font_size = 32
+text = "[LinkLabel]"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+offset_left = 63.0
+offset_top = 65.0
+offset_right = 135.0
+offset_bottom = 137.0
+rotation = 3.14159
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("5_nt1v7")
+
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/BackButton" to="." method="_on_back_button_pressed"]

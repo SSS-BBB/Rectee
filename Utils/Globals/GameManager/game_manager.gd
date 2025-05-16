@@ -10,6 +10,7 @@ enum Language { en, th }
 # Class variables
 var box_container: LevelBoxContainer
 var current_box_level: int
+var current_player_level: int = 1 # TODO: load from save
 var current_box_scene: PackedScene
 var language: Language = Language.en:
 	set(value):

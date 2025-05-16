@@ -23,6 +23,8 @@ mouse_filter = 2
 
 [node name="MovementControlButton" parent="UIs" instance=ExtResource("2_axoqc")]
 layout_mode = 1
+always_hide = false
+always_show = false
 
 [node name="SceneTransition" parent="UIs" node_paths=PackedStringArray("to_hide_on_activate") instance=ExtResource("3_guhsa")]
 layout_mode = 1
@@ -30,22 +32,16 @@ to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseB
 
 [node name="Dialog" parent="UIs" instance=ExtResource("4_axoqc")]
 layout_mode = 1
-always_hide = null
-always_show = null
 
 [node name="PauseButton" parent="UIs" instance=ExtResource("5_guhsa")]
 visible = false
-always_hide = null
-always_show = null
 
 [node name="PauseUI" parent="UIs" node_paths=PackedStringArray("to_hide_on_activate") instance=ExtResource("6_qyl5l")]
 to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseButton")]
-always_hide = null
-always_show = null
 
 [node name="ConfirmationUI" parent="UIs" instance=ExtResource("7_dyp74")]
-always_hide = null
-always_show = null
+always_hide = false
+always_show = false
 
 [node name="DiedUI" parent="UIs" node_paths=PackedStringArray("to_hide_on_activate") instance=ExtResource("8_aihat")]
 to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseButton")]
