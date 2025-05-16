@@ -9,11 +9,18 @@ var pause_ui: PauseUI
 var dialog: Dialog
 var confirmation_ui: ConfirmationUI
 var died_ui: DiedUI
+var setting_ui: SettingUI
+var turn_movement_control_ui: bool = true:
+	 # turn movement control ui on/off
+	set(value):
+		turn_movement_control_ui = value
+		movement_control_setting_changed.emit(turn_movement_control_ui)
 
 var current_pausing_state: PausingState
 
 # Signal
 signal finished_pause_or_resume
+signal movement_control_setting_changed(on: bool)
 
 # Game functions
 func _ready():
@@ -87,7 +94,10 @@ func show_confirmation_ui(topic_text: String, confirm_text: String, on_yes_butto
 		return
 	
 	confirmation_ui.show_confirm_ui(topic_text, confirm_text, on_yes_button_pressed, on_no_button_pressed)
-	
-	
-	
-	
+
+func show_setting_ui():
+	if not setting_ui:
+		push_error("No setting ui loaded!")
+		return
+
+	setting_ui.visible = true

@@ -4,10 +4,19 @@ extends Node
 # Export variables
 @export var init_box_scene: PackedScene
 
+# Statics
+enum Language { en, th }
+
 # Class variables
 var box_container: LevelBoxContainer
 var current_box_level: int
 var current_box_scene: PackedScene
+var language: Language = Language.en:
+	set(value):
+		language = value
+		# TODO: change language
+		print("Select ", language)
+		# TODO: save setting
 
 # Class functions
 func change_box_scene(new_box_scene: PackedScene):

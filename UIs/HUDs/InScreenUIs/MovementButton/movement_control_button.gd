@@ -1,7 +1,11 @@
 @tool
-class_name MovementControlButton extends Control
+class_name MovementControlButton extends HudUI
 
-@onready var canvas_layer = $CanvasLayer as CanvasLayer
+# Game functions
+func _ready():
+	always_hide = not UIManager.turn_movement_control_ui
+	UIManager.movement_control_setting_changed.connect(func(on: bool): always_hide = not on)
+	super._ready()
 
 # Statics
 static func do_action_input(action_name: String, check_visible: CanvasItem):
@@ -51,9 +55,3 @@ func _on_up_button_button_up():
 
 func _on_down_button_button_up():
 	do_action_released("move_down")
-
-
-func _on_visibility_changed():
-	# show or hide canvas layer too
-	if canvas_layer:
-		canvas_layer.visible = visible

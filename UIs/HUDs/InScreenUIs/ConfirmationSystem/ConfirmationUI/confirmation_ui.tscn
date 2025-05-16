@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8he2wiyy36ix"]
 
-[ext_resource type="Script" uid="uid://cc1b5athly0qt" path="res://UIs/Commons/ConfirmationSystem/ConfirmationUI/confirmation_ui.gd" id="1_es4eh"]
+[ext_resource type="Script" uid="uid://cc1b5athly0qt" path="res://UIs/HUDs/InScreenUIs/ConfirmationSystem/ConfirmationUI/confirmation_ui.gd" id="1_es4eh"]
 [ext_resource type="FontFile" uid="uid://c4jwk71g5pyyk" path="res://Assets/Fonts/arialbd.ttf" id="2_1ofiq"]
 [ext_resource type="StyleBox" uid="uid://cti6puea05wvl" path="res://UIs/Styles/ButtonStyles/flat_black.tres" id="3_1ofiq"]
 [ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_es4eh"]

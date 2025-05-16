@@ -1,0 +1,192 @@
+[gd_scene load_steps=8 format=3 uid="uid://dym7u240xo7ns"]
+
+[ext_resource type="Script" uid="uid://xwunyp8wcipe" path="res://UIs/HUDs/InScreenUIs/SettingUI/setting_ui.gd" id="1_ielgi"]
+[ext_resource type="FontFile" uid="uid://d1bhrsfeod1xi" path="res://Assets/Fonts/ariblk.ttf" id="2_be148"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_viqug"]
+[ext_resource type="StyleBox" uid="uid://cti6puea05wvl" path="res://UIs/Styles/ButtonStyles/flat_black.tres" id="4_ielgi"]
+[ext_resource type="Script" uid="uid://dpd55wr078pj5" path="res://UIs/HUDs/InScreenUIs/SettingUI/VolumeSlider/volume_slider.gd" id="4_uu7o8"]
+[ext_resource type="Script" uid="uid://bxjec7etgbku4" path="res://UIs/HUDs/InScreenUIs/SettingUI/LanguageOptionButton/language_option_button.gd" id="6_ivrcw"]
+[ext_resource type="Script" uid="uid://du1jn4duu2s8b" path="res://UIs/HUDs/InScreenUIs/SettingUI/MovementCheckButton/movement_check_button.gd" id="7_yydrp"]
+
+[node name="SettingUI" type="Control" node_paths=PackedStringArray("volume_slider", "language_option_button", "movement_check_button", "canvas_layer")]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ielgi")
+volume_slider = NodePath("CanvasLayer/BackgroundRect/VolumeLabel/VBoxContainer/VolumeSlider")
+language_option_button = NodePath("CanvasLayer/BackgroundRect/LanguageLabel/LanguageOptionButton")
+movement_check_button = NodePath("CanvasLayer/BackgroundRect/MovementLabel/MovementCheckButton")
+canvas_layer = NodePath("CanvasLayer")
+to_show_layer = 20
+to_hide_layer = -20
+metadata/_custom_type_script = "uid://bovpcynx16cl5"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BorderRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -522.0
+offset_top = -246.0
+offset_right = 528.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="BackgroundRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -485.0
+offset_top = -210.0
+offset_right = 485.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.93408, 0.93408, 0.93408, 1)
+
+[node name="SettingLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -139.0
+offset_top = 31.0
+offset_right = 139.0
+offset_bottom = 83.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_be148")
+theme_override_font_sizes/font_size = 36
+text = "[SettingLabel]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+offset_left = 35.0
+offset_top = 129.0
+offset_right = 187.0
+offset_bottom = 157.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_viqug")
+theme_override_font_sizes/font_size = 24
+text = "[VolumeSettingLabel]"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BackgroundRect/VolumeLabel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 93.0
+offset_top = -8.0
+offset_right = 613.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VolumeSlider" type="HSlider" parent="CanvasLayer/BackgroundRect/VolumeLabel/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_uu7o8")
+
+[node name="LanguageLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+offset_left = 35.0
+offset_top = 192.0
+offset_right = 289.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_viqug")
+theme_override_font_sizes/font_size = 24
+text = "[LanguageSettingLabel]"
+
+[node name="LanguageOptionButton" type="OptionButton" parent="CanvasLayer/BackgroundRect/LanguageLabel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 66.0
+offset_top = -15.0
+offset_right = 146.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_viqug")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("4_ielgi")
+alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "[en]"
+popup/item_0/id = 0
+popup/item_1/text = "[th]"
+popup/item_1/id = 1
+script = ExtResource("6_ivrcw")
+
+[node name="MovementLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+offset_left = 35.0
+offset_top = 255.0
+offset_right = 294.0
+offset_bottom = 283.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_viqug")
+theme_override_font_sizes/font_size = 24
+text = "[MovementSettingLabel]"
+
+[node name="MovementCheckButton" type="CheckButton" parent="CanvasLayer/BackgroundRect/MovementLabel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 49.0
+offset_top = -17.0
+offset_right = 93.0
+offset_bottom = 7.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+script = ExtResource("7_yydrp")
+
+[node name="OkButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -88.0
+offset_right = 125.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_viqug")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("4_ielgi")
+text = "[OkSettingButton]"
+
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/OkButton" to="." method="_on_ok_button_pressed"]

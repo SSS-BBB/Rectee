@@ -52,8 +52,7 @@ func _on_setting_button_pressed():
 	if not can_button_be_pressed():
 		return
 	
-	# TODO: go to setting
-	pass
+	UIManager.show_setting_ui()
 
 func _on_quit_to_menu_button_pressed():
 	if not can_button_be_pressed():
@@ -65,7 +64,6 @@ func _on_quit_to_menu_button_pressed():
 			reset_ui()
 			print("Go to main menu!")
 	)
-	pass
 
 func _on_exit_game_button_pressed():
 	if not can_button_be_pressed():

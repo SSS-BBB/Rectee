@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://88xg7och1657" path="res://UIs/HUDs/InScreenUIs/DiedUI/died_ui.gd" id="1_yscij"]
 [ext_resource type="FontFile" uid="uid://c4jwk71g5pyyk" path="res://Assets/Fonts/arialbd.ttf" id="2_xunjp"]
 [ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_dworg"]
-[ext_resource type="Script" uid="uid://dfpfhpqny1yk7" path="res://UIs/Commons/ConfirmationSystem/ConfirmationComponent/ConfirmationButtonComponent/confirmation_button_component.gd" id="3_xunjp"]
+[ext_resource type="Script" uid="uid://dfpfhpqny1yk7" path="res://UIs/HUDs/InScreenUIs/ConfirmationSystem/ConfirmationComponent/ConfirmationButtonComponent/confirmation_button_component.gd" id="3_xunjp"]
 [ext_resource type="StyleBox" uid="uid://cti6puea05wvl" path="res://UIs/Styles/ButtonStyles/flat_black.tres" id="4_lawmv"]
 [ext_resource type="Script" uid="uid://b8xrbnhe3i3cl" path="res://UIs/HUDs/InScreenUIs/DiedUI/MenuButton/died_menu_button.gd" id="6_lawmv"]
 [ext_resource type="Script" uid="uid://bfttt8evh6m6y" path="res://UIs/HUDs/InScreenUIs/DiedUI/RestartButton/restart_on_die_button.gd" id="6_ol1x7"]

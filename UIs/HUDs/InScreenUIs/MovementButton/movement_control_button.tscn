@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cvgbxc6amrk61" path="res://UIs/HUDs/InScreenUIs/MovementButton/movement_control_button.gd" id="1_6gxde"]
 [ext_resource type="Texture2D" uid="uid://c6yvmatjtjt3r" path="res://UIs/HUDs/InScreenUIs/MovementButton/Texture/arrow_right.png" id="1_yxv3h"]
 
-[node name="MovementControlButton" type="Control"]
+[node name="MovementControlButton" type="Control" node_paths=PackedStringArray("canvas_layer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,9 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6gxde")
+canvas_layer = NodePath("CanvasLayer")
+always_hide = null
+always_show = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
@@ -101,7 +104,6 @@ rotation = 1.5708
 focus_mode = 0
 icon = ExtResource("1_yxv3h")
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="button_down" from="CanvasLayer/HorizontalButtons/LeftButton" to="." method="_on_left_button_button_down"]
 [connection signal="button_up" from="CanvasLayer/HorizontalButtons/LeftButton" to="." method="_on_left_button_button_up"]
 [connection signal="button_down" from="CanvasLayer/HorizontalButtons/RightButton" to="." method="_on_right_button_button_down"]
