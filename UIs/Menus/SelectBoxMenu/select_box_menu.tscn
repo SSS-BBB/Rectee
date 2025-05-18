@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkb42oulcpg10"]
+
+[ext_resource type="Texture2D" uid="uid://c6yvmatjtjt3r" path="res://UIs/HUDs/InScreenUIs/MovementButton/Texture/arrow_right.png" id="1_86a1g"]
+[ext_resource type="FontFile" uid="uid://d1bhrsfeod1xi" path="res://Assets/Fonts/ariblk.ttf" id="1_botwm"]
+[ext_resource type="Script" uid="uid://beif8golnf00t" path="res://UIs/Menus/SelectBoxMenu/select_box_menu.gd" id="1_l3nds"]
+[ext_resource type="PackedScene" uid="uid://dplni7h1sxm80" path="res://UIs/Menus/SelectBoxMenu/BoxCardSystem/BoxCard/box_card.tscn" id="3_mpbmp"]
+[ext_resource type="Resource" uid="uid://coriqt2pb3n6h" path="res://Boxes/LevelBoxes/BoxTest1/BoxCardResource/box_test_1_resource.tres" id="4_1nahn"]
+[ext_resource type="Resource" uid="uid://dotrxehj0m0e2" path="res://Boxes/LevelBoxes/BoxTest2/BoxCardResource/box_test_2_resource.tres" id="5_reuce"]
+[ext_resource type="PackedScene" uid="uid://11knbogl7tk3" path="res://UIs/HUDs/SceneTransition/scene_transition.tscn" id="6_reuce"]
+
+[node name="SelectBoxMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l3nds")
+
+[node name="SelectBoxTitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_top = 19.0
+offset_right = 285.0
+offset_bottom = 87.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_botwm")
+theme_override_font_sizes/font_size = 48
+text = "[SelectBoxTitleLabel]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 72.0
+offset_top = 72.0
+offset_right = 144.0
+offset_bottom = 144.0
+rotation = 3.14159
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("1_86a1g")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -615.0
+offset_top = -234.0
+offset_right = 615.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="BoxCard" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("4_1nahn")
+
+[node name="BoxCard2" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("4_1nahn")
+
+[node name="BoxCard3" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("4_1nahn")
+
+[node name="BoxCard4" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("5_reuce")
+
+[node name="BoxCard5" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("4_1nahn")
+
+[node name="BoxCard6" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("4_1nahn")
+
+[node name="BoxCard7" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("5_reuce")
+
+[node name="BoxCard8" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("4_1nahn")
+
+[node name="BoxCard9" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("4_1nahn")
+
+[node name="BoxCard10" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("5_reuce")
+
+[node name="BoxCard11" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("5_reuce")
+
+[node name="BoxCard12" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("5_reuce")
+
+[node name="BoxCard13" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("4_1nahn")
+
+[node name="BoxCard14" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("5_reuce")
+
+[node name="BoxCard15" parent="GridContainer" instance=ExtResource("3_mpbmp")]
+layout_mode = 2
+box_card_data = ExtResource("5_reuce")
+
+[node name="HudUIs" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SceneTransition" parent="HudUIs" instance=ExtResource("6_reuce")]
+layout_mode = 1
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

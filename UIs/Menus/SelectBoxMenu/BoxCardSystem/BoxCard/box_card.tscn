@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dplni7h1sxm80"]
+
+[ext_resource type="StyleBox" uid="uid://cti6puea05wvl" path="res://UIs/Styles/ButtonStyles/flat_black.tres" id="1_36blc"]
+[ext_resource type="Texture2D" uid="uid://rmghdvvic4rq" path="res://Boxes/LevelBoxes/BoxTest1/BoxTexture/box_test_1.png" id="2_a04yd"]
+[ext_resource type="Script" uid="uid://drw87d0kk38ju" path="res://UIs/Menus/SelectBoxMenu/BoxCardSystem/BoxCard/box_card.gd" id="2_lro3l"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_1e875"]
+
+[node name="BoxCard" type="Button"]
+clip_contents = true
+custom_minimum_size = Vector2(230, 170)
+offset_right = 230.0
+offset_bottom = 170.0
+theme_override_styles/normal = ExtResource("1_36blc")
+script = ExtResource("2_lro3l")
+
+[node name="BoxTexture" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 19.0
+offset_top = 12.0
+offset_right = 1290.0
+offset_bottom = 730.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_a04yd")
+
+[node name="BoxLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.5
+offset_top = -37.0
+offset_right = 55.5
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_1e875")
+theme_override_font_sizes/font_size = 24
+text = "Box Test 1"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

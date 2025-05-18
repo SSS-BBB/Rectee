@@ -129,11 +129,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SceneTransition" parent="HudUIs" instance=ExtResource("6_mevam")]
-visible = false
 layout_mode = 1
-
-[node name="CanvasLayer" parent="HudUIs/SceneTransition" index="0"]
-layer = -10
 
 [node name="SettingUI" parent="HudUIs" instance=ExtResource("7_1lb8f")]
 

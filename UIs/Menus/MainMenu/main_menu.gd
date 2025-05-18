@@ -40,8 +40,7 @@ func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://Boxes/LevelBoxContainer/level_box_container.tscn")
 
 func _on_select_box_button_pressed():
-	# TODO: go to select box menu
-	pass
+	get_tree().change_scene_to_file("res://UIs/Menus/SelectBoxMenu/select_box_menu.tscn")
 
 func _on_setting_button_pressed():
 	set_buttons_status(false)

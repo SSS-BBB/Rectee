@@ -10,7 +10,7 @@ enum Language { en, th }
 # Class variables
 var box_container: LevelBoxContainer
 var current_box_level: int
-var current_player_level: int = 1 # TODO: load from save
+var current_player_level: int = 2 # TODO: load from save
 var current_box_scene: PackedScene
 var language: Language = Language.en:
 	set(value):
@@ -18,6 +18,11 @@ var language: Language = Language.en:
 		# TODO: change language
 		print("Select ", language)
 		# TODO: save setting
+
+# Game functions
+func _ready():
+	# TODO: load language setting
+	pass
 
 # Class functions
 func change_box_scene(new_box_scene: PackedScene):
