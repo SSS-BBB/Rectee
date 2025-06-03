@@ -11,12 +11,12 @@ var volume_percentage: float:
 	set(value):
 		volume_percentage = value
 		AudioServer.set_bus_volume_db(bus_index, linear_to_db(volume_percentage))
-		# TODO: save setting
+		GameManager.save_setting("VolumePercentage", value)
 
 # Game functions
 func _ready():
 	bus_index = AudioServer.get_bus_index("Master")
-	volume_percentage = 1.0
+	volume_percentage = GameManager.setting_data.VolumePercentage
 	
 # CLass functions
 func play_door_audio():

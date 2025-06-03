@@ -8,7 +8,7 @@ class_name MainMenu extends Control
 # Game functions
 func _ready():
 	get_tree().paused = false
-	UIManager.current_pausing_state = UIManager.PausingState.NONE
+	UIManager.current_hud_state = UIManager.HUDState.NONE
 	
 	if scene_transition:
 		scene_transition.enter_scene()
@@ -16,6 +16,9 @@ func _ready():
 		scene_transition.visible = false
 		scene_transition.canvas_layer.visible = false
 		scene_transition.canvas_layer.layer = scene_transition.to_hide_layer
+	
+	_on_lanuage_changed()
+	GameManager.language_changed.connect(_on_lanuage_changed)
 
 # Class functions
 func set_buttons_status(status: bool):
@@ -26,6 +29,18 @@ func set_buttons_status(status: bool):
 		button.disabled = not status
 
 # Signal functions
+func _on_lanuage_changed():
+	if GameManager.current_player_level <= 1:
+		$CanvasLayer/BackgroundRect/ButtonBoxContainer/PlayButton.text = tr("[PlayButton]")
+	else:
+		$CanvasLayer/BackgroundRect/ButtonBoxContainer/PlayButton.text = tr("[ContinueButton]")
+	
+	$CanvasLayer/BackgroundRect/GameTitleLabel.text = tr("[GameTitle]")
+	$CanvasLayer/BackgroundRect/ButtonBoxContainer/SelectBoxButton.text = tr("[SelectBoxButton]")
+	$CanvasLayer/BackgroundRect/ButtonBoxContainer/SettingButton.text = tr("[SettingButton]")
+	$CanvasLayer/BackgroundRect/ButtonBoxContainer/CreditButton.text = tr("[CreditButton]")
+	$CanvasLayer/BackgroundRect/ButtonBoxContainer/ExitButton.text = tr("[ExitButton]")
+
 func _on_play_button_pressed():
 	# TODO: change box scene in game manager according to player current level
 	
@@ -57,4 +72,6 @@ func _on_credit_button_pressed():
 
 func _on_exit_button_pressed():
 	set_buttons_status(false)
-	UIManager.show_confirmation_ui("[ExitTopic]", "[ExitGameConfirmation]", func(): get_tree().quit(), set_buttons_status.bind(true))
+	UIManager.show_confirmation_ui(tr("[ExitConfirmationTitle]"), tr("[ExitGameConfirmation]"), 
+	func(): get_tree().quit(), set_buttons_status.bind(true)
+	)

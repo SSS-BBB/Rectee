@@ -41,12 +41,13 @@ func reset_ui():
 	set_buttons_activate_status(true)
 
 # Signal functions
+
 func _on_resume_button_button_down():
 	if not can_button_be_pressed():
 		return
 	
 	MovementControlButton.do_action_input("pause_resume", self)
-	UIManager.current_pausing_state = UIManager.PausingState.NONE
+	UIManager.current_hud_state = UIManager.HUDState.NONE
 func _on_resume_button_button_up():
 	MovementControlButton.do_action_released("pause_resume")
 
@@ -60,7 +61,7 @@ func _on_quit_to_menu_button_pressed():
 	if not can_button_be_pressed():
 		return
 	
-	show_confirmation("[ToMenuTopic]", "[QuitToMenuConfirmation]", 
+	show_confirmation(tr("[QuitToMenuConfirmationTitle]"), tr("[QuitToMenuConfirmation]"), 
 		func():
 			visible = false
 			UIManager.exit_scene_transition(func(): get_tree().change_scene_to_file("res://UIs/Menus/MainMenu/main_menu.tscn"))
@@ -71,7 +72,7 @@ func _on_exit_game_button_pressed():
 	if not can_button_be_pressed():
 		return
 	
-	show_confirmation("[ExitTopic]", "[ExitGameConfirmation]",
+	show_confirmation(tr("[ExitConfirmationTitle]"), tr("[ExitGameConfirmation]"),
 		func():
 			reset_ui()
 			get_tree().quit()
@@ -81,7 +82,7 @@ func _on_restart_button_pressed():
 	if not can_button_be_pressed():
 		return
 	
-	show_confirmation("[RestartTopic]", "[RestartConfirmation]", 
+	show_confirmation(tr("[RestartConfirmationTitle]"), tr("[RestartConfirmation]"), 
 		func():
 			reset_ui()
 			MovementControlButton.do_action_input("pause_resume", self)

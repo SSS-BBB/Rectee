@@ -9,13 +9,15 @@ class_name Player extends CharacterBody2D
 @onready var health_component = $Health/HealthComponent as HealthComponent
 @onready var effect_component = $EffectComponent as EffectComponent
 
-@onready var sprite = $Sprite as AnimatedSprite2D
+@onready var sprite = $Sprite as Sprite2D
 
 @onready var spike_damage_audio = $SFXs/SpikeDamageAudio as AudioStreamPlayer2D
 @onready var bullet_damage_audio = $SFXs/BulletDamageAudio as AudioStreamPlayer2D
 @onready var drinking_audio = $SFXs/DrinkingAudio as AudioStreamPlayer2D
 @onready var landing_audio = $SFXs/LandingAudio as AudioStreamPlayer2D
 @onready var key_retrive_audio = $SFXs/KeyRetriveAudio as AudioStreamPlayer2D
+
+@onready var hit_animation_player = $HitAnimationPlayer as AnimationPlayer
 
 # Player variables
 var time_counter: float
@@ -37,6 +39,7 @@ func _ready():
 	keys = 0
 	knockback_power = 0
 	health_component.damage_signal.connect(_on_take_damage)
+	hit_animation_player.play("RESET")
 
 func _input(event):
 	if event.is_action_pressed("move_down"):
@@ -123,11 +126,7 @@ func take_consumable(consumable_resource: ConsumableResource) -> bool:
 
 # Signal functions
 func _on_take_damage(_damage):
-	sprite.play("damaged")
-
-func _on_sprite_animation_finished():
-	if sprite.animation == "damaged":
-		sprite.play("default")
+	hit_animation_player.play("hit")
 
 func _on_health_component_actor_die():
 	UIManager.show_died_ui()

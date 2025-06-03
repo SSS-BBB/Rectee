@@ -40,8 +40,6 @@ visible = false
 to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseButton")]
 
 [node name="ConfirmationUI" parent="UIs" instance=ExtResource("7_dyp74")]
-always_hide = false
-always_show = false
 
 [node name="DiedUI" parent="UIs" node_paths=PackedStringArray("to_hide_on_activate") instance=ExtResource("8_aihat")]
 to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseButton")]

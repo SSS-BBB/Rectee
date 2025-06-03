@@ -134,8 +134,6 @@ layout_mode = 1
 [node name="SettingUI" parent="HudUIs" instance=ExtResource("7_1lb8f")]
 
 [node name="ConfirmationUI" parent="HudUIs" instance=ExtResource("8_0ayhf")]
-always_hide = false
-always_show = false
 
 [node name="CreditHudUI" parent="HudUIs" instance=ExtResource("9_jbtn1")]
 

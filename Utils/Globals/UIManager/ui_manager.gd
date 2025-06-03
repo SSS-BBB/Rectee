@@ -2,7 +2,7 @@
 extends Node
 
 # Statics
-enum PausingState { NONE, PAUSE, DIALOG, DIED }
+enum HUDState { NONE, PAUSE, SETTING, CONFIRMATION, DIALOG, DIED }
 
 # Class variables
 var scene_transition: SceneTransition
@@ -16,8 +16,9 @@ var turn_movement_control_ui: bool = true:
 	set(value):
 		turn_movement_control_ui = value
 		movement_control_setting_changed.emit(turn_movement_control_ui)
+		GameManager.save_setting("MovementUI", value)
 
-var current_pausing_state: PausingState
+var current_hud_state: HUDState
 
 # Signal
 signal finished_pause_or_resume
@@ -25,11 +26,12 @@ signal movement_control_setting_changed(on: bool)
 
 # Game functions
 func _ready():
-	current_pausing_state = PausingState.NONE # None means the game is not pausing
+	current_hud_state = HUDState.NONE # None means the game is not pausing
+	turn_movement_control_ui = GameManager.setting_data.MovementUI
 
 func _input(event):
 	if event.is_action_pressed("pause_resume"):
-		if current_pausing_state == PausingState.NONE or current_pausing_state == PausingState.PAUSE:
+		if current_hud_state == HUDState.NONE or current_hud_state == HUDState.PAUSE:
 			pause_or_resume()
 
 # Class functions
@@ -44,18 +46,18 @@ func show_dialog_ui(dialog_data: Array[DialogData]):
 		push_error("No dialog ui loaded!")
 		return
 	
-	if current_pausing_state != PausingState.NONE:
+	if current_hud_state != HUDState.NONE:
 		push_warning("Trying to show dialog while the game is being paused.")
 		return
 	
 	get_tree().paused = true
-	current_pausing_state = PausingState.DIALOG
+	current_hud_state = HUDState.DIALOG
 	
 	dialog.show_dialog(dialog_data)
 	await dialog.finished_dialog
 	
 	get_tree().paused = false
-	current_pausing_state = PausingState.NONE
+	current_hud_state = HUDState.NONE
 
 func pause_or_resume():
 	if not pause_ui:
@@ -64,7 +66,7 @@ func pause_or_resume():
 	
 	get_tree().paused = not get_tree().paused
 	pause_ui.visible = get_tree().paused
-	current_pausing_state = PausingState.PAUSE if get_tree().paused else PausingState.NONE
+	current_hud_state = HUDState.PAUSE if get_tree().paused else HUDState.NONE
 	finished_pause_or_resume.emit()
 
 func show_died_ui():
@@ -72,11 +74,7 @@ func show_died_ui():
 		push_error("No died ui loaded!")
 		return
 	
-	if current_pausing_state != PausingState.NONE:
-		push_warning("Trying to show died ui, while the game is being paused.")
-		return
-	
-	current_pausing_state = PausingState.DIED
+	current_hud_state = HUDState.DIED
 	get_tree().paused = true
 	died_ui.visible = true
 
@@ -85,26 +83,25 @@ func hide_died_ui():
 		push_error("No died ui loaded!")
 		return
 	
-	if current_pausing_state != PausingState.DIED:
-		push_warning("Trying to hide died ui, when there is no died ui being shown.")
-		return
-	
 	died_ui.visible = false
 	finished_pause_or_resume.emit()
 	get_tree().paused = false
-	current_pausing_state = PausingState.NONE
+	current_hud_state = HUDState.NONE
 
 func show_confirmation_ui(topic_text: String, confirm_text: String, on_yes_button_pressed: Callable, on_no_button_pressed: Callable = func(): pass):
 	if not confirmation_ui:
 		push_error("No confirmation ui loaded!")
 		return
 	
+	current_hud_state = HUDState.CONFIRMATION
 	confirmation_ui.show_confirm_ui(topic_text, confirm_text, on_yes_button_pressed, on_no_button_pressed)
 
 func show_setting_ui(on_ok_pressed: Callable = func(): pass):
 	if not setting_ui:
 		push_error("No setting ui loaded!")
 		return
+	
+	current_hud_state = HUDState.SETTING
 	
 	setting_ui.visible = true
 	setting_ui.on_ok_pressed = on_ok_pressed

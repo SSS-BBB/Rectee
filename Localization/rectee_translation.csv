@@ -1,0 +1,45 @@
+text_id,en,th
+,,
+[GameTitle],Rectee,เรกที่
+[PlayButton],Play,เริ่ม
+[ContinueButton],Continue,เล่นต่อ
+[SelectBoxButton],Select Box,เลือกด่าน
+[SettingButton],Setting,ตั้งค่า
+[CreditButton],Credit,เครดิต
+[ExitButton],Exit,ออกจากเกม
+,,
+[SettingLabel],Setting,ตั้งค่า
+[VolumeSettingLabel],Volume,เสียง
+[LanguageSettingLabel],Language,ภาษา
+[en],English,อังกฤษ
+[th],Thai,ไทย
+[MovementSettingLabel],Show Movement UI,แสดงปุ่มการเคลื่อนไหว
+[DoneSettingButton],Done,ตกลง
+,,
+[ExitConfirmationTitle],Exit Game,ออกจากเกม
+[ExitGameConfirmation],Are you sure you want to exit the game?,คุณแน่ใจหรือไม่ว่าคุณต้องการออกจากเกม
+[Yes],Yes,ใช่
+[No],No,ไม่
+,,
+[CreditTitleLabel],Credit,เครดิต
+[ArtCreditLabel],Art: Regular Square,งานอาร์ต: Regular Square
+[SoundCreditLabel],Sound: Regular Square,เสียง: Regular Square
+[ProgrammingCreditLabel],Programming: Regular Square,เขียนโปรแกรม: Regular Square
+[LinkLabel],You can see other games at: ....,คุณสามารถติดตามผลงานอื่นๆได้ที่ .......
+,,
+[SelectBoxTitleLabel],Select Box,เลือกด่าน
+,,
+[PauseLabel],Pause,หยุดเกม
+[ResumeButton],Resume,เล่นต่อ
+[MenuButton],Main Menu,ออกไปหน้าเมนู
+[RestartButton],Restart,เริ่มใหม่
+,,
+,,
+,,
+[RestartConfirmationTitle],Restart,เริ่มใหม่
+[RestartConfirmation],Are you sure you want to restart this box?,คุณแน่ใจหรือไม่ว่าคุณต้องการเริ่มเล่นด่านนี้ใหม่
+,,
+[QuitToMenuConfirmationTitle],Quit to main menu,ออกไปหน้าเมนู
+[QuitToMenuConfirmation],Are you sure you want to quit to main menu?,คุณแน่ใจหรือไม่ว่าคุณต้องการออกไปหน้าเมนู
+,,
+[DiedLabel],You failed!,คุณล้มเหลว!

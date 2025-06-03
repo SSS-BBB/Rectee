@@ -98,7 +98,7 @@ theme_override_styles/normal = ExtResource("4_lawmv")
 text = "[MenuButton]"
 script = ExtResource("6_lawmv")
 to_hide_when_exit = NodePath("../../../..")
-topic_text = "[ToMenuTopic]"
+topic_text = "[QuitToMenuConfirmationTitle]"
 confirm_text = "[QuitToMenuConfirmation]"
 metadata/_custom_type_script = "uid://0moljr0wb5an"
 
@@ -118,7 +118,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("4_lawmv")
 text = "[ExitButton]"
 script = ExtResource("7_lawmv")
-topic_text = "[ExitTopic]"
+topic_text = "[ExitConfirmationTitle]"
 confirm_text = "[ExitGameConfirmation]"
 metadata/_custom_type_script = "uid://0moljr0wb5an"
 

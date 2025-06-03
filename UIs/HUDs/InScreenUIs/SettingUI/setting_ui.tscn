@@ -125,7 +125,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 66.0
 offset_top = -15.0
-offset_right = 146.0
+offset_right = 216.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -188,6 +188,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_viqug")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("4_ielgi")
-text = "[OkSettingButton]"
+text = "[DoneSettingButton]"
 
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/OkButton" to="." method="_on_ok_button_pressed"]

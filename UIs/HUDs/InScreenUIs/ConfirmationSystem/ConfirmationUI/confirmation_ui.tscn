@@ -18,8 +18,6 @@ confirm_label = NodePath("CanvasLayer/BackgroundRect/ConfirmationLabel")
 canvas_layer = NodePath("CanvasLayer")
 to_show_layer = 20
 to_hide_layer = -20
-always_hide = null
-always_show = null
 metadata/_custom_type_script = "uid://bovpcynx16cl5"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -106,7 +104,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_es4eh")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_1ofiq")
-text = "[YesButton]"
+text = "[Yes]"
 
 [node name="NoButton" type="Button" parent="CanvasLayer/BackgroundRect"]
 layout_mode = 1
@@ -125,7 +123,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_es4eh")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_1ofiq")
-text = "[NoButton]"
+text = "[No]"
 
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/YesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/NoButton" to="." method="_on_no_button_pressed"]

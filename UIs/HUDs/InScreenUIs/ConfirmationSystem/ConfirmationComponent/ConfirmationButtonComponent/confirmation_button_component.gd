@@ -39,5 +39,5 @@ func _on_button_pressed(button: ConfirmationButtonData):
 	if not button.visible:
 		return
 	
-	UIManager.show_confirmation_ui(button.topic_text, button.confirm_text, reset_button_on_yes_button_pressed.bind(button.on_yes_button_pressed), reset_button_on_no_button_pressed.bind(button.on_no_button_pressed))
+	UIManager.show_confirmation_ui(tr(button.topic_text), tr(button.confirm_text), reset_button_on_yes_button_pressed.bind(button.on_yes_button_pressed), reset_button_on_no_button_pressed.bind(button.on_no_button_pressed))
 	set_buttons_activate_status(false)

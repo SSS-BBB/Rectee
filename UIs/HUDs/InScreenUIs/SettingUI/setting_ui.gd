@@ -12,6 +12,9 @@ var on_ok_pressed: Callable
 func _ready():
 	super._ready()
 	UIManager.setting_ui = self
+	
+	_on_language_changed()
+	GameManager.language_changed.connect(_on_language_changed)
 
 # Class functions
 func select_language():
@@ -25,6 +28,15 @@ func select_language():
 				GameManager.language = GameManager.Language.en
 
 # Signal functions
+func _on_language_changed():
+	$CanvasLayer/BackgroundRect/SettingLabel.text = tr("[SettingLabel]")
+	$CanvasLayer/BackgroundRect/VolumeLabel.text = tr("[VolumeSettingLabel]")
+	$CanvasLayer/BackgroundRect/LanguageLabel.text = tr("[LanguageSettingLabel]")
+	language_option_button.set_item_text(0, tr("[en]"))
+	language_option_button.set_item_text(1, tr("[th]"))
+	$CanvasLayer/BackgroundRect/MovementLabel.text = tr("[MovementSettingLabel]")
+	$CanvasLayer/BackgroundRect/OkButton.text = tr("[DoneSettingButton]")
+
 func _on_ok_button_pressed():
 	# set volume
 	if volume_slider:
@@ -46,5 +58,7 @@ func _on_ok_button_pressed():
 	
 	if on_ok_pressed:
 		on_ok_pressed.call()
+	
+	UIManager.current_hud_state = UIManager.HUDState.NONE
 	
 	visible = false

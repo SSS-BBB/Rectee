@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://fn7p4nuob5du"]
+[gd_scene load_steps=20 format=3 uid="uid://fn7p4nuob5du"]
 
 [ext_resource type="Texture2D" uid="uid://blqfpnm080m8s" path="res://Entities/Textures/objects_spritesheet.png" id="1_3etf2"]
 [ext_resource type="Script" uid="uid://cg3kvmtxikyob" path="res://Entities/Characters/Player/Player/player.gd" id="1_al8ar"]
+[ext_resource type="Shader" uid="uid://f3l4r44nt5uc" path="res://Entities/Characters/Player/Player/Shaders/player_hit_flash.tres" id="2_2eoq0"]
 [ext_resource type="PackedScene" uid="uid://cj2visvmlh3q6" path="res://Entities/Characters/Components/HealthComponent/health_component.tscn" id="3_xccyk"]
 [ext_resource type="PackedScene" uid="uid://bjg7w6dhjabgt" path="res://UIs/HUDs/InGameUIs/HealthDisplay/health_display.tscn" id="4_01b8d"]
 [ext_resource type="AudioStream" uid="uid://bfi3v5v06b6xy" path="res://Entities/Objects/Spikes/Components/SpikeDamage/SFXs/spike_damaged.wav" id="5_cqrjx"]
@@ -17,39 +18,47 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3etf2"]
 size = Vector2(16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_khnq4"]
-atlas = ExtResource("1_3etf2")
-region = Rect2(16, 0, 16, 32)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8vnjh"]
+shader = ExtResource("2_2eoq0")
+shader_parameter/flash_enabled = false
+shader_parameter/red_hit_flash = Color(1, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_utp2y"]
-atlas = ExtResource("1_3etf2")
-region = Rect2(0, 0, 16, 32)
+[sub_resource type="Animation" id="Animation_2eoq0"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gy20a"]
-atlas = ExtResource("1_3etf2")
-region = Rect2(0, 0, 16, 32)
+[sub_resource type="Animation" id="Animation_8vnjh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_al8ar"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_khnq4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_utp2y")
-}],
-"loop": false,
-"name": &"damaged",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gy20a")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vnjh"]
+_data = {
+&"RESET": SubResource("Animation_8vnjh"),
+&"hit": SubResource("Animation_2eoq0")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 782
@@ -59,10 +68,11 @@ script = ExtResource("1_al8ar")
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3etf2")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_al8ar")
-animation = &"damaged"
-autoplay = "default"
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8vnjh")
+texture = ExtResource("1_3etf2")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 32)
 
 [node name="Health" type="Node2D" parent="."]
 
@@ -111,7 +121,11 @@ script = ExtResource("11_25bbb")
 state_machine = NodePath("..")
 next_state = NodePath("../OnGroundState")
 
-[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[node name="HitAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8vnjh")
+}
+
 [connection signal="actor_die" from="Health/HealthComponent" to="." method="_on_health_component_actor_die"]
 [connection signal="timeout" from="EffectComponent/SpeedTimer" to="EffectComponent" method="_on_speed_timer_timeout"]
 [connection signal="timeout" from="EffectComponent/JumpTimer" to="EffectComponent" method="_on_jump_timer_timeout"]
