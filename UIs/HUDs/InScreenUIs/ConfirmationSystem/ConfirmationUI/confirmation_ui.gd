@@ -33,9 +33,9 @@ func _on_language_changed():
 func _on_yes_button_pressed():
 	visible = false
 	yes_func.call()
-	UIManager.current_hud_state = UIManager.HUDState.NONE
+	UIManager.reset_hud_state()
 
 func _on_no_button_pressed():
 	visible = false
 	no_func.call()
-	UIManager.current_hud_state = UIManager.HUDState.NONE
+	UIManager.reset_hud_state()

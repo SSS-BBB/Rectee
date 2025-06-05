@@ -59,6 +59,6 @@ func _on_ok_button_pressed():
 	if on_ok_pressed:
 		on_ok_pressed.call()
 	
-	UIManager.current_hud_state = UIManager.HUDState.NONE
+	UIManager.reset_hud_state()
 	
 	visible = false

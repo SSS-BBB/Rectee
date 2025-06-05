@@ -18,6 +18,7 @@ var turn_movement_control_ui: bool = true:
 		movement_control_setting_changed.emit(turn_movement_control_ui)
 		GameManager.save_setting("MovementUI", value)
 
+var previous_hud_state: HUDState
 var current_hud_state: HUDState
 
 # Signal
@@ -59,6 +60,15 @@ func show_dialog_ui(dialog_data: Array[DialogData]):
 	get_tree().paused = false
 	current_hud_state = HUDState.NONE
 
+func set_hud_state(new_state: HUDState):
+	previous_hud_state = current_hud_state
+	current_hud_state = new_state
+
+func reset_hud_state():
+	var swap_state = previous_hud_state
+	previous_hud_state = current_hud_state
+	current_hud_state = swap_state
+
 func pause_or_resume():
 	if not pause_ui:
 		push_error("No pause ui loaded!")
@@ -66,7 +76,7 @@ func pause_or_resume():
 	
 	get_tree().paused = not get_tree().paused
 	pause_ui.visible = get_tree().paused
-	current_hud_state = HUDState.PAUSE if get_tree().paused else HUDState.NONE
+	set_hud_state(HUDState.PAUSE if get_tree().paused else HUDState.NONE)
 	finished_pause_or_resume.emit()
 
 func show_died_ui():
@@ -74,7 +84,7 @@ func show_died_ui():
 		push_error("No died ui loaded!")
 		return
 	
-	current_hud_state = HUDState.DIED
+	set_hud_state(HUDState.DIED)
 	get_tree().paused = true
 	died_ui.visible = true
 
@@ -86,14 +96,14 @@ func hide_died_ui():
 	died_ui.visible = false
 	finished_pause_or_resume.emit()
 	get_tree().paused = false
-	current_hud_state = HUDState.NONE
+	reset_hud_state()
 
 func show_confirmation_ui(topic_text: String, confirm_text: String, on_yes_button_pressed: Callable, on_no_button_pressed: Callable = func(): pass):
 	if not confirmation_ui:
 		push_error("No confirmation ui loaded!")
 		return
 	
-	current_hud_state = HUDState.CONFIRMATION
+	set_hud_state(HUDState.CONFIRMATION)
 	confirmation_ui.show_confirm_ui(topic_text, confirm_text, on_yes_button_pressed, on_no_button_pressed)
 
 func show_setting_ui(on_ok_pressed: Callable = func(): pass):
@@ -101,7 +111,7 @@ func show_setting_ui(on_ok_pressed: Callable = func(): pass):
 		push_error("No setting ui loaded!")
 		return
 	
-	current_hud_state = HUDState.SETTING
+	set_hud_state(HUDState.SETTING)
 	
 	setting_ui.visible = true
 	setting_ui.on_ok_pressed = on_ok_pressed

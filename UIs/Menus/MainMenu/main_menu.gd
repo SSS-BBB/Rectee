@@ -85,4 +85,4 @@ func _on_exit_button_pressed():
 	)
 
 func _on_reset_level_button_pressed():
-	GameManager.current_player_level = 1
+	GameManager.current_player_level = 3
