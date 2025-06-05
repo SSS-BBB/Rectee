@@ -2,6 +2,8 @@ class_name BossShooterStateMachine extends MultipleStatesMachine
 
 # Export variables
 @export_range(0.1, 100.0, 0.1) var random_state_interval: float = 5.0
+@export var activate_shooting_state: bool = true
+@export var activate_spawning_state: bool = true
 
 # Component variables
 @onready var wandering_state = $WanderingState as WanderingState
@@ -13,6 +15,7 @@ class_name BossShooterStateMachine extends MultipleStatesMachine
 
 # Class variables
 var player: Player
+var attack_states: Array[State]
 
 # Game functions
 func _ready():
@@ -27,12 +30,16 @@ func _ready():
 	insert_state(1, lookat_player_state)
 	
 	# attacking states
+	if activate_shooting_state:
+		attack_states.append(boss_shooting_state)
+	if activate_spawning_state:
+		attack_states.append(boss_spawning_state)
+	
 	random_state_timer.wait_time = random_state_interval
 	random_attacking_state()
 
 # Class functions
 func random_attacking_state():
-	var attack_states := [boss_shooting_state, boss_spawning_state]
 	insert_state(2, attack_states.pick_random())
 	random_state_timer.start()
 

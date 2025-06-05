@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c78yrvgxc1ipu" path="res://Entities/Characters/Components/DestroyOnDieComponent/destroy_on_die_component.tscn" id="15_jathh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggyc8"]
+resource_local_to_scene = true
 size = Vector2(104.5, 111.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cim6"]
