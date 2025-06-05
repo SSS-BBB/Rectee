@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmeo781khc26"]
+
+[ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_e80cg"]
+
+[node name="Box1" instance=ExtResource("1_e80cg")]
+box_level = 1
+
+[editable path="Entities/Objects/Interactables/Door/Door"]
