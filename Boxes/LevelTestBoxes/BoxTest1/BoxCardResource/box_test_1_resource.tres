@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="BoxCardData" load_steps=4 format=3 uid="uid://coriqt2pb3n6h"]
 
 [ext_resource type="Script" uid="uid://uiwgkfumhqxm" path="res://UIs/Menus/SelectBoxMenu/BoxCardSystem/BoxCardData/box_card_data.gd" id="1_g2aw3"]
-[ext_resource type="PackedScene" uid="uid://cmi2p3rb3qo3v" path="res://Boxes/LevelBoxes/BoxTest1/box_test_1.tscn" id="1_oq271"]
-[ext_resource type="Texture2D" uid="uid://rmghdvvic4rq" path="res://Boxes/LevelBoxes/BoxTest1/BoxTexture/box_test_1.png" id="2_2vgvv"]
+[ext_resource type="PackedScene" uid="uid://cmi2p3rb3qo3v" path="res://Boxes/LevelTestBoxes/BoxTest1/box_test_1.tscn" id="1_oq271"]
+[ext_resource type="Texture2D" uid="uid://rmghdvvic4rq" path="res://Boxes/LevelTestBoxes/BoxTest1/BoxTexture/box_test_1.png" id="2_2vgvv"]
 
 [resource]
 script = ExtResource("1_g2aw3")

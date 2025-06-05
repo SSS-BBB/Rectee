@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dplni7h1sxm80"]
 
 [ext_resource type="StyleBox" uid="uid://cti6puea05wvl" path="res://UIs/Styles/ButtonStyles/flat_black.tres" id="1_36blc"]
-[ext_resource type="Texture2D" uid="uid://rmghdvvic4rq" path="res://Boxes/LevelBoxes/BoxTest1/BoxTexture/box_test_1.png" id="2_a04yd"]
+[ext_resource type="Texture2D" uid="uid://rmghdvvic4rq" path="res://Boxes/LevelTestBoxes/BoxTest1/BoxTexture/box_test_1.png" id="2_a04yd"]
 [ext_resource type="Script" uid="uid://drw87d0kk38ju" path="res://UIs/Menus/SelectBoxMenu/BoxCardSystem/BoxCard/box_card.gd" id="2_lro3l"]
 [ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_1e875"]
 

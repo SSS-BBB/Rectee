@@ -4,8 +4,8 @@
 [ext_resource type="FontFile" uid="uid://d1bhrsfeod1xi" path="res://Assets/Fonts/ariblk.ttf" id="1_botwm"]
 [ext_resource type="Script" uid="uid://beif8golnf00t" path="res://UIs/Menus/SelectBoxMenu/select_box_menu.gd" id="1_l3nds"]
 [ext_resource type="PackedScene" uid="uid://dplni7h1sxm80" path="res://UIs/Menus/SelectBoxMenu/BoxCardSystem/BoxCard/box_card.tscn" id="3_mpbmp"]
-[ext_resource type="Resource" uid="uid://coriqt2pb3n6h" path="res://Boxes/LevelBoxes/BoxTest1/BoxCardResource/box_test_1_resource.tres" id="4_1nahn"]
-[ext_resource type="Resource" uid="uid://dotrxehj0m0e2" path="res://Boxes/LevelBoxes/BoxTest2/BoxCardResource/box_test_2_resource.tres" id="5_reuce"]
+[ext_resource type="Resource" uid="uid://coriqt2pb3n6h" path="res://Boxes/LevelTestBoxes/BoxTest1/BoxCardResource/box_test_1_resource.tres" id="4_1nahn"]
+[ext_resource type="Resource" uid="uid://dotrxehj0m0e2" path="res://Boxes/LevelTestBoxes/BoxTest2/BoxCardResource/box_test_2_resource.tres" id="5_reuce"]
 [ext_resource type="PackedScene" uid="uid://11knbogl7tk3" path="res://UIs/HUDs/SceneTransition/scene_transition.tscn" id="6_reuce"]
 
 [node name="SelectBoxMenu" type="Control"]

@@ -1,6 +1,7 @@
 class_name MainMenu extends Control
 
 # Export variables
+@export var level_scene_path: Array[String] # scene path for each level
 @export var scene_transition: SceneTransition
 @export var button_container: Control
 @export var credit_hud_ui: CreditHudUI
@@ -42,7 +43,14 @@ func _on_lanuage_changed():
 	$CanvasLayer/BackgroundRect/ButtonBoxContainer/ExitButton.text = tr("[ExitButton]")
 
 func _on_play_button_pressed():
-	# TODO: change box scene in game manager according to player current level
+	if level_scene_path and level_scene_path.size() > 0:
+		var scene_path_index = (GameManager.current_player_level - 1) % level_scene_path.size()
+		if not level_scene_path[scene_path_index].is_absolute_path():
+			push_error("Scene path at index " + str(scene_path_index) + " is not in absolute path format.")
+		else:
+			GameManager.init_box_scene = load(level_scene_path[scene_path_index])
+	else:
+		push_error("No level scene path initialized!")
 	
 	# change scene
 	if scene_transition:
@@ -75,3 +83,6 @@ func _on_exit_button_pressed():
 	UIManager.show_confirmation_ui(tr("[ExitConfirmationTitle]"), tr("[ExitGameConfirmation]"), 
 	func(): get_tree().quit(), set_buttons_status.bind(true)
 	)
+
+func _on_reset_level_button_pressed():
+	GameManager.current_player_level = 1

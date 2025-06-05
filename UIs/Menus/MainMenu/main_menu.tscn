@@ -18,6 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oa05j")
+level_scene_path = Array[String](["res://Boxes/LevelTestBoxes/BoxTest1/box_test_1.tscn", "res://Boxes/LevelTestBoxes/BoxTest2/box_test_2.tscn"])
 scene_transition = NodePath("HudUIs/SceneTransition")
 button_container = NodePath("CanvasLayer/BackgroundRect/ButtonBoxContainer")
 credit_hud_ui = NodePath("HudUIs/CreditHudUI")
@@ -123,6 +124,25 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("3_en46i")
 text = "[ExitButton]"
 
+[node name="ResetLevelButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -268.0
+offset_top = -85.0
+offset_right = -18.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oemvj")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_en46i")
+text = "Reset Level"
+
 [node name="HudUIs" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -142,5 +162,6 @@ layout_mode = 1
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/ResetLevelButton" to="." method="_on_reset_level_button_pressed"]
 
 [editable path="HudUIs/SceneTransition"]

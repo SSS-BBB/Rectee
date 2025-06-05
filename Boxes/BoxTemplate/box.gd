@@ -11,9 +11,8 @@ class_name Box extends Node2D
 func _ready():
 	GameManager.current_box_level = box_level
 	
-	#if scene_transition:
-		#scene_transition.enter_scene()
-		#scene_transition.exit_transition_finished.connect(_on_exit_transition_finished)
+	if GameManager.current_player_level < box_level:
+		GameManager.current_player_level = box_level
 	
 	if door:
 		door.enter_door.connect(_on_enter_door)
