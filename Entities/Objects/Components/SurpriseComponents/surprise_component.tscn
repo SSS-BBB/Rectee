@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://delfj4tkaxo82" path="res://Entities/Objects/Components/SurpriseComponents/surprise_component.gd" id="1_4fc2u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yo5c"]
+resource_local_to_scene = true
 size = Vector2(80, 40)
 
-[node name="SurpriseComponent" type="Node2D" node_paths=PackedStringArray("node")]
+[node name="SurpriseComponent" type="Node2D"]
 script = ExtResource("1_4fc2u")
-node = NodePath("")
 area_offset = Vector2(0, -15)
 
 [node name="ShowArea" type="Area2D" parent="."]
-position = Vector2(0, -31)
+position = Vector2(0, -15)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShowArea"]

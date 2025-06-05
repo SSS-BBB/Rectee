@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://2fudvd7tpixu"]
+[gd_scene load_steps=6 format=3 uid="uid://2fudvd7tpixu"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_ogmdf"]
+[ext_resource type="PackedScene" uid="uid://bitl6hkljphpw" path="res://Entities/Objects/Spikes/NormalSpikes/SurpriseSpike/surprise_spike.tscn" id="2_xw54x"]
+[ext_resource type="Resource" uid="uid://dub44xg6s8pgx" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_2.tres" id="6_8nvrt"]
+[ext_resource type="Resource" uid="uid://coc3r7q2a31u5" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_1.tres" id="7_ffgmn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xw54x"]
+resource_local_to_scene = true
+size = Vector2(8, 12.5)
 
 [node name="BoxTest3" instance=ExtResource("1_ogmdf")]
 box_level = 3
@@ -8,7 +15,45 @@ box_level = 3
 [node name="BossShooters" parent="Entities/Actors/Shooters" index="1"]
 position = Vector2(2, 56)
 
+[node name="SurpriseSpike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" instance=ExtResource("2_xw54x")]
+position = Vector2(635, 570)
+scale = Vector2(2, 2)
+resource = ExtResource("7_ffgmn")
+
+[node name="CollisionPolygon2D" parent="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike" index="0"]
+polygon = PackedVector2Array(-2.5, 3, 2.5, 3, 0, -3)
+
+[node name="Sprite2D" parent="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike" index="1"]
+region_rect = Rect2(104, 40, 7, 8)
+
+[node name="SurpriseComponent" parent="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike" index="4"]
+adjust_area = true
+
+[node name="ShowArea" parent="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike/SurpriseComponent" index="0"]
+position = Vector2(0, -23)
+
+[node name="CollisionShape2D" parent="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike/SurpriseComponent/ShowArea" index="0"]
+position = Vector2(-9, 20.25)
+shape = SubResource("RectangleShape2D_xw54x")
+
+[node name="SurpriseSpike2" parent="Entities/Objects/Spikes/NormalSpikes" index="1" instance=ExtResource("2_xw54x")]
+position = Vector2(777, 553)
+scale = Vector2(2, 2)
+resource = ExtResource("6_8nvrt")
+
+[node name="CollisionPolygon2D" parent="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike2" index="0"]
+polygon = PackedVector2Array(-6.5, 11, 6.5, 11, 0, -11)
+
+[node name="Sprite2D" parent="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike2" index="1"]
+region_rect = Rect2(80, 24, 15, 24)
+
+[node name="SurpriseComponent" parent="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike2" index="4"]
+area_offset = Vector2(0, -10)
+
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
 next_box_path = "res://Boxes/LevelTestBoxes/BoxTest2/box_test_2.tscn"
 
+[editable path="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike"]
+[editable path="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike/SurpriseComponent"]
+[editable path="Entities/Objects/Spikes/NormalSpikes/SurpriseSpike2"]
 [editable path="Entities/Objects/Interactables/Door/Door"]
