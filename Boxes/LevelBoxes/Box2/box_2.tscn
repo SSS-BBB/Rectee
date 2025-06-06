@@ -1,6 +1,21 @@
-[gd_scene load_steps=3 format=4 uid="uid://de6t8ge3fsepu"]
+[gd_scene load_steps=8 format=4 uid="uid://de6t8ge3fsepu"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_5yvnp"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="2_8y8yd"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="3_oltxu"]
+[ext_resource type="Texture2D" uid="uid://djycx3l63dc2x" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/mysterious_speaker.png" id="4_haf34"]
+
+[sub_resource type="Resource" id="Resource_sg1j6"]
+script = ExtResource("3_oltxu")
+speaker = ExtResource("4_haf34")
+translate_text = true
+text = "[D2_1]"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8kcl"]
+resource_local_to_scene = true
+size = Vector2(20, 114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8y8yd"]
 resource_local_to_scene = true
@@ -8,14 +23,26 @@ size = Vector2(10911, 103)
 
 [node name="Box2" instance=ExtResource("1_5yvnp")]
 
+[node name="Key" parent="Entities/Objects/Items/Keys" index="0"]
+position = Vector2(1127, 454)
+
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
 next_box_path = "res://Boxes/LevelBoxes/Box3/box_3.tscn"
 
 [node name="InsideLayer" parent="Entities/Tiles" index="2"]
-tile_map_data = PackedByteArray("AABKABwAAgAAAAEAAABKAB0AAgAAAAEAAABKAB4AAgAAAAEAAABLABwAAgAAAAEAAABLAB0AAgAAAAEAAABLAB4AAgAAAAEAAABMABwAAgAAAAEAAABMAB0AAgAAAAEAAABMAB4AAgAAAAEAAABNABwAAgAAAAEAAABNAB0AAgAAAAEAAABNAB4AAgAAAAEAAABOABwAAgAAAAEAAABOAB0AAgAAAAEAAABOAB4AAgAAAAEAAAA=")
+tile_map_data = PackedByteArray("AABFAB0AAgAAAAEAAABFAB4AAgAAAAEAAABGAB0AAgAAAAEAAABGAB4AAgAAAAEAAABHAB0AAgAAAAEAAABHAB4AAgAAAAEAAAA=")
+
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("2_8y8yd")]
+position = Vector2(1062, 566)
+dialog_data = Array[ExtResource("3_oltxu")]([SubResource("Resource_sg1j6")])
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
+position = Vector2(0, -47)
+shape = SubResource("RectangleShape2D_j8kcl")
 
 [node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
 shape = SubResource("RectangleShape2D_8y8yd")
 
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DialogAreas/DialogArea"]
 [editable path="Areas/DeadAreas/DeadArea"]
