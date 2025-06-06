@@ -53,4 +53,6 @@ text_id,en,th
 ,,
 [D4_1],Be careful.,ระวังนะ
 ,,
-[D5_1],Drink this to gain speed.,ดื่มเพื่อเพิ่มความเร็ว
+[D5_1],Drink this blue potion to gain speed.,ดื่มยาสีฟ้าเพื่อเพิ่มความเร็ว
+,,
+[D6_1],Drink this purple potion to gain jump power.,ดื่มยาสีม่วงเพื่อเพิ่มพลังการกระโดด

@@ -10,5 +10,5 @@ texture = ExtResource("2_jlccl")
 get_audio = ExtResource("1_pje4o")
 effect = 1
 value = 200
-duration = 2.0
+duration = 100.0
 metadata/_custom_type_script = "uid://cqprexufga7ns"
