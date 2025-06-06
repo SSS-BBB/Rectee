@@ -1,15 +1,520 @@
-[gd_scene load_steps=3 format=3 uid="uid://birqprw7kxhx4"]
+[gd_scene load_steps=25 format=4 uid="uid://birqprw7kxhx4"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_fro1j"]
+[ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="2_4u3y0"]
+[ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="2_wkvl7"]
+[ext_resource type="Resource" uid="uid://6nbybnvnx4vi" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_1.tres" id="3_pcwqk"]
+[ext_resource type="Resource" uid="uid://c45tx25wmokxh" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_2.tres" id="4_cjyia"]
+[ext_resource type="Resource" uid="uid://dhr6cgctn7u7e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_3.tres" id="5_0mvmf"]
+[ext_resource type="Resource" uid="uid://coc3r7q2a31u5" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_1.tres" id="6_pk02n"]
+[ext_resource type="Resource" uid="uid://c2iknbhpd37lv" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_2.tres" id="7_l5kw7"]
+[ext_resource type="Resource" uid="uid://diarvqr2x8o1e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_3.tres" id="8_53uta"]
+[ext_resource type="Resource" uid="uid://dub44xg6s8pgx" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_2.tres" id="9_7ueek"]
+[ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="10_7ueek"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="11_0mvmf"]
+[ext_resource type="PackedScene" uid="uid://bnp000d13b8yh" path="res://Entities/Objects/Others/UnseenArea/unseen_area.tscn" id="11_53uta"]
+[ext_resource type="PackedScene" uid="uid://c8fixtf1k7wfp" path="res://Entities/Objects/Platforms/MovingPlatform/moving_platform.tscn" id="11_s6yt2"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="12_l5kw7"]
+[ext_resource type="Texture2D" uid="uid://djycx3l63dc2x" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/mysterious_speaker.png" id="13_53uta"]
+
+[sub_resource type="Curve2D" id="Curve2D_s6yt2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_dnm5q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 100, 200)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_qkyja"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -75, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53uta"]
+resource_local_to_scene = true
+size = Vector2(8, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6yt2"]
+resource_local_to_scene = true
+size = Vector2(8, 48)
+
+[sub_resource type="Resource" id="Resource_7ueek"]
+script = ExtResource("12_l5kw7")
+speaker = ExtResource("13_53uta")
+translate_text = true
+text = "[D5_1]"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pk02n"]
+resource_local_to_scene = true
+size = Vector2(56, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkvl7"]
 resource_local_to_scene = true
 size = Vector2(10911, 103)
 
 [node name="Box5" instance=ExtResource("1_fro1j")]
+box_level = 5
+
+[node name="Player" parent="Entities/Actors/Player" index="0"]
+position = Vector2(104, 535)
+scale = Vector2(1.5, 1.5)
+normal_jump_velocity = 400
+
+[node name="HealthComponent" parent="Entities/Actors/Player/Player/Health" index="1"]
+max_health = 10
+
+[node name="Spike" parent="Entities/Objects/Spikes" index="0" instance=ExtResource("2_4u3y0")]
+position = Vector2(25, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike2" parent="Entities/Objects/Spikes" index="1" instance=ExtResource("2_4u3y0")]
+position = Vector2(48, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike3" parent="Entities/Objects/Spikes" index="2" instance=ExtResource("2_4u3y0")]
+position = Vector2(70, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike4" parent="Entities/Objects/Spikes" index="3" instance=ExtResource("2_4u3y0")]
+position = Vector2(92, 246)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike5" parent="Entities/Objects/Spikes" index="4" instance=ExtResource("2_4u3y0")]
+position = Vector2(114, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_cjyia")
+
+[node name="Spike6" parent="Entities/Objects/Spikes" index="5" instance=ExtResource("2_4u3y0")]
+position = Vector2(136, 223)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("5_0mvmf")
+
+[node name="Spike7" parent="Entities/Objects/Spikes" index="6" instance=ExtResource("2_4u3y0")]
+position = Vector2(152, 251)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_pk02n")
+
+[node name="Spike8" parent="Entities/Objects/Spikes" index="7" instance=ExtResource("2_4u3y0")]
+position = Vector2(162, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_l5kw7")
+
+[node name="Spike16" parent="Entities/Objects/Spikes" index="8" instance=ExtResource("2_4u3y0")]
+position = Vector2(182, 251)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_pk02n")
+
+[node name="Spike17" parent="Entities/Objects/Spikes" index="9" instance=ExtResource("2_4u3y0")]
+position = Vector2(192, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_l5kw7")
+
+[node name="Spike15" parent="Entities/Objects/Spikes" index="10" instance=ExtResource("2_4u3y0")]
+position = Vector2(172, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("8_53uta")
+
+[node name="Spike9" parent="Entities/Objects/Spikes" index="11" instance=ExtResource("2_4u3y0")]
+position = Vector2(202, 252)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_pk02n")
+
+[node name="Spike10" parent="Entities/Objects/Spikes" index="12" instance=ExtResource("2_4u3y0")]
+position = Vector2(212, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("8_53uta")
+
+[node name="Spike18" parent="Entities/Objects/Spikes" index="13" instance=ExtResource("2_4u3y0")]
+position = Vector2(222, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("8_53uta")
+
+[node name="Spike19" parent="Entities/Objects/Spikes" index="14" instance=ExtResource("2_4u3y0")]
+position = Vector2(232, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_l5kw7")
+
+[node name="Spike11" parent="Entities/Objects/Spikes" index="15" instance=ExtResource("2_4u3y0")]
+position = Vector2(247, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike12" parent="Entities/Objects/Spikes" index="16" instance=ExtResource("2_4u3y0")]
+position = Vector2(269, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike13" parent="Entities/Objects/Spikes" index="17" instance=ExtResource("2_4u3y0")]
+position = Vector2(291, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike14" parent="Entities/Objects/Spikes" index="18" instance=ExtResource("2_4u3y0")]
+position = Vector2(307, 246)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_l5kw7")
+
+[node name="Spike20" parent="Entities/Objects/Spikes" index="19" instance=ExtResource("2_4u3y0")]
+position = Vector2(317, 251)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_pk02n")
+
+[node name="Spike21" parent="Entities/Objects/Spikes" index="20" instance=ExtResource("2_4u3y0")]
+position = Vector2(427, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike22" parent="Entities/Objects/Spikes" index="21" instance=ExtResource("2_4u3y0")]
+position = Vector2(450, 689)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike23" parent="Entities/Objects/Spikes" index="22" instance=ExtResource("2_4u3y0")]
+position = Vector2(472, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike24" parent="Entities/Objects/Spikes" index="23" instance=ExtResource("2_4u3y0")]
+position = Vector2(494, 692)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike25" parent="Entities/Objects/Spikes" index="24" instance=ExtResource("2_4u3y0")]
+position = Vector2(516, 680)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_cjyia")
+
+[node name="Spike26" parent="Entities/Objects/Spikes" index="25" instance=ExtResource("2_4u3y0")]
+position = Vector2(538, 668)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("5_0mvmf")
+
+[node name="Spike27" parent="Entities/Objects/Spikes" index="26" instance=ExtResource("2_4u3y0")]
+position = Vector2(554, 698)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_pk02n")
+
+[node name="Spike28" parent="Entities/Objects/Spikes" index="27" instance=ExtResource("2_4u3y0")]
+position = Vector2(564, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_l5kw7")
+
+[node name="Spike29" parent="Entities/Objects/Spikes" index="28" instance=ExtResource("2_4u3y0")]
+position = Vector2(584, 698)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_pk02n")
+
+[node name="Spike30" parent="Entities/Objects/Spikes" index="29" instance=ExtResource("2_4u3y0")]
+position = Vector2(594, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_l5kw7")
+
+[node name="Spike31" parent="Entities/Objects/Spikes" index="30" instance=ExtResource("2_4u3y0")]
+position = Vector2(574, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("8_53uta")
+
+[node name="Spike32" parent="Entities/Objects/Spikes" index="31" instance=ExtResource("2_4u3y0")]
+position = Vector2(604, 698)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_pk02n")
+
+[node name="Spike33" parent="Entities/Objects/Spikes" index="32" instance=ExtResource("2_4u3y0")]
+position = Vector2(614, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("8_53uta")
+
+[node name="Spike34" parent="Entities/Objects/Spikes" index="33" instance=ExtResource("2_4u3y0")]
+position = Vector2(624, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("8_53uta")
+
+[node name="Spike35" parent="Entities/Objects/Spikes" index="34" instance=ExtResource("2_4u3y0")]
+position = Vector2(634, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_l5kw7")
+
+[node name="Spike36" parent="Entities/Objects/Spikes" index="35" instance=ExtResource("2_4u3y0")]
+position = Vector2(649, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike37" parent="Entities/Objects/Spikes" index="36" instance=ExtResource("2_4u3y0")]
+position = Vector2(671, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike38" parent="Entities/Objects/Spikes" index="37" instance=ExtResource("2_4u3y0")]
+position = Vector2(693, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike39" parent="Entities/Objects/Spikes" index="38" instance=ExtResource("2_4u3y0")]
+position = Vector2(709, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_l5kw7")
+
+[node name="Spike40" parent="Entities/Objects/Spikes" index="39" instance=ExtResource("2_4u3y0")]
+position = Vector2(719, 698)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_pk02n")
+
+[node name="Spike41" parent="Entities/Objects/Spikes" index="40" instance=ExtResource("2_4u3y0")]
+position = Vector2(732, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike42" parent="Entities/Objects/Spikes" index="41" instance=ExtResource("2_4u3y0")]
+position = Vector2(754, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike43" parent="Entities/Objects/Spikes" index="42" instance=ExtResource("2_4u3y0")]
+position = Vector2(776, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike44" parent="Entities/Objects/Spikes" index="43" instance=ExtResource("2_4u3y0")]
+position = Vector2(798, 692)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike45" parent="Entities/Objects/Spikes" index="44" instance=ExtResource("2_4u3y0")]
+position = Vector2(820, 680)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_cjyia")
+
+[node name="Spike46" parent="Entities/Objects/Spikes" index="45" instance=ExtResource("2_4u3y0")]
+position = Vector2(842, 692)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike47" parent="Entities/Objects/Spikes" index="46" instance=ExtResource("2_4u3y0")]
+position = Vector2(864, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike48" parent="Entities/Objects/Spikes" index="47" instance=ExtResource("2_4u3y0")]
+position = Vector2(886, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike49" parent="Entities/Objects/Spikes" index="48" instance=ExtResource("2_4u3y0")]
+position = Vector2(908, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike50" parent="Entities/Objects/Spikes" index="49" instance=ExtResource("2_4u3y0")]
+position = Vector2(930, 692)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike51" parent="Entities/Objects/Spikes" index="50" instance=ExtResource("2_4u3y0")]
+position = Vector2(952, 680)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_cjyia")
+
+[node name="Spike52" parent="Entities/Objects/Spikes" index="51" instance=ExtResource("2_4u3y0")]
+position = Vector2(974, 692)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike53" parent="Entities/Objects/Spikes" index="52" instance=ExtResource("2_4u3y0")]
+position = Vector2(996, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike54" parent="Entities/Objects/Spikes" index="53" instance=ExtResource("2_4u3y0")]
+position = Vector2(1018, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike55" parent="Entities/Objects/Spikes" index="54" instance=ExtResource("2_4u3y0")]
+position = Vector2(1040, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike56" parent="Entities/Objects/Spikes" index="55" instance=ExtResource("2_4u3y0")]
+position = Vector2(1062, 692)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike57" parent="Entities/Objects/Spikes" index="56" instance=ExtResource("2_4u3y0")]
+position = Vector2(1084, 680)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_cjyia")
+
+[node name="Spike58" parent="Entities/Objects/Spikes" index="57" instance=ExtResource("2_4u3y0")]
+position = Vector2(1106, 692)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike59" parent="Entities/Objects/Spikes" index="58" instance=ExtResource("2_4u3y0")]
+position = Vector2(1128, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike60" parent="Entities/Objects/Spikes" index="59" instance=ExtResource("2_4u3y0")]
+position = Vector2(1150, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_pcwqk")
+
+[node name="Spike61" parent="Entities/Objects/Spikes" index="60" instance=ExtResource("2_4u3y0")]
+position = Vector2(1172, 686)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike62" parent="Entities/Objects/Spikes" index="61" instance=ExtResource("2_4u3y0")]
+position = Vector2(1194, 692)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike63" parent="Entities/Objects/Spikes" index="62" instance=ExtResource("2_4u3y0")]
+position = Vector2(1216, 680)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_cjyia")
+
+[node name="Spike64" parent="Entities/Objects/Spikes" index="63" instance=ExtResource("2_4u3y0")]
+position = Vector2(1238, 692)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike67" parent="Entities/Objects/Spikes" index="64" instance=ExtResource("2_4u3y0")]
+position = Vector2(257, 561)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_7ueek")
+
+[node name="Spike68" parent="Entities/Objects/Spikes" index="65" instance=ExtResource("2_4u3y0")]
+position = Vector2(279, 567)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike69" parent="Entities/Objects/Spikes" index="66" instance=ExtResource("2_4u3y0")]
+position = Vector2(301, 555)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_cjyia")
+
+[node name="Spike70" parent="Entities/Objects/Spikes" index="67" instance=ExtResource("2_4u3y0")]
+position = Vector2(323, 567)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spike65" parent="Entities/Objects/Spikes" index="68" instance=ExtResource("2_4u3y0")]
+position = Vector2(1254, 692)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_l5kw7")
+
+[node name="Spike66" parent="Entities/Objects/Spikes" index="69" instance=ExtResource("2_4u3y0")]
+position = Vector2(1264, 698)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_pk02n")
+
+[node name="BouncingPlatform" parent="Entities/Objects/Platforms/BouncingPlatforms" index="0" instance=ExtResource("10_7ueek")]
+position = Vector2(396, 512)
+scale = Vector2(1.5, 1.5)
+
+[node name="BouncingPlatform2" parent="Entities/Objects/Platforms/BouncingPlatforms" index="1" instance=ExtResource("10_7ueek")]
+position = Vector2(554, 198)
+scale = Vector2(1.5, 1.5)
+
+[node name="MovingPlatform" parent="Entities/Objects/Platforms/MovingPlatforms" index="0" instance=ExtResource("11_s6yt2")]
+position = Vector2(508, 500)
+scale = Vector2(1.5, 1.5)
+curve = SubResource("Curve2D_s6yt2")
+
+[node name="MovingPlatform2" parent="Entities/Objects/Platforms/MovingPlatforms" index="1" instance=ExtResource("11_s6yt2")]
+position = Vector2(658, 206)
+scale = Vector2(1.5, 1.5)
+curve = SubResource("Curve2D_dnm5q")
+path_duration = 3.0
+
+[node name="MovingPlatform3" parent="Entities/Objects/Platforms/MovingPlatforms" index="2" instance=ExtResource("11_s6yt2")]
+position = Vector2(1159, 114)
+curve = SubResource("Curve2D_qkyja")
+path_duration = 0.5
+
+[node name="Key" parent="Entities/Objects/Items/Keys" index="0"]
+position = Vector2(55, 154)
+scale = Vector2(1, 1)
+
+[node name="Consumable" parent="Entities/Objects/Items/Consumables" index="0" instance=ExtResource("2_wkvl7")]
+position = Vector2(383, 167)
+
+[node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
+position = Vector2(1248, 64)
+scale = Vector2(2, 2)
+next_box_path = "res://Boxes/LevelBoxes/Box6/box_6.tscn"
+
+[node name="RoomLayer" parent="Entities/Tiles" index="0"]
+tile_map_data = PackedByteArray("AAAAACgAAgAAAAEAAAAAAAAAAgAAAAEAAAAAAAEAAgAAAAEAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAEAAAAAAAQAAgAAAAEAAAAAAAUAAgAAAAEAAAAAAAYAAgAAAAEAAAAAAAcAAgAAAAEAAAAAAAgAAgAAAAEAAAAAAAkAAgAAAAEAAAAAAAoAAgAAAAEAAAAAAAsAAgAAAAEAAAAAAAwAAgAAAAEAAAAAAA0AAgAAAAEAAAAAAA4AAgAAAAEAAAAAAA8AAgAAAAEAAAAAABAAAgAAAAEAAAAAABEAAgAAAAEAAAAAABIAAgAAAAEAAAAAABMAAgAAAAEAAAAAABQAAgAAAAEAAAAAABUAAgAAAAEAAAAAABYAAgAAAAEAAAAAABcAAgAAAAEAAAAAABgAAgAAAAEAAAAAABkAAgAAAAEAAAAAABoAAgAAAAEAAAAAABsAAgAAAAEAAAAAABwAAgAAAAEAAAAAAB0AAgAAAAEAAAAAAB4AAgAAAAEAAAAAAB8AAgAAAAEAAAAAACAAAgAAAAEAAAAAACEAAgAAAAEAAAAAACIAAgAAAAEAAAAAACMAAgAAAAEAAAAAACQAAgAAAAEAAAAAACUAAgAAAAEAAAAAACYAAgAAAAEAAAAAACcAAgAAAAEAAAAAACkAAgAAAAEAAAAAACoAAgAAAAEAAAAAACsAAgAAAAEAAAAAACwAAgAAAAEAAAABACwAAgAAAAEAAAACACwAAgAAAAEAAAADACwAAgAAAAEAAAAEACwAAgAAAAEAAAAFACwAAgAAAAEAAAAGACwAAgAAAAEAAAAHACwAAgAAAAEAAAAIACwAAgAAAAEAAAAJACwAAgAAAAEAAAAKACwAAgAAAAEAAAAUACwAAgAAAAEAAAAVACwAAgAAAAEAAAAWACwAAgAAAAEAAAAXACwAAgAAAAEAAAAYACwAAgAAAAEAAAAZACwAAgAAAAEAAAAaACwAAgAAAAEAAAAbACwAAgAAAAEAAAAcACwAAgAAAAEAAAAdACwAAgAAAAEAAAAeACwAAgAAAAEAAAAfACwAAgAAAAEAAAAgACwAAgAAAAEAAAAhACwAAgAAAAEAAAAiACwAAgAAAAEAAAAjACwAAgAAAAEAAAAkACwAAgAAAAEAAAAlACwAAgAAAAEAAAAmACwAAgAAAAEAAAAnACwAAgAAAAEAAAAoACwAAgAAAAEAAAApACwAAgAAAAEAAAAqACwAAgAAAAEAAAArACwAAgAAAAEAAAAsACwAAgAAAAEAAAAtACwAAgAAAAEAAAAuACwAAgAAAAEAAAAvACwAAgAAAAEAAAAwACwAAgAAAAEAAAAxACwAAgAAAAEAAAAyACwAAgAAAAEAAAAzACwAAgAAAAEAAAA0ACwAAgAAAAEAAAA1ACwAAgAAAAEAAAA2ACwAAgAAAAEAAAA3ACwAAgAAAAEAAAA4ACwAAgAAAAEAAAA5ACwAAgAAAAEAAAA6ACwAAgAAAAEAAAA7ACwAAgAAAAEAAAA8ACwAAgAAAAEAAAA9ACwAAgAAAAEAAAA+ACwAAgAAAAEAAAA/ACwAAgAAAAEAAABAACwAAgAAAAEAAABBACwAAgAAAAEAAABCACwAAgAAAAEAAABDACwAAgAAAAEAAABEACwAAgAAAAEAAABFACwAAgAAAAEAAABGACwAAgAAAAEAAABHACwAAgAAAAEAAABIACwAAgAAAAEAAABJACwAAgAAAAEAAABKACwAAgAAAAEAAABLACwAAgAAAAEAAABMACwAAgAAAAEAAABNACwAAgAAAAEAAABOACwAAgAAAAEAAABPACwAAgAAAAEAAABPACsAAgAAAAEAAABPACoAAgAAAAEAAABPACkAAgAAAAEAAABPACgAAgAAAAEAAABPACcAAgAAAAEAAABPACYAAgAAAAEAAABPACUAAgAAAAEAAABPACQAAgAAAAEAAABPACMAAgAAAAEAAABPACIAAgAAAAEAAABPACEAAgAAAAEAAABPACAAAgAAAAEAAABPAB8AAgAAAAEAAABPAB4AAgAAAAEAAABPAB0AAgAAAAEAAABPABwAAgAAAAEAAABPABsAAgAAAAEAAABPABoAAgAAAAEAAABPABkAAgAAAAEAAABPABgAAgAAAAEAAABPABcAAgAAAAEAAABPABYAAgAAAAEAAABPABUAAgAAAAEAAABPABQAAgAAAAEAAABPABMAAgAAAAEAAABPABIAAgAAAAEAAABPABEAAgAAAAEAAABPABAAAgAAAAEAAABPAA8AAgAAAAEAAABPAA4AAgAAAAEAAABPAA0AAgAAAAEAAABPAAwAAgAAAAEAAABPAAsAAgAAAAEAAABPAAoAAgAAAAEAAABPAAkAAgAAAAEAAABPAAgAAgAAAAEAAABPAAcAAgAAAAEAAABPAAYAAgAAAAEAAABPAAUAAgAAAAEAAABPAAQAAgAAAAEAAABPAAMAAgAAAAEAAABPAAIAAgAAAAEAAABPAAEAAgAAAAEAAAALACwAAgAAAAEAAAAMACwAAgAAAAEAAAANACwAAgAAAAEAAAAOACwAAgAAAAEAAAAPACwAAgAAAAEAAAAQACwAAgAAAAEAAAARACwAAgAAAAEAAAASACwAAgAAAAEAAAATACwAAgAAAAEAAABPAAAAAgAAAAEAAAA=")
+
+[node name="GroundLayer" parent="Entities/Tiles" index="1"]
+tile_map_data = PackedByteArray("AAABACQAAgAAAAEAAAACACQAAgAAAAEAAAADACQAAgAAAAEAAAAEACQAAgAAAAEAAAAFACQAAgAAAAEAAAAGACQAAgAAAAEAAAAHACQAAgAAAAEAAAAIACQAAgAAAAEAAAAJACQAAgAAAAEAAAAKACQAAgAAAAEAAAALACQAAgAAAAEAAAAMACQAAgAAAAEAAAABACYAAgAAAAEAAAABACcAAgAAAAEAAAABACgAAgAAAAEAAAABACkAAgAAAAEAAAABACoAAgAAAAEAAAABACsAAgAAAAEAAAACACYAAgAAAAEAAAACACcAAgAAAAEAAAACACgAAgAAAAEAAAACACkAAgAAAAEAAAACACoAAgAAAAEAAAACACsAAgAAAAEAAAADACYAAgAAAAEAAAADACcAAgAAAAEAAAADACgAAgAAAAEAAAADACkAAgAAAAEAAAADACoAAgAAAAEAAAADACsAAgAAAAEAAAAEACYAAgAAAAEAAAAEACcAAgAAAAEAAAAEACgAAgAAAAEAAAAEACkAAgAAAAEAAAAEACoAAgAAAAEAAAAEACsAAgAAAAEAAAAFACYAAgAAAAEAAAAFACcAAgAAAAEAAAAFACgAAgAAAAEAAAAFACkAAgAAAAEAAAAFACoAAgAAAAEAAAAFACsAAgAAAAEAAAAGACYAAgAAAAEAAAAGACcAAgAAAAEAAAAGACgAAgAAAAEAAAAGACkAAgAAAAEAAAAGACoAAgAAAAEAAAAGACsAAgAAAAEAAAAHACYAAgAAAAEAAAAHACcAAgAAAAEAAAAHACgAAgAAAAEAAAAHACkAAgAAAAEAAAAHACoAAgAAAAEAAAAHACsAAgAAAAEAAAAIACYAAgAAAAEAAAAIACcAAgAAAAEAAAAIACgAAgAAAAEAAAAIACkAAgAAAAEAAAAIACoAAgAAAAEAAAAIACsAAgAAAAEAAAAJACYAAgAAAAEAAAAJACcAAgAAAAEAAAAJACgAAgAAAAEAAAAJACkAAgAAAAEAAAAJACoAAgAAAAEAAAAJACsAAgAAAAEAAAAKACYAAgAAAAEAAAAKACcAAgAAAAEAAAAKACgAAgAAAAEAAAAKACkAAgAAAAEAAAAKACoAAgAAAAEAAAAKACsAAgAAAAEAAAALACYAAgAAAAEAAAALACcAAgAAAAEAAAALACgAAgAAAAEAAAALACkAAgAAAAEAAAALACoAAgAAAAEAAAAMACYAAgAAAAEAAAAMACcAAgAAAAEAAAAMACgAAgAAAAEAAAAMACkAAgAAAAEAAAAUACsAAgAAAAEAAAABACUAAgAAAAEAAAACACUAAgAAAAEAAAADACUAAgAAAAEAAAAEACUAAgAAAAEAAAAFACUAAgAAAAEAAAAGACUAAgAAAAEAAAAHACUAAgAAAAEAAAAIACUAAgAAAAEAAAAJACUAAgAAAAEAAAAKACUAAgAAAAEAAAALACUAAgAAAAEAAAAMACUAAgAAAAEAAAALACsAAgAAAAEAAAAMACsAAgAAAAEAAAANACsAAgAAAAEAAAAOACsAAgAAAAEAAAAPACsAAgAAAAEAAAAQACsAAgAAAAEAAAARACsAAgAAAAEAAAASACsAAgAAAAEAAAATACsAAgAAAAEAAAAMACoAAgAAAAEAAAANACQAAgAAAAEAAAANACUAAgAAAAEAAAANACYAAgAAAAEAAAANACcAAgAAAAEAAAANACgAAgAAAAEAAAANACkAAgAAAAEAAAANACoAAgAAAAEAAAAOACQAAgAAAAEAAAAOACUAAgAAAAEAAAAOACYAAgAAAAEAAAAOACcAAgAAAAEAAAAOACgAAgAAAAEAAAAOACkAAgAAAAEAAAAOACoAAgAAAAEAAAAPACQAAgAAAAEAAAAPACUAAgAAAAEAAAAPACYAAgAAAAEAAAAPACcAAgAAAAEAAAAPACgAAgAAAAEAAAAPACkAAgAAAAEAAAAPACoAAgAAAAEAAAAQACQAAgAAAAEAAAAQACUAAgAAAAEAAAAQACYAAgAAAAEAAAAQACcAAgAAAAEAAAAQACgAAgAAAAEAAAAQACkAAgAAAAEAAAAQACoAAgAAAAEAAAARACQAAgAAAAEAAAARACUAAgAAAAEAAAARACYAAgAAAAEAAAARACcAAgAAAAEAAAARACgAAgAAAAEAAAARACkAAgAAAAEAAAARACoAAgAAAAEAAAASACQAAgAAAAEAAAASACUAAgAAAAEAAAASACYAAgAAAAEAAAASACcAAgAAAAEAAAASACgAAgAAAAEAAAASACkAAgAAAAEAAAASACoAAgAAAAEAAAATACQAAgAAAAEAAAATACUAAgAAAAEAAAATACYAAgAAAAEAAAATACcAAgAAAAEAAAATACgAAgAAAAEAAAATACkAAgAAAAEAAAATACoAAgAAAAEAAAAUACQAAgAAAAEAAAAUACUAAgAAAAEAAAAUACYAAgAAAAEAAAAUACcAAgAAAAEAAAAUACgAAgAAAAEAAAAUACkAAgAAAAEAAAAUACoAAgAAAAEAAAAVACUAAgAAAAEAAAAVACYAAgAAAAEAAAAWACYAAgAAAAEAAAAVACcAAgAAAAEAAAAWACcAAgAAAAEAAAAXACcAAgAAAAEAAAAVACgAAgAAAAEAAAAWACgAAgAAAAEAAAAXACgAAgAAAAEAAAAXACkAAgAAAAEAAAAWACkAAgAAAAEAAAAVACkAAgAAAAEAAAAYACkAAgAAAAEAAAAXACoAAgAAAAEAAAAWACoAAgAAAAEAAAAVACoAAgAAAAEAAAAVACsAAgAAAAEAAAAWACsAAgAAAAEAAAAXACsAAgAAAAEAAAAYACoAAgAAAAEAAAAZACoAAgAAAAEAAAAYACsAAgAAAAEAAAAZACsAAgAAAAEAAAA=")
+
+[node name="InsideLayer" parent="Entities/Tiles" index="2"]
+tile_map_data = PackedByteArray("AAABABAAAgAAAAEAAAACABAAAgAAAAEAAAADABAAAgAAAAEAAAAEABAAAgAAAAEAAAAFABAAAgAAAAEAAAAGABAAAgAAAAEAAAAHABAAAgAAAAEAAAAIABAAAgAAAAEAAAAJABAAAgAAAAEAAAAKABAAAgAAAAEAAAALABAAAgAAAAEAAAAMABAAAgAAAAEAAAANABAAAgAAAAEAAAAOABAAAgAAAAEAAAAPABAAAgAAAAEAAAAQABAAAgAAAAEAAAARABAAAgAAAAEAAAASABAAAgAAAAEAAAATABAAAgAAAAEAAAAUABAAAgAAAAEAAAAVABAAAgAAAAEAAAAWABAAAgAAAAEAAAAXABAAAgAAAAEAAAAYABAAAgAAAAEAAAAZABAAAgAAAAEAAAAaABAAAgAAAAEAAAAbABAAAgAAAAEAAAAcABAAAgAAAAEAAAAcAA8AAgAAAAEAAAAcAA4AAgAAAAEAAAAcAA0AAgAAAAEAAAAcAAwAAgAAAAEAAAAcAAsAAgAAAAEAAAAcAAYAAgAAAAEAAAAcAAUAAgAAAAEAAAAcAAQAAgAAAAEAAAAcAAMAAgAAAAEAAAAcAAIAAgAAAAEAAAAcAAEAAgAAAAEAAAA1AAEAAgAAAAEAAAA1AAIAAgAAAAEAAAA1AAMAAgAAAAEAAAA1AAQAAgAAAAEAAAA1AAUAAgAAAAEAAAA1AAYAAgAAAAEAAAA1AAwAAgAAAAEAAAA1AA0AAgAAAAEAAAA1AA4AAgAAAAEAAAA1AA8AAgAAAAEAAAA1ABAAAgAAAAEAAAA1ABEAAgAAAAEAAAA1ABIAAgAAAAEAAAA2ABIAAgAAAAEAAAA3ABIAAgAAAAEAAAA4ABIAAgAAAAEAAAA5ABIAAgAAAAEAAAA6ABIAAgAAAAEAAAA7ABIAAgAAAAEAAAA8ABIAAgAAAAEAAAA9ABIAAgAAAAEAAAAXAA8AAgAAAAEAAAAYAA0AAgAAAAEAAAAYAA4AAgAAAAEAAAAYAA8AAgAAAAEAAAAZAAsAAgAAAAEAAAAZAAwAAgAAAAEAAAAZAA0AAgAAAAEAAAAZAA4AAgAAAAEAAAAZAA8AAgAAAAEAAAAaAAsAAgAAAAEAAAAaAAwAAgAAAAEAAAAaAA0AAgAAAAEAAAAaAA4AAgAAAAEAAAAaAA8AAgAAAAEAAAAbAAsAAgAAAAEAAAAbAAwAAgAAAAEAAAAbAA0AAgAAAAEAAAAbAA4AAgAAAAEAAAAbAA8AAgAAAAEAAAA2AAwAAgAAAAEAAAA2AA0AAgAAAAEAAAA2AA4AAgAAAAEAAAA2AA8AAgAAAAEAAAA2ABAAAgAAAAEAAAA2ABEAAgAAAAEAAAA3AAwAAgAAAAEAAAA3AA0AAgAAAAEAAAA3AA4AAgAAAAEAAAA3AA8AAgAAAAEAAAA3ABAAAgAAAAEAAAA3ABEAAgAAAAEAAAA4AAwAAgAAAAEAAAA4AA0AAgAAAAEAAAA4AA4AAgAAAAEAAAA4AA8AAgAAAAEAAAA4ABAAAgAAAAEAAAA4ABEAAgAAAAEAAAA5AAwAAgAAAAEAAAA5AA0AAgAAAAEAAAA5AA4AAgAAAAEAAAA5AA8AAgAAAAEAAAA5ABAAAgAAAAEAAAA5ABEAAgAAAAEAAAA6AAwAAgAAAAEAAAA6AA0AAgAAAAEAAAA6AA4AAgAAAAEAAAA6AA8AAgAAAAEAAAA6ABAAAgAAAAEAAAA6ABEAAgAAAAEAAAA7AA0AAgAAAAEAAAA7AA4AAgAAAAEAAAA7AA8AAgAAAAEAAAA7ABAAAgAAAAEAAAA7ABEAAgAAAAEAAAA8AA4AAgAAAAEAAAA8AA8AAgAAAAEAAAA8ABAAAgAAAAEAAAA8ABEAAgAAAAEAAAA9AA8AAgAAAAEAAAA9ABAAAgAAAAEAAAA9ABEAAgAAAAEAAAAYAAwAAgAAAAEAAAAYAAsAAgAAAAEAAAAXAAsAAgAAAAEAAAAXAAwAAgAAAAEAAAAXAA0AAgAAAAEAAAAXAA4AAgAAAAEAAAAWAA8AAgAAAAEAAAAWAA4AAgAAAAEAAAAWAA0AAgAAAAEAAAAWAAwAAgAAAAEAAAAVAA4AAgAAAAEAAAAVAA8AAgAAAAEAAAAVAA0AAgAAAAEAAAAUAA8AAgAAAAEAAAA8AA0AAgAAAAEAAAA7AAwAAgAAAAEAAABKAAYAAgAAAAEAAABKAAcAAgAAAAEAAABKAAgAAgAAAAEAAABKAAkAAgAAAAEAAABLAAYAAgAAAAEAAABLAAcAAgAAAAEAAABLAAgAAgAAAAEAAABLAAkAAgAAAAEAAABMAAYAAgAAAAEAAABMAAcAAgAAAAEAAABMAAgAAgAAAAEAAABMAAkAAgAAAAEAAABNAAYAAgAAAAEAAABNAAcAAgAAAAEAAABNAAgAAgAAAAEAAABNAAkAAgAAAAEAAABOAAYAAgAAAAEAAABOAAcAAgAAAAEAAABOAAgAAgAAAAEAAABOAAkAAgAAAAEAAAAcAAAAAgAAAAEAAAA1AAAAAgAAAAEAAAACAAsAAgAAAAEAAAADAAsAAgAAAAEAAAAEAAsAAgAAAAEAAAACAAoAAgAAAAEAAAADAAoAAgAAAAEAAAAEAAoAAgAAAAEAAAA=")
+
+[node name="UnseenArea" parent="Entities/UnseenAreaContainer" index="0" instance=ExtResource("11_53uta")]
+position = Vector2(319, 73)
+direction_to_show = 1
+
+[node name="SectionDoorSprite" parent="Entities/UnseenAreaContainer/UnseenArea" index="0"]
+position = Vector2(136.5, 71)
+scale = Vector2(2.125, 1.33333)
+
+[node name="CollisionShape2D" parent="Entities/UnseenAreaContainer/UnseenArea/SectionDoorSprite/AreaEnterComponent" index="0"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_53uta")
+
+[node name="HiddenArea" parent="Entities/UnseenAreaContainer/UnseenArea" index="1"]
+offset_left = -128.0
+offset_top = 45.0
+offset_right = -88.0
+offset_bottom = 85.0
+
+[node name="ColorRect" parent="Entities/UnseenAreaContainer/UnseenArea/HiddenArea" index="0"]
+offset_left = -176.0
+offset_top = -118.0
+offset_right = 257.0
+offset_bottom = 139.0
+
+[node name="UnseenArea2" parent="Entities/UnseenAreaContainer" index="1" instance=ExtResource("11_53uta")]
+position = Vector2(898, 165)
+
+[node name="SectionDoorSprite" parent="Entities/UnseenAreaContainer/UnseenArea2" index="0"]
+position = Vector2(-42, -13)
+scale = Vector2(2, 1.66667)
+
+[node name="CollisionShape2D" parent="Entities/UnseenAreaContainer/UnseenArea2/SectionDoorSprite/AreaEnterComponent" index="0"]
+shape = SubResource("RectangleShape2D_s6yt2")
+
+[node name="HiddenArea" parent="Entities/UnseenAreaContainer/UnseenArea2" index="1"]
+offset_left = 151.0
+offset_top = -27.0
+offset_right = 191.0
+offset_bottom = 13.0
+
+[node name="ColorRect" parent="Entities/UnseenAreaContainer/UnseenArea2/HiddenArea" index="0"]
+offset_left = -185.0
+offset_top = -139.0
+offset_right = 215.0
+offset_bottom = 166.0
+
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("11_0mvmf")]
+position = Vector2(428, 166)
+dialog_data = Array[ExtResource("12_l5kw7")]([SubResource("Resource_7ueek")])
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
+position = Vector2(-30, 7.5)
+shape = SubResource("RectangleShape2D_pk02n")
 
 [node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
 shape = SubResource("RectangleShape2D_wkvl7")
 
+[editable path="Entities/Actors/Player/Player"]
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Entities/UnseenAreaContainer/UnseenArea"]
+[editable path="Entities/UnseenAreaContainer/UnseenArea/SectionDoorSprite/AreaEnterComponent"]
+[editable path="Entities/UnseenAreaContainer/UnseenArea2"]
+[editable path="Entities/UnseenAreaContainer/UnseenArea2/SectionDoorSprite/AreaEnterComponent"]
+[editable path="Areas/DialogAreas/DialogArea"]
 [editable path="Areas/DeadAreas/DeadArea"]

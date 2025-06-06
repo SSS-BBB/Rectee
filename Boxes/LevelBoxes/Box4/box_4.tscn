@@ -23,6 +23,7 @@ resource_local_to_scene = true
 size = Vector2(10911, 103)
 
 [node name="Box4" instance=ExtResource("1_g28cy")]
+box_level = 4
 
 [node name="BouncingPlatform" parent="Entities/Objects/Platforms/BouncingPlatforms" index="0" instance=ExtResource("2_s2247")]
 position = Vector2(293, 485)
