@@ -1,21 +1,437 @@
-[gd_scene load_steps=25 format=4 uid="uid://birqprw7kxhx4"]
+[gd_scene load_steps=78 format=4 uid="uid://birqprw7kxhx4"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_fro1j"]
 [ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="2_4u3y0"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="2_wkvl7"]
-[ext_resource type="Resource" uid="uid://6nbybnvnx4vi" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_1.tres" id="3_pcwqk"]
-[ext_resource type="Resource" uid="uid://c45tx25wmokxh" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_2.tres" id="4_cjyia"]
-[ext_resource type="Resource" uid="uid://dhr6cgctn7u7e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_3.tres" id="5_0mvmf"]
+[ext_resource type="Script" uid="uid://c5uc1pjhih7m1" path="res://Entities/Objects/Spikes/Resource/spike_resource.gd" id="3_l5kw7"]
+[ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="4_53uta"]
 [ext_resource type="Resource" uid="uid://coc3r7q2a31u5" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_1.tres" id="6_pk02n"]
 [ext_resource type="Resource" uid="uid://c2iknbhpd37lv" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_2.tres" id="7_l5kw7"]
-[ext_resource type="Resource" uid="uid://diarvqr2x8o1e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_3.tres" id="8_53uta"]
-[ext_resource type="Resource" uid="uid://dub44xg6s8pgx" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_2.tres" id="9_7ueek"]
 [ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="10_7ueek"]
+[ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Entities/Characters/Player/SFXs/drinking.wav" id="10_s6yt2"]
 [ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="11_0mvmf"]
 [ext_resource type="PackedScene" uid="uid://bnp000d13b8yh" path="res://Entities/Objects/Others/UnseenArea/unseen_area.tscn" id="11_53uta"]
+[ext_resource type="Script" uid="uid://cqprexufga7ns" path="res://Entities/Objects/Items/Consumable/Resources/consumable_resource.gd" id="11_dnm5q"]
 [ext_resource type="PackedScene" uid="uid://c8fixtf1k7wfp" path="res://Entities/Objects/Platforms/MovingPlatform/moving_platform.tscn" id="11_s6yt2"]
 [ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="12_l5kw7"]
+[ext_resource type="Texture2D" uid="uid://quxobky4ikd5" path="res://Entities/Objects/Items/Consumable/Textures/speed_drink.png" id="12_qkyja"]
 [ext_resource type="Texture2D" uid="uid://djycx3l63dc2x" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/mysterious_speaker.png" id="13_53uta"]
+
+[sub_resource type="Resource" id="Resource_s6yt2"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_dnm5q"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_qkyja"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_ddyb7"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_p3aip"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(16, 16, 15, 32)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_7r08s"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(32, 0, 15, 48)
+damage = 2
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_mu1pf"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(120, 24, 7, 24)
+damage = 2
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_2pobu"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(120, 24, 7, 24)
+damage = 2
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_rvkt6"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(120, 24, 7, 24)
+damage = 2
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_qawj7"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_nvnf2"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_l71bj"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_amcna"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_kjagb"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_ufmvt"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_lyoge"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_ir8ox"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(16, 16, 15, 32)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_ouox0"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(32, 0, 15, 48)
+damage = 2
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_icafb"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(120, 24, 7, 24)
+damage = 2
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_be1vl"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(120, 24, 7, 24)
+damage = 2
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_7s5ty"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(120, 24, 7, 24)
+damage = 2
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_4q4xd"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_at002"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_4n8ie"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_t4atw"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_3ouao"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_nfmcb"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_dxaau"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_4a413"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(16, 16, 15, 32)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_n1nyb"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_sm0tx"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_kv2lh"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_y4v8u"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_yuu6x"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_fcoty"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(16, 16, 15, 32)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_eccj7"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_07eto"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_e376w"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_dm4oi"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_o6sjb"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_idrip"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(16, 16, 15, 32)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_mnhen"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_ooq0l"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_shnfu"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(64, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_3yion"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_cvw0n"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_wmkd6"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(16, 16, 15, 32)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_ct16m"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_8f6oi"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(80, 24, 15, 24)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_j1fre"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_vwkpb"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(16, 16, 15, 32)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_n3j5r"]
+resource_local_to_scene = true
+script = ExtResource("3_l5kw7")
+texture = ExtResource("4_53uta")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Curve2D" id="Curve2D_s6yt2"]
 _data = {
@@ -34,6 +450,16 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -75, 0)
 }
 point_count = 2
+
+[sub_resource type="Resource" id="Resource_j8mrh"]
+resource_local_to_scene = true
+script = ExtResource("11_dnm5q")
+texture = ExtResource("12_qkyja")
+get_audio = ExtResource("10_s6yt2")
+effect = 0
+value = 100
+duration = 5.0
+metadata/_custom_type_script = "uid://cqprexufga7ns"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53uta"]
 resource_local_to_scene = true
@@ -73,31 +499,32 @@ max_health = 10
 [node name="Spike" parent="Entities/Objects/Spikes" index="0" instance=ExtResource("2_4u3y0")]
 position = Vector2(25, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_s6yt2")
 
 [node name="Spike2" parent="Entities/Objects/Spikes" index="1" instance=ExtResource("2_4u3y0")]
 position = Vector2(48, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_dnm5q")
 
 [node name="Spike3" parent="Entities/Objects/Spikes" index="2" instance=ExtResource("2_4u3y0")]
 position = Vector2(70, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_qkyja")
 
 [node name="Spike4" parent="Entities/Objects/Spikes" index="3" instance=ExtResource("2_4u3y0")]
 position = Vector2(92, 246)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_ddyb7")
 
 [node name="Spike5" parent="Entities/Objects/Spikes" index="4" instance=ExtResource("2_4u3y0")]
 position = Vector2(114, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("4_cjyia")
+resource = SubResource("Resource_p3aip")
 
 [node name="Spike6" parent="Entities/Objects/Spikes" index="5" instance=ExtResource("2_4u3y0")]
 position = Vector2(136, 223)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("5_0mvmf")
+resource = SubResource("Resource_7r08s")
 
 [node name="Spike7" parent="Entities/Objects/Spikes" index="6" instance=ExtResource("2_4u3y0")]
 position = Vector2(152, 251)
@@ -122,7 +549,7 @@ resource = ExtResource("7_l5kw7")
 [node name="Spike15" parent="Entities/Objects/Spikes" index="10" instance=ExtResource("2_4u3y0")]
 position = Vector2(172, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("8_53uta")
+resource = SubResource("Resource_mu1pf")
 
 [node name="Spike9" parent="Entities/Objects/Spikes" index="11" instance=ExtResource("2_4u3y0")]
 position = Vector2(202, 252)
@@ -132,12 +559,12 @@ resource = ExtResource("6_pk02n")
 [node name="Spike10" parent="Entities/Objects/Spikes" index="12" instance=ExtResource("2_4u3y0")]
 position = Vector2(212, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("8_53uta")
+resource = SubResource("Resource_2pobu")
 
 [node name="Spike18" parent="Entities/Objects/Spikes" index="13" instance=ExtResource("2_4u3y0")]
 position = Vector2(222, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("8_53uta")
+resource = SubResource("Resource_rvkt6")
 
 [node name="Spike19" parent="Entities/Objects/Spikes" index="14" instance=ExtResource("2_4u3y0")]
 position = Vector2(232, 246)
@@ -147,17 +574,17 @@ resource = ExtResource("7_l5kw7")
 [node name="Spike11" parent="Entities/Objects/Spikes" index="15" instance=ExtResource("2_4u3y0")]
 position = Vector2(247, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_qawj7")
 
 [node name="Spike12" parent="Entities/Objects/Spikes" index="16" instance=ExtResource("2_4u3y0")]
 position = Vector2(269, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_nvnf2")
 
 [node name="Spike13" parent="Entities/Objects/Spikes" index="17" instance=ExtResource("2_4u3y0")]
 position = Vector2(291, 246)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_l71bj")
 
 [node name="Spike14" parent="Entities/Objects/Spikes" index="18" instance=ExtResource("2_4u3y0")]
 position = Vector2(307, 246)
@@ -172,31 +599,32 @@ resource = ExtResource("6_pk02n")
 [node name="Spike21" parent="Entities/Objects/Spikes" index="20" instance=ExtResource("2_4u3y0")]
 position = Vector2(427, 692)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_amcna")
 
 [node name="Spike22" parent="Entities/Objects/Spikes" index="21" instance=ExtResource("2_4u3y0")]
 position = Vector2(450, 689)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_kjagb")
 
 [node name="Spike23" parent="Entities/Objects/Spikes" index="22" instance=ExtResource("2_4u3y0")]
 position = Vector2(472, 692)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_ufmvt")
 
 [node name="Spike24" parent="Entities/Objects/Spikes" index="23" instance=ExtResource("2_4u3y0")]
 position = Vector2(494, 692)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_lyoge")
 
 [node name="Spike25" parent="Entities/Objects/Spikes" index="24" instance=ExtResource("2_4u3y0")]
 position = Vector2(516, 680)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("4_cjyia")
+resource = SubResource("Resource_ir8ox")
 
 [node name="Spike26" parent="Entities/Objects/Spikes" index="25" instance=ExtResource("2_4u3y0")]
 position = Vector2(538, 668)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("5_0mvmf")
+resource = SubResource("Resource_ouox0")
 
 [node name="Spike27" parent="Entities/Objects/Spikes" index="26" instance=ExtResource("2_4u3y0")]
 position = Vector2(554, 698)
@@ -221,7 +649,7 @@ resource = ExtResource("7_l5kw7")
 [node name="Spike31" parent="Entities/Objects/Spikes" index="30" instance=ExtResource("2_4u3y0")]
 position = Vector2(574, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("8_53uta")
+resource = SubResource("Resource_icafb")
 
 [node name="Spike32" parent="Entities/Objects/Spikes" index="31" instance=ExtResource("2_4u3y0")]
 position = Vector2(604, 698)
@@ -231,12 +659,12 @@ resource = ExtResource("6_pk02n")
 [node name="Spike33" parent="Entities/Objects/Spikes" index="32" instance=ExtResource("2_4u3y0")]
 position = Vector2(614, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("8_53uta")
+resource = SubResource("Resource_be1vl")
 
 [node name="Spike34" parent="Entities/Objects/Spikes" index="33" instance=ExtResource("2_4u3y0")]
 position = Vector2(624, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("8_53uta")
+resource = SubResource("Resource_7s5ty")
 
 [node name="Spike35" parent="Entities/Objects/Spikes" index="34" instance=ExtResource("2_4u3y0")]
 position = Vector2(634, 692)
@@ -246,17 +674,17 @@ resource = ExtResource("7_l5kw7")
 [node name="Spike36" parent="Entities/Objects/Spikes" index="35" instance=ExtResource("2_4u3y0")]
 position = Vector2(649, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_4q4xd")
 
 [node name="Spike37" parent="Entities/Objects/Spikes" index="36" instance=ExtResource("2_4u3y0")]
 position = Vector2(671, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_at002")
 
 [node name="Spike38" parent="Entities/Objects/Spikes" index="37" instance=ExtResource("2_4u3y0")]
 position = Vector2(693, 692)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_4n8ie")
 
 [node name="Spike39" parent="Entities/Objects/Spikes" index="38" instance=ExtResource("2_4u3y0")]
 position = Vector2(709, 692)
@@ -271,132 +699,142 @@ resource = ExtResource("6_pk02n")
 [node name="Spike41" parent="Entities/Objects/Spikes" index="40" instance=ExtResource("2_4u3y0")]
 position = Vector2(732, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_t4atw")
 
 [node name="Spike42" parent="Entities/Objects/Spikes" index="41" instance=ExtResource("2_4u3y0")]
 position = Vector2(754, 692)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_3ouao")
 
 [node name="Spike43" parent="Entities/Objects/Spikes" index="42" instance=ExtResource("2_4u3y0")]
 position = Vector2(776, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_nfmcb")
 
 [node name="Spike44" parent="Entities/Objects/Spikes" index="43" instance=ExtResource("2_4u3y0")]
 position = Vector2(798, 692)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_dxaau")
 
 [node name="Spike45" parent="Entities/Objects/Spikes" index="44" instance=ExtResource("2_4u3y0")]
 position = Vector2(820, 680)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("4_cjyia")
+resource = SubResource("Resource_4a413")
 
 [node name="Spike46" parent="Entities/Objects/Spikes" index="45" instance=ExtResource("2_4u3y0")]
 position = Vector2(842, 692)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_n1nyb")
 
 [node name="Spike47" parent="Entities/Objects/Spikes" index="46" instance=ExtResource("2_4u3y0")]
 position = Vector2(864, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_sm0tx")
 
 [node name="Spike48" parent="Entities/Objects/Spikes" index="47" instance=ExtResource("2_4u3y0")]
 position = Vector2(886, 692)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_kv2lh")
 
 [node name="Spike49" parent="Entities/Objects/Spikes" index="48" instance=ExtResource("2_4u3y0")]
 position = Vector2(908, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_y4v8u")
 
 [node name="Spike50" parent="Entities/Objects/Spikes" index="49" instance=ExtResource("2_4u3y0")]
 position = Vector2(930, 692)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_yuu6x")
 
 [node name="Spike51" parent="Entities/Objects/Spikes" index="50" instance=ExtResource("2_4u3y0")]
 position = Vector2(952, 680)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("4_cjyia")
+resource = SubResource("Resource_fcoty")
 
 [node name="Spike52" parent="Entities/Objects/Spikes" index="51" instance=ExtResource("2_4u3y0")]
 position = Vector2(974, 692)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_eccj7")
 
 [node name="Spike53" parent="Entities/Objects/Spikes" index="52" instance=ExtResource("2_4u3y0")]
 position = Vector2(996, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_07eto")
 
 [node name="Spike54" parent="Entities/Objects/Spikes" index="53" instance=ExtResource("2_4u3y0")]
 position = Vector2(1018, 692)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_e376w")
 
 [node name="Spike55" parent="Entities/Objects/Spikes" index="54" instance=ExtResource("2_4u3y0")]
 position = Vector2(1040, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_dm4oi")
 
 [node name="Spike56" parent="Entities/Objects/Spikes" index="55" instance=ExtResource("2_4u3y0")]
 position = Vector2(1062, 692)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_o6sjb")
 
 [node name="Spike57" parent="Entities/Objects/Spikes" index="56" instance=ExtResource("2_4u3y0")]
 position = Vector2(1084, 680)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("4_cjyia")
+resource = SubResource("Resource_idrip")
 
 [node name="Spike58" parent="Entities/Objects/Spikes" index="57" instance=ExtResource("2_4u3y0")]
 position = Vector2(1106, 692)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_mnhen")
 
 [node name="Spike59" parent="Entities/Objects/Spikes" index="58" instance=ExtResource("2_4u3y0")]
 position = Vector2(1128, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_ooq0l")
 
 [node name="Spike60" parent="Entities/Objects/Spikes" index="59" instance=ExtResource("2_4u3y0")]
 position = Vector2(1150, 692)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_pcwqk")
+resource = SubResource("Resource_shnfu")
 
 [node name="Spike61" parent="Entities/Objects/Spikes" index="60" instance=ExtResource("2_4u3y0")]
 position = Vector2(1172, 686)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_3yion")
 
 [node name="Spike62" parent="Entities/Objects/Spikes" index="61" instance=ExtResource("2_4u3y0")]
 position = Vector2(1194, 692)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_cvw0n")
 
 [node name="Spike63" parent="Entities/Objects/Spikes" index="62" instance=ExtResource("2_4u3y0")]
 position = Vector2(1216, 680)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("4_cjyia")
+resource = SubResource("Resource_wmkd6")
 
 [node name="Spike64" parent="Entities/Objects/Spikes" index="63" instance=ExtResource("2_4u3y0")]
 position = Vector2(1238, 692)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_ct16m")
 
 [node name="Spike67" parent="Entities/Objects/Spikes" index="64" instance=ExtResource("2_4u3y0")]
 position = Vector2(257, 561)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("9_7ueek")
+resource = SubResource("Resource_8f6oi")
 
 [node name="Spike68" parent="Entities/Objects/Spikes" index="65" instance=ExtResource("2_4u3y0")]
 position = Vector2(279, 567)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_j1fre")
 
 [node name="Spike69" parent="Entities/Objects/Spikes" index="66" instance=ExtResource("2_4u3y0")]
 position = Vector2(301, 555)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("4_cjyia")
+resource = SubResource("Resource_vwkpb")
 
 [node name="Spike70" parent="Entities/Objects/Spikes" index="67" instance=ExtResource("2_4u3y0")]
 position = Vector2(323, 567)
 scale = Vector2(1.5, 1.5)
+resource = SubResource("Resource_n3j5r")
 
 [node name="Spike65" parent="Entities/Objects/Spikes" index="68" instance=ExtResource("2_4u3y0")]
 position = Vector2(1254, 692)
@@ -438,6 +876,7 @@ scale = Vector2(1, 1)
 
 [node name="Consumable" parent="Entities/Objects/Items/Consumables" index="0" instance=ExtResource("2_wkvl7")]
 position = Vector2(383, 167)
+consumable_resource = SubResource("Resource_j8mrh")
 
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
 position = Vector2(1248, 64)
@@ -445,10 +884,10 @@ scale = Vector2(2, 2)
 next_box_path = "res://Boxes/LevelBoxes/Box6/box_6.tscn"
 
 [node name="RoomLayer" parent="Entities/Tiles" index="0"]
-tile_map_data = PackedByteArray("AAAAACgAAgAAAAEAAAAAAAAAAgAAAAEAAAAAAAEAAgAAAAEAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAEAAAAAAAQAAgAAAAEAAAAAAAUAAgAAAAEAAAAAAAYAAgAAAAEAAAAAAAcAAgAAAAEAAAAAAAgAAgAAAAEAAAAAAAkAAgAAAAEAAAAAAAoAAgAAAAEAAAAAAAsAAgAAAAEAAAAAAAwAAgAAAAEAAAAAAA0AAgAAAAEAAAAAAA4AAgAAAAEAAAAAAA8AAgAAAAEAAAAAABAAAgAAAAEAAAAAABEAAgAAAAEAAAAAABIAAgAAAAEAAAAAABMAAgAAAAEAAAAAABQAAgAAAAEAAAAAABUAAgAAAAEAAAAAABYAAgAAAAEAAAAAABcAAgAAAAEAAAAAABgAAgAAAAEAAAAAABkAAgAAAAEAAAAAABoAAgAAAAEAAAAAABsAAgAAAAEAAAAAABwAAgAAAAEAAAAAAB0AAgAAAAEAAAAAAB4AAgAAAAEAAAAAAB8AAgAAAAEAAAAAACAAAgAAAAEAAAAAACEAAgAAAAEAAAAAACIAAgAAAAEAAAAAACMAAgAAAAEAAAAAACQAAgAAAAEAAAAAACUAAgAAAAEAAAAAACYAAgAAAAEAAAAAACcAAgAAAAEAAAAAACkAAgAAAAEAAAAAACoAAgAAAAEAAAAAACsAAgAAAAEAAAAAACwAAgAAAAEAAAABACwAAgAAAAEAAAACACwAAgAAAAEAAAADACwAAgAAAAEAAAAEACwAAgAAAAEAAAAFACwAAgAAAAEAAAAGACwAAgAAAAEAAAAHACwAAgAAAAEAAAAIACwAAgAAAAEAAAAJACwAAgAAAAEAAAAKACwAAgAAAAEAAAAUACwAAgAAAAEAAAAVACwAAgAAAAEAAAAWACwAAgAAAAEAAAAXACwAAgAAAAEAAAAYACwAAgAAAAEAAAAZACwAAgAAAAEAAAAaACwAAgAAAAEAAAAbACwAAgAAAAEAAAAcACwAAgAAAAEAAAAdACwAAgAAAAEAAAAeACwAAgAAAAEAAAAfACwAAgAAAAEAAAAgACwAAgAAAAEAAAAhACwAAgAAAAEAAAAiACwAAgAAAAEAAAAjACwAAgAAAAEAAAAkACwAAgAAAAEAAAAlACwAAgAAAAEAAAAmACwAAgAAAAEAAAAnACwAAgAAAAEAAAAoACwAAgAAAAEAAAApACwAAgAAAAEAAAAqACwAAgAAAAEAAAArACwAAgAAAAEAAAAsACwAAgAAAAEAAAAtACwAAgAAAAEAAAAuACwAAgAAAAEAAAAvACwAAgAAAAEAAAAwACwAAgAAAAEAAAAxACwAAgAAAAEAAAAyACwAAgAAAAEAAAAzACwAAgAAAAEAAAA0ACwAAgAAAAEAAAA1ACwAAgAAAAEAAAA2ACwAAgAAAAEAAAA3ACwAAgAAAAEAAAA4ACwAAgAAAAEAAAA5ACwAAgAAAAEAAAA6ACwAAgAAAAEAAAA7ACwAAgAAAAEAAAA8ACwAAgAAAAEAAAA9ACwAAgAAAAEAAAA+ACwAAgAAAAEAAAA/ACwAAgAAAAEAAABAACwAAgAAAAEAAABBACwAAgAAAAEAAABCACwAAgAAAAEAAABDACwAAgAAAAEAAABEACwAAgAAAAEAAABFACwAAgAAAAEAAABGACwAAgAAAAEAAABHACwAAgAAAAEAAABIACwAAgAAAAEAAABJACwAAgAAAAEAAABKACwAAgAAAAEAAABLACwAAgAAAAEAAABMACwAAgAAAAEAAABNACwAAgAAAAEAAABOACwAAgAAAAEAAABPACwAAgAAAAEAAABPACsAAgAAAAEAAABPACoAAgAAAAEAAABPACkAAgAAAAEAAABPACgAAgAAAAEAAABPACcAAgAAAAEAAABPACYAAgAAAAEAAABPACUAAgAAAAEAAABPACQAAgAAAAEAAABPACMAAgAAAAEAAABPACIAAgAAAAEAAABPACEAAgAAAAEAAABPACAAAgAAAAEAAABPAB8AAgAAAAEAAABPAB4AAgAAAAEAAABPAB0AAgAAAAEAAABPABwAAgAAAAEAAABPABsAAgAAAAEAAABPABoAAgAAAAEAAABPABkAAgAAAAEAAABPABgAAgAAAAEAAABPABcAAgAAAAEAAABPABYAAgAAAAEAAABPABUAAgAAAAEAAABPABQAAgAAAAEAAABPABMAAgAAAAEAAABPABIAAgAAAAEAAABPABEAAgAAAAEAAABPABAAAgAAAAEAAABPAA8AAgAAAAEAAABPAA4AAgAAAAEAAABPAA0AAgAAAAEAAABPAAwAAgAAAAEAAABPAAsAAgAAAAEAAABPAAoAAgAAAAEAAABPAAkAAgAAAAEAAABPAAgAAgAAAAEAAABPAAcAAgAAAAEAAABPAAYAAgAAAAEAAABPAAUAAgAAAAEAAABPAAQAAgAAAAEAAABPAAMAAgAAAAEAAABPAAIAAgAAAAEAAABPAAEAAgAAAAEAAAALACwAAgAAAAEAAAAMACwAAgAAAAEAAAANACwAAgAAAAEAAAAOACwAAgAAAAEAAAAPACwAAgAAAAEAAAAQACwAAgAAAAEAAAARACwAAgAAAAEAAAASACwAAgAAAAEAAAATACwAAgAAAAEAAABPAAAAAgAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAACgAAgAAAAEAAAAAAAAAAgAAAAEAAAAAAAEAAgAAAAEAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAEAAAAAAAQAAgAAAAEAAAAAAAUAAgAAAAEAAAAAAAYAAgAAAAEAAAAAAAcAAgAAAAEAAAAAAAgAAgAAAAEAAAAAAAkAAgAAAAEAAAAAAAoAAgAAAAEAAAAAAAsAAgAAAAEAAAAAAAwAAgAAAAEAAAAAAA0AAgAAAAEAAAAAAA4AAgAAAAEAAAAAAA8AAgAAAAEAAAAAABAAAgAAAAEAAAAAABEAAgAAAAEAAAAAABIAAgAAAAEAAAAAABMAAgAAAAEAAAAAABQAAgAAAAEAAAAAABUAAgAAAAEAAAAAABYAAgAAAAEAAAAAABcAAgAAAAEAAAAAABgAAgAAAAEAAAAAABkAAgAAAAEAAAAAABoAAgAAAAEAAAAAABsAAgAAAAEAAAAAABwAAgAAAAEAAAAAAB0AAgAAAAEAAAAAAB4AAgAAAAEAAAAAAB8AAgAAAAEAAAAAACAAAgAAAAEAAAAAACEAAgAAAAEAAAAAACIAAgAAAAEAAAAAACMAAgAAAAEAAAAAACQAAgAAAAEAAAAAACUAAgAAAAEAAAAAACYAAgAAAAEAAAAAACcAAgAAAAEAAAAAACkAAgAAAAEAAAAAACoAAgAAAAEAAAAAACsAAgAAAAEAAAAAACwAAgAAAAEAAAABACwAAgAAAAEAAAACACwAAgAAAAEAAAADACwAAgAAAAEAAAAEACwAAgAAAAEAAAAFACwAAgAAAAEAAAAGACwAAgAAAAEAAAAHACwAAgAAAAEAAAAIACwAAgAAAAEAAAAJACwAAgAAAAEAAAAKACwAAgAAAAEAAAAUACwAAgAAAAEAAAAVACwAAgAAAAEAAAAWACwAAgAAAAEAAAAXACwAAgAAAAEAAAAYACwAAgAAAAEAAAAZACwAAgAAAAEAAAAaACwAAgAAAAEAAAAbACwAAgAAAAEAAAAcACwAAgAAAAEAAAAdACwAAgAAAAEAAAAeACwAAgAAAAEAAAAfACwAAgAAAAEAAAAgACwAAgAAAAEAAAAhACwAAgAAAAEAAAAiACwAAgAAAAEAAAAjACwAAgAAAAEAAAAkACwAAgAAAAEAAAAlACwAAgAAAAEAAAAmACwAAgAAAAEAAAAnACwAAgAAAAEAAAAoACwAAgAAAAEAAAApACwAAgAAAAEAAAAqACwAAgAAAAEAAAArACwAAgAAAAEAAAAsACwAAgAAAAEAAAAtACwAAgAAAAEAAAAuACwAAgAAAAEAAAAvACwAAgAAAAEAAAAwACwAAgAAAAEAAAAxACwAAgAAAAEAAAAyACwAAgAAAAEAAAAzACwAAgAAAAEAAAA0ACwAAgAAAAEAAAA1ACwAAgAAAAEAAAA2ACwAAgAAAAEAAAA3ACwAAgAAAAEAAAA4ACwAAgAAAAEAAAA5ACwAAgAAAAEAAAA6ACwAAgAAAAEAAAA7ACwAAgAAAAEAAAA8ACwAAgAAAAEAAAA9ACwAAgAAAAEAAAA+ACwAAgAAAAEAAAA/ACwAAgAAAAEAAABAACwAAgAAAAEAAABBACwAAgAAAAEAAABCACwAAgAAAAEAAABDACwAAgAAAAEAAABEACwAAgAAAAEAAABFACwAAgAAAAEAAABGACwAAgAAAAEAAABHACwAAgAAAAEAAABIACwAAgAAAAEAAABJACwAAgAAAAEAAABKACwAAgAAAAEAAABLACwAAgAAAAEAAABMACwAAgAAAAEAAABNACwAAgAAAAEAAABOACwAAgAAAAEAAABPACwAAgAAAAEAAABPACsAAgAAAAEAAABPACoAAgAAAAEAAABPACkAAgAAAAEAAABPACgAAgAAAAEAAABPACcAAgAAAAEAAABPACYAAgAAAAEAAABPACUAAgAAAAEAAABPACQAAgAAAAEAAABPACMAAgAAAAEAAABPACIAAgAAAAEAAABPACEAAgAAAAEAAABPACAAAgAAAAEAAABPAB8AAgAAAAEAAABPAB4AAgAAAAEAAABPAB0AAgAAAAEAAABPABwAAgAAAAEAAABPABsAAgAAAAEAAABPABoAAgAAAAEAAABPABkAAgAAAAEAAABPABgAAgAAAAEAAABPABcAAgAAAAEAAABPABYAAgAAAAEAAABPABUAAgAAAAEAAABPABQAAgAAAAEAAABPABMAAgAAAAEAAABPABIAAgAAAAEAAABPABEAAgAAAAEAAABPABAAAgAAAAEAAABPAA8AAgAAAAEAAABPAA4AAgAAAAEAAABPAA0AAgAAAAEAAABPAAwAAgAAAAEAAABPAAsAAgAAAAEAAABPAAoAAgAAAAEAAABPAAkAAgAAAAEAAABPAAgAAgAAAAEAAABPAAcAAgAAAAEAAABPAAYAAgAAAAEAAABPAAUAAgAAAAEAAABPAAQAAgAAAAEAAABPAAMAAgAAAAEAAABPAAIAAgAAAAEAAABPAAEAAgAAAAEAAABPAAAAAgAAAAEAAAALACwAAgAAAAEAAAAMACwAAgAAAAEAAAANACwAAgAAAAEAAAAOACwAAgAAAAEAAAAPACwAAgAAAAEAAAAQACwAAgAAAAEAAAARACwAAgAAAAEAAAASACwAAgAAAAEAAAATACwAAgAAAAEAAAA=")
 
 [node name="GroundLayer" parent="Entities/Tiles" index="1"]
-tile_map_data = PackedByteArray("AAABACQAAgAAAAEAAAACACQAAgAAAAEAAAADACQAAgAAAAEAAAAEACQAAgAAAAEAAAAFACQAAgAAAAEAAAAGACQAAgAAAAEAAAAHACQAAgAAAAEAAAAIACQAAgAAAAEAAAAJACQAAgAAAAEAAAAKACQAAgAAAAEAAAALACQAAgAAAAEAAAAMACQAAgAAAAEAAAABACYAAgAAAAEAAAABACcAAgAAAAEAAAABACgAAgAAAAEAAAABACkAAgAAAAEAAAABACoAAgAAAAEAAAABACsAAgAAAAEAAAACACYAAgAAAAEAAAACACcAAgAAAAEAAAACACgAAgAAAAEAAAACACkAAgAAAAEAAAACACoAAgAAAAEAAAACACsAAgAAAAEAAAADACYAAgAAAAEAAAADACcAAgAAAAEAAAADACgAAgAAAAEAAAADACkAAgAAAAEAAAADACoAAgAAAAEAAAADACsAAgAAAAEAAAAEACYAAgAAAAEAAAAEACcAAgAAAAEAAAAEACgAAgAAAAEAAAAEACkAAgAAAAEAAAAEACoAAgAAAAEAAAAEACsAAgAAAAEAAAAFACYAAgAAAAEAAAAFACcAAgAAAAEAAAAFACgAAgAAAAEAAAAFACkAAgAAAAEAAAAFACoAAgAAAAEAAAAFACsAAgAAAAEAAAAGACYAAgAAAAEAAAAGACcAAgAAAAEAAAAGACgAAgAAAAEAAAAGACkAAgAAAAEAAAAGACoAAgAAAAEAAAAGACsAAgAAAAEAAAAHACYAAgAAAAEAAAAHACcAAgAAAAEAAAAHACgAAgAAAAEAAAAHACkAAgAAAAEAAAAHACoAAgAAAAEAAAAHACsAAgAAAAEAAAAIACYAAgAAAAEAAAAIACcAAgAAAAEAAAAIACgAAgAAAAEAAAAIACkAAgAAAAEAAAAIACoAAgAAAAEAAAAIACsAAgAAAAEAAAAJACYAAgAAAAEAAAAJACcAAgAAAAEAAAAJACgAAgAAAAEAAAAJACkAAgAAAAEAAAAJACoAAgAAAAEAAAAJACsAAgAAAAEAAAAKACYAAgAAAAEAAAAKACcAAgAAAAEAAAAKACgAAgAAAAEAAAAKACkAAgAAAAEAAAAKACoAAgAAAAEAAAAKACsAAgAAAAEAAAALACYAAgAAAAEAAAALACcAAgAAAAEAAAALACgAAgAAAAEAAAALACkAAgAAAAEAAAALACoAAgAAAAEAAAAMACYAAgAAAAEAAAAMACcAAgAAAAEAAAAMACgAAgAAAAEAAAAMACkAAgAAAAEAAAAUACsAAgAAAAEAAAABACUAAgAAAAEAAAACACUAAgAAAAEAAAADACUAAgAAAAEAAAAEACUAAgAAAAEAAAAFACUAAgAAAAEAAAAGACUAAgAAAAEAAAAHACUAAgAAAAEAAAAIACUAAgAAAAEAAAAJACUAAgAAAAEAAAAKACUAAgAAAAEAAAALACUAAgAAAAEAAAAMACUAAgAAAAEAAAALACsAAgAAAAEAAAAMACsAAgAAAAEAAAANACsAAgAAAAEAAAAOACsAAgAAAAEAAAAPACsAAgAAAAEAAAAQACsAAgAAAAEAAAARACsAAgAAAAEAAAASACsAAgAAAAEAAAATACsAAgAAAAEAAAAMACoAAgAAAAEAAAANACQAAgAAAAEAAAANACUAAgAAAAEAAAANACYAAgAAAAEAAAANACcAAgAAAAEAAAANACgAAgAAAAEAAAANACkAAgAAAAEAAAANACoAAgAAAAEAAAAOACQAAgAAAAEAAAAOACUAAgAAAAEAAAAOACYAAgAAAAEAAAAOACcAAgAAAAEAAAAOACgAAgAAAAEAAAAOACkAAgAAAAEAAAAOACoAAgAAAAEAAAAPACQAAgAAAAEAAAAPACUAAgAAAAEAAAAPACYAAgAAAAEAAAAPACcAAgAAAAEAAAAPACgAAgAAAAEAAAAPACkAAgAAAAEAAAAPACoAAgAAAAEAAAAQACQAAgAAAAEAAAAQACUAAgAAAAEAAAAQACYAAgAAAAEAAAAQACcAAgAAAAEAAAAQACgAAgAAAAEAAAAQACkAAgAAAAEAAAAQACoAAgAAAAEAAAARACQAAgAAAAEAAAARACUAAgAAAAEAAAARACYAAgAAAAEAAAARACcAAgAAAAEAAAARACgAAgAAAAEAAAARACkAAgAAAAEAAAARACoAAgAAAAEAAAASACQAAgAAAAEAAAASACUAAgAAAAEAAAASACYAAgAAAAEAAAASACcAAgAAAAEAAAASACgAAgAAAAEAAAASACkAAgAAAAEAAAASACoAAgAAAAEAAAATACQAAgAAAAEAAAATACUAAgAAAAEAAAATACYAAgAAAAEAAAATACcAAgAAAAEAAAATACgAAgAAAAEAAAATACkAAgAAAAEAAAATACoAAgAAAAEAAAAUACQAAgAAAAEAAAAUACUAAgAAAAEAAAAUACYAAgAAAAEAAAAUACcAAgAAAAEAAAAUACgAAgAAAAEAAAAUACkAAgAAAAEAAAAUACoAAgAAAAEAAAAVACUAAgAAAAEAAAAVACYAAgAAAAEAAAAWACYAAgAAAAEAAAAVACcAAgAAAAEAAAAWACcAAgAAAAEAAAAXACcAAgAAAAEAAAAVACgAAgAAAAEAAAAWACgAAgAAAAEAAAAXACgAAgAAAAEAAAAXACkAAgAAAAEAAAAWACkAAgAAAAEAAAAVACkAAgAAAAEAAAAYACkAAgAAAAEAAAAXACoAAgAAAAEAAAAWACoAAgAAAAEAAAAVACoAAgAAAAEAAAAVACsAAgAAAAEAAAAWACsAAgAAAAEAAAAXACsAAgAAAAEAAAAYACoAAgAAAAEAAAAZACoAAgAAAAEAAAAYACsAAgAAAAEAAAAZACsAAgAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAABACQAAgAAAAEAAAACACQAAgAAAAEAAAADACQAAgAAAAEAAAAEACQAAgAAAAEAAAAFACQAAgAAAAEAAAAGACQAAgAAAAEAAAAHACQAAgAAAAEAAAAIACQAAgAAAAEAAAAJACQAAgAAAAEAAAAKACQAAgAAAAEAAAALACQAAgAAAAEAAAAMACQAAgAAAAEAAAANACQAAgAAAAEAAAAOACQAAgAAAAEAAAAPACQAAgAAAAEAAAABACYAAgAAAAEAAAABACcAAgAAAAEAAAABACgAAgAAAAEAAAABACkAAgAAAAEAAAABACoAAgAAAAEAAAABACsAAgAAAAEAAAACACYAAgAAAAEAAAACACcAAgAAAAEAAAACACgAAgAAAAEAAAACACkAAgAAAAEAAAACACoAAgAAAAEAAAACACsAAgAAAAEAAAADACYAAgAAAAEAAAADACcAAgAAAAEAAAADACgAAgAAAAEAAAADACkAAgAAAAEAAAADACoAAgAAAAEAAAADACsAAgAAAAEAAAAEACYAAgAAAAEAAAAEACcAAgAAAAEAAAAEACgAAgAAAAEAAAAEACkAAgAAAAEAAAAEACoAAgAAAAEAAAAEACsAAgAAAAEAAAAFACYAAgAAAAEAAAAFACcAAgAAAAEAAAAFACgAAgAAAAEAAAAFACkAAgAAAAEAAAAFACoAAgAAAAEAAAAFACsAAgAAAAEAAAAGACYAAgAAAAEAAAAGACcAAgAAAAEAAAAGACgAAgAAAAEAAAAGACkAAgAAAAEAAAAGACoAAgAAAAEAAAAGACsAAgAAAAEAAAAHACYAAgAAAAEAAAAHACcAAgAAAAEAAAAHACgAAgAAAAEAAAAHACkAAgAAAAEAAAAHACoAAgAAAAEAAAAHACsAAgAAAAEAAAAIACYAAgAAAAEAAAAIACcAAgAAAAEAAAAIACgAAgAAAAEAAAAIACkAAgAAAAEAAAAIACoAAgAAAAEAAAAIACsAAgAAAAEAAAAJACYAAgAAAAEAAAAJACcAAgAAAAEAAAAJACgAAgAAAAEAAAAJACkAAgAAAAEAAAAJACoAAgAAAAEAAAAJACsAAgAAAAEAAAAKACYAAgAAAAEAAAAKACcAAgAAAAEAAAAKACgAAgAAAAEAAAAKACkAAgAAAAEAAAAKACoAAgAAAAEAAAAKACsAAgAAAAEAAAALACYAAgAAAAEAAAALACcAAgAAAAEAAAALACgAAgAAAAEAAAALACkAAgAAAAEAAAALACoAAgAAAAEAAAAMACYAAgAAAAEAAAAMACcAAgAAAAEAAAAMACgAAgAAAAEAAAAMACkAAgAAAAEAAAANACYAAgAAAAEAAAANACcAAgAAAAEAAAAUACsAAgAAAAEAAAAVACoAAgAAAAEAAAAVACsAAgAAAAEAAAAWACoAAgAAAAEAAAAWACsAAgAAAAEAAAAXACcAAgAAAAEAAAAXACgAAgAAAAEAAAAXACkAAgAAAAEAAAAXACoAAgAAAAEAAAAXACsAAgAAAAEAAAAYACkAAgAAAAEAAAAYACoAAgAAAAEAAAAYACsAAgAAAAEAAAAZACoAAgAAAAEAAAAZACsAAgAAAAEAAAABACUAAgAAAAEAAAACACUAAgAAAAEAAAADACUAAgAAAAEAAAAEACUAAgAAAAEAAAAFACUAAgAAAAEAAAAGACUAAgAAAAEAAAAHACUAAgAAAAEAAAAIACUAAgAAAAEAAAAJACUAAgAAAAEAAAAKACUAAgAAAAEAAAALACUAAgAAAAEAAAAMACUAAgAAAAEAAAANACUAAgAAAAEAAAAOACUAAgAAAAEAAAALACsAAgAAAAEAAAAMACsAAgAAAAEAAAANACsAAgAAAAEAAAAOACsAAgAAAAEAAAAPACsAAgAAAAEAAAAQACsAAgAAAAEAAAARACsAAgAAAAEAAAASACsAAgAAAAEAAAATACsAAgAAAAEAAAAUACoAAgAAAAEAAAATACoAAgAAAAEAAAASACoAAgAAAAEAAAARACoAAgAAAAEAAAAQACoAAgAAAAEAAAAPACoAAgAAAAEAAAAOACoAAgAAAAEAAAANACoAAgAAAAEAAAAMACoAAgAAAAEAAAAWACkAAgAAAAEAAAAVACkAAgAAAAEAAAAUACkAAgAAAAEAAAATACkAAgAAAAEAAAASACgAAgAAAAEAAAARACgAAgAAAAEAAAAQACgAAgAAAAEAAAAPACgAAgAAAAEAAAAOACgAAgAAAAEAAAANACgAAgAAAAEAAAATACgAAgAAAAEAAAAUACgAAgAAAAEAAAAVACgAAgAAAAEAAAASACkAAgAAAAEAAAARACkAAgAAAAEAAAAQACkAAgAAAAEAAAAPACkAAgAAAAEAAAAOACkAAgAAAAEAAAANACkAAgAAAAEAAAAWACgAAgAAAAEAAAAWACcAAgAAAAEAAAAVACcAAgAAAAEAAAAUACcAAgAAAAEAAAATACcAAgAAAAEAAAASACcAAgAAAAEAAAARACcAAgAAAAEAAAAQACcAAgAAAAEAAAAPACcAAgAAAAEAAAAOACcAAgAAAAEAAAAOACYAAgAAAAEAAAAPACUAAgAAAAEAAAAQACUAAgAAAAEAAAARACUAAgAAAAEAAAASACUAAgAAAAEAAAATACUAAgAAAAEAAAAUACUAAgAAAAEAAAAVACUAAgAAAAEAAAAUACYAAgAAAAEAAAATACYAAgAAAAEAAAASACYAAgAAAAEAAAARACYAAgAAAAEAAAAQACYAAgAAAAEAAAAPACYAAgAAAAEAAAAWACYAAgAAAAEAAAAVACYAAgAAAAEAAAASACQAAgAAAAEAAAATACQAAgAAAAEAAAAUACQAAgAAAAEAAAARACQAAgAAAAEAAAAQACQAAgAAAAEAAAA=")
 
 [node name="InsideLayer" parent="Entities/Tiles" index="2"]
 tile_map_data = PackedByteArray("AAABABAAAgAAAAEAAAACABAAAgAAAAEAAAADABAAAgAAAAEAAAAEABAAAgAAAAEAAAAFABAAAgAAAAEAAAAGABAAAgAAAAEAAAAHABAAAgAAAAEAAAAIABAAAgAAAAEAAAAJABAAAgAAAAEAAAAKABAAAgAAAAEAAAALABAAAgAAAAEAAAAMABAAAgAAAAEAAAANABAAAgAAAAEAAAAOABAAAgAAAAEAAAAPABAAAgAAAAEAAAAQABAAAgAAAAEAAAARABAAAgAAAAEAAAASABAAAgAAAAEAAAATABAAAgAAAAEAAAAUABAAAgAAAAEAAAAVABAAAgAAAAEAAAAWABAAAgAAAAEAAAAXABAAAgAAAAEAAAAYABAAAgAAAAEAAAAZABAAAgAAAAEAAAAaABAAAgAAAAEAAAAbABAAAgAAAAEAAAAcABAAAgAAAAEAAAAcAA8AAgAAAAEAAAAcAA4AAgAAAAEAAAAcAA0AAgAAAAEAAAAcAAwAAgAAAAEAAAAcAAsAAgAAAAEAAAAcAAYAAgAAAAEAAAAcAAUAAgAAAAEAAAAcAAQAAgAAAAEAAAAcAAMAAgAAAAEAAAAcAAIAAgAAAAEAAAAcAAEAAgAAAAEAAAA1AAEAAgAAAAEAAAA1AAIAAgAAAAEAAAA1AAMAAgAAAAEAAAA1AAQAAgAAAAEAAAA1AAUAAgAAAAEAAAA1AAYAAgAAAAEAAAA1AAwAAgAAAAEAAAA1AA0AAgAAAAEAAAA1AA4AAgAAAAEAAAA1AA8AAgAAAAEAAAA1ABAAAgAAAAEAAAA1ABEAAgAAAAEAAAA1ABIAAgAAAAEAAAA2ABIAAgAAAAEAAAA3ABIAAgAAAAEAAAA4ABIAAgAAAAEAAAA5ABIAAgAAAAEAAAA6ABIAAgAAAAEAAAA7ABIAAgAAAAEAAAA8ABIAAgAAAAEAAAA9ABIAAgAAAAEAAAAXAA8AAgAAAAEAAAAYAA0AAgAAAAEAAAAYAA4AAgAAAAEAAAAYAA8AAgAAAAEAAAAZAAsAAgAAAAEAAAAZAAwAAgAAAAEAAAAZAA0AAgAAAAEAAAAZAA4AAgAAAAEAAAAZAA8AAgAAAAEAAAAaAAsAAgAAAAEAAAAaAAwAAgAAAAEAAAAaAA0AAgAAAAEAAAAaAA4AAgAAAAEAAAAaAA8AAgAAAAEAAAAbAAsAAgAAAAEAAAAbAAwAAgAAAAEAAAAbAA0AAgAAAAEAAAAbAA4AAgAAAAEAAAAbAA8AAgAAAAEAAAA2AAwAAgAAAAEAAAA2AA0AAgAAAAEAAAA2AA4AAgAAAAEAAAA2AA8AAgAAAAEAAAA2ABAAAgAAAAEAAAA2ABEAAgAAAAEAAAA3AAwAAgAAAAEAAAA3AA0AAgAAAAEAAAA3AA4AAgAAAAEAAAA3AA8AAgAAAAEAAAA3ABAAAgAAAAEAAAA3ABEAAgAAAAEAAAA4AAwAAgAAAAEAAAA4AA0AAgAAAAEAAAA4AA4AAgAAAAEAAAA4AA8AAgAAAAEAAAA4ABAAAgAAAAEAAAA4ABEAAgAAAAEAAAA5AAwAAgAAAAEAAAA5AA0AAgAAAAEAAAA5AA4AAgAAAAEAAAA5AA8AAgAAAAEAAAA5ABAAAgAAAAEAAAA5ABEAAgAAAAEAAAA6AAwAAgAAAAEAAAA6AA0AAgAAAAEAAAA6AA4AAgAAAAEAAAA6AA8AAgAAAAEAAAA6ABAAAgAAAAEAAAA6ABEAAgAAAAEAAAA7AA0AAgAAAAEAAAA7AA4AAgAAAAEAAAA7AA8AAgAAAAEAAAA7ABAAAgAAAAEAAAA7ABEAAgAAAAEAAAA8AA4AAgAAAAEAAAA8AA8AAgAAAAEAAAA8ABAAAgAAAAEAAAA8ABEAAgAAAAEAAAA9AA8AAgAAAAEAAAA9ABAAAgAAAAEAAAA9ABEAAgAAAAEAAAAYAAwAAgAAAAEAAAAYAAsAAgAAAAEAAAAXAAsAAgAAAAEAAAAXAAwAAgAAAAEAAAAXAA0AAgAAAAEAAAAXAA4AAgAAAAEAAAAWAA8AAgAAAAEAAAAWAA4AAgAAAAEAAAAWAA0AAgAAAAEAAAAWAAwAAgAAAAEAAAAVAA4AAgAAAAEAAAAVAA8AAgAAAAEAAAAVAA0AAgAAAAEAAAAUAA8AAgAAAAEAAAA8AA0AAgAAAAEAAAA7AAwAAgAAAAEAAABKAAYAAgAAAAEAAABKAAcAAgAAAAEAAABKAAgAAgAAAAEAAABKAAkAAgAAAAEAAABLAAYAAgAAAAEAAABLAAcAAgAAAAEAAABLAAgAAgAAAAEAAABLAAkAAgAAAAEAAABMAAYAAgAAAAEAAABMAAcAAgAAAAEAAABMAAgAAgAAAAEAAABMAAkAAgAAAAEAAABNAAYAAgAAAAEAAABNAAcAAgAAAAEAAABNAAgAAgAAAAEAAABNAAkAAgAAAAEAAABOAAYAAgAAAAEAAABOAAcAAgAAAAEAAABOAAgAAgAAAAEAAABOAAkAAgAAAAEAAAAcAAAAAgAAAAEAAAA1AAAAAgAAAAEAAAACAAsAAgAAAAEAAAADAAsAAgAAAAEAAAAEAAsAAgAAAAEAAAACAAoAAgAAAAEAAAADAAoAAgAAAAEAAAAEAAoAAgAAAAEAAAA=")
@@ -462,7 +901,6 @@ position = Vector2(136.5, 71)
 scale = Vector2(2.125, 1.33333)
 
 [node name="CollisionShape2D" parent="Entities/UnseenAreaContainer/UnseenArea/SectionDoorSprite/AreaEnterComponent" index="0"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_53uta")
 
 [node name="HiddenArea" parent="Entities/UnseenAreaContainer/UnseenArea" index="1"]

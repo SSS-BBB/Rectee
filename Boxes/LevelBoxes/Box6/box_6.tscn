@@ -1,12 +1,35 @@
-[gd_scene load_steps=11 format=4 uid="uid://gr2icjxv4lvs"]
+[gd_scene load_steps=16 format=4 uid="uid://gr2icjxv4lvs"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_eotag"]
 [ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="2_htedm"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="2_x2koi"]
-[ext_resource type="Resource" uid="uid://drkbvn1a28jmj" path="res://Entities/Objects/Items/Consumable/Resources/basic_jump_potion.tres" id="3_n8osb"]
+[ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Entities/Characters/Player/SFXs/drinking.wav" id="4_bxf72"]
 [ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="5_5rono"]
+[ext_resource type="Script" uid="uid://cqprexufga7ns" path="res://Entities/Objects/Items/Consumable/Resources/consumable_resource.gd" id="5_t5ax7"]
+[ext_resource type="Texture2D" uid="uid://7t0gex8a8asl" path="res://Entities/Objects/Items/Consumable/Textures/jumping_drink.png" id="6_g6wm0"]
 [ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="6_hftg3"]
+[ext_resource type="Texture2D" uid="uid://quxobky4ikd5" path="res://Entities/Objects/Items/Consumable/Textures/speed_drink.png" id="7_6hqpq"]
 [ext_resource type="Texture2D" uid="uid://djycx3l63dc2x" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/mysterious_speaker.png" id="7_py4oh"]
+
+[sub_resource type="Resource" id="Resource_dymei"]
+resource_local_to_scene = true
+script = ExtResource("5_t5ax7")
+texture = ExtResource("6_g6wm0")
+get_audio = ExtResource("4_bxf72")
+effect = 1
+value = 200
+duration = 100.0
+metadata/_custom_type_script = "uid://cqprexufga7ns"
+
+[sub_resource type="Resource" id="Resource_n8hnf"]
+resource_local_to_scene = true
+script = ExtResource("5_t5ax7")
+texture = ExtResource("7_6hqpq")
+get_audio = ExtResource("4_bxf72")
+effect = 0
+value = 400
+duration = 10.0
+metadata/_custom_type_script = "uid://cqprexufga7ns"
 
 [sub_resource type="Resource" id="Resource_8xfuj"]
 script = ExtResource("6_hftg3")
@@ -62,10 +85,11 @@ position = Vector2(-561, -41)
 
 [node name="Consumable" parent="Entities/Objects/Items/Consumables" index="0" instance=ExtResource("2_x2koi")]
 position = Vector2(713, 928)
-consumable_resource = ExtResource("3_n8osb")
+consumable_resource = SubResource("Resource_dymei")
 
 [node name="Consumable2" parent="Entities/Objects/Items/Consumables" index="1" instance=ExtResource("2_x2koi")]
 position = Vector2(339, 143)
+consumable_resource = SubResource("Resource_n8hnf")
 
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
 position = Vector2(1884, -136)
