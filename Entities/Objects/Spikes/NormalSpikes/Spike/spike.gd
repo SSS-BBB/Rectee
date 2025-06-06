@@ -3,6 +3,9 @@ class_name Spike extends PhysicsBody2D
 
 # Export variables
 @export var resource: SpikeResource
+@export_group("Moving Platform")
+@export var stick_with: MovingPlatform
+@export var stick_offset: Vector2 = Vector2(0, -20)
 
 # Component variables
 @onready var sprite = $Sprite2D as Sprite2D
@@ -29,6 +32,9 @@ func _process(_delta):
 		set_sprite()
 		set_collision_polygon()
 
+func _physics_process(_delta):
+	stick()
+
 # Class functions
 func set_variables():
 	if resource:
@@ -53,3 +59,9 @@ func set_sprite():
 	if resource:
 		sprite.texture = resource.texture
 		sprite.region_rect = resource.texture_region
+
+func stick():
+	if not stick_with:
+		return
+	
+	global_position = stick_with.get_body().global_position + stick_offset

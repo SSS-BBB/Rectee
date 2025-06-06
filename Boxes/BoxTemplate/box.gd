@@ -9,6 +9,8 @@ class_name Box extends Node2D
 
 # Game functions
 func _ready():
+	UIManager.reset_hud_state_to_none()
+	
 	GameManager.current_box_level = box_level
 	
 	if GameManager.current_player_level < box_level:
@@ -29,8 +31,3 @@ func _on_enter_door():
 		return
 	
 	GameManager.change_box_scene(load(door.next_box_path))
-
-#func _on_exit_transition_finished():
-	#if not door.next_scence_path.is_empty():
-		#pass
-		# get_tree().change_scene_to_file(door.next_scence_path)

@@ -1,9 +1,12 @@
 class_name Player extends CharacterBody2D
 
 # Exports
+@export_group("Movement")
 @export var normal_speed: int = 300
 @export var normal_jump_velocity: int = 400
 @export var knockback_deceleration: int = 25
+@export_group("Player died")
+@export var died_time: float = 1.0 # pause before showing died UI
 
 # Components
 @onready var health_component = $Health/HealthComponent as HealthComponent
@@ -18,6 +21,7 @@ class_name Player extends CharacterBody2D
 @onready var key_retrive_audio = $SFXs/KeyRetriveAudio as AudioStreamPlayer2D
 
 @onready var hit_animation_player = $HitAnimationPlayer as AnimationPlayer
+@onready var timer = $Timer as Timer
 
 # Player variables
 var time_counter: float
@@ -129,4 +133,7 @@ func _on_take_damage(_damage):
 	hit_animation_player.play("hit")
 
 func _on_health_component_actor_die():
-	UIManager.show_died_ui()
+	UIManager.exit_scene_transition(
+		func():
+			UIManager.show_died_ui()
+	)

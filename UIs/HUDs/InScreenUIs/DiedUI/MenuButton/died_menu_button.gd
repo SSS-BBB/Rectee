@@ -5,6 +5,7 @@ class_name DiedMenuButton extends ConfirmationButtonData
 
 # ConfirmationButtonData function
 func on_yes_button_pressed():
+	UIManager.reset_hud_state_to_none()
 	UIManager.exit_scene_transition(func(): get_tree().change_scene_to_file("res://UIs/Menus/MainMenu/main_menu.tscn"))
 	if to_hide_when_exit:
 		to_hide_when_exit.visible = false

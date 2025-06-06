@@ -8,6 +8,7 @@
 
 [node name="Spike" type="StaticBody2D" groups=["spikes"]]
 collision_layer = 2
+collision_mask = 769
 script = ExtResource("1_xxn00")
 resource = ExtResource("2_v5lm5")
 

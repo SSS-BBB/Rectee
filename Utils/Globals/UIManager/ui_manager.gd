@@ -20,6 +20,7 @@ var turn_movement_control_ui: bool = true:
 
 var previous_hud_state: HUDState
 var current_hud_state: HUDState
+var is_scene_transitioning: bool
 
 # Signal
 signal finished_pause_or_resume
@@ -27,20 +28,31 @@ signal movement_control_setting_changed(on: bool)
 
 # Game functions
 func _ready():
-	current_hud_state = HUDState.NONE # None means the game is not pausing
+	reset_hud_state_to_none()
 	turn_movement_control_ui = GameManager.setting_data.MovementUI
+	is_scene_transitioning = false
 
 func _input(event):
 	if event.is_action_pressed("pause_resume"):
-		if current_hud_state == HUDState.NONE or current_hud_state == HUDState.PAUSE:
+		if (current_hud_state == HUDState.NONE or current_hud_state == HUDState.PAUSE) and not is_scene_transitioning:
 			pause_or_resume()
 
 # Class functions
+func enter_scene_transition(on_exit_callback: Callable = func(): pass):
+	is_scene_transitioning = true
+	scene_transition.visible = true
+	scene_transition.enter_scene()
+	await scene_transition.enter_transition_finished
+	on_exit_callback.call()
+	is_scene_transitioning = false
+
 func exit_scene_transition(on_exit_callback: Callable = func(): pass):
+	is_scene_transitioning = true
 	scene_transition.visible = true
 	scene_transition.exit_scene()
 	await scene_transition.exit_transition_finished
 	on_exit_callback.call()
+	is_scene_transitioning = false
 
 func show_dialog_ui(dialog_data: Array[DialogData]):
 	if not dialog:
@@ -69,6 +81,10 @@ func reset_hud_state():
 	previous_hud_state = current_hud_state
 	current_hud_state = swap_state
 
+func reset_hud_state_to_none():
+	previous_hud_state = HUDState.NONE
+	current_hud_state = HUDState.NONE
+
 func pause_or_resume():
 	if not pause_ui:
 		push_error("No pause ui loaded!")
@@ -96,7 +112,7 @@ func hide_died_ui():
 	died_ui.visible = false
 	finished_pause_or_resume.emit()
 	get_tree().paused = false
-	reset_hud_state()
+	set_hud_state(HUDState.NONE)
 
 func show_confirmation_ui(topic_text: String, confirm_text: String, on_yes_button_pressed: Callable, on_no_button_pressed: Callable = func(): pass):
 	if not confirmation_ui:
