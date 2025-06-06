@@ -128,6 +128,6 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="actor_die" from="Health/HealthComponent" to="." method="_on_health_component_actor_die"]
+[connection signal="actor_die" from="Health/HealthComponent" to="." method="_on_actor_die"]
 [connection signal="timeout" from="EffectComponent/SpeedTimer" to="EffectComponent" method="_on_speed_timer_timeout"]
 [connection signal="timeout" from="EffectComponent/JumpTimer" to="EffectComponent" method="_on_jump_timer_timeout"]

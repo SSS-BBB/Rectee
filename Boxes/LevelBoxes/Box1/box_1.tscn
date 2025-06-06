@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmeo781khc26"]
+[gd_scene load_steps=3 format=3 uid="uid://cmeo781khc26"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_e80cg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e80cg"]
+resource_local_to_scene = true
+size = Vector2(10911, 103)
 
 [node name="Box1" instance=ExtResource("1_e80cg")]
 box_level = 1
 
+[node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
+shape = SubResource("RectangleShape2D_e80cg")
+
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DeadAreas/DeadArea"]

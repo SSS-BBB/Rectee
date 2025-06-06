@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xwqwd7aoqg1t"]
+
+[ext_resource type="Script" uid="uid://dudftbo5iki0r" path="res://UIs/HUDs/InScreenUIs/DiedUI/DeadArea/dead_area.gd" id="1_uinxm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giouj"]
+resource_local_to_scene = true
+
+[node name="DeadArea" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_uinxm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_giouj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

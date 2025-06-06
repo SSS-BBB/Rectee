@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=4 uid="uid://dhckft25x6wlh"]
+[gd_scene load_steps=8 format=4 uid="uid://dhckft25x6wlh"]
 
 [ext_resource type="PackedScene" uid="uid://cnug4qukfx2e3" path="res://Entities/Tiles/GroundLayer/ground_layer.tscn" id="1_h0jj1"]
 [ext_resource type="Script" uid="uid://cte1w07fcxyck" path="res://Boxes/BoxTemplate/box.gd" id="1_xjpol"]
 [ext_resource type="PackedScene" uid="uid://fn7p4nuob5du" path="res://Entities/Characters/Player/Player/player.tscn" id="3_pdixw"]
+[ext_resource type="PackedScene" uid="uid://xwqwd7aoqg1t" path="res://UIs/HUDs/InScreenUIs/DiedUI/DeadArea/dead_area.tscn" id="6_60kvw"]
 [ext_resource type="PackedScene" uid="uid://cf6yxq3fkj22w" path="res://Entities/Objects/Interactables/Door/door.tscn" id="11_q132k"]
 [ext_resource type="PackedScene" uid="uid://bmf4ukrb1dgev" path="res://Entities/Objects/Items/Key/key.tscn" id="12_drx7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60kvw"]
+resource_local_to_scene = true
+size = Vector2(10911, 103)
 
 [node name="BoxTemplate" type="Node2D" node_paths=PackedStringArray("door")]
 script = ExtResource("1_xjpol")
@@ -98,4 +103,14 @@ tile_map_data = PackedByteArray("AAABACQAAgAAAAEAAAACACQAAgAAAAEAAAADACQAAgAAAAE
 
 [node name="DialogAreas" type="Node2D" parent="Areas"]
 
+[node name="DeadAreas" type="Node2D" parent="Areas"]
+
+[node name="DeadArea" parent="Areas/DeadAreas" instance=ExtResource("6_60kvw")]
+position = Vector2(5, 804)
+
+[node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
+position = Vector2(2531.5, 41.5)
+shape = SubResource("RectangleShape2D_60kvw")
+
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DeadAreas/DeadArea"]

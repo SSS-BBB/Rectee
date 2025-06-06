@@ -132,7 +132,7 @@ func take_consumable(consumable_resource: ConsumableResource) -> bool:
 func _on_take_damage(_damage):
 	hit_animation_player.play("hit")
 
-func _on_health_component_actor_die():
+func _on_actor_die():
 	UIManager.exit_scene_transition(
 		func():
 			UIManager.show_died_ui()
