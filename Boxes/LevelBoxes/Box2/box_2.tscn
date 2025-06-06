@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=4 uid="uid://de6t8ge3fsepu"]
+
+[ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_5yvnp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y8yd"]
+resource_local_to_scene = true
+size = Vector2(10911, 103)
+
+[node name="Box2" instance=ExtResource("1_5yvnp")]
+
+[node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
+next_box_path = "res://Boxes/LevelBoxes/Box3/box_3.tscn"
+
+[node name="InsideLayer" parent="Entities/Tiles" index="2"]
+tile_map_data = PackedByteArray("AABKABwAAgAAAAEAAABKAB0AAgAAAAEAAABKAB4AAgAAAAEAAABLABwAAgAAAAEAAABLAB0AAgAAAAEAAABLAB4AAgAAAAEAAABMABwAAgAAAAEAAABMAB0AAgAAAAEAAABMAB4AAgAAAAEAAABNABwAAgAAAAEAAABNAB0AAgAAAAEAAABNAB4AAgAAAAEAAABOABwAAgAAAAEAAABOAB0AAgAAAAEAAABOAB4AAgAAAAEAAAA=")
+
+[node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
+shape = SubResource("RectangleShape2D_8y8yd")
+
+[editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DeadAreas/DeadArea"]

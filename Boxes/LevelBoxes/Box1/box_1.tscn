@@ -1,6 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmeo781khc26"]
+[gd_scene load_steps=10 format=3 uid="uid://cmeo781khc26"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_e80cg"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="2_ndxa7"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="3_2udcx"]
+[ext_resource type="Texture2D" uid="uid://dfdjmoq2w4td2" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/rectee_speaker.png" id="4_1uwqu"]
+[ext_resource type="Texture2D" uid="uid://djycx3l63dc2x" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/mysterious_speaker.png" id="5_1uwqu"]
+
+[sub_resource type="Resource" id="Resource_l7ijc"]
+script = ExtResource("3_2udcx")
+speaker = ExtResource("4_1uwqu")
+translate_text = true
+text = "[D1_1]"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="Resource" id="Resource_nj2ms"]
+script = ExtResource("3_2udcx")
+speaker = ExtResource("5_1uwqu")
+translate_text = true
+text = "[D1_2]"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndxa7"]
+resource_local_to_scene = true
+size = Vector2(140, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80cg"]
 resource_local_to_scene = true
@@ -9,8 +33,20 @@ size = Vector2(10911, 103)
 [node name="Box1" instance=ExtResource("1_e80cg")]
 box_level = 1
 
+[node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
+next_box_path = "res://Boxes/LevelBoxes/Box2/box_2.tscn"
+
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("2_ndxa7")]
+position = Vector2(96, 569)
+dialog_data = Array[ExtResource("3_2udcx")]([SubResource("Resource_l7ijc"), SubResource("Resource_nj2ms")])
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
+position = Vector2(-8, 6)
+shape = SubResource("RectangleShape2D_ndxa7")
+
 [node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
 shape = SubResource("RectangleShape2D_e80cg")
 
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DialogAreas/DialogArea"]
 [editable path="Areas/DeadAreas/DeadArea"]
