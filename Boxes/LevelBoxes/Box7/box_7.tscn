@@ -1,6 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://0yi44uded8b1"]
+[gd_scene load_steps=18 format=4 uid="uid://0yi44uded8b1"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_m42cf"]
+[ext_resource type="PackedScene" uid="uid://c8fixtf1k7wfp" path="res://Entities/Objects/Platforms/MovingPlatform/moving_platform.tscn" id="2_5jsp1"]
+[ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="2_t56t5"]
+[ext_resource type="Resource" uid="uid://6nbybnvnx4vi" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_1.tres" id="3_70gyj"]
+[ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="3_thyjb"]
+[ext_resource type="Resource" uid="uid://dub44xg6s8pgx" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_2.tres" id="4_rh04x"]
+[ext_resource type="Resource" uid="uid://c45tx25wmokxh" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_2.tres" id="5_yisw4"]
+[ext_resource type="Resource" uid="uid://dhr6cgctn7u7e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_3.tres" id="6_0ywsc"]
+[ext_resource type="Resource" uid="uid://c2iknbhpd37lv" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_2.tres" id="7_fkslv"]
+[ext_resource type="Resource" uid="uid://diarvqr2x8o1e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_3.tres" id="8_7vqvp"]
+[ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="8_fmds3"]
+[ext_resource type="Resource" uid="uid://drkbvn1a28jmj" path="res://Entities/Objects/Items/Consumable/Resources/basic_jump_potion.tres" id="9_0ywsc"]
+[ext_resource type="Resource" uid="uid://coc3r7q2a31u5" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_1.tres" id="9_65w4f"]
+
+[sub_resource type="Curve2D" id="Curve2D_t56t5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_thyjb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -125, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_70gyj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 0)
+}
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jsp1"]
 resource_local_to_scene = true
@@ -8,11 +38,254 @@ size = Vector2(10911, 103)
 
 [node name="Box7" instance=ExtResource("1_m42cf")]
 
+[node name="Player" parent="Entities/Actors/Player" index="0"]
+position = Vector2(87, 547)
+scale = Vector2(1.5, 1.5)
+
+[node name="HealthComponent" parent="Entities/Actors/Player/Player/Health" index="1"]
+max_health = 10
+
+[node name="Spike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(258, 462)
+scale = Vector2(1.5, 1.5)
+stick_with = NodePath("../../../Platforms/MovingPlatforms/MovingPlatform")
+stick_offset = Vector2(0, -28)
+
+[node name="Spike2" parent="Entities/Objects/Spikes/NormalSpikes" index="1" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(714, 315)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_70gyj")
+stick_with = NodePath("../../../Platforms/MovingPlatforms/MovingPlatform2")
+stick_offset = Vector2(-32, -28)
+
+[node name="Spike3" parent="Entities/Objects/Spikes/NormalSpikes" index="2" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(778, 315)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_70gyj")
+stick_with = NodePath("../../../Platforms/MovingPlatforms/MovingPlatform2")
+stick_offset = Vector2(32, -28)
+
+[node name="Spike4" parent="Entities/Objects/Spikes/NormalSpikes" index="3" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(667, 426)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_rh04x")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform")
+stick_offset = Vector2(0, -34)
+
+[node name="Spike5" parent="Entities/Objects/Spikes/NormalSpikes" index="4" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(841, 352)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_70gyj")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform2")
+stick_offset = Vector2(-33, -28)
+
+[node name="Spike6" parent="Entities/Objects/Spikes/NormalSpikes" index="5" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(907, 352)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_70gyj")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform2")
+stick_offset = Vector2(33, -28)
+
+[node name="Spike7" parent="Entities/Objects/Spikes/NormalSpikes" index="6" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(337, 303)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("5_yisw4")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform3")
+stick_offset = Vector2(-8, -40)
+
+[node name="Spike8" parent="Entities/Objects/Spikes/NormalSpikes" index="7" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(315, 309)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_rh04x")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform3")
+stick_offset = Vector2(-30, -34)
+
+[node name="Spike9" parent="Entities/Objects/Spikes/NormalSpikes" index="8" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(178, 171)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_70gyj")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform4")
+stick_offset = Vector2(-32, -28)
+
+[node name="Spike10" parent="Entities/Objects/Spikes/NormalSpikes" index="9" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(242, 171)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_70gyj")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform4")
+stick_offset = Vector2(32, -28)
+
+[node name="Spike11" parent="Entities/Objects/Spikes/NormalSpikes" index="10" instance=ExtResource("2_t56t5")]
+position = Vector2(34, 153)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("5_yisw4")
+
+[node name="Spike12" parent="Entities/Objects/Spikes/NormalSpikes" index="11" instance=ExtResource("2_t56t5")]
+position = Vector2(58, 141)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("6_0ywsc")
+
+[node name="Spike13" parent="Entities/Objects/Spikes/NormalSpikes" index="12" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(241, 25)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("5_yisw4")
+stick_with = NodePath("../../../Platforms/MovingPlatforms/MovingPlatform3")
+stick_offset = Vector2(10, -40)
+
+[node name="Spike14" parent="Entities/Objects/Spikes/NormalSpikes" index="13" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(264, 25)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("5_yisw4")
+stick_with = NodePath("../../../Platforms/MovingPlatforms/MovingPlatform3")
+stick_offset = Vector2(33, -40)
+
+[node name="Spike15" parent="Entities/Objects/Spikes/NormalSpikes" index="14" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(518, 88)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_70gyj")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform5")
+stick_offset = Vector2(-33, -28)
+
+[node name="Spike16" parent="Entities/Objects/Spikes/NormalSpikes" index="15" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(584, 88)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_70gyj")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform5")
+stick_offset = Vector2(33, -28)
+
+[node name="Spike17" parent="Entities/Objects/Spikes/NormalSpikes" index="16" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(617, 88)
+scale = Vector2(1.5, 1.5)
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform6")
+stick_offset = Vector2(-33, -28)
+
+[node name="Spike18" parent="Entities/Objects/Spikes/NormalSpikes" index="17" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(639, 88)
+scale = Vector2(1.5, 1.5)
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform6")
+stick_offset = Vector2(-11, -28)
+
+[node name="Spike19" parent="Entities/Objects/Spikes/NormalSpikes" index="18" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(760, 88)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("3_70gyj")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform7")
+stick_offset = Vector2(11, -28)
+
+[node name="Spike20" parent="Entities/Objects/Spikes/NormalSpikes" index="19" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(782, 82)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("4_rh04x")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform7")
+stick_offset = Vector2(33, -34)
+
+[node name="Spike21" parent="Entities/Objects/Spikes/NormalSpikes" index="20" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(828, 88)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("7_fkslv")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform8")
+stick_offset = Vector2(-20, -28)
+
+[node name="Spike22" parent="Entities/Objects/Spikes/NormalSpikes" index="21" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(868, 82)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("8_7vqvp")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform8")
+stick_offset = Vector2(20, -34)
+
+[node name="Spike23" parent="Entities/Objects/Spikes/NormalSpikes" index="22" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(927, 94)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("9_65w4f")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform9")
+stick_offset = Vector2(-20, -22)
+
+[node name="Spike24" parent="Entities/Objects/Spikes/NormalSpikes" index="23" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(937, 82)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("8_7vqvp")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform9")
+stick_offset = Vector2(-10, -34)
+
+[node name="Spike25" parent="Entities/Objects/Spikes/NormalSpikes" index="24" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_t56t5")]
+position = Vector2(947, 82)
+scale = Vector2(1.5, 1.5)
+resource = ExtResource("8_7vqvp")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform9")
+stick_offset = Vector2(0, -34)
+
+[node name="BouncingPlatform" parent="Entities/Objects/Platforms/BouncingPlatforms" index="0" instance=ExtResource("3_thyjb")]
+position = Vector2(667, 460)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform2" parent="Entities/Objects/Platforms/BouncingPlatforms" index="1" instance=ExtResource("3_thyjb")]
+position = Vector2(874, 380)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform3" parent="Entities/Objects/Platforms/BouncingPlatforms" index="2" instance=ExtResource("3_thyjb")]
+position = Vector2(345, 343)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform4" parent="Entities/Objects/Platforms/BouncingPlatforms" index="3" instance=ExtResource("3_thyjb")]
+position = Vector2(210, 199)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform5" parent="Entities/Objects/Platforms/BouncingPlatforms" index="4" instance=ExtResource("3_thyjb")]
+position = Vector2(551, 116)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform6" parent="Entities/Objects/Platforms/BouncingPlatforms" index="5" instance=ExtResource("3_thyjb")]
+position = Vector2(650, 116)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform7" parent="Entities/Objects/Platforms/BouncingPlatforms" index="6" instance=ExtResource("3_thyjb")]
+position = Vector2(749, 116)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform8" parent="Entities/Objects/Platforms/BouncingPlatforms" index="7" instance=ExtResource("3_thyjb")]
+position = Vector2(848, 116)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform9" parent="Entities/Objects/Platforms/BouncingPlatforms" index="8" instance=ExtResource("3_thyjb")]
+position = Vector2(947, 116)
+scale = Vector2(2, 2)
+
+[node name="MovingPlatform" parent="Entities/Objects/Platforms/MovingPlatforms" index="0" instance=ExtResource("2_5jsp1")]
+position = Vector2(258, 490)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_t56t5")
+path_duration = 2.0
+
+[node name="MovingPlatform2" parent="Entities/Objects/Platforms/MovingPlatforms" index="1" instance=ExtResource("2_5jsp1")]
+position = Vector2(746, 343)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_thyjb")
+path_duration = 2.5
+
+[node name="MovingPlatform3" parent="Entities/Objects/Platforms/MovingPlatforms" index="2" instance=ExtResource("2_5jsp1")]
+position = Vector2(231, 65)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_70gyj")
+
+[node name="Key" parent="Entities/Objects/Items/Keys" index="0"]
+position = Vector2(87, 166)
+
+[node name="Consumable" parent="Entities/Objects/Items/Consumables" index="0" instance=ExtResource("8_fmds3")]
+position = Vector2(368, 317)
+consumable_resource = ExtResource("9_0ywsc")
+
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
+position = Vector2(1162, 104)
 next_box_path = "res://Boxes/LevelBoxes/Box8/box_8.tscn"
+
+[node name="RoomLayer" parent="Entities/Tiles" index="0"]
+tile_map_data = PackedByteArray("AAAAACgAAgAAAAEAAAAAAAAAAgAAAAEAAAAAAAEAAgAAAAEAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAEAAAAAAAQAAgAAAAEAAAAAAAUAAgAAAAEAAAAAAAYAAgAAAAEAAAAAAAcAAgAAAAEAAAAAAAgAAgAAAAEAAAAAAAkAAgAAAAEAAAAAAAoAAgAAAAEAAAAAAAsAAgAAAAEAAAAAAAwAAgAAAAEAAAAAAA0AAgAAAAEAAAAAAA4AAgAAAAEAAAAAAA8AAgAAAAEAAAAAABAAAgAAAAEAAAAAABEAAgAAAAEAAAAAABIAAgAAAAEAAAAAABMAAgAAAAEAAAAAABQAAgAAAAEAAAAAABUAAgAAAAEAAAAAABYAAgAAAAEAAAAAABcAAgAAAAEAAAAAABgAAgAAAAEAAAAAABkAAgAAAAEAAAAAABoAAgAAAAEAAAAAABsAAgAAAAEAAAAAABwAAgAAAAEAAAAAAB0AAgAAAAEAAAAAAB4AAgAAAAEAAAAAAB8AAgAAAAEAAAAAACAAAgAAAAEAAAAAACEAAgAAAAEAAAAAACIAAgAAAAEAAAAAACMAAgAAAAEAAAAAACQAAgAAAAEAAAAAACUAAgAAAAEAAAAAACYAAgAAAAEAAAAAACcAAgAAAAEAAAAAACkAAgAAAAEAAAAAACoAAgAAAAEAAAAAACsAAgAAAAEAAAAAACwAAgAAAAEAAAABACwAAgAAAAEAAAACACwAAgAAAAEAAABPACwAAgAAAAEAAABPACsAAgAAAAEAAABPACoAAgAAAAEAAABPACkAAgAAAAEAAABPACgAAgAAAAEAAABPACcAAgAAAAEAAABPACYAAgAAAAEAAABPACUAAgAAAAEAAABPACQAAgAAAAEAAABPACMAAgAAAAEAAABPACIAAgAAAAEAAABPACEAAgAAAAEAAABPACAAAgAAAAEAAABPAB8AAgAAAAEAAABPAB4AAgAAAAEAAABPAB0AAgAAAAEAAABPABwAAgAAAAEAAABPABsAAgAAAAEAAABPABoAAgAAAAEAAABPABkAAgAAAAEAAABPABgAAgAAAAEAAABPABcAAgAAAAEAAABPABYAAgAAAAEAAABPABUAAgAAAAEAAABPABQAAgAAAAEAAABPABMAAgAAAAEAAABPABIAAgAAAAEAAABPABEAAgAAAAEAAABPABAAAgAAAAEAAABPAA8AAgAAAAEAAABPAA4AAgAAAAEAAABPAA0AAgAAAAEAAABPAAwAAgAAAAEAAABPAAsAAgAAAAEAAABPAAoAAgAAAAEAAABPAAkAAgAAAAEAAABPAAgAAgAAAAEAAABPAAcAAgAAAAEAAABPAAYAAgAAAAEAAABPAAUAAgAAAAEAAABPAAQAAgAAAAEAAABPAAMAAgAAAAEAAABPAAIAAgAAAAEAAABPAAEAAgAAAAEAAABPAAAAAgAAAAEAAAA=")
+
+[node name="GroundLayer" parent="Entities/Tiles" index="1"]
+tile_map_data = PackedByteArray("AAABACQAAgAAAAEAAAACACQAAgAAAAEAAAADACQAAgAAAAEAAAAEACQAAgAAAAEAAAAFACQAAgAAAAEAAAAGACQAAgAAAAEAAAAHACQAAgAAAAEAAAAIACQAAgAAAAEAAAAJACQAAgAAAAEAAAAKACQAAgAAAAEAAAALACQAAgAAAAEAAAAMACQAAgAAAAEAAAABACYAAgAAAAEAAAABACcAAgAAAAEAAAABACgAAgAAAAEAAAABACkAAgAAAAEAAAABACoAAgAAAAEAAAABACsAAgAAAAEAAAACACYAAgAAAAEAAAACACcAAgAAAAEAAAACACgAAgAAAAEAAAACACkAAgAAAAEAAAACACoAAgAAAAEAAAACACsAAgAAAAEAAAADACYAAgAAAAEAAAADACcAAgAAAAEAAAADACgAAgAAAAEAAAAEACYAAgAAAAEAAAAEACcAAgAAAAEAAAAEACgAAgAAAAEAAAAFACYAAgAAAAEAAAAFACcAAgAAAAEAAAAFACgAAgAAAAEAAAAGACYAAgAAAAEAAAAGACcAAgAAAAEAAAAHACYAAgAAAAEAAAAHACcAAgAAAAEAAAAIACYAAgAAAAEAAAABACUAAgAAAAEAAAACACUAAgAAAAEAAAADACUAAgAAAAEAAAAEACUAAgAAAAEAAAAFACUAAgAAAAEAAAAGACUAAgAAAAEAAAAHACUAAgAAAAEAAAAIACUAAgAAAAEAAAAJACUAAgAAAAEAAAAKACUAAgAAAAEAAABBAAkAAgAAAAEAAABBAAoAAgAAAAEAAABBAAsAAgAAAAEAAABBAAwAAgAAAAEAAABBAA0AAgAAAAEAAABBAA4AAgAAAAEAAABCAAkAAgAAAAEAAABCAAoAAgAAAAEAAABCAAsAAgAAAAEAAABCAAwAAgAAAAEAAABCAA0AAgAAAAEAAABCAA4AAgAAAAEAAABDAAkAAgAAAAEAAABDAAoAAgAAAAEAAABDAAsAAgAAAAEAAABDAAwAAgAAAAEAAABDAA0AAgAAAAEAAABDAA4AAgAAAAEAAABEAAkAAgAAAAEAAABEAAoAAgAAAAEAAABEAAsAAgAAAAEAAABEAAwAAgAAAAEAAABEAA0AAgAAAAEAAABEAA4AAgAAAAEAAABFAAkAAgAAAAEAAABFAAoAAgAAAAEAAABFAAsAAgAAAAEAAABFAAwAAgAAAAEAAABFAA0AAgAAAAEAAABFAA4AAgAAAAEAAABGAAkAAgAAAAEAAABGAAoAAgAAAAEAAABGAAsAAgAAAAEAAABGAAwAAgAAAAEAAABGAA0AAgAAAAEAAABGAA4AAgAAAAEAAABHAAkAAgAAAAEAAABHAAoAAgAAAAEAAABHAAsAAgAAAAEAAABHAAwAAgAAAAEAAABHAA0AAgAAAAEAAABHAA4AAgAAAAEAAABIAAkAAgAAAAEAAABIAAoAAgAAAAEAAABIAAsAAgAAAAEAAABIAAwAAgAAAAEAAABIAA0AAgAAAAEAAABIAA4AAgAAAAEAAABJAAkAAgAAAAEAAABJAAoAAgAAAAEAAABJAAsAAgAAAAEAAABJAAwAAgAAAAEAAABJAA0AAgAAAAEAAABJAA4AAgAAAAEAAABKAAkAAgAAAAEAAABKAAoAAgAAAAEAAABKAAsAAgAAAAEAAABKAAwAAgAAAAEAAABKAA0AAgAAAAEAAABKAA4AAgAAAAEAAABLAAkAAgAAAAEAAABLAAoAAgAAAAEAAABLAAsAAgAAAAEAAABLAAwAAgAAAAEAAABLAA0AAgAAAAEAAABLAA4AAgAAAAEAAABMAAkAAgAAAAEAAABMAAoAAgAAAAEAAABMAAsAAgAAAAEAAABMAAwAAgAAAAEAAABMAA0AAgAAAAEAAABMAA4AAgAAAAEAAABNAAkAAgAAAAEAAABNAAoAAgAAAAEAAABNAAsAAgAAAAEAAABNAAwAAgAAAAEAAABNAA0AAgAAAAEAAABNAA4AAgAAAAEAAABOAAkAAgAAAAEAAABOAAoAAgAAAAEAAABOAAsAAgAAAAEAAABOAAwAAgAAAAEAAABOAA0AAgAAAAEAAABOAA4AAgAAAAEAAABPAAkAAgAAAAEAAABPAAoAAgAAAAEAAABPAAsAAgAAAAEAAABPAAwAAgAAAAEAAABPAA0AAgAAAAEAAABPAA4AAgAAAAEAAAAAAAsAAgAAAAEAAAAAAAwAAgAAAAEAAAAAAA0AAgAAAAEAAAAAAA4AAgAAAAEAAAAAAA8AAgAAAAEAAAABAAsAAgAAAAEAAAABAAwAAgAAAAEAAAABAA0AAgAAAAEAAAABAA4AAgAAAAEAAAABAA8AAgAAAAEAAAACAAsAAgAAAAEAAAACAAwAAgAAAAEAAAACAA0AAgAAAAEAAAACAA4AAgAAAAEAAAACAA8AAgAAAAEAAAADAAsAAgAAAAEAAAADAAwAAgAAAAEAAAADAA0AAgAAAAEAAAADAA4AAgAAAAEAAAADAA8AAgAAAAEAAAAEAAsAAgAAAAEAAAAEAAwAAgAAAAEAAAAEAA0AAgAAAAEAAAAEAA4AAgAAAAEAAAAEAA8AAgAAAAEAAAAFAAsAAgAAAAEAAAAFAAwAAgAAAAEAAAAFAA0AAgAAAAEAAAAFAA4AAgAAAAEAAAAFAA8AAgAAAAEAAAAGAAsAAgAAAAEAAAAGAAwAAgAAAAEAAAAGAA0AAgAAAAEAAAAGAA4AAgAAAAEAAAAGAA8AAgAAAAEAAAA=")
 
 [node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
 shape = SubResource("RectangleShape2D_5jsp1")
 
+[editable path="Entities/Actors/Player/Player"]
 [editable path="Entities/Objects/Interactables/Door/Door"]
 [editable path="Areas/DeadAreas/DeadArea"]

@@ -9,6 +9,21 @@ size = Vector2(48, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q21gm"]
 size = Vector2(43, 3)
 
+[sub_resource type="Animation" id="Animation_q21gm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_263ox"]
 resource_name = "bounce"
 length = 0.8
@@ -25,29 +40,15 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 4), Vector2(0, 8), Vector2(0, 4), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_q21gm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatableBody2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q21gm"]
 _data = {
 &"RESET": SubResource("Animation_q21gm"),
 &"bounce": SubResource("Animation_263ox")
 }
 
-[node name="BouncingPlatform" type="Node2D"]
+[node name="BouncingPlatform" type="Node2D" node_paths=PackedStringArray("platform_body")]
 script = ExtResource("1_q21gm")
+platform_body = NodePath("AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 collision_layer = 256

@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tyq8h"]
 size = Vector2(48, 16)
 
-[node name="MovingPlatform" type="Path2D"]
+[node name="MovingPlatform" type="Path2D" node_paths=PackedStringArray("platform_body")]
 script = ExtResource("1_1yepl")
+platform_body = NodePath("AnimatableBody2D")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotates = false

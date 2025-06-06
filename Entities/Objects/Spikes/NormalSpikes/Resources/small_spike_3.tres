@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="2_jq32u"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_3ccgs")
 texture = ExtResource("2_jq32u")
 texture_region = Rect2(120, 24, 7, 24)

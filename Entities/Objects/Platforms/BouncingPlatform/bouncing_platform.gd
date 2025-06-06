@@ -1,4 +1,5 @@
-class_name BouncingPlatform extends Node2D
+@tool
+class_name BouncingPlatform extends Platform
 
 # Export variables
 @export var do_tween: bool = true
@@ -7,7 +8,6 @@ class_name BouncingPlatform extends Node2D
 @export var bouncing_offset: float = 8.0
 
 # Component variables
-@onready var platform_body = $AnimatableBody2D as AnimatableBody2D
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 
 # Class variables

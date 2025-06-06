@@ -1,5 +1,5 @@
 @tool
-class_name MovingPlatform extends Path2D
+class_name MovingPlatform extends Platform
 
 # Export variables
 @export var path_duration: float = 1.0
@@ -7,7 +7,6 @@ class_name MovingPlatform extends Path2D
 
 # Components variables
 @onready var path_follow = $PathFollow2D as PathFollow2D
-@onready var platform_body = $AnimatableBody2D as AnimatableBody2D
 
 # Game functions
 func _ready():
@@ -23,10 +22,3 @@ func _ready():
 		tween.tween_property(path_follow, "progress_ratio", 0.0, 0.0)
 	
 	tween.bind_node(self)
-
-# Class functions
-func get_body():
-	if not platform_body:
-		return null
-	
-	return platform_body

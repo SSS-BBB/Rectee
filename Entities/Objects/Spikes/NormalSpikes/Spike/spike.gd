@@ -3,8 +3,8 @@ class_name Spike extends PhysicsBody2D
 
 # Export variables
 @export var resource: SpikeResource
-@export_group("Moving Platform")
-@export var stick_with: MovingPlatform
+@export_group("Platform")
+@export var stick_with: Platform
 @export var stick_offset: Vector2 = Vector2(0, -20)
 
 # Component variables

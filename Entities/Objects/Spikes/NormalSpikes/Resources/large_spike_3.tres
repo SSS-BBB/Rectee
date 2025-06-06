@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="2_hsga7"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_mdcep")
 texture = ExtResource("2_hsga7")
 texture_region = Rect2(32, 0, 15, 48)
-damage = 3
+damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"

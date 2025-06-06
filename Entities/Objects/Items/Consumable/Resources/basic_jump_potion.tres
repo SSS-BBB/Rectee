@@ -5,10 +5,11 @@
 [ext_resource type="Script" uid="uid://cqprexufga7ns" path="res://Entities/Objects/Items/Consumable/Resources/consumable_resource.gd" id="2_wbry5"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_wbry5")
 texture = ExtResource("2_jlccl")
 get_audio = ExtResource("1_pje4o")
 effect = 1
-value = 200
-duration = 100.0
+value = 100
+duration = 5.0
 metadata/_custom_type_script = "uid://cqprexufga7ns"
