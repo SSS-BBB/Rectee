@@ -1,6 +1,87 @@
-[gd_scene load_steps=3 format=3 uid="uid://7qtljuw2s8eo"]
+[gd_scene load_steps=29 format=4 uid="uid://7qtljuw2s8eo"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_rk8oq"]
+[ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="2_0fgh2"]
+[ext_resource type="PackedScene" uid="uid://gfqsgo8ihn7c" path="res://Entities/Characters/Shooters/NormalShooter/Shooter/shooter.tscn" id="2_25r8y"]
+[ext_resource type="PackedScene" uid="uid://bnp000d13b8yh" path="res://Entities/Objects/Others/UnseenArea/unseen_area.tscn" id="2_apefo"]
+[ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="2_nu2pe"]
+[ext_resource type="Script" uid="uid://c5uc1pjhih7m1" path="res://Entities/Objects/Spikes/Resource/spike_resource.gd" id="3_25r8y"]
+[ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="4_fix20"]
+[ext_resource type="PackedScene" uid="uid://c8fixtf1k7wfp" path="res://Entities/Objects/Platforms/MovingPlatform/moving_platform.tscn" id="7_fix20"]
+[ext_resource type="PackedScene" uid="uid://cved48cf2k8kl" path="res://Entities/Objects/Platforms/OneWayPlatform/one_way_platform.tscn" id="8_l1ck4"]
+[ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="9_a6s7m"]
+[ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Entities/Characters/Player/SFXs/drinking.wav" id="10_3lohj"]
+[ext_resource type="Script" uid="uid://cqprexufga7ns" path="res://Entities/Objects/Items/Consumable/Resources/consumable_resource.gd" id="10_u1vp8"]
+[ext_resource type="Texture2D" uid="uid://dbv5b5djvmm7r" path="res://Entities/Objects/Items/Consumable/Textures/hp_drink.png" id="11_u1vp8"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="14_jy3t5"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="15_76s4q"]
+[ext_resource type="Texture2D" uid="uid://dfdjmoq2w4td2" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/rectee_speaker.png" id="16_3i5p7"]
+[ext_resource type="Texture2D" uid="uid://djycx3l63dc2x" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/mysterious_speaker.png" id="17_3i5p7"]
+
+[sub_resource type="Resource" id="Resource_l1ck4"]
+resource_local_to_scene = true
+script = ExtResource("3_25r8y")
+texture = ExtResource("4_fix20")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_nu2pe"]
+resource_local_to_scene = true
+script = ExtResource("3_25r8y")
+texture = ExtResource("4_fix20")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Curve2D" id="Curve2D_fix20"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_l1ck4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_3lohj"]
+script = ExtResource("10_u1vp8")
+texture = ExtResource("11_u1vp8")
+get_audio = ExtResource("10_3lohj")
+effect = 2
+value = 3
+duration = 0.0
+metadata/_custom_type_script = "uid://cqprexufga7ns"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fgh2"]
+resource_local_to_scene = true
+size = Vector2(7.5, 48)
+
+[sub_resource type="Resource" id="Resource_gndim"]
+script = ExtResource("15_76s4q")
+speaker = ExtResource("16_3i5p7")
+translate_text = true
+text = "[D10_1]"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8cq5"]
+resource_local_to_scene = true
+size = Vector2(176, 6)
+
+[sub_resource type="Resource" id="Resource_r124h"]
+script = ExtResource("15_76s4q")
+speaker = ExtResource("17_3i5p7")
+translate_text = true
+text = "[D10_2]"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76s4q"]
+resource_local_to_scene = true
+size = Vector2(191, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_apefo"]
 resource_local_to_scene = true
@@ -8,8 +89,164 @@ size = Vector2(10911, 103)
 
 [node name="Box10" instance=ExtResource("1_rk8oq")]
 
+[node name="Player" parent="Entities/Actors/Player" index="0"]
+position = Vector2(91, 626)
+
+[node name="HealthComponent" parent="Entities/Actors/Player/Player/Health" index="1"]
+max_health = 5
+
+[node name="Shooter" parent="Entities/Actors/Shooters/NormalShooters" index="0" instance=ExtResource("2_25r8y")]
+position = Vector2(1190, 592)
+scale = Vector2(2, 2)
+
+[node name="Shooter2" parent="Entities/Actors/Shooters/NormalShooters" index="1" instance=ExtResource("2_25r8y")]
+position = Vector2(1190, 464)
+scale = Vector2(2, 2)
+fire_rate = 3.0
+bullet_speed = 600.0
+
+[node name="Shooter3" parent="Entities/Actors/Shooters/NormalShooters" index="2" instance=ExtResource("2_25r8y")]
+position = Vector2(32, 400)
+scale = Vector2(2, 2)
+flip_h = true
+fire_rate = 1.0
+bullet_speed = 400.0
+
+[node name="Shooter4" parent="Entities/Actors/Shooters/NormalShooters" index="3" instance=ExtResource("2_25r8y")]
+position = Vector2(384, 225)
+scale = Vector2(2, 2)
+flip_h = true
+fire_rate = 2.0
+bullet_speed = 400.0
+
+[node name="Spike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_nu2pe")]
+position = Vector2(270, 208)
+scale = Vector2(2, 2)
+resource = SubResource("Resource_l1ck4")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform")
+stick_offset = Vector2(0, -32)
+
+[node name="Spike2" parent="Entities/Objects/Spikes/NormalSpikes" index="1" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_nu2pe")]
+position = Vector2(240, 208)
+scale = Vector2(2, 2)
+resource = SubResource("Resource_l1ck4")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform")
+stick_offset = Vector2(-30, -32)
+
+[node name="Spike3" parent="Entities/Objects/Spikes/NormalSpikes" index="2" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_nu2pe")]
+position = Vector2(95, 167)
+scale = Vector2(2, 2)
+resource = SubResource("Resource_nu2pe")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform2")
+stick_offset = Vector2(0, -32)
+
+[node name="Spike4" parent="Entities/Objects/Spikes/NormalSpikes" index="3" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_nu2pe")]
+position = Vector2(125, 167)
+scale = Vector2(2, 2)
+resource = SubResource("Resource_nu2pe")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform2")
+stick_offset = Vector2(30, -32)
+
+[node name="BouncingPlatform" parent="Entities/Objects/Platforms/BouncingPlatforms" index="0" instance=ExtResource("2_0fgh2")]
+position = Vector2(270, 240)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform2" parent="Entities/Objects/Platforms/BouncingPlatforms" index="1" instance=ExtResource("2_0fgh2")]
+position = Vector2(95, 199)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform3" parent="Entities/Objects/Platforms/BouncingPlatforms" index="2" instance=ExtResource("2_0fgh2")]
+position = Vector2(327, 638)
+scale = Vector2(2, 2)
+
+[node name="MovingPlatform" parent="Entities/Objects/Platforms/MovingPlatforms" index="0" instance=ExtResource("7_fix20")]
+position = Vector2(465, 547)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_fix20")
+path_duration = 2.0
+
+[node name="MovingPlatform2" parent="Entities/Objects/Platforms/MovingPlatforms" index="1" instance=ExtResource("7_fix20")]
+position = Vector2(955, 159)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_l1ck4")
+path_duration = 2.0
+
+[node name="OneWayPlatform" parent="Entities/Objects/Platforms/OneWayPlatforms" index="0" instance=ExtResource("8_l1ck4")]
+position = Vector2(504, 426)
+scale = Vector2(2, 2)
+
+[node name="OneWayPlatform2" parent="Entities/Objects/Platforms/OneWayPlatforms" index="1" instance=ExtResource("8_l1ck4")]
+position = Vector2(504, 301)
+scale = Vector2(2, 2)
+
+[node name="Key" parent="Entities/Objects/Items/Keys" index="0"]
+position = Vector2(62, 117)
+
+[node name="Consumable" parent="Entities/Objects/Items/Consumables" index="0" instance=ExtResource("9_a6s7m")]
+position = Vector2(1190, 182)
+consumable_resource = SubResource("Resource_3lohj")
+
+[node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
+position = Vector2(1223, 152)
+next_box_path = "res://Boxes/LevelBoxes/Box11/box_11.tscn"
+
+[node name="RoomLayer" parent="Entities/Tiles" index="0"]
+tile_map_data = PackedByteArray("AAAAACgAAgAAAAEAAAAAAAAAAgAAAAEAAAAAAAEAAgAAAAEAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAEAAAAAAAQAAgAAAAEAAAAAAAUAAgAAAAEAAAAAAAYAAgAAAAEAAAAAAAcAAgAAAAEAAAAAAAgAAgAAAAEAAAAAAAkAAgAAAAEAAAAAAAoAAgAAAAEAAAAAAAsAAgAAAAEAAAAAAAwAAgAAAAEAAAAAAA0AAgAAAAEAAAAAAA4AAgAAAAEAAAAAAA8AAgAAAAEAAAAAABAAAgAAAAEAAAAAABEAAgAAAAEAAAAAABIAAgAAAAEAAAAAABMAAgAAAAEAAAAAABQAAgAAAAEAAAAAABUAAgAAAAEAAAAAABYAAgAAAAEAAAAAABcAAgAAAAEAAAAAABgAAgAAAAEAAAAAABkAAgAAAAEAAAAAABoAAgAAAAEAAAAAABsAAgAAAAEAAAAAABwAAgAAAAEAAAAAAB0AAgAAAAEAAAAAAB4AAgAAAAEAAAAAAB8AAgAAAAEAAAAAACAAAgAAAAEAAAAAACEAAgAAAAEAAAAAACIAAgAAAAEAAAAAACMAAgAAAAEAAAAAACQAAgAAAAEAAAAAACUAAgAAAAEAAAAAACYAAgAAAAEAAAAAACcAAgAAAAEAAAAAACkAAgAAAAEAAAAAACoAAgAAAAEAAAAAACsAAgAAAAEAAAAAACwAAgAAAAEAAAABACwAAgAAAAEAAAACACwAAgAAAAEAAAADACwAAgAAAAEAAAAEACwAAgAAAAEAAAAFACwAAgAAAAEAAAAGACwAAgAAAAEAAAAHACwAAgAAAAEAAAAIACwAAgAAAAEAAAAJACwAAgAAAAEAAAAKACwAAgAAAAEAAABPACwAAgAAAAEAAABPACsAAgAAAAEAAABPACoAAgAAAAEAAABPACkAAgAAAAEAAABPACgAAgAAAAEAAABPACcAAgAAAAEAAABPACYAAgAAAAEAAABPACUAAgAAAAEAAABPACQAAgAAAAEAAABPACMAAgAAAAEAAABPACIAAgAAAAEAAABPACEAAgAAAAEAAABPACAAAgAAAAEAAABPAB8AAgAAAAEAAABPAB4AAgAAAAEAAABPAB0AAgAAAAEAAABPABwAAgAAAAEAAABPABsAAgAAAAEAAABPABoAAgAAAAEAAABPABkAAgAAAAEAAABPABgAAgAAAAEAAABPABcAAgAAAAEAAABPABYAAgAAAAEAAABPABUAAgAAAAEAAABPABQAAgAAAAEAAABPABMAAgAAAAEAAABPABIAAgAAAAEAAABPABEAAgAAAAEAAABPABAAAgAAAAEAAABPAA8AAgAAAAEAAABPAA4AAgAAAAEAAABPAA0AAgAAAAEAAABPAAwAAgAAAAEAAABPAAsAAgAAAAEAAABPAAoAAgAAAAEAAABPAAkAAgAAAAEAAABPAAgAAgAAAAEAAABPAAcAAgAAAAEAAABPAAYAAgAAAAEAAABPAAUAAgAAAAEAAABPAAQAAgAAAAEAAABPAAMAAgAAAAEAAABPAAIAAgAAAAEAAABPAAEAAgAAAAEAAAALACwAAgAAAAEAAAAWAAAAAgAAAAEAAABPAAAAAgAAAAEAAAA=")
+
+[node name="GroundLayer" parent="Entities/Tiles" index="1"]
+tile_map_data = PackedByteArray("AABDAAwAAgAAAAEAAABDAA0AAgAAAAEAAABDAA4AAgAAAAEAAABDAA8AAgAAAAEAAABDABAAAgAAAAEAAABDABEAAgAAAAEAAABDABIAAgAAAAEAAABEAAwAAgAAAAEAAABEAA0AAgAAAAEAAABEAA4AAgAAAAEAAABEAA8AAgAAAAEAAABEABAAAgAAAAEAAABEABEAAgAAAAEAAABFAAwAAgAAAAEAAABFAA0AAgAAAAEAAABFAA4AAgAAAAEAAABFAA8AAgAAAAEAAABFABAAAgAAAAEAAABGAAwAAgAAAAEAAABGAA0AAgAAAAEAAABGAA4AAgAAAAEAAABGAA8AAgAAAAEAAABHAAwAAgAAAAEAAABHAA0AAgAAAAEAAABHAA4AAgAAAAEAAABIAAwAAgAAAAEAAABIAA0AAgAAAAEAAABIAA4AAgAAAAEAAABJAAwAAgAAAAEAAABKAAwAAgAAAAEAAABLAAwAAgAAAAEAAABMAAwAAgAAAAEAAABNAAwAAgAAAAEAAABNAA0AAgAAAAEAAABOAAwAAgAAAAEAAABOAA0AAgAAAAEAAABOAA4AAgAAAAEAAABOAA8AAgAAAAEAAABHAA8AAgAAAAEAAABIAA8AAgAAAAEAAABJAA8AAgAAAAEAAABJAA4AAgAAAAEAAABKAA4AAgAAAAEAAABLAA4AAgAAAAEAAABJAA0AAgAAAAEAAABKAA0AAgAAAAEAAABLAA0AAgAAAAEAAABMAA0AAgAAAAEAAABMAA4AAgAAAAEAAABNAA4AAgAAAAEAAABMAA8AAgAAAAEAAABLAA8AAgAAAAEAAABKAA8AAgAAAAEAAABNAA8AAgAAAAEAAABGACYAAgAAAAEAAABGACcAAgAAAAEAAABGACgAAgAAAAEAAABGACkAAgAAAAEAAABHACYAAgAAAAEAAABHACcAAgAAAAEAAABHACgAAgAAAAEAAABHACkAAgAAAAEAAABIACYAAgAAAAEAAABIACcAAgAAAAEAAABIACgAAgAAAAEAAABIACkAAgAAAAEAAABJACYAAgAAAAEAAABJACcAAgAAAAEAAABJACgAAgAAAAEAAABJACkAAgAAAAEAAABKACYAAgAAAAEAAABKACcAAgAAAAEAAABKACgAAgAAAAEAAABKACkAAgAAAAEAAABLACYAAgAAAAEAAABLACcAAgAAAAEAAABLACgAAgAAAAEAAABLACkAAgAAAAEAAABMACYAAgAAAAEAAABMACcAAgAAAAEAAABMACgAAgAAAAEAAABMACkAAgAAAAEAAABNACYAAgAAAAEAAABNACcAAgAAAAEAAABNACgAAgAAAAEAAABNACkAAgAAAAEAAABOACYAAgAAAAEAAABOACcAAgAAAAEAAABOACgAAgAAAAEAAABOACkAAgAAAAEAAABGAB4AAgAAAAEAAABHAB4AAgAAAAEAAABIAB4AAgAAAAEAAABJAB4AAgAAAAEAAABKAB4AAgAAAAEAAABLAB4AAgAAAAEAAABMAB4AAgAAAAEAAABNAB4AAgAAAAEAAABOAB4AAgAAAAEAAABGAB8AAgAAAAEAAABHAB8AAgAAAAEAAABIAB8AAgAAAAEAAABJAB8AAgAAAAEAAABKAB8AAgAAAAEAAABLAB8AAgAAAAEAAABMAB8AAgAAAAEAAABNAB8AAgAAAAEAAABOAB8AAgAAAAEAAABPAB8AAgAAAAEAAABGACAAAgAAAAEAAABHACAAAgAAAAEAAABIACAAAgAAAAEAAABJACAAAgAAAAEAAABKACAAAgAAAAEAAABLACAAAgAAAAEAAABMACAAAgAAAAEAAABNACAAAgAAAAEAAABOACAAAgAAAAEAAAA=")
+
+[node name="InsideLayer" parent="Entities/Tiles" index="2"]
+tile_map_data = PackedByteArray("AAAAABQAAgAAAAEAAAAAABwAAgAAAAEAAAABABcAAgAAAAEAAAACABcAAgAAAAEAAAADABcAAgAAAAEAAAAEABcAAgAAAAEAAAAFABcAAgAAAAEAAAAGABcAAgAAAAEAAAAHABcAAgAAAAEAAAAIABcAAgAAAAEAAAAJABcAAgAAAAEAAAAKABcAAgAAAAEAAAALABcAAgAAAAEAAAAMABcAAgAAAAEAAAANABcAAgAAAAEAAAAOABcAAgAAAAEAAAAPABcAAgAAAAEAAAAQABcAAgAAAAEAAAARABcAAgAAAAEAAAASABcAAgAAAAEAAAATABcAAgAAAAEAAAAUABcAAgAAAAEAAAAVABcAAgAAAAEAAAAWABcAAgAAAAEAAAAWABYAAgAAAAEAAAAWABUAAgAAAAEAAAAWABQAAgAAAAEAAAAWABMAAgAAAAEAAAAWABIAAgAAAAEAAAAWABEAAgAAAAEAAAAWABAAAgAAAAEAAAAWAA8AAgAAAAEAAAAWAA4AAgAAAAEAAAAWAA0AAgAAAAEAAAAWAAUAAgAAAAEAAAAWAAQAAgAAAAEAAAAWAAMAAgAAAAEAAAAWAAIAAgAAAAEAAAAWAAEAAgAAAAEAAAA=")
+
+[node name="UnseenArea" parent="Entities/UnseenAreaContainer" index="0" instance=ExtResource("2_apefo")]
+position = Vector2(192, 133)
+direction_to_show = 1
+
+[node name="SectionDoorSprite" parent="Entities/UnseenAreaContainer/UnseenArea" index="0"]
+position = Vector2(168, 19)
+scale = Vector2(2, 2.33333)
+
+[node name="CollisionShape2D" parent="Entities/UnseenAreaContainer/UnseenArea/SectionDoorSprite/AreaEnterComponent" index="0"]
+position = Vector2(-41.25, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_0fgh2")
+
+[node name="HiddenArea" parent="Entities/UnseenAreaContainer/UnseenArea" index="1"]
+offset_left = -20.0
+offset_top = 36.0
+offset_right = 20.0
+offset_bottom = 76.0
+
+[node name="ColorRect" parent="Entities/UnseenAreaContainer/UnseenArea/HiddenArea" index="0"]
+offset_left = -156.0
+offset_top = -169.0
+offset_right = 180.0
+offset_bottom = 199.0
+
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("14_jy3t5")]
+position = Vector2(94, 694)
+dialog_data = Array[ExtResource("15_76s4q")]([SubResource("Resource_gndim")])
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
+position = Vector2(10, 7)
+shape = SubResource("RectangleShape2D_t8cq5")
+
+[node name="DialogArea2" parent="Areas/DialogAreas" index="1" instance=ExtResource("14_jy3t5")]
+position = Vector2(1208, 182)
+dialog_data = Array[ExtResource("15_76s4q")]([SubResource("Resource_r124h")])
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea2" index="0"]
+position = Vector2(-39.5, 7.5)
+shape = SubResource("RectangleShape2D_76s4q")
+
 [node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
 shape = SubResource("RectangleShape2D_apefo")
 
+[editable path="Entities/Actors/Player/Player"]
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Entities/UnseenAreaContainer/UnseenArea"]
+[editable path="Entities/UnseenAreaContainer/UnseenArea/SectionDoorSprite/AreaEnterComponent"]
+[editable path="Areas/DialogAreas/DialogArea"]
+[editable path="Areas/DialogAreas/DialogArea2"]
 [editable path="Areas/DeadAreas/DeadArea"]
