@@ -1,6 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://ka8rnvp4gs8s"]
+[gd_scene load_steps=23 format=4 uid="uid://ka8rnvp4gs8s"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_27n0r"]
+[ext_resource type="PackedScene" uid="uid://c8fixtf1k7wfp" path="res://Entities/Objects/Platforms/MovingPlatform/moving_platform.tscn" id="2_bp6dr"]
+[ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="2_e1g1f"]
+[ext_resource type="PackedScene" uid="uid://gfqsgo8ihn7c" path="res://Entities/Characters/Shooters/NormalShooter/Shooter/shooter.tscn" id="2_ufv18"]
+[ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="2_w5lhh"]
+[ext_resource type="Resource" uid="uid://c2iknbhpd37lv" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_2.tres" id="3_tku0m"]
+[ext_resource type="PackedScene" uid="uid://cved48cf2k8kl" path="res://Entities/Objects/Platforms/OneWayPlatform/one_way_platform.tscn" id="3_uggww"]
+[ext_resource type="Script" uid="uid://c5uc1pjhih7m1" path="res://Entities/Objects/Spikes/Resource/spike_resource.gd" id="5_ut1e1"]
+[ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="6_kgw3m"]
+[ext_resource type="PackedScene" uid="uid://bpovx7vughv8v" path="res://Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner/falling_spike_spawner.tscn" id="6_ufv18"]
+[ext_resource type="PackedScene" uid="uid://bmf4ukrb1dgev" path="res://Entities/Objects/Items/Key/key.tscn" id="10_kgw3m"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="12_34rp6"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="13_ftnoe"]
+[ext_resource type="Texture2D" uid="uid://djycx3l63dc2x" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/mysterious_speaker.png" id="14_qb6bt"]
+
+[sub_resource type="Resource" id="Resource_ut1e1"]
+resource_local_to_scene = true
+script = ExtResource("5_ut1e1")
+texture = ExtResource("6_kgw3m")
+texture_region = Rect2(64, 32, 15, 16)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_kgw3m"]
+resource_local_to_scene = true
+script = ExtResource("5_ut1e1")
+texture = ExtResource("6_kgw3m")
+texture_region = Rect2(120, 24, 7, 24)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_ufv18"]
+resource_local_to_scene = true
+script = ExtResource("5_ut1e1")
+texture = ExtResource("6_kgw3m")
+texture_region = Rect2(120, 24, 7, 24)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Curve2D" id="Curve2D_bp6dr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 400, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_tku0m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -240, 0)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_l8vg4"]
+script = ExtResource("13_ftnoe")
+speaker = ExtResource("14_qb6bt")
+translate_text = true
+text = "[D12_1]"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34rp6"]
+resource_local_to_scene = true
+size = Vector2(144, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp6dr"]
 resource_local_to_scene = true
@@ -8,11 +66,111 @@ size = Vector2(10911, 103)
 
 [node name="Box12" instance=ExtResource("1_27n0r")]
 
+[node name="Player" parent="Entities/Actors/Player" index="0"]
+position = Vector2(74, 643)
+
+[node name="HealthComponent" parent="Entities/Actors/Player/Player/Health" index="1"]
+max_health = 20
+
+[node name="Shooter" parent="Entities/Actors/Shooters/NormalShooters" index="0" instance=ExtResource("2_ufv18")]
+position = Vector2(32, 314)
+scale = Vector2(2, 2)
+flip_h = true
+fire_rate = 2.0
+
+[node name="Shooter2" parent="Entities/Actors/Shooters/NormalShooters" index="1" instance=ExtResource("2_ufv18")]
+position = Vector2(1024, 240)
+scale = Vector2(2, 2)
+fire_rate = 2.0
+bullet_speed = 250.0
+
+[node name="Spike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_e1g1f")]
+position = Vector2(452, 357)
+scale = Vector2(2, 2)
+resource = ExtResource("3_tku0m")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform")
+stick_offset = Vector2(0, -32)
+
+[node name="Spike2" parent="Entities/Objects/Spikes/NormalSpikes" index="1" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_e1g1f")]
+position = Vector2(696, 264)
+scale = Vector2(2, 2)
+resource = SubResource("Resource_ut1e1")
+stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform2")
+stick_offset = Vector2(0, -32)
+
+[node name="Spike3" parent="Entities/Objects/Spikes/NormalSpikes" index="2" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_e1g1f")]
+position = Vector2(494, 200)
+scale = Vector2(2, 2)
+resource = SubResource("Resource_kgw3m")
+stick_with = NodePath("../../../Platforms/MovingPlatforms/MovingPlatform2")
+stick_offset = Vector2(-37, -40)
+
+[node name="Spike4" parent="Entities/Objects/Spikes/NormalSpikes" index="3" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_e1g1f")]
+position = Vector2(568, 200)
+scale = Vector2(2, 2)
+resource = SubResource("Resource_ufv18")
+stick_with = NodePath("../../../Platforms/MovingPlatforms/MovingPlatform2")
+stick_offset = Vector2(37, -40)
+
+[node name="FallingSpikeSpawner" parent="Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner" index="0" instance=ExtResource("6_ufv18")]
+position = Vector2(545, -206)
+scale = Vector2(2, 2)
+spawn_rate = 1.5
+
+[node name="BouncingPlatform" parent="Entities/Objects/Platforms/BouncingPlatforms" index="0" instance=ExtResource("2_w5lhh")]
+position = Vector2(452, 389)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform2" parent="Entities/Objects/Platforms/BouncingPlatforms" index="1" instance=ExtResource("2_w5lhh")]
+position = Vector2(696, 296)
+scale = Vector2(2, 2)
+
+[node name="MovingPlatform" parent="Entities/Objects/Platforms/MovingPlatforms" index="0" instance=ExtResource("2_bp6dr")]
+position = Vector2(257, 627)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_bp6dr")
+path_duration = 5.0
+
+[node name="MovingPlatform2" parent="Entities/Objects/Platforms/MovingPlatforms" index="1" instance=ExtResource("2_bp6dr")]
+position = Vector2(531, 240)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_tku0m")
+path_duration = 2.0
+
+[node name="OneWayPlatform" parent="Entities/Objects/Platforms/OneWayPlatforms" index="0" instance=ExtResource("3_uggww")]
+position = Vector2(644, 502)
+scale = Vector2(2, 2)
+
+[node name="Key" parent="Entities/Objects/Items/Keys" index="0"]
+position = Vector2(1186, 491)
+
+[node name="Key2" parent="Entities/Objects/Items/Keys" index="1" instance=ExtResource("10_kgw3m")]
+position = Vector2(73, 131)
+scale = Vector2(1.5, 1.5)
+
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
+position = Vector2(1244, 184)
+keys_need = 2
 next_box_path = "res://Boxes/LevelBoxes/Box13/box_13.tscn"
+
+[node name="RoomLayer" parent="Entities/Tiles" index="0"]
+tile_map_data = PackedByteArray("AAAAACgAAgAAAAEAAAAAAAAAAgAAAAEAAAAAAAEAAgAAAAEAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAEAAAAAAAQAAgAAAAEAAAAAAAUAAgAAAAEAAAAAAAYAAgAAAAEAAAAAAAcAAgAAAAEAAAAAAAgAAgAAAAEAAAAAAAkAAgAAAAEAAAAAAAoAAgAAAAEAAAAAAAsAAgAAAAEAAAAAAAwAAgAAAAEAAAAAAA0AAgAAAAEAAAAAAA4AAgAAAAEAAAAAAA8AAgAAAAEAAAAAABAAAgAAAAEAAAAAABEAAgAAAAEAAAAAABIAAgAAAAEAAAAAABMAAgAAAAEAAAAAABQAAgAAAAEAAAAAABUAAgAAAAEAAAAAABYAAgAAAAEAAAAAABcAAgAAAAEAAAAAABgAAgAAAAEAAAAAABkAAgAAAAEAAAAAABoAAgAAAAEAAAAAABsAAgAAAAEAAAAAABwAAgAAAAEAAAAAAB0AAgAAAAEAAAAAAB4AAgAAAAEAAAAAAB8AAgAAAAEAAAAAACAAAgAAAAEAAAAAACEAAgAAAAEAAAAAACIAAgAAAAEAAAAAACMAAgAAAAEAAAAAACQAAgAAAAEAAAAAACUAAgAAAAEAAAAAACYAAgAAAAEAAAAAACcAAgAAAAEAAAAAACkAAgAAAAEAAAAAACoAAgAAAAEAAAAAACsAAgAAAAEAAAAAACwAAgAAAAEAAAABACwAAgAAAAEAAAACACwAAgAAAAEAAAADACwAAgAAAAEAAAAEACwAAgAAAAEAAAAFACwAAgAAAAEAAAAGACwAAgAAAAEAAAAHACwAAgAAAAEAAAAIACwAAgAAAAEAAAAJACwAAgAAAAEAAABPACwAAgAAAAEAAABPACsAAgAAAAEAAABPACoAAgAAAAEAAABPACkAAgAAAAEAAABPACgAAgAAAAEAAABPACcAAgAAAAEAAABPACYAAgAAAAEAAABPACUAAgAAAAEAAABPACQAAgAAAAEAAABPACMAAgAAAAEAAABPACIAAgAAAAEAAABPACEAAgAAAAEAAABPACAAAgAAAAEAAABPAB8AAgAAAAEAAABPAB4AAgAAAAEAAABPAB0AAgAAAAEAAABPABwAAgAAAAEAAABPABsAAgAAAAEAAABPABoAAgAAAAEAAABPABkAAgAAAAEAAABPABgAAgAAAAEAAABPABcAAgAAAAEAAABPABYAAgAAAAEAAABPABUAAgAAAAEAAABPABQAAgAAAAEAAABPABMAAgAAAAEAAABPABIAAgAAAAEAAABPABEAAgAAAAEAAABPABAAAgAAAAEAAABPAA8AAgAAAAEAAABPAA4AAgAAAAEAAABPAA0AAgAAAAEAAABPAAwAAgAAAAEAAABPAAsAAgAAAAEAAABPAAoAAgAAAAEAAABPAAkAAgAAAAEAAABPAAgAAgAAAAEAAABPAAcAAgAAAAEAAABPAAYAAgAAAAEAAABPAAUAAgAAAAEAAABPAAQAAgAAAAEAAABPAAMAAgAAAAEAAABPAAIAAgAAAAEAAABPAAEAAgAAAAEAAABPAAAAAgAAAAEAAAA=")
+
+[node name="GroundLayer" parent="Entities/Tiles" index="1"]
+tile_map_data = PackedByteArray("AABDAA4AAgAAAAEAAABDAA8AAgAAAAEAAABEAA4AAgAAAAEAAABEAA8AAgAAAAEAAABFAA4AAgAAAAEAAABFAA8AAgAAAAEAAABGAA4AAgAAAAEAAABGAA8AAgAAAAEAAABHAA4AAgAAAAEAAABHAA8AAgAAAAEAAABIAA4AAgAAAAEAAABIAA8AAgAAAAEAAABJAA4AAgAAAAEAAABJAA8AAgAAAAEAAABKAA4AAgAAAAEAAABKAA8AAgAAAAEAAABLAA4AAgAAAAEAAABLAA8AAgAAAAEAAABMAA4AAgAAAAEAAABMAA8AAgAAAAEAAABNAA4AAgAAAAEAAABNAA8AAgAAAAEAAABOAA4AAgAAAAEAAABOAA8AAgAAAAEAAABDABAAAgAAAAEAAABEABAAAgAAAAEAAABFABAAAgAAAAEAAABGABAAAgAAAAEAAABHABAAAgAAAAEAAABIABAAAgAAAAEAAABJABAAAgAAAAEAAABKABAAAgAAAAEAAABLABAAAgAAAAEAAABMABAAAgAAAAEAAABNABAAAgAAAAEAAABOABAAAgAAAAEAAABDABEAAgAAAAEAAABEABEAAgAAAAEAAABFABEAAgAAAAEAAABGABEAAgAAAAEAAABHABEAAgAAAAEAAABIABEAAgAAAAEAAABJABEAAgAAAAEAAABKABEAAgAAAAEAAABLABEAAgAAAAEAAABMABEAAgAAAAEAAABNABEAAgAAAAEAAABOABEAAgAAAAEAAABCAA4AAgAAAAEAAABCAA8AAgAAAAEAAABCABAAAgAAAAEAAABCABEAAgAAAAEAAABBAA4AAgAAAAEAAABBAA8AAgAAAAEAAABBABAAAgAAAAEAAABBABEAAgAAAAEAAAA=")
+
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("12_34rp6")]
+position = Vector2(75, 694)
+dialog_data = Array[ExtResource("13_ftnoe")]([SubResource("Resource_l8vg4")])
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
+position = Vector2(13, 8)
+shape = SubResource("RectangleShape2D_34rp6")
 
 [node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
 shape = SubResource("RectangleShape2D_bp6dr")
 
+[editable path="Entities/Actors/Player/Player"]
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DialogAreas/DialogArea"]
 [editable path="Areas/DeadAreas/DeadArea"]
