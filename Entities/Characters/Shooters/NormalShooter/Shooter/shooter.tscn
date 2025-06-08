@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://gfqsgo8ihn7c"]
+[gd_scene load_steps=22 format=3 uid="uid://gfqsgo8ihn7c"]
 
 [ext_resource type="Script" uid="uid://c45ci7wuxovsb" path="res://Entities/Characters/Shooters/NormalShooter/Shooter/shooter.gd" id="1_1n2al"]
 [ext_resource type="Script" uid="uid://cdi4x1erw2phs" path="res://Entities/Characters/Shooters/NormalShooter/Components/ShooterPathMove/shooter_path_move.gd" id="1_x4cfi"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://bfi3v5v06b6xy" path="res://Entities/Objects/Spikes/Components/SpikeDamage/SFXs/spike_damaged.wav" id="9_qeh52"]
 [ext_resource type="PackedScene" uid="uid://cj2visvmlh3q6" path="res://Entities/Characters/Components/HealthComponent/health_component.tscn" id="11_8xka0"]
 [ext_resource type="PackedScene" uid="uid://c78yrvgxc1ipu" path="res://Entities/Characters/Components/DestroyOnDieComponent/destroy_on_die_component.tscn" id="13_ktnkf"]
+[ext_resource type="PackedScene" uid="uid://bdt33jw4huj7c" path="res://Entities/Characters/Components/DiedOnTimeoutComponent/died_on_timeout_component.tscn" id="16_ybg7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4cfi"]
 size = Vector2(16, 16)
@@ -138,4 +139,7 @@ max_health = 3
 
 [node name="DestroyOnDieComponent" parent="." node_paths=PackedStringArray("parent_node", "health_component") instance=ExtResource("13_ktnkf")]
 parent_node = NodePath("..")
+health_component = NodePath("../HealthComponent")
+
+[node name="DiedOnTimeoutComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("16_ybg7s")]
 health_component = NodePath("../HealthComponent")

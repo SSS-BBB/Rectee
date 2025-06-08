@@ -6,19 +6,19 @@ class_name BossShooterStateMachine extends MultipleStatesMachine
 @export var activate_spawning_state: bool = true
 
 # Component variables
-@onready var wandering_state = $WanderingState as WanderingState
-@onready var lookat_player_state = $LookatPlayerState as LookatPlayerState
-@onready var boss_shooting_state = $BossShootingState as BossShootingState
-@onready var boss_spawning_state = $BossSpawningState as BossSpawningState
+@onready var wandering_state: WanderingState = $WanderingState as WanderingState
+@onready var lookat_player_state: LookatPlayerState = $LookatPlayerState as LookatPlayerState
+@onready var boss_shooting_state: BossShootingState = $BossShootingState as BossShootingState
+@onready var boss_spawning_state: BossSpawningState = $BossSpawningState as BossSpawningState
 
-@onready var random_state_timer = $RandomStateTimer as Timer
+@onready var random_state_timer: Timer = $RandomStateTimer as Timer
 
 # Class variables
 var player: Player
 var attack_states: Array[State]
 
 # Game functions
-func _ready():
+func _ready() -> void:
 	super._ready()
 	
 	# wandering state
@@ -39,10 +39,10 @@ func _ready():
 	random_attacking_state()
 
 # Class functions
-func random_attacking_state():
+func random_attacking_state() -> void:
 	insert_state(2, attack_states.pick_random())
 	random_state_timer.start()
 
 # Signal functions
-func _on_random_state_timer_timeout():
+func _on_random_state_timer_timeout() -> void:
 	random_attacking_state()

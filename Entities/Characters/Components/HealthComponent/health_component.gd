@@ -13,11 +13,11 @@ signal health_update
 signal damage_signal
 signal health_update_failed
 
-func _ready():
+func _ready() -> void:
 	health = max_health
 	health_update.emit(health)
 	
-func take_damage(damage: int):
+func take_damage(damage: int) -> void:
 	if damage < 0:
 		push_warning("Damage less than 0. This might cause actor to gaining health instead of losing health. If you want actor to gain health, you should use gain_health method instead.")
 	
@@ -47,9 +47,13 @@ func gain_health(health_gain: int) -> bool:
 	health_update.emit(health)
 	return true
 
-func update_max_health(value: int, update_health: bool = true):
+func update_max_health(value: int, update_health: bool = true) -> void:
 	max_health = value
 	if update_health:
 		health = max_health
 	
 	health_update.emit(health)
+
+func force_die() -> void:
+	health = 0
+	actor_die.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmi2p3rb3qo3v"]
+[gd_scene load_steps=26 format=3 uid="uid://cmi2p3rb3qo3v"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_2gup7"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="2_31nnr"]
@@ -6,11 +6,14 @@
 [ext_resource type="Resource" uid="uid://saubjkn7otdv" path="res://Entities/Objects/Items/Consumable/Resources/basic_health_potion.tres" id="3_31nnr"]
 [ext_resource type="Shader" uid="uid://dnugd63sqssow" path="res://Entities/Characters/Shooters/Shaders/shooter_hit_flash.tres" id="3_ywxio"]
 [ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="5_dbw2i"]
-[ext_resource type="Resource" uid="uid://c45tx25wmokxh" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_2.tres" id="6_pd6pn"]
-[ext_resource type="Resource" uid="uid://dhr6cgctn7u7e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_3.tres" id="7_4sus7"]
+[ext_resource type="Script" uid="uid://c5uc1pjhih7m1" path="res://Entities/Objects/Spikes/Resource/spike_resource.gd" id="5_uluqx"]
+[ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="6_viw57"]
 [ext_resource type="PackedScene" uid="uid://bpovx7vughv8v" path="res://Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner/falling_spike_spawner.tscn" id="8_bxipm"]
 [ext_resource type="PackedScene" uid="uid://m235qtmjqyt0" path="res://Entities/Characters/Shooters/BossShooter/BossShooter/boss_shooter.tscn" id="9_bxipm"]
 [ext_resource type="PackedScene" uid="uid://doe1ycq0xn2nt" path="res://Entities/Objects/Interactables/SpikeSpawnButton/spike_spawn_button.tscn" id="9_fn4pk"]
+[ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Entities/Characters/Player/SFXs/drinking.wav" id="10_3amhl"]
+[ext_resource type="Script" uid="uid://cqprexufga7ns" path="res://Entities/Objects/Items/Consumable/Resources/consumable_resource.gd" id="11_2dyvy"]
+[ext_resource type="Texture2D" uid="uid://quxobky4ikd5" path="res://Entities/Objects/Items/Consumable/Textures/speed_drink.png" id="12_2213i"]
 [ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="12_sgimk"]
 [ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="13_5ak2c"]
 [ext_resource type="Texture2D" uid="uid://42is1xogiwke" path="res://icon.svg" id="14_vd2es"]
@@ -25,12 +28,51 @@ shader = ExtResource("3_ywxio")
 shader_parameter/flash_enabled = false
 shader_parameter/flash = Color(0.827451, 0.827451, 0.827451, 1)
 
+[sub_resource type="Resource" id="Resource_auojl"]
+resource_local_to_scene = true
+script = ExtResource("5_uluqx")
+texture = ExtResource("6_viw57")
+texture_region = Rect2(16, 16, 15, 32)
+damage = 3
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_w670w"]
+resource_local_to_scene = true
+script = ExtResource("5_uluqx")
+texture = ExtResource("6_viw57")
+texture_region = Rect2(0, 32, 15, 16)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_8lcwn"]
+resource_local_to_scene = true
+script = ExtResource("5_uluqx")
+texture = ExtResource("6_viw57")
+texture_region = Rect2(32, 0, 15, 48)
+damage = 1
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_og1vh"]
+resource_local_to_scene = true
+script = ExtResource("11_2dyvy")
+texture = ExtResource("12_2213i")
+get_audio = ExtResource("10_3amhl")
+effect = 0
+value = 100
+duration = 5.0
+metadata/_custom_type_script = "uid://cqprexufga7ns"
+
 [sub_resource type="Resource" id="Resource_0w7q3"]
 script = ExtResource("13_5ak2c")
 speaker = ExtResource("14_vd2es")
+translate_text = true
 text = "Where am I, What is this place"
 text_typing_duration = 0.5
 metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fbfd"]
+resource_local_to_scene = true
+size = Vector2(10911, 103)
 
 [node name="BoxTest1" instance=ExtResource("1_2gup7")]
 box_level = 1
@@ -49,16 +91,17 @@ material = SubResource("ShaderMaterial_7v7ix")
 [node name="Spikes#Spike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" instance=ExtResource("5_dbw2i")]
 position = Vector2(609, 546)
 scale = Vector2(2, 2)
-resource = ExtResource("6_pd6pn")
+resource = SubResource("Resource_auojl")
 
 [node name="Spikes#Spike2" parent="Entities/Objects/Spikes/NormalSpikes" index="1" instance=ExtResource("5_dbw2i")]
 position = Vector2(637, 563)
 scale = Vector2(2, 2)
+resource = SubResource("Resource_w670w")
 
 [node name="Spikes#Spike3" parent="Entities/Objects/Spikes/NormalSpikes" index="2" instance=ExtResource("5_dbw2i")]
 position = Vector2(665, 530)
 scale = Vector2(2, 2)
-resource = ExtResource("7_4sus7")
+resource = SubResource("Resource_8lcwn")
 
 [node name="FallingSpikeSpawner#FallingSpikeSpawner" parent="Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner" index="0" instance=ExtResource("8_bxipm")]
 position = Vector2(259, 28)
@@ -76,6 +119,7 @@ scale = Vector2(2, 2)
 
 [node name="Consumables#Consumable" parent="Entities/Objects/Items/Consumables" index="0" instance=ExtResource("2_31nnr")]
 position = Vector2(335, 548)
+consumable_resource = SubResource("Resource_og1vh")
 
 [node name="Consumables#Consumable2" parent="Entities/Objects/Items/Consumables" index="1" instance=ExtResource("2_31nnr")]
 position = Vector2(473, 428)
@@ -93,6 +137,10 @@ spike_spawner = NodePath("../../../Spikes/FallingSpikes/FallingSpikeSpawner/Fall
 position = Vector2(261, 567)
 dialog_data = Array[ExtResource("13_5ak2c")]([SubResource("Resource_0w7q3")])
 
+[node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
+shape = SubResource("RectangleShape2D_8fbfd")
+
 [editable path="Entities/Actors/Shooters/BossShooters/BossShooter"]
 [editable path="Entities/Actors/Shooters/BossShooters/BossShooter/BossShooterBody/HealthDisplay"]
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DeadAreas/DeadArea"]

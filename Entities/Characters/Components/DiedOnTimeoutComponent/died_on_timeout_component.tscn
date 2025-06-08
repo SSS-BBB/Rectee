@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdt33jw4huj7c"]
+
+[ext_resource type="Script" uid="uid://ca7oyfhay1xo4" path="res://Entities/Characters/Components/DiedOnTimeoutComponent/died_on_timeout_component.gd" id="1_8fb2k"]
+
+[node name="DiedOnTimeoutComponent" type="Node2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_8fb2k")
+health_component = NodePath("")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

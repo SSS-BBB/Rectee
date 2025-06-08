@@ -5,23 +5,20 @@ class_name Player extends CharacterBody2D
 @export var normal_speed: int = 300
 @export var normal_jump_velocity: int = 400
 @export var knockback_deceleration: int = 25
-@export_group("Player died")
-@export var died_time: float = 1.0 # pause before showing died UI
 
 # Components
-@onready var health_component = $Health/HealthComponent as HealthComponent
-@onready var effect_component = $EffectComponent as EffectComponent
+@onready var health_component: HealthComponent = $Health/HealthComponent as HealthComponent
+@onready var effect_component: EffectComponent = $EffectComponent as EffectComponent
 
-@onready var sprite = $Sprite as Sprite2D
+@onready var sprite: Sprite2D = $Sprite as Sprite2D
 
-@onready var spike_damage_audio = $SFXs/SpikeDamageAudio as AudioStreamPlayer2D
-@onready var bullet_damage_audio = $SFXs/BulletDamageAudio as AudioStreamPlayer2D
-@onready var drinking_audio = $SFXs/DrinkingAudio as AudioStreamPlayer2D
-@onready var landing_audio = $SFXs/LandingAudio as AudioStreamPlayer2D
-@onready var key_retrive_audio = $SFXs/KeyRetriveAudio as AudioStreamPlayer2D
+@onready var spike_damage_audio: AudioStreamPlayer2D = $SFXs/SpikeDamageAudio as AudioStreamPlayer2D
+@onready var bullet_damage_audio: AudioStreamPlayer2D = $SFXs/BulletDamageAudio as AudioStreamPlayer2D
+@onready var drinking_audio: AudioStreamPlayer2D = $SFXs/DrinkingAudio as AudioStreamPlayer2D
+@onready var landing_audio: AudioStreamPlayer2D = $SFXs/LandingAudio as AudioStreamPlayer2D
+@onready var key_retrive_audio: AudioStreamPlayer2D = $SFXs/KeyRetriveAudio as AudioStreamPlayer2D
 
-@onready var hit_animation_player = $HitAnimationPlayer as AnimationPlayer
-@onready var timer = $Timer as Timer
+@onready var hit_animation_player: AnimationPlayer = $HitAnimationPlayer as AnimationPlayer
 
 # Player variables
 var time_counter: float
@@ -38,20 +35,20 @@ var keys: int:
 		keys = keys_update
 
 # Game functions
-func _ready():
+func _ready() -> void:
 	time_counter = 0.0
 	keys = 0
 	knockback_power = 0
 	health_component.damage_signal.connect(_on_take_damage)
 	hit_animation_player.play("RESET")
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_down"):
 		set_collision_mask_value(10, false)
 	else:
 		set_collision_mask_value(10, true)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	update_variables()
 	
 	# Add the gravity.
@@ -66,18 +63,18 @@ func _physics_process(delta):
 	handle_process_input(delta)
 
 # Class functions
-func update_variables():
+func update_variables() -> void:
 	# set variables
 	speed = normal_speed + effect_component.extra_speed
 	jump_velocity = normal_jump_velocity + effect_component.extra_jump
 
-func handle_process_input(_delta):
+func handle_process_input(_delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
 		jump()
 
 	# Handle movement in x direction
-	var direction = Input.get_axis("move_left", "move_right")
+	var direction: float = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * speed
 	else:
@@ -85,38 +82,38 @@ func handle_process_input(_delta):
 
 	move_and_slide()
 
-func knockback_process(_delta):
+func knockback_process(_delta: float) -> void:
 	velocity = knockback_direction * knockback_power
 	knockback_power = move_toward(knockback_power, 0, knockback_deceleration)
 	move_and_slide()
 
-func time_loop(delta):
+func time_loop(delta: float) -> void:
 	# do logic every fixed time
 	if time_counter >= 1.5:
 		time_counter = 0
 	
 	time_counter += delta
 
-func jump(init_velocity: int = 0):
+func jump(init_velocity: int = 0) -> void:
 	if init_velocity == 0:
 		velocity.y = jump_velocity * -1
 	else:
 		velocity.y = init_velocity * -1
 		
-func knockback(object_position: Vector2, knockback_force: float):
+func knockback(object_position: Vector2, knockback_force: float) -> void:
 	knockback_direction = object_position.direction_to(global_position)
 	knockback_power = knockback_force
 	knockback_power_max = knockback_force
 
-func take_damage(damage: int, object_position: Vector2, knockback_force: float):
+func take_damage(damage: int, object_position: Vector2, knockback_force: float) -> void:
 	health_component.take_damage(damage)
 	knockback(object_position, knockback_force)
 
-func take_spike_damage(damage: int, object_position: Vector2, knockback_force: float):
+func take_spike_damage(damage: int, object_position: Vector2, knockback_force: float) -> void:
 	take_damage(damage, object_position, knockback_force)
 	spike_damage_audio.play()
 
-func take_bullet_damage(damage: int, object_position: Vector2, knockback_force: float):
+func take_bullet_damage(damage: int, object_position: Vector2, knockback_force: float) -> void:
 	take_damage(damage, object_position, knockback_force)
 	bullet_damage_audio.play()
 	
@@ -129,11 +126,11 @@ func take_consumable(consumable_resource: ConsumableResource) -> bool:
 	return true
 
 # Signal functions
-func _on_take_damage(_damage):
+func _on_take_damage(_damage: int) -> void:
 	hit_animation_player.play("hit")
 
-func _on_actor_die():
+func _on_actor_die() -> void:
 	UIManager.exit_scene_transition(
-		func():
+		func() -> void:
 			UIManager.show_died_ui()
 	)
