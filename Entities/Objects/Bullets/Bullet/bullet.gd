@@ -3,8 +3,8 @@ class_name Bullet extends Area2D
 const BULLET_SCENE: PackedScene = preload("res://Entities/Objects/Bullets/Bullet/bullet.tscn")
 
 # Component variables
-@onready var bullet_movement = $BulletMovement as BulletMovement
-@onready var bullet_hit = $BulletHit as BulletHit
+@onready var bullet_movement: BulletMovement = $BulletMovement as BulletMovement
+@onready var bullet_hit: BulletHit = $BulletHit as BulletHit
 
 # Export variables
 @export_group("Bullet Movement")

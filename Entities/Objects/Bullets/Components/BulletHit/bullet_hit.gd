@@ -4,14 +4,14 @@ class_name BulletHit extends Node2D
 @export var bullet: Bullet
 
 # Game functions
-func _ready():
+func _ready() -> void:
 	if bullet:
 		bullet.body_entered.connect(_on_bullet_hit)
 
 # Signal functions
-func _on_bullet_hit(body: Node2D):
+func _on_bullet_hit(body: Node2D) -> void:
 	# bullet goes through shooters
-	if body.is_in_group("shooter_body"):
+	if body.is_in_group("shooter_body") or body.is_in_group("falling_spike"):
 		return
 	
 	if body.is_in_group("player"):

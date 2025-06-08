@@ -1,18 +1,160 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3bl4huwscgtv"]
+[gd_scene load_steps=23 format=4 uid="uid://d3bl4huwscgtv"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_iysrj"]
+[ext_resource type="PackedScene" uid="uid://cved48cf2k8kl" path="res://Entities/Objects/Platforms/OneWayPlatform/one_way_platform.tscn" id="2_3k2dh"]
+[ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="2_3nsx8"]
+[ext_resource type="PackedScene" uid="uid://gfqsgo8ihn7c" path="res://Entities/Characters/Shooters/NormalShooter/Shooter/shooter.tscn" id="2_4qhvl"]
+[ext_resource type="PackedScene" uid="uid://bgxj681aem4iu" path="res://Utils/CameraSystem/Components/CameraShakingComponent/camera_shaking_component.tscn" id="2_5gdb6"]
+[ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="2_l3ab5"]
+[ext_resource type="PackedScene" uid="uid://c8fixtf1k7wfp" path="res://Entities/Objects/Platforms/MovingPlatform/moving_platform.tscn" id="3_621h2"]
+[ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="4_3igqp"]
+[ext_resource type="Resource" uid="uid://c2iknbhpd37lv" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_2.tres" id="4_4qhvl"]
+[ext_resource type="PackedScene" uid="uid://bpovx7vughv8v" path="res://Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner/falling_spike_spawner.tscn" id="5_50dkt"]
+[ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Entities/Characters/Player/SFXs/drinking.wav" id="5_621h2"]
+[ext_resource type="Script" uid="uid://cqprexufga7ns" path="res://Entities/Objects/Items/Consumable/Resources/consumable_resource.gd" id="6_14n2y"]
+[ext_resource type="Texture2D" uid="uid://dbv5b5djvmm7r" path="res://Entities/Objects/Items/Consumable/Textures/hp_drink.png" id="7_l3ab5"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="13_y1bvw"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="14_grcud"]
+[ext_resource type="Texture2D" uid="uid://dfdjmoq2w4td2" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/rectee_speaker.png" id="15_5gdb6"]
+
+[sub_resource type="Curve2D" id="Curve2D_621h2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -180)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_14n2y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -450, 0)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_4qhvl"]
+script = ExtResource("6_14n2y")
+texture = ExtResource("7_l3ab5")
+get_audio = ExtResource("5_621h2")
+effect = 2
+value = 2
+duration = 0.0
+metadata/_custom_type_script = "uid://cqprexufga7ns"
+
+[sub_resource type="Resource" id="Resource_ldijp"]
+script = ExtResource("14_grcud")
+speaker = ExtResource("15_5gdb6")
+translate_text = true
+text = "[D11_1]"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_au4l3"]
+resource_local_to_scene = true
+size = Vector2(96, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k2dh"]
 resource_local_to_scene = true
 size = Vector2(10911, 103)
 
-[node name="Box11" instance=ExtResource("1_iysrj")]
+[node name="Box11" node_paths=PackedStringArray("camera_shaking_component") instance=ExtResource("1_iysrj")]
+shaking = true
+camera_shaking_component = NodePath("CameraSystem/CameraShakingComponent")
+
+[node name="CameraShakingComponent" parent="CameraSystem" index="2" node_paths=PackedStringArray("camera") instance=ExtResource("2_5gdb6")]
+camera = NodePath("../CameraContainer/Camera")
+shake_force = 2.5
+
+[node name="Player" parent="Entities/Actors/Player" index="0"]
+position = Vector2(57, 656)
+
+[node name="Shooter" parent="Entities/Actors/Shooters/NormalShooters" index="0" instance=ExtResource("2_4qhvl")]
+position = Vector2(1248, 553)
+scale = Vector2(2, 2)
+
+[node name="Shooter2" parent="Entities/Actors/Shooters/NormalShooters" index="1" instance=ExtResource("2_4qhvl")]
+position = Vector2(1248, 434)
+scale = Vector2(2, 2)
+fire_rate = 2.0
+bullet_speed = 250.0
+
+[node name="Shooter3" parent="Entities/Actors/Shooters/NormalShooters" index="2" instance=ExtResource("2_4qhvl")]
+position = Vector2(32, 123)
+scale = Vector2(2, 2)
+flip_h = true
+fire_rate = 2.5
+bullet_speed = 150.0
+
+[node name="Spike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" node_paths=PackedStringArray("stick_with") instance=ExtResource("2_l3ab5")]
+position = Vector2(1091, 125)
+scale = Vector2(2, 2)
+resource = ExtResource("4_4qhvl")
+stick_with = NodePath("../../../Platforms/MovingPlatforms/MovingPlatform2")
+stick_offset = Vector2(37, -32)
+
+[node name="FallingSpikeSpawner" parent="Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner" index="0" instance=ExtResource("5_50dkt")]
+position = Vector2(182, -480)
+scale = Vector2(2, 2)
+spawn_rate = 2.0
+
+[node name="FallingSpikeSpawner2" parent="Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner" index="1" instance=ExtResource("5_50dkt")]
+position = Vector2(551, -480)
+scale = Vector2(2, 2)
+
+[node name="FallingSpikeSpawner3" parent="Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner" index="2" instance=ExtResource("5_50dkt")]
+position = Vector2(982, -480)
+scale = Vector2(2, 2)
+spawn_rate = 0.75
+
+[node name="BouncingPlatform" parent="Entities/Objects/Platforms/BouncingPlatforms" index="0" instance=ExtResource("2_3nsx8")]
+position = Vector2(368, 474)
+scale = Vector2(2, 2)
+
+[node name="BouncingPlatform2" parent="Entities/Objects/Platforms/BouncingPlatforms" index="1" instance=ExtResource("2_3nsx8")]
+position = Vector2(791, 474)
+scale = Vector2(2, 2)
+
+[node name="MovingPlatform" parent="Entities/Objects/Platforms/MovingPlatforms" index="0" instance=ExtResource("3_621h2")]
+position = Vector2(982, 398)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_621h2")
+path_duration = 2.5
+
+[node name="MovingPlatform2" parent="Entities/Objects/Platforms/MovingPlatforms" index="1" instance=ExtResource("3_621h2")]
+position = Vector2(1054, 157)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_14n2y")
+path_duration = 2.5
+
+[node name="OneWayPlatform" parent="Entities/Objects/Platforms/OneWayPlatforms" index="0" instance=ExtResource("2_3k2dh")]
+position = Vector2(69, 593)
+scale = Vector2(2, 2)
+
+[node name="Key" parent="Entities/Objects/Items/Keys" index="0"]
+position = Vector2(30, 97)
+
+[node name="Consumable" parent="Entities/Objects/Items/Consumables" index="0" instance=ExtResource("4_3igqp")]
+position = Vector2(792, 446)
+consumable_resource = SubResource("Resource_4qhvl")
 
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
+position = Vector2(1244, 136)
 next_box_path = "res://Boxes/LevelBoxes/Box12/box_12.tscn"
+
+[node name="RoomLayer" parent="Entities/Tiles" index="0"]
+tile_map_data = PackedByteArray("AAAAACgAAgAAAAEAAAAAAAAAAgAAAAEAAAAAAAEAAgAAAAEAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAEAAAAAAAQAAgAAAAEAAAAAAAUAAgAAAAEAAAAAAAYAAgAAAAEAAAAAAAcAAgAAAAEAAAAAAAgAAgAAAAEAAAAAAAkAAgAAAAEAAAAAAAoAAgAAAAEAAAAAAAsAAgAAAAEAAAAAAAwAAgAAAAEAAAAAAA0AAgAAAAEAAAAAAA4AAgAAAAEAAAAAAA8AAgAAAAEAAAAAABAAAgAAAAEAAAAAABEAAgAAAAEAAAAAABIAAgAAAAEAAAAAABMAAgAAAAEAAAAAABQAAgAAAAEAAAAAABUAAgAAAAEAAAAAABYAAgAAAAEAAAAAABcAAgAAAAEAAAAAABgAAgAAAAEAAAAAABkAAgAAAAEAAAAAABoAAgAAAAEAAAAAABsAAgAAAAEAAAAAABwAAgAAAAEAAAAAAB0AAgAAAAEAAAAAAB4AAgAAAAEAAAAAAB8AAgAAAAEAAAAAACAAAgAAAAEAAAAAACEAAgAAAAEAAAAAACIAAgAAAAEAAAAAACMAAgAAAAEAAAAAACQAAgAAAAEAAAAAACUAAgAAAAEAAAAAACYAAgAAAAEAAAAAACcAAgAAAAEAAAAAACkAAgAAAAEAAAAAACoAAgAAAAEAAAAAACsAAgAAAAEAAAAAACwAAgAAAAEAAAABACwAAgAAAAEAAAACACwAAgAAAAEAAAADACwAAgAAAAEAAAAEACwAAgAAAAEAAAAFACwAAgAAAAEAAAAGACwAAgAAAAEAAABPACwAAgAAAAEAAABPACsAAgAAAAEAAABPACoAAgAAAAEAAABPACkAAgAAAAEAAABPACgAAgAAAAEAAABPACcAAgAAAAEAAABPACYAAgAAAAEAAABPACUAAgAAAAEAAABPACQAAgAAAAEAAABPACMAAgAAAAEAAABPACIAAgAAAAEAAABPACEAAgAAAAEAAABPACAAAgAAAAEAAABPAB8AAgAAAAEAAABPAB4AAgAAAAEAAABPAB0AAgAAAAEAAABPABwAAgAAAAEAAABPABsAAgAAAAEAAABPABoAAgAAAAEAAABPABkAAgAAAAEAAABPABgAAgAAAAEAAABPABcAAgAAAAEAAABPABYAAgAAAAEAAABPABUAAgAAAAEAAABPABQAAgAAAAEAAABPABMAAgAAAAEAAABPABIAAgAAAAEAAABPABEAAgAAAAEAAABPABAAAgAAAAEAAABPAA8AAgAAAAEAAABPAA4AAgAAAAEAAABPAA0AAgAAAAEAAABPAAwAAgAAAAEAAABPAAsAAgAAAAEAAABPAAoAAgAAAAEAAABPAAkAAgAAAAEAAABPAAgAAgAAAAEAAABPAAcAAgAAAAEAAABPAAYAAgAAAAEAAABPAAUAAgAAAAEAAABPAAQAAgAAAAEAAABPAAMAAgAAAAEAAABPAAIAAgAAAAEAAABPAAEAAgAAAAEAAABPAAAAAgAAAAEAAAA=")
+
+[node name="GroundLayer" parent="Entities/Tiles" index="1"]
+tile_map_data = PackedByteArray("AABGAAsAAgAAAAEAAABGAAwAAgAAAAEAAABGAA0AAgAAAAEAAABGAA4AAgAAAAEAAABGAA8AAgAAAAEAAABGABAAAgAAAAEAAABGABEAAgAAAAEAAABHAAsAAgAAAAEAAABHAAwAAgAAAAEAAABHAA0AAgAAAAEAAABHAA4AAgAAAAEAAABHAA8AAgAAAAEAAABHABAAAgAAAAEAAABHABEAAgAAAAEAAABIAAsAAgAAAAEAAABIAAwAAgAAAAEAAABIAA0AAgAAAAEAAABIAA4AAgAAAAEAAABIAA8AAgAAAAEAAABIABAAAgAAAAEAAABIABEAAgAAAAEAAABJAAsAAgAAAAEAAABJAAwAAgAAAAEAAABJAA0AAgAAAAEAAABJAA4AAgAAAAEAAABJAA8AAgAAAAEAAABJABAAAgAAAAEAAABJABEAAgAAAAEAAABKAAsAAgAAAAEAAABKAAwAAgAAAAEAAABKAA0AAgAAAAEAAABKAA4AAgAAAAEAAABKAA8AAgAAAAEAAABKABAAAgAAAAEAAABKABEAAgAAAAEAAABLAAsAAgAAAAEAAABLAAwAAgAAAAEAAABLAA0AAgAAAAEAAABLAA4AAgAAAAEAAABLAA8AAgAAAAEAAABLABAAAgAAAAEAAABLABEAAgAAAAEAAABMAAsAAgAAAAEAAABMAAwAAgAAAAEAAABMAA0AAgAAAAEAAABMAA4AAgAAAAEAAABMAA8AAgAAAAEAAABMABAAAgAAAAEAAABMABEAAgAAAAEAAABNAAsAAgAAAAEAAABNAAwAAgAAAAEAAABNAA0AAgAAAAEAAABNAA4AAgAAAAEAAABNAA8AAgAAAAEAAABNABAAAgAAAAEAAABNABEAAgAAAAEAAABOAAsAAgAAAAEAAABOAAwAAgAAAAEAAABOAA0AAgAAAAEAAABOAA4AAgAAAAEAAABOAA8AAgAAAAEAAABOABAAAgAAAAEAAABOABEAAgAAAAEAAAA=")
+
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("13_y1bvw")]
+position = Vector2(57, 694)
+dialog_data = Array[ExtResource("14_grcud")]([SubResource("Resource_ldijp")])
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
+position = Vector2(7, 8)
+shape = SubResource("RectangleShape2D_au4l3")
 
 [node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
 shape = SubResource("RectangleShape2D_3k2dh")
 
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DialogAreas/DialogArea"]
 [editable path="Areas/DeadAreas/DeadArea"]

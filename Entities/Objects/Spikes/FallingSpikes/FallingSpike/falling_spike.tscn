@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ce574ftkie425" path="res://Entities/Objects/Spikes/Components/SpikeDamage/spike_damage.tscn" id="5_l0r1s"]
 [ext_resource type="Script" uid="uid://cbh5tsjtmc66k" path="res://Entities/Objects/Components/FallingMovement/falling_movement.gd" id="6_s6nmy"]
 
-[node name="FallingSpike" type="StaticBody2D"]
+[node name="FallingSpike" type="StaticBody2D" groups=["falling_spike"]]
 collision_layer = 2
 script = ExtResource("1_d4nq0")
 resource = ExtResource("2_86edh")
