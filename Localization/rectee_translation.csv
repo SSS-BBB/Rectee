@@ -56,3 +56,19 @@ text_id,en,th
 [D5_1],Drink this blue potion to gain speed.,ดื่มยาสีฟ้าเพื่อเพิ่มความเร็ว
 ,,
 [D6_1],Drink this purple potion to gain jump power.,ดื่มยาสีม่วงเพื่อเพิ่มพลังการกระโดด
+,,
+[D9_1],Press S or Down arrow key to come down from this platform.,กดปุ่ม S หรือ ปุ่มลูกศรลงเพื่อลงมาจากแพลตฟอร์มนี้
+,,
+[D10_1],What is that thing?,ไอนั่นมันคืออะไรเนี่ย
+[D10_2],Drink this green potion to gain HP.,ดื่มยาสีเขียวเพื่อเพิ่มพลังชีวิต
+,,
+[D11_1],What's happening?,นี่มันเกิดอะไรขึ้น
+,,
+[D12_1],1 key is not enough.,กุญแจเพียง 1 ดอก นั้นไม่เพียงพอ
+,,
+[D13_1],I'm scared.,น่ากลัวจังเลย
+,,
+[D14_1],I'm glad I made it out alive.,โชคดีจังที่รอดมีชีวิตมาได้
+[D14_2],Am I even alive?,นี่ฉันกำลังมีชีวิตอยู่ด้วยซ้ำหรือป่าว
+,,
+[D15_1],I think I need to press this button.,คิดว่าฉันต้องกดปุ่มนี้นะ

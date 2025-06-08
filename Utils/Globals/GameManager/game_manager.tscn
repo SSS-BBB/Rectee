@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpsvk3t2c6k72"]
 
 [ext_resource type="Script" uid="uid://ctfx5dyecebdr" path="res://Utils/Globals/GameManager/game_manager.gd" id="1_hargk"]
-[ext_resource type="PackedScene" uid="uid://cmi2p3rb3qo3v" path="res://Boxes/LevelTestBoxes/BoxTest1/box_test_1.tscn" id="2_u6d6b"]
+[ext_resource type="PackedScene" uid="uid://dae2nw1t5e8il" path="res://Boxes/LevelBoxes/Box9/box_9.tscn" id="2_u6d6b"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_hargk")
