@@ -8,5 +8,4 @@ resource_local_to_scene = true
 script = ExtResource("1_1jwq1")
 texture = ExtResource("2_8pinx")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 3
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
