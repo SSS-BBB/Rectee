@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://b2g6vigpbbi6a"]
+[gd_scene load_steps=82 format=4 uid="uid://b2g6vigpbbi6a"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_yrtn6"]
 [ext_resource type="PackedScene" uid="uid://curmc5f3wwcax" path="res://Utils/CameraSystem/CameraSnapArea/camera_snap_area.tscn" id="2_j5kny"]
@@ -10,12 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cved48cf2k8kl" path="res://Entities/Objects/Platforms/OneWayPlatform/one_way_platform.tscn" id="4_utl5k"]
 [ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="5_bbpow"]
 [ext_resource type="Resource" uid="uid://c2iknbhpd37lv" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_2.tres" id="6_i51pe"]
-[ext_resource type="Resource" uid="uid://diarvqr2x8o1e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_3.tres" id="7_bbpow"]
 [ext_resource type="PackedScene" uid="uid://bitl6hkljphpw" path="res://Entities/Objects/Spikes/NormalSpikes/SurpriseSpike/surprise_spike.tscn" id="8_accf0"]
-[ext_resource type="Resource" uid="uid://c45tx25wmokxh" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_2.tres" id="9_accf0"]
 [ext_resource type="Resource" uid="uid://coc3r7q2a31u5" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_1.tres" id="10_5ypir"]
-[ext_resource type="Resource" uid="uid://6nbybnvnx4vi" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_1.tres" id="10_u63ea"]
-[ext_resource type="Resource" uid="uid://dub44xg6s8pgx" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_2.tres" id="11_ib42c"]
 [ext_resource type="PackedScene" uid="uid://bpovx7vughv8v" path="res://Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner/falling_spike_spawner.tscn" id="11_u63ea"]
 [ext_resource type="PackedScene" uid="uid://bmf4ukrb1dgev" path="res://Entities/Objects/Items/Key/key.tscn" id="17_gwyr0"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="19_cvi83"]
@@ -251,6 +247,62 @@ metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q16s1"]
 resource_local_to_scene = true
 size = Vector2(40, 40)
+
+[sub_resource type="Resource" id="Resource_pbxij"]
+resource_local_to_scene = true
+script = ExtResource("4_i51pe")
+texture = ExtResource("5_bbpow")
+texture_region = Rect2(64, 32, 15, 16)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_7msrj"]
+resource_local_to_scene = true
+script = ExtResource("4_i51pe")
+texture = ExtResource("5_bbpow")
+texture_region = Rect2(64, 32, 15, 16)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_osgmv"]
+resource_local_to_scene = true
+script = ExtResource("4_i51pe")
+texture = ExtResource("5_bbpow")
+texture_region = Rect2(120, 24, 7, 24)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_cccsy"]
+resource_local_to_scene = true
+script = ExtResource("4_i51pe")
+texture = ExtResource("5_bbpow")
+texture_region = Rect2(120, 24, 7, 24)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_etahu"]
+resource_local_to_scene = true
+script = ExtResource("4_i51pe")
+texture = ExtResource("5_bbpow")
+texture_region = Rect2(80, 24, 15, 24)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_wi4yy"]
+resource_local_to_scene = true
+script = ExtResource("4_i51pe")
+texture = ExtResource("5_bbpow")
+texture_region = Rect2(80, 24, 15, 24)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_mtvt8"]
+resource_local_to_scene = true
+script = ExtResource("4_i51pe")
+texture = ExtResource("5_bbpow")
+texture_region = Rect2(64, 32, 15, 16)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_uakux"]
+resource_local_to_scene = true
+script = ExtResource("4_i51pe")
+texture = ExtResource("5_bbpow")
+texture_region = Rect2(16, 16, 15, 32)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Curve2D" id="Curve2D_ltc2n"]
 _data = {
@@ -837,58 +889,66 @@ position = Vector2(2.5, 0)
 shape = SubResource("RectangleShape2D_q16s1")
 
 [node name="SurpriseSpike10" parent="Entities/Objects/Spikes/NormalSpikes" index="24" node_paths=PackedStringArray("stick_with") instance=ExtResource("8_accf0")]
+visible = false
 position = Vector2(4044, -1011)
 scale = Vector2(2, 2)
-resource = ExtResource("10_u63ea")
+resource = SubResource("Resource_pbxij")
 stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform14")
 stick_offset = Vector2(0, -32)
 
 [node name="SurpriseSpike11" parent="Entities/Objects/Spikes/NormalSpikes" index="25" node_paths=PackedStringArray("stick_with") instance=ExtResource("8_accf0")]
+visible = false
 position = Vector2(4074, -1011)
 scale = Vector2(2, 2)
-resource = ExtResource("10_u63ea")
+resource = SubResource("Resource_7msrj")
 stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform14")
 stick_offset = Vector2(30, -32)
 
 [node name="SurpriseSpike12" parent="Entities/Objects/Spikes/NormalSpikes" index="26" node_paths=PackedStringArray("stick_with") instance=ExtResource("8_accf0")]
+visible = false
 position = Vector2(4193, -1041)
 scale = Vector2(2, 2)
-resource = ExtResource("7_bbpow")
+resource = SubResource("Resource_osgmv")
 stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform15")
 stick_offset = Vector2(-37, -40)
 
 [node name="SurpriseSpike13" parent="Entities/Objects/Spikes/NormalSpikes" index="27" node_paths=PackedStringArray("stick_with") instance=ExtResource("8_accf0")]
+visible = false
 position = Vector2(4267, -1041)
 scale = Vector2(2, 2)
-resource = ExtResource("7_bbpow")
+resource = SubResource("Resource_cccsy")
 stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform15")
 stick_offset = Vector2(37, -40)
 
 [node name="SurpriseSpike14" parent="Entities/Objects/Spikes/NormalSpikes" index="28" node_paths=PackedStringArray("stick_with") instance=ExtResource("8_accf0")]
+visible = false
 position = Vector2(4414, -1092)
 scale = Vector2(2, 2)
-resource = ExtResource("11_ib42c")
+resource = SubResource("Resource_etahu")
 stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform16")
 stick_offset = Vector2(0, -40)
 
 [node name="SurpriseSpike15" parent="Entities/Objects/Spikes/NormalSpikes" index="29" node_paths=PackedStringArray("stick_with") instance=ExtResource("8_accf0")]
+visible = false
 position = Vector2(4384, -1092)
 scale = Vector2(2, 2)
-resource = ExtResource("11_ib42c")
+resource = SubResource("Resource_wi4yy")
 stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform16")
 stick_offset = Vector2(-30, -40)
 
 [node name="SurpriseSpike16" parent="Entities/Objects/Spikes/NormalSpikes" index="30" node_paths=PackedStringArray("stick_with") instance=ExtResource("8_accf0")]
+visible = false
 position = Vector2(1199, -843)
 scale = Vector2(2, 2)
-resource = ExtResource("10_u63ea")
+resource = SubResource("Resource_mtvt8")
 stick_with = NodePath("../../../Platforms/MovingPlatforms/MovingPlatform4")
 stick_offset = Vector2(30, -32)
 
 [node name="SurpriseSpike17" parent="Entities/Objects/Spikes/NormalSpikes" index="31" node_paths=PackedStringArray("stick_with") instance=ExtResource("8_accf0")]
+visible = false
 position = Vector2(270, -1614)
 scale = Vector2(2, 2)
-resource = ExtResource("9_accf0")
+resource = SubResource("Resource_uakux")
 stick_with = NodePath("../../../Platforms/BouncingPlatforms/BouncingPlatform22")
 stick_offset = Vector2(-29, -48)
 

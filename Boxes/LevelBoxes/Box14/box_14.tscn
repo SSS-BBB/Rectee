@@ -1,6 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://cju3qk5y1jf7e"]
+[gd_scene load_steps=25 format=4 uid="uid://cju3qk5y1jf7e"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_b5gvp"]
+[ext_resource type="PackedScene" uid="uid://bitl6hkljphpw" path="res://Entities/Objects/Spikes/NormalSpikes/SurpriseSpike/surprise_spike.tscn" id="2_12skq"]
+[ext_resource type="PackedScene" uid="uid://gfqsgo8ihn7c" path="res://Entities/Characters/Shooters/NormalShooter/Shooter/shooter.tscn" id="2_84s3l"]
+[ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="2_rhv4o"]
+[ext_resource type="Script" uid="uid://c5uc1pjhih7m1" path="res://Entities/Objects/Spikes/Resource/spike_resource.gd" id="3_4uvbn"]
+[ext_resource type="AudioStream" uid="uid://b7v5t4xtms725" path="res://Entities/Characters/Player/SFXs/drinking.wav" id="3_uoriw"]
+[ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="4_cxvfe"]
+[ext_resource type="Script" uid="uid://cqprexufga7ns" path="res://Entities/Objects/Items/Consumable/Resources/consumable_resource.gd" id="4_l78fc"]
+[ext_resource type="PackedScene" uid="uid://b28kmre3vi0nv" path="res://Entities/Objects/Platforms/FallingPlatform/falling_platform.tscn" id="5_4uvbn"]
+[ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="5_cxvfe"]
+[ext_resource type="Texture2D" uid="uid://quxobky4ikd5" path="res://Entities/Objects/Items/Consumable/Textures/speed_drink.png" id="5_oecj0"]
+[ext_resource type="PackedScene" uid="uid://bpovx7vughv8v" path="res://Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner/falling_spike_spawner.tscn" id="6_mguj4"]
+[ext_resource type="Texture2D" uid="uid://7t0gex8a8asl" path="res://Entities/Objects/Items/Consumable/Textures/jumping_drink.png" id="6_uoriw"]
+[ext_resource type="PackedScene" uid="uid://cved48cf2k8kl" path="res://Entities/Objects/Platforms/OneWayPlatform/one_way_platform.tscn" id="7_uhuth"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="15_m6nkk"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="16_kkbp4"]
+[ext_resource type="Texture2D" uid="uid://dfdjmoq2w4td2" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/rectee_speaker.png" id="17_67sgt"]
+
+[sub_resource type="Resource" id="Resource_uhuth"]
+resource_local_to_scene = true
+script = ExtResource("3_4uvbn")
+texture = ExtResource("4_cxvfe")
+texture_region = Rect2(0, 32, 15, 16)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_rhv4o"]
+script = ExtResource("4_l78fc")
+texture = ExtResource("5_oecj0")
+get_audio = ExtResource("3_uoriw")
+effect = 0
+value = 440
+duration = 2.0
+metadata/_custom_type_script = "uid://cqprexufga7ns"
+
+[sub_resource type="Resource" id="Resource_l78fc"]
+script = ExtResource("4_l78fc")
+texture = ExtResource("6_uoriw")
+get_audio = ExtResource("3_uoriw")
+effect = 1
+value = 180
+duration = 3.0
+metadata/_custom_type_script = "uid://cqprexufga7ns"
+
+[sub_resource type="Resource" id="Resource_4tu6x"]
+script = ExtResource("16_kkbp4")
+speaker = ExtResource("17_67sgt")
+translate_text = true
+text = "[D14_1]"
+text_typing_duration = 0.8
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="Resource" id="Resource_kkbp4"]
+script = ExtResource("16_kkbp4")
+speaker = ExtResource("17_67sgt")
+translate_text = true
+text = "[D14_2]"
+text_typing_duration = 0.5
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcd53"]
+resource_local_to_scene = true
+size = Vector2(159, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lsvu"]
 resource_local_to_scene = true
@@ -8,11 +69,85 @@ size = Vector2(10911, 103)
 
 [node name="Box14" instance=ExtResource("1_b5gvp")]
 
+[node name="Player" parent="Entities/Actors/Player" index="0"]
+position = Vector2(95, 664)
+
+[node name="HealthComponent" parent="Entities/Actors/Player/Player/Health" index="1"]
+max_health = 5
+
+[node name="Shooter" parent="Entities/Actors/Shooters/NormalShooters" index="0" instance=ExtResource("2_84s3l")]
+position = Vector2(1240, 418)
+scale = Vector2(3, 3)
+
+[node name="SurpriseSpike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" instance=ExtResource("2_12skq")]
+position = Vector2(31, 224)
+scale = Vector2(2, 2)
+resource = SubResource("Resource_uhuth")
+
+[node name="FallingSpikeSpawner" parent="Entities/Objects/Spikes/FallingSpikes/FallingSpikeSpawner" index="0" instance=ExtResource("6_mguj4")]
+position = Vector2(618, -282)
+scale = Vector2(2, 2)
+spawn_rate = 1.5
+
+[node name="BouncingPlatform" parent="Entities/Objects/Platforms/BouncingPlatforms" index="0" instance=ExtResource("5_cxvfe")]
+position = Vector2(618, 474)
+scale = Vector2(2, 2)
+
+[node name="FallingPlatform" parent="Entities/Objects/Platforms/FallingPlatforms" index="0" instance=ExtResource("5_4uvbn")]
+position = Vector2(274, 620)
+scale = Vector2(2, 2)
+
+[node name="FallingPlatform2" parent="Entities/Objects/Platforms/FallingPlatforms" index="1" instance=ExtResource("5_4uvbn")]
+position = Vector2(456, 553)
+scale = Vector2(2, 2)
+
+[node name="FallingPlatform3" parent="Entities/Objects/Platforms/FallingPlatforms" index="2" instance=ExtResource("5_4uvbn")]
+position = Vector2(477, 295)
+scale = Vector2(2, 2)
+time_to_fall = 0.5
+
+[node name="FallingPlatform4" parent="Entities/Objects/Platforms/FallingPlatforms" index="3" instance=ExtResource("5_4uvbn")]
+position = Vector2(292, 258)
+scale = Vector2(2, 2)
+time_to_fall = 0.5
+
+[node name="OneWayPlatform" parent="Entities/Objects/Platforms/OneWayPlatforms" index="0" instance=ExtResource("7_uhuth")]
+position = Vector2(618, 367)
+scale = Vector2(2, 2)
+
+[node name="Key" parent="Entities/Objects/Items/Keys" index="0"]
+position = Vector2(203, 76)
+
+[node name="Consumable" parent="Entities/Objects/Items/Consumables" index="0" instance=ExtResource("2_rhv4o")]
+position = Vector2(116, 227)
+consumable_resource = SubResource("Resource_rhv4o")
+
+[node name="Consumable2" parent="Entities/Objects/Items/Consumables" index="1" instance=ExtResource("2_rhv4o")]
+position = Vector2(73, 227)
+consumable_resource = SubResource("Resource_l78fc")
+
 [node name="Door" parent="Entities/Objects/Interactables/Door" index="0"]
+position = Vector2(1244, 137)
 next_box_path = "res://Boxes/LevelBoxes/Box15/box_15.tscn"
+
+[node name="RoomLayer" parent="Entities/Tiles" index="0"]
+tile_map_data = PackedByteArray("AAAAACgAAgAAAAEAAAAAAAAAAgAAAAEAAAAAAAEAAgAAAAEAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAEAAAAAAAQAAgAAAAEAAAAAAAUAAgAAAAEAAAAAAAYAAgAAAAEAAAAAAAcAAgAAAAEAAAAAAAgAAgAAAAEAAAAAAAkAAgAAAAEAAAAAAAoAAgAAAAEAAAAAAAsAAgAAAAEAAAAAAAwAAgAAAAEAAAAAAA0AAgAAAAEAAAAAAA4AAgAAAAEAAAAAAA8AAgAAAAEAAAAAABAAAgAAAAEAAAAAABEAAgAAAAEAAAAAABIAAgAAAAEAAAAAABMAAgAAAAEAAAAAABQAAgAAAAEAAAAAABUAAgAAAAEAAAAAABYAAgAAAAEAAAAAABcAAgAAAAEAAAAAABgAAgAAAAEAAAAAABkAAgAAAAEAAAAAABoAAgAAAAEAAAAAABsAAgAAAAEAAAAAABwAAgAAAAEAAAAAAB0AAgAAAAEAAAAAAB4AAgAAAAEAAAAAAB8AAgAAAAEAAAAAACAAAgAAAAEAAAAAACEAAgAAAAEAAAAAACIAAgAAAAEAAAAAACMAAgAAAAEAAAAAACQAAgAAAAEAAAAAACUAAgAAAAEAAAAAACYAAgAAAAEAAAAAACcAAgAAAAEAAAAAACkAAgAAAAEAAAAAACoAAgAAAAEAAAAAACsAAgAAAAEAAAAAACwAAgAAAAEAAAABACwAAgAAAAEAAAACACwAAgAAAAEAAAADACwAAgAAAAEAAAAEACwAAgAAAAEAAAAFACwAAgAAAAEAAAAGACwAAgAAAAEAAAAHACwAAgAAAAEAAAAIACwAAgAAAAEAAAAJACwAAgAAAAEAAAAKACwAAgAAAAEAAABPACwAAgAAAAEAAABPACsAAgAAAAEAAABPACoAAgAAAAEAAABPACkAAgAAAAEAAABPACgAAgAAAAEAAABPACcAAgAAAAEAAABPACYAAgAAAAEAAABPACUAAgAAAAEAAABPACQAAgAAAAEAAABPACMAAgAAAAEAAABPACIAAgAAAAEAAABPACEAAgAAAAEAAABPACAAAgAAAAEAAABPAB8AAgAAAAEAAABPAB4AAgAAAAEAAABPAB0AAgAAAAEAAABPABwAAgAAAAEAAABPABsAAgAAAAEAAABPABoAAgAAAAEAAABPABkAAgAAAAEAAABPABgAAgAAAAEAAABPABcAAgAAAAEAAABPABYAAgAAAAEAAABPABUAAgAAAAEAAABPABQAAgAAAAEAAABPABMAAgAAAAEAAABPABIAAgAAAAEAAABPABEAAgAAAAEAAABPABAAAgAAAAEAAABPAA8AAgAAAAEAAABPAA4AAgAAAAEAAABPAA0AAgAAAAEAAABPAAwAAgAAAAEAAABPAAsAAgAAAAEAAABPAAoAAgAAAAEAAABPAAkAAgAAAAEAAABPAAgAAgAAAAEAAABPAAcAAgAAAAEAAABPAAYAAgAAAAEAAABPAAUAAgAAAAEAAABPAAQAAgAAAAEAAABPAAMAAgAAAAEAAABPAAIAAgAAAAEAAABPAAEAAgAAAAEAAABPAAAAAgAAAAEAAAA=")
+
+[node name="GroundLayer" parent="Entities/Tiles" index="1"]
+tile_map_data = PackedByteArray("AAAAAA8AAgAAAAEAAAAAABAAAgAAAAEAAAAAABEAAgAAAAEAAAAAABIAAgAAAAEAAAAAABMAAgAAAAEAAAAAABQAAgAAAAEAAAAAABUAAgAAAAEAAAABAA8AAgAAAAEAAAABABAAAgAAAAEAAAABABEAAgAAAAEAAAABABIAAgAAAAEAAAABABMAAgAAAAEAAAABABQAAgAAAAEAAAABABUAAgAAAAEAAAACAA8AAgAAAAEAAAACABAAAgAAAAEAAAACABEAAgAAAAEAAAACABIAAgAAAAEAAAACABMAAgAAAAEAAAACABQAAgAAAAEAAAACABUAAgAAAAEAAAADAA8AAgAAAAEAAAADABAAAgAAAAEAAAADABEAAgAAAAEAAAADABIAAgAAAAEAAAADABMAAgAAAAEAAAADABQAAgAAAAEAAAAEAA8AAgAAAAEAAAAEABAAAgAAAAEAAAAEABEAAgAAAAEAAAAEABIAAgAAAAEAAAAEABMAAgAAAAEAAAAEABQAAgAAAAEAAAAFAA8AAgAAAAEAAAAFABAAAgAAAAEAAAAFABEAAgAAAAEAAAAFABIAAgAAAAEAAAAFABMAAgAAAAEAAAAGAA8AAgAAAAEAAAAGABAAAgAAAAEAAAAGABEAAgAAAAEAAAAGABIAAgAAAAEAAAAHAA8AAgAAAAEAAAAHABAAAgAAAAEAAAAHABEAAgAAAAEAAABFAAsAAgAAAAEAAABFAAwAAgAAAAEAAABFAA0AAgAAAAEAAABFAA4AAgAAAAEAAABFAA8AAgAAAAEAAABFABAAAgAAAAEAAABGAAsAAgAAAAEAAABGAAwAAgAAAAEAAABGAA0AAgAAAAEAAABGAA4AAgAAAAEAAABGAA8AAgAAAAEAAABGABAAAgAAAAEAAABHAAsAAgAAAAEAAABHAAwAAgAAAAEAAABHAA0AAgAAAAEAAABHAA4AAgAAAAEAAABHAA8AAgAAAAEAAABHABAAAgAAAAEAAABIAAsAAgAAAAEAAABIAAwAAgAAAAEAAABIAA0AAgAAAAEAAABIAA4AAgAAAAEAAABIAA8AAgAAAAEAAABIABAAAgAAAAEAAABJAAsAAgAAAAEAAABJAAwAAgAAAAEAAABJAA0AAgAAAAEAAABJAA4AAgAAAAEAAABJAA8AAgAAAAEAAABJABAAAgAAAAEAAABKAAsAAgAAAAEAAABKAAwAAgAAAAEAAABKAA0AAgAAAAEAAABKAA4AAgAAAAEAAABKAA8AAgAAAAEAAABKABAAAgAAAAEAAABLAAsAAgAAAAEAAABLAAwAAgAAAAEAAABLAA0AAgAAAAEAAABLAA4AAgAAAAEAAABLAA8AAgAAAAEAAABLABAAAgAAAAEAAABMAAsAAgAAAAEAAABMAAwAAgAAAAEAAABMAA0AAgAAAAEAAABMAA4AAgAAAAEAAABMAA8AAgAAAAEAAABMABAAAgAAAAEAAABNAAsAAgAAAAEAAABNAAwAAgAAAAEAAABNAA0AAgAAAAEAAABNAA4AAgAAAAEAAABNAA8AAgAAAAEAAABNABAAAgAAAAEAAABOAAsAAgAAAAEAAABOAAwAAgAAAAEAAABOAA0AAgAAAAEAAABOAA4AAgAAAAEAAABOAA8AAgAAAAEAAABOABAAAgAAAAEAAABPAAsAAgAAAAEAAABPAAwAAgAAAAEAAABPAA0AAgAAAAEAAABPAA4AAgAAAAEAAABPAA8AAgAAAAEAAABPABAAAgAAAAEAAAA=")
+
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("15_m6nkk")]
+position = Vector2(92, 694)
+dialog_data = Array[ExtResource("16_kkbp4")]([SubResource("Resource_4tu6x"), SubResource("Resource_kkbp4")])
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
+position = Vector2(3.5, 7.5)
+shape = SubResource("RectangleShape2D_kcd53")
 
 [node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
 shape = SubResource("RectangleShape2D_3lsvu")
 
+[editable path="Entities/Actors/Player/Player"]
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DialogAreas/DialogArea"]
 [editable path="Areas/DeadAreas/DeadArea"]
