@@ -2,7 +2,7 @@
 extends Node
 
 # Statics
-enum HUDState { NONE, PAUSE, SETTING, CONFIRMATION, DIALOG, DIED }
+enum HUDState { NONE, PAUSE, SETTING, CONFIRMATION, DIALOG, DIED, END_GAME }
 
 # Class variables
 var scene_transition: SceneTransition
@@ -11,6 +11,7 @@ var dialog: Dialog
 var confirmation_ui: ConfirmationUI
 var died_ui: DiedUI
 var setting_ui: SettingUI
+var endgame_ui: EndGameUI
 var turn_movement_control_ui: bool = true:
 	 # turn movement control ui on/off
 	set(value):
@@ -27,18 +28,18 @@ signal finished_pause_or_resume
 signal movement_control_setting_changed(on: bool)
 
 # Game functions
-func _ready():
+func _ready() -> void:
 	reset_hud_state_to_none()
 	turn_movement_control_ui = GameManager.setting_data.MovementUI
 	is_scene_transitioning = false
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause_resume"):
 		if (current_hud_state == HUDState.NONE or current_hud_state == HUDState.PAUSE) and not is_scene_transitioning:
 			pause_or_resume()
 
 # Class functions
-func enter_scene_transition(on_exit_callback: Callable = func(): pass):
+func enter_scene_transition(on_exit_callback: Callable = func(): pass) -> void:
 	is_scene_transitioning = true
 	scene_transition.visible = true
 	scene_transition.enter_scene()
@@ -46,7 +47,7 @@ func enter_scene_transition(on_exit_callback: Callable = func(): pass):
 	on_exit_callback.call()
 	is_scene_transitioning = false
 
-func exit_scene_transition(on_exit_callback: Callable = func(): pass):
+func exit_scene_transition(on_exit_callback: Callable = func(): pass) -> void:
 	is_scene_transitioning = true
 	scene_transition.visible = true
 	scene_transition.exit_scene()
@@ -54,7 +55,7 @@ func exit_scene_transition(on_exit_callback: Callable = func(): pass):
 	on_exit_callback.call()
 	is_scene_transitioning = false
 
-func show_dialog_ui(dialog_data: Array[DialogData]):
+func show_dialog_ui(dialog_data: Array[DialogData]) -> void:
 	if not dialog:
 		push_error("No dialog ui loaded!")
 		return
@@ -72,20 +73,20 @@ func show_dialog_ui(dialog_data: Array[DialogData]):
 	get_tree().paused = false
 	current_hud_state = HUDState.NONE
 
-func set_hud_state(new_state: HUDState):
+func set_hud_state(new_state: HUDState) -> void:
 	previous_hud_state = current_hud_state
 	current_hud_state = new_state
 
-func reset_hud_state():
+func reset_hud_state() -> void:
 	var swap_state = previous_hud_state
 	previous_hud_state = current_hud_state
 	current_hud_state = swap_state
 
-func reset_hud_state_to_none():
+func reset_hud_state_to_none() -> void:
 	previous_hud_state = HUDState.NONE
 	current_hud_state = HUDState.NONE
 
-func pause_or_resume():
+func pause_or_resume() -> void:
 	if not pause_ui:
 		push_error("No pause ui loaded!")
 		return
@@ -95,7 +96,7 @@ func pause_or_resume():
 	set_hud_state(HUDState.PAUSE if get_tree().paused else HUDState.NONE)
 	finished_pause_or_resume.emit()
 
-func show_died_ui():
+func show_died_ui() -> void:
 	if not died_ui:
 		push_error("No died ui loaded!")
 		return
@@ -104,7 +105,7 @@ func show_died_ui():
 	get_tree().paused = true
 	died_ui.visible = true
 
-func hide_died_ui():
+func hide_died_ui() -> void:
 	if not died_ui:
 		push_error("No died ui loaded!")
 		return
@@ -114,7 +115,16 @@ func hide_died_ui():
 	get_tree().paused = false
 	set_hud_state(HUDState.NONE)
 
-func show_confirmation_ui(topic_text: String, confirm_text: String, on_yes_button_pressed: Callable, on_no_button_pressed: Callable = func(): pass):
+func show_endgame_ui() -> void:
+	if not endgame_ui:
+		push_error("No end game ui loaded!")
+		return
+	
+	set_hud_state(HUDState.END_GAME)
+	get_tree().paused = true
+	endgame_ui.visible = true
+
+func show_confirmation_ui(topic_text: String, confirm_text: String, on_yes_button_pressed: Callable, on_no_button_pressed: Callable = func(): pass) -> void:
 	if not confirmation_ui:
 		push_error("No confirmation ui loaded!")
 		return
@@ -122,7 +132,7 @@ func show_confirmation_ui(topic_text: String, confirm_text: String, on_yes_butto
 	set_hud_state(HUDState.CONFIRMATION)
 	confirmation_ui.show_confirm_ui(topic_text, confirm_text, on_yes_button_pressed, on_no_button_pressed)
 
-func show_setting_ui(on_ok_pressed: Callable = func(): pass):
+func show_setting_ui(on_ok_pressed: Callable = func(): pass) -> void:
 	if not setting_ui:
 		push_error("No setting ui loaded!")
 		return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://tw6plv4myh6e"]
+[gd_scene load_steps=11 format=3 uid="uid://tw6plv4myh6e"]
 
 [ext_resource type="Script" uid="uid://b8agbwpbqsx4x" path="res://Boxes/LevelBoxContainer/level_box_container.gd" id="1_x0hdf"]
 [ext_resource type="PackedScene" uid="uid://c77ygnkf07k6d" path="res://UIs/HUDs/InScreenUIs/MovementButton/movement_control_button.tscn" id="2_axoqc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c8he2wiyy36ix" path="res://UIs/HUDs/InScreenUIs/ConfirmationSystem/ConfirmationUI/confirmation_ui.tscn" id="7_dyp74"]
 [ext_resource type="PackedScene" uid="uid://bbjwglohdehjv" path="res://UIs/HUDs/InScreenUIs/DiedUI/died_ui.tscn" id="8_aihat"]
 [ext_resource type="PackedScene" uid="uid://dym7u240xo7ns" path="res://UIs/HUDs/InScreenUIs/SettingUI/setting_ui.tscn" id="9_26f4e"]
+[ext_resource type="PackedScene" uid="uid://dc4hi7x33lb7o" path="res://UIs/HUDs/InScreenUIs/EndGameUI/end_game_ui.tscn" id="10_eqjj0"]
 
 [node name="LevelBoxContainer" type="Node2D" node_paths=PackedStringArray("scene_transition")]
 script = ExtResource("1_x0hdf")
@@ -45,3 +46,7 @@ to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseB
 to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseButton")]
 
 [node name="SettingUI" parent="UIs" instance=ExtResource("9_26f4e")]
+
+[node name="EndGameUI" parent="UIs" node_paths=PackedStringArray("to_hide_on_activate") instance=ExtResource("10_eqjj0")]
+layout_mode = 1
+to_hide_on_activate = [NodePath("../MovementControlButton"), NodePath("../PauseButton")]

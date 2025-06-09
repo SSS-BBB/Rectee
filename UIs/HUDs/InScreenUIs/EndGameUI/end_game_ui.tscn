@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc4hi7x33lb7o"]
+
+[ext_resource type="Script" uid="uid://gf2i7dli3o4x" path="res://UIs/HUDs/InScreenUIs/EndGameUI/end_game_ui.gd" id="1_iw6e5"]
+[ext_resource type="FontFile" uid="uid://d1bhrsfeod1xi" path="res://Assets/Fonts/ariblk.ttf" id="1_jfnws"]
+[ext_resource type="FontFile" uid="uid://8jy4g2nt0j52" path="res://Assets/Fonts/arial.ttf" id="3_o1mmm"]
+[ext_resource type="StyleBox" uid="uid://b203igfkk6hkr" path="res://UIs/Styles/ButtonStyles/flat_white.tres" id="4_sypkb"]
+
+[node name="EndGameUI" type="Control" node_paths=PackedStringArray("canvas_layer")]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iw6e5")
+canvas_layer = NodePath("CanvasLayer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+visible = false
+
+[node name="BackgroundRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -535.0
+offset_top = -280.0
+offset_right = 535.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="EndGameTitleLabel" type="Label" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -276.5
+offset_top = 32.0
+offset_right = 276.5
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.596078, 0.984314, 0.596078, 1)
+theme_override_fonts/font = ExtResource("1_jfnws")
+theme_override_font_sizes/font_size = 48
+text = "[EndGameTitleLabel]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -45.0
+offset_right = 125.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_o1mmm")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_sypkb")
+text = "[MenuButton]"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/BackgroundRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 79.0
+offset_right = 125.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_o1mmm")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_sypkb")
+text = "[ExitButton]"
+
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackgroundRect/ExitButton" to="." method="_on_exit_button_pressed"]

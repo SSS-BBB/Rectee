@@ -59,6 +59,8 @@ resource_local_to_scene = true
 size = Vector2(10911, 103)
 
 [node name="Box15" instance=ExtResource("1_eb3pl")]
+box_level = 15
+endgame_box = true
 
 [node name="Player" parent="Entities/Actors/Player" index="0"]
 position = Vector2(78, 659)
@@ -85,7 +87,7 @@ spawning_rate = 2.5
 spawning_limit = 3
 
 [node name="HealthComponent" parent="Entities/Actors/Shooters/BossShooters/BossShooter" index="2"]
-max_health = 10
+max_health = 1
 
 [node name="DropOnDieComponent" parent="Entities/Actors/Shooters/BossShooters/BossShooter" index="4"]
 drop_on_body = false

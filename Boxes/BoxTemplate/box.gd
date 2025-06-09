@@ -2,9 +2,9 @@ class_name Box extends Node2D
 
 # Export variables
 @export var box_level: int = 0
+@export var endgame_box: bool = false
 @export var shaking: bool = false
 @export var camera_shaking_component: CameraShakingComponent
-# @export var scene_transition: SceneTransition
 @export var door: Door
 
 # Game functions
@@ -26,6 +26,10 @@ func _physics_process(_delta):
 
 # Signal functions
 func _on_enter_door():
+	if endgame_box:
+		UIManager.show_endgame_ui()
+		return
+	
 	if door.next_box_path.is_empty():
 		push_error("No path for next box!")
 		return
