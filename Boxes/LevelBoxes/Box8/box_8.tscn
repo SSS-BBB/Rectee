@@ -39,7 +39,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(32, 0, 15, 48)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_wvhfv"]
@@ -47,7 +46,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 3
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_nqhxx"]
@@ -55,7 +53,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 3
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_fvy8v"]
@@ -63,7 +60,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_aowab"]
@@ -71,7 +67,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_pxupl"]
@@ -79,7 +74,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_lpjhl"]
@@ -87,7 +81,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 3
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_12a71"]
@@ -95,7 +88,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_8rx7j"]
@@ -103,7 +95,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 3
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_usprl"]
@@ -111,7 +102,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_bi5mu"]
@@ -119,7 +109,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_c1pef"]
@@ -127,7 +116,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_tn4lx"]
@@ -135,7 +123,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_xgk8l"]
@@ -143,7 +130,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 3
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_7kmbw"]
@@ -151,7 +137,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 3
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_knhd5"]
@@ -159,7 +144,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 3
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_gspni"]
@@ -167,7 +151,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 3
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_2d0b7"]
@@ -175,7 +158,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_m0owc"]
@@ -183,7 +165,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_7b25a"]
@@ -191,7 +172,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_wv6ln"]
@@ -199,7 +179,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_wou2k"]
@@ -207,7 +186,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_f66wp"]
@@ -215,7 +193,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_yk5fi"]
@@ -223,7 +200,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_jvhs4"]
@@ -231,7 +207,6 @@ resource_local_to_scene = true
 script = ExtResource("11_pxupl")
 texture = ExtResource("12_gw0ju")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Curve2D" id="Curve2D_edb83"]
@@ -291,6 +266,7 @@ resource_local_to_scene = true
 size = Vector2(10911, 103)
 
 [node name="Box8" instance=ExtResource("1_m7oqr")]
+box_level = 8
 
 [node name="CameraSnapArea2" type="Node2D" parent="CameraSystem/CameraSnapAreas" index="0" node_paths=PackedStringArray("camera")]
 position = Vector2(2460, 10)
@@ -345,11 +321,8 @@ y_camera_position = Vector2(-360, 360)
 position = Vector2(22.5, -1)
 shape = SubResource("RectangleShape2D_cno3v")
 
-[node name="Camera" parent="CameraSystem/CameraContainer" index="0"]
-position = Vector2(640, -360)
-
 [node name="Player" parent="Entities/Actors/Player" index="0"]
-position = Vector2(1242, -559)
+position = Vector2(87, 658)
 
 [node name="Spike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" instance=ExtResource("3_nda4g")]
 position = Vector2(1359, 656)

@@ -68,6 +68,7 @@ resource_local_to_scene = true
 size = Vector2(10911, 103)
 
 [node name="Box14" instance=ExtResource("1_b5gvp")]
+box_level = 14
 
 [node name="Player" parent="Entities/Actors/Player" index="0"]
 position = Vector2(95, 664)
@@ -80,6 +81,7 @@ position = Vector2(1240, 418)
 scale = Vector2(3, 3)
 
 [node name="SurpriseSpike" parent="Entities/Objects/Spikes/NormalSpikes" index="0" instance=ExtResource("2_12skq")]
+visible = false
 position = Vector2(31, 224)
 scale = Vector2(2, 2)
 resource = SubResource("Resource_uhuth")

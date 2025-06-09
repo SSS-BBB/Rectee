@@ -1,15 +1,11 @@
-[gd_scene load_steps=45 format=4 uid="uid://0yi44uded8b1"]
+[gd_scene load_steps=48 format=4 uid="uid://0yi44uded8b1"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_m42cf"]
 [ext_resource type="PackedScene" uid="uid://c8fixtf1k7wfp" path="res://Entities/Objects/Platforms/MovingPlatform/moving_platform.tscn" id="2_5jsp1"]
 [ext_resource type="PackedScene" uid="uid://c2c543omfomi4" path="res://Entities/Objects/Spikes/NormalSpikes/Spike/spike.tscn" id="2_t56t5"]
 [ext_resource type="Script" uid="uid://c5uc1pjhih7m1" path="res://Entities/Objects/Spikes/Resource/spike_resource.gd" id="3_7vqvp"]
-[ext_resource type="Resource" uid="uid://6nbybnvnx4vi" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_1.tres" id="3_70gyj"]
 [ext_resource type="PackedScene" uid="uid://b7s22ivpvuxi1" path="res://Entities/Objects/Platforms/BouncingPlatform/bouncing_platform.tscn" id="3_thyjb"]
 [ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="4_65w4f"]
-[ext_resource type="Resource" uid="uid://dub44xg6s8pgx" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/medium_spike_2.tres" id="4_rh04x"]
-[ext_resource type="Resource" uid="uid://c45tx25wmokxh" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_2.tres" id="5_yisw4"]
-[ext_resource type="Resource" uid="uid://dhr6cgctn7u7e" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/large_spike_3.tres" id="6_0ywsc"]
 [ext_resource type="Resource" uid="uid://c2iknbhpd37lv" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_2.tres" id="7_fkslv"]
 [ext_resource type="PackedScene" uid="uid://bsi5r3mbdc2yc" path="res://Entities/Objects/Items/Consumable/ConsumableItem/consumable.tscn" id="8_fmds3"]
 [ext_resource type="Resource" uid="uid://coc3r7q2a31u5" path="res://Entities/Objects/Spikes/NormalSpikes/Resources/small_spike_1.tres" id="9_65w4f"]
@@ -22,7 +18,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_yomd1"]
@@ -30,7 +25,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_4e01o"]
@@ -38,7 +32,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_5f2dw"]
@@ -46,7 +39,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_yn0d7"]
@@ -54,7 +46,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ouog0"]
@@ -62,7 +53,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_h7gu7"]
@@ -70,7 +60,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_uoms1"]
@@ -78,7 +67,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_cxaqq"]
@@ -86,7 +74,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_1c57i"]
@@ -94,7 +81,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_uqql3"]
@@ -102,7 +88,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ccjhm"]
@@ -110,7 +95,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(32, 0, 15, 48)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_4fv1a"]
@@ -118,7 +102,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_sy6uu"]
@@ -126,7 +109,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_k6loj"]
@@ -134,7 +116,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_wqnwv"]
@@ -142,7 +123,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ij38m"]
@@ -150,7 +130,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_d4b30"]
@@ -158,7 +137,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_k4rat"]
@@ -166,7 +144,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_jhs2c"]
@@ -174,7 +151,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_odwme"]
@@ -182,7 +158,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ygmwr"]
@@ -190,7 +165,6 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_cixa5"]
@@ -198,7 +172,55 @@ resource_local_to_scene = true
 script = ExtResource("3_7vqvp")
 texture = ExtResource("4_65w4f")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_7vqvp"]
+resource_local_to_scene = true
+script = ExtResource("3_7vqvp")
+texture = ExtResource("4_65w4f")
+texture_region = Rect2(32, 0, 15, 48)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_65w4f"]
+resource_local_to_scene = true
+script = ExtResource("3_7vqvp")
+texture = ExtResource("4_65w4f")
+texture_region = Rect2(16, 16, 15, 32)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_qei61"]
+resource_local_to_scene = true
+script = ExtResource("3_7vqvp")
+texture = ExtResource("4_65w4f")
+texture_region = Rect2(32, 0, 15, 48)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_bfkui"]
+resource_local_to_scene = true
+script = ExtResource("3_7vqvp")
+texture = ExtResource("4_65w4f")
+texture_region = Rect2(16, 16, 15, 32)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_280iw"]
+resource_local_to_scene = true
+script = ExtResource("3_7vqvp")
+texture = ExtResource("4_65w4f")
+texture_region = Rect2(80, 24, 15, 24)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_to4q7"]
+resource_local_to_scene = true
+script = ExtResource("3_7vqvp")
+texture = ExtResource("4_65w4f")
+texture_region = Rect2(80, 24, 15, 24)
+metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
+
+[sub_resource type="Resource" id="Resource_c8cmd"]
+resource_local_to_scene = true
+script = ExtResource("3_7vqvp")
+texture = ExtResource("4_65w4f")
+texture_region = Rect2(64, 32, 15, 16)
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Curve2D" id="Curve2D_t56t5"]
@@ -234,6 +256,7 @@ resource_local_to_scene = true
 size = Vector2(10911, 103)
 
 [node name="Box7" instance=ExtResource("1_m42cf")]
+box_level = 7
 
 [node name="Player" parent="Entities/Actors/Player" index="0"]
 position = Vector2(87, 547)
@@ -416,37 +439,37 @@ stick_offset = Vector2(0, -34)
 [node name="Spike26" parent="Entities/Objects/Spikes/NormalSpikes" index="25" instance=ExtResource("2_t56t5")]
 position = Vector2(1054, 108)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("6_0ywsc")
+resource = SubResource("Resource_7vqvp")
 
 [node name="Spike27" parent="Entities/Objects/Spikes/NormalSpikes" index="26" instance=ExtResource("2_t56t5")]
 position = Vector2(1076, 120)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("5_yisw4")
+resource = SubResource("Resource_65w4f")
 
 [node name="Spike28" parent="Entities/Objects/Spikes/NormalSpikes" index="27" instance=ExtResource("2_t56t5")]
 position = Vector2(1098, 108)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("6_0ywsc")
+resource = SubResource("Resource_qei61")
 
 [node name="Spike29" parent="Entities/Objects/Spikes/NormalSpikes" index="28" instance=ExtResource("2_t56t5")]
 position = Vector2(1120, 120)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("5_yisw4")
+resource = SubResource("Resource_bfkui")
 
 [node name="Spike30" parent="Entities/Objects/Spikes/NormalSpikes" index="29" instance=ExtResource("2_t56t5")]
 position = Vector2(1201, 126)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("4_rh04x")
+resource = SubResource("Resource_280iw")
 
 [node name="Spike32" parent="Entities/Objects/Spikes/NormalSpikes" index="30" instance=ExtResource("2_t56t5")]
 position = Vector2(1245, 126)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("4_rh04x")
+resource = SubResource("Resource_to4q7")
 
 [node name="Spike31" parent="Entities/Objects/Spikes/NormalSpikes" index="31" instance=ExtResource("2_t56t5")]
 position = Vector2(1223, 132)
 scale = Vector2(1.5, 1.5)
-resource = ExtResource("3_70gyj")
+resource = SubResource("Resource_c8cmd")
 
 [node name="BouncingPlatform" parent="Entities/Objects/Platforms/BouncingPlatforms" index="0" instance=ExtResource("3_thyjb")]
 position = Vector2(667, 460)

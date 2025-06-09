@@ -1,12 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkb42oulcpg10"]
+[gd_scene load_steps=21 format=3 uid="uid://bkb42oulcpg10"]
 
 [ext_resource type="Texture2D" uid="uid://c6yvmatjtjt3r" path="res://UIs/HUDs/InScreenUIs/MovementButton/Texture/arrow_right.png" id="1_86a1g"]
 [ext_resource type="FontFile" uid="uid://d1bhrsfeod1xi" path="res://Assets/Fonts/ariblk.ttf" id="1_botwm"]
 [ext_resource type="Script" uid="uid://beif8golnf00t" path="res://UIs/Menus/SelectBoxMenu/select_box_menu.gd" id="1_l3nds"]
 [ext_resource type="PackedScene" uid="uid://dplni7h1sxm80" path="res://UIs/Menus/SelectBoxMenu/BoxCardSystem/BoxCard/box_card.tscn" id="3_mpbmp"]
-[ext_resource type="Resource" uid="uid://coriqt2pb3n6h" path="res://Boxes/LevelTestBoxes/BoxTest1/BoxCardResource/box_test_1_resource.tres" id="4_1nahn"]
-[ext_resource type="Resource" uid="uid://dotrxehj0m0e2" path="res://Boxes/LevelTestBoxes/BoxTest2/BoxCardResource/box_test_2_resource.tres" id="5_reuce"]
+[ext_resource type="Resource" uid="uid://qx2236j34vqa" path="res://Boxes/LevelBoxes/Box1/box1_card_resource.tres" id="5_bwg74"]
+[ext_resource type="Resource" uid="uid://t8nebfepqx2x" path="res://Boxes/LevelBoxes/Box2/box2_card_resource.tres" id="6_er0jj"]
 [ext_resource type="PackedScene" uid="uid://11knbogl7tk3" path="res://UIs/HUDs/SceneTransition/scene_transition.tscn" id="6_reuce"]
+[ext_resource type="Resource" uid="uid://dhe0746twcmqp" path="res://Boxes/LevelBoxes/Box3/box3_card_resource.tres" id="7_jtkfr"]
+[ext_resource type="Resource" uid="uid://cv0h2et72u5do" path="res://Boxes/LevelBoxes/Box4/box4_card_resource.tres" id="8_b3x0k"]
+[ext_resource type="Resource" uid="uid://lgaah1e0tgk2" path="res://Boxes/LevelBoxes/Box5/box5_card_resource.tres" id="9_uv5yo"]
+[ext_resource type="Resource" uid="uid://ch8rtofo0gqre" path="res://Boxes/LevelBoxes/Box6/box6_card_resource.tres" id="10_tj2u2"]
+[ext_resource type="Resource" uid="uid://bx8eeofrv0enn" path="res://Boxes/LevelBoxes/Box7/box7_card_resource.tres" id="11_ioso4"]
+[ext_resource type="Resource" uid="uid://c83gnxeqgror" path="res://Boxes/LevelBoxes/Box8/box8_card_resource.tres" id="12_qtr2w"]
+[ext_resource type="Resource" uid="uid://10dbc7kxh7fl" path="res://Boxes/LevelBoxes/Box9/box9_card_resource.tres" id="13_b3x0k"]
+[ext_resource type="Resource" uid="uid://bo5mgq74ybbp7" path="res://Boxes/LevelBoxes/Box10/box10_card_resource.tres" id="14_uv5yo"]
+[ext_resource type="Resource" uid="uid://calovmxt28d4v" path="res://Boxes/LevelBoxes/Box11/box11_card_resource.tres" id="15_tj2u2"]
+[ext_resource type="Resource" uid="uid://b1dc4k34vxmoe" path="res://Boxes/LevelBoxes/Box12/box12_card_resource.tres" id="16_tj2u2"]
+[ext_resource type="Resource" uid="uid://clpi8361ieg3b" path="res://Boxes/LevelBoxes/Box13/box13_card_resource.tres" id="17_ioso4"]
+[ext_resource type="Resource" uid="uid://bkgyy32hi6n43" path="res://Boxes/LevelBoxes/Box14/box14_card_resource.tres" id="18_qtr2w"]
+[ext_resource type="Resource" uid="uid://bmedy3alwy722" path="res://Boxes/LevelBoxes/Box15/box15_card_resource.tres" id="19_bpe4a"]
 
 [node name="SelectBoxMenu" type="Control"]
 layout_mode = 3
@@ -63,63 +76,63 @@ columns = 5
 
 [node name="BoxCard" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("4_1nahn")
+box_card_data = ExtResource("5_bwg74")
 
 [node name="BoxCard2" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("4_1nahn")
+box_card_data = ExtResource("6_er0jj")
 
 [node name="BoxCard3" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("4_1nahn")
+box_card_data = ExtResource("7_jtkfr")
 
 [node name="BoxCard4" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("5_reuce")
+box_card_data = ExtResource("8_b3x0k")
 
 [node name="BoxCard5" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("4_1nahn")
+box_card_data = ExtResource("9_uv5yo")
 
 [node name="BoxCard6" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("4_1nahn")
+box_card_data = ExtResource("10_tj2u2")
 
 [node name="BoxCard7" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("5_reuce")
+box_card_data = ExtResource("11_ioso4")
 
 [node name="BoxCard8" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("4_1nahn")
+box_card_data = ExtResource("12_qtr2w")
 
 [node name="BoxCard9" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("4_1nahn")
+box_card_data = ExtResource("13_b3x0k")
 
 [node name="BoxCard10" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("5_reuce")
+box_card_data = ExtResource("14_uv5yo")
 
 [node name="BoxCard11" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("5_reuce")
+box_card_data = ExtResource("15_tj2u2")
 
 [node name="BoxCard12" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("5_reuce")
+box_card_data = ExtResource("16_tj2u2")
 
 [node name="BoxCard13" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("4_1nahn")
+box_card_data = ExtResource("17_ioso4")
 
 [node name="BoxCard14" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("5_reuce")
+box_card_data = ExtResource("18_qtr2w")
 
 [node name="BoxCard15" parent="GridContainer" instance=ExtResource("3_mpbmp")]
 layout_mode = 2
-box_card_data = ExtResource("5_reuce")
+box_card_data = ExtResource("19_bpe4a")
 
 [node name="HudUIs" type="Control" parent="."]
 anchors_preset = 0

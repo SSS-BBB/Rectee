@@ -22,6 +22,7 @@ resource_local_to_scene = true
 size = Vector2(10911, 103)
 
 [node name="Box2" instance=ExtResource("1_5yvnp")]
+box_level = 2
 
 [node name="Key" parent="Entities/Objects/Items/Keys" index="0"]
 position = Vector2(1127, 454)

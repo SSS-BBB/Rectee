@@ -354,6 +354,7 @@ resource_local_to_scene = true
 size = Vector2(10911, 103)
 
 [node name="Box13" instance=ExtResource("1_yrtn6")]
+box_level = 13
 
 [node name="CameraSnapArea" parent="CameraSystem/CameraSnapAreas" index="0" node_paths=PackedStringArray("camera") instance=ExtResource("2_j5kny")]
 position = Vector2(1280, 549)

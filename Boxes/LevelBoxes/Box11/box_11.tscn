@@ -55,6 +55,7 @@ resource_local_to_scene = true
 size = Vector2(10911, 103)
 
 [node name="Box11" node_paths=PackedStringArray("camera_shaking_component") instance=ExtResource("1_iysrj")]
+box_level = 11
 shaking = true
 camera_shaking_component = NodePath("CameraSystem/CameraShakingComponent")
 

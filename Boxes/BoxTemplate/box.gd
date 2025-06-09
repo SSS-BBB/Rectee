@@ -27,7 +27,7 @@ func _physics_process(_delta):
 # Signal functions
 func _on_enter_door():
 	if endgame_box:
-		UIManager.show_endgame_ui()
+		UIManager.exit_scene_transition(UIManager.show_endgame_ui)
 		return
 	
 	if door.next_box_path.is_empty():

@@ -72,3 +72,5 @@ text_id,en,th
 [D14_2],Am I even alive?,นี่ฉันกำลังมีชีวิตอยู่ด้วยซ้ำหรือป่าว
 ,,
 [D15_1],I think I need to press this button.,คิดว่าฉันต้องกดปุ่มนี้นะ
+,,
+[EndGameTitleLabel],Congratulations! You passed the test.,ยินดีด้วยคุณผ่านการทดสอบ

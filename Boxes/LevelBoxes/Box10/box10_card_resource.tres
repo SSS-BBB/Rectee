@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BoxCardData" load_steps=4 format=3 uid="uid://bo5mgq74ybbp7"]
+
+[ext_resource type="PackedScene" uid="uid://7qtljuw2s8eo" path="res://Boxes/LevelBoxes/Box10/box_10.tscn" id="1_csth1"]
+[ext_resource type="Script" uid="uid://uiwgkfumhqxm" path="res://UIs/Menus/SelectBoxMenu/BoxCardSystem/BoxCardData/box_card_data.gd" id="1_pxk2b"]
+[ext_resource type="Texture2D" uid="uid://dhjrs01k6see1" path="res://Boxes/LevelBoxes/Box10/box10.png" id="2_dhamg"]
+
+[resource]
+script = ExtResource("1_pxk2b")
+box_name = "Box 10"
+box_level = 10
+box_texture = ExtResource("2_dhamg")
+box_scene = ExtResource("1_csth1")
+metadata/_custom_type_script = "uid://uiwgkfumhqxm"

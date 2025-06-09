@@ -22,7 +22,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_dnm5q"]
@@ -30,7 +29,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_qkyja"]
@@ -38,7 +36,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ddyb7"]
@@ -46,7 +43,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_p3aip"]
@@ -54,7 +50,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_7r08s"]
@@ -62,7 +57,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(32, 0, 15, 48)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_mu1pf"]
@@ -70,7 +64,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_2pobu"]
@@ -78,7 +71,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_rvkt6"]
@@ -86,7 +78,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_qawj7"]
@@ -94,7 +85,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_nvnf2"]
@@ -102,7 +92,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_l71bj"]
@@ -110,7 +99,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_amcna"]
@@ -118,7 +106,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_kjagb"]
@@ -126,7 +113,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ufmvt"]
@@ -134,7 +120,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_lyoge"]
@@ -142,7 +127,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ir8ox"]
@@ -150,7 +134,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ouox0"]
@@ -158,7 +141,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(32, 0, 15, 48)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_icafb"]
@@ -166,7 +148,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_be1vl"]
@@ -174,7 +155,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_7s5ty"]
@@ -182,7 +162,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(120, 24, 7, 24)
-damage = 2
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_4q4xd"]
@@ -190,7 +169,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_at002"]
@@ -198,7 +176,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_4n8ie"]
@@ -206,7 +183,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_t4atw"]
@@ -214,7 +190,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_3ouao"]
@@ -222,7 +197,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_nfmcb"]
@@ -230,7 +204,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_dxaau"]
@@ -238,7 +211,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_4a413"]
@@ -246,7 +218,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_n1nyb"]
@@ -254,7 +225,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_sm0tx"]
@@ -262,7 +232,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_kv2lh"]
@@ -270,7 +239,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_y4v8u"]
@@ -278,7 +246,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_yuu6x"]
@@ -286,7 +253,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_fcoty"]
@@ -294,7 +260,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_eccj7"]
@@ -302,7 +267,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_07eto"]
@@ -310,7 +274,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_e376w"]
@@ -318,7 +281,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_dm4oi"]
@@ -326,7 +288,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_o6sjb"]
@@ -334,7 +295,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_idrip"]
@@ -342,7 +302,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_mnhen"]
@@ -350,7 +309,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ooq0l"]
@@ -358,7 +316,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_shnfu"]
@@ -366,7 +323,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(64, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_3yion"]
@@ -374,7 +330,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_cvw0n"]
@@ -382,7 +337,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_wmkd6"]
@@ -390,7 +344,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_ct16m"]
@@ -398,7 +351,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_8f6oi"]
@@ -406,7 +358,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(80, 24, 15, 24)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_j1fre"]
@@ -414,7 +365,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_vwkpb"]
@@ -422,7 +372,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(16, 16, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Resource" id="Resource_n3j5r"]
@@ -430,7 +379,6 @@ resource_local_to_scene = true
 script = ExtResource("3_l5kw7")
 texture = ExtResource("4_53uta")
 texture_region = Rect2(0, 32, 15, 16)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"
 
 [sub_resource type="Curve2D" id="Curve2D_s6yt2"]
