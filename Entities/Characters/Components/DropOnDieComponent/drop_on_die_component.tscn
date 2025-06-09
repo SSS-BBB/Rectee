@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce3k4tvb2n3hf"]
+
+[ext_resource type="Script" uid="uid://dtfj5epxgofsl" path="res://Entities/Characters/Components/DropOnDieComponent/drop_on_die_component.gd" id="1_02uvj"]
+[ext_resource type="PackedScene" uid="uid://bmf4ukrb1dgev" path="res://Entities/Objects/Items/Key/key.tscn" id="2_q4dn2"]
+
+[node name="DropOnDieComponent" type="Node2D" node_paths=PackedStringArray("health_component", "actor_body")]
+script = ExtResource("1_02uvj")
+health_component = NodePath("")
+actor_body = NodePath("")
+to_drop = ExtResource("2_q4dn2")
+drop_to_group = "key_container"
+drop_scale = Vector2(1.5, 1.5)

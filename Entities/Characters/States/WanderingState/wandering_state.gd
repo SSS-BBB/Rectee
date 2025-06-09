@@ -5,10 +5,10 @@ class_name WanderingState extends State
 @export_range(0.0, 100.0, 0.1) var min_distant_to_target: float = 50.0
 @export_range(0.0, 100.0, 0.1) var min_change_distance: float = 90.0 # minimum distance for changing target
 @export var wandering_speed: float = 150.0
+@export var point_debug: Sprite2D
 
 # Component variables
 @onready var collision_shape = $WanderingArea/CollisionShape2D as CollisionShape2D
-@onready var point_debug = $PointDebug as Sprite2D
 
 # Class variables
 var current_target: Vector2
@@ -40,4 +40,5 @@ func random_target_point():
 	while actor.global_position.distance_to(current_target) <= min_change_distance:
 		current_target = Vector2(randf_range(left, right), randf_range(top, bottom))
 	
-	point_debug.global_position = current_target
+	if point_debug:
+		point_debug.global_position = current_target

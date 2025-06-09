@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cf1yw435grvpq" path="res://Entities/Characters/Shooters/BossShooter/Components/StateMachine/BossShooterStateMachine/boss_shooter_state_machine.gd" id="1_ibbeq"]
 [ext_resource type="Script" uid="uid://dkr6lj1pahktv" path="res://Entities/Characters/States/WanderingState/wandering_state.gd" id="2_nbxkp"]
-[ext_resource type="Texture2D" uid="uid://42is1xogiwke" path="res://icon.svg" id="3_fkv0l"]
 [ext_resource type="Script" uid="uid://cel0ph3qcl5tw" path="res://Entities/Characters/States/LookAtPlayerState/lookat_player_state.gd" id="4_6w5ur"]
 [ext_resource type="Script" uid="uid://baiwly8q6g7e2" path="res://Entities/Characters/Shooters/BossShooter/Components/States/BossShootingState/boss_shooting_state.gd" id="5_tj483"]
 [ext_resource type="Script" uid="uid://8uxp4rr8umm7" path="res://Entities/Characters/Shooters/BossShooter/Components/States/BossSpawningState/boss_spawning_state.gd" id="6_03g3t"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://de5okmp0mcinf" path="res://Entities/Characters/Components/DamageComponent/damage_component.tscn" id="13_a2hoq"]
 [ext_resource type="PackedScene" uid="uid://cj2visvmlh3q6" path="res://Entities/Characters/Components/HealthComponent/health_component.tscn" id="14_0pyxx"]
 [ext_resource type="PackedScene" uid="uid://c78yrvgxc1ipu" path="res://Entities/Characters/Components/DestroyOnDieComponent/destroy_on_die_component.tscn" id="15_jathh"]
+[ext_resource type="PackedScene" uid="uid://ce3k4tvb2n3hf" path="res://Entities/Characters/Components/DropOnDieComponent/drop_on_die_component.tscn" id="16_nbxkp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggyc8"]
 resource_local_to_scene = true
@@ -83,10 +83,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossShooterStateMachine/WanderingState/WanderingArea"]
 shape = SubResource("RectangleShape2D_ggyc8")
 
-[node name="PointDebug" type="Sprite2D" parent="BossShooterStateMachine/WanderingState"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_fkv0l")
-
 [node name="LookatPlayerState" type="Node2D" parent="BossShooterStateMachine" node_paths=PackedStringArray("actor_sprite")]
 script = ExtResource("4_6w5ur")
 actor_sprite = NodePath("../../BossShooterBody/Sprite2D")
@@ -123,6 +119,7 @@ position = Vector2(-40, 0)
 position = Vector2(-50, 0)
 parent_node = NodePath("../../..")
 shooter_health_range = Vector2i(2, 5)
+alive_time_range = Vector2(5, 10)
 shooter_ignore_raycast = true
 spawn_container_group = "shooter_spawned_container"
 spawning_limit = 5
@@ -173,6 +170,10 @@ max_health = 5
 [node name="DestroyOnDieComponent" parent="." node_paths=PackedStringArray("parent_node", "health_component") instance=ExtResource("15_jathh")]
 parent_node = NodePath("..")
 health_component = NodePath("../HealthComponent")
+
+[node name="DropOnDieComponent" parent="." node_paths=PackedStringArray("health_component", "actor_body") instance=ExtResource("16_nbxkp")]
+health_component = NodePath("../HealthComponent")
+actor_body = NodePath("../BossShooterBody")
 
 [connection signal="timeout" from="BossShooterStateMachine/RandomStateTimer" to="BossShooterStateMachine" method="_on_random_state_timer_timeout"]
 

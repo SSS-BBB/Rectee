@@ -69,7 +69,7 @@ normal_jump_velocity = 500
 
 [node name="Items" type="Node2D" parent="Entities/Objects"]
 
-[node name="Keys" type="Node2D" parent="Entities/Objects/Items"]
+[node name="Keys" type="Node2D" parent="Entities/Objects/Items" groups=["key_container"]]
 
 [node name="Key" parent="Entities/Objects/Items/Keys" instance=ExtResource("12_drx7b")]
 position = Vector2(1103, 558)

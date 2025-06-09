@@ -18,6 +18,7 @@ enum ShooterState { IDLE, PATH_MOVE, FOLLOW_MOVE }
 @export_category("Shooter Properties")
 @export var shooter_max_health: int = 3
 @export var died_on_timeout: bool = false
+@export var alive_time: float = 5.0
 
 @export_category("Shooting Properties")
 @export var shooting_damage: int = 1
@@ -52,12 +53,13 @@ enum ShooterState { IDLE, PATH_MOVE, FOLLOW_MOVE }
 signal state_change
 
 # Constructor
-static func new_follow_shooter(damage: int, rate: float, shoot_speed: float, speed: float, shooter_igore_raycast: bool = false, hp: int = 3, dist: float = 50.0, shooter_died_on_timeout: bool = true) -> Shooter:
+static func new_follow_shooter(damage: int, rate: float, shoot_speed: float, speed: float, shooter_alive_time: float, shooter_igore_raycast: bool = false, hp: int = 3, dist: float = 50.0, shooter_died_on_timeout: bool = true) -> Shooter:
 	var new_shooter := SHOOTER_INSTANCE.instantiate() as Shooter
 	
 	# shooter properties
 	new_shooter.shooter_max_health = hp
 	new_shooter.died_on_timeout = shooter_died_on_timeout
+	new_shooter.alive_time = shooter_alive_time
 	
 	# shooting properties
 	new_shooter.shooting_damage = damage
@@ -103,6 +105,7 @@ func _ready() -> void:
 			state_change.emit(ShooterState.IDLE)
 	
 	if died_on_timeout:
+		died_on_timeout_component.dead_time = alive_time
 		died_on_timeout_component.start_countdown()
 
 # Class functions
