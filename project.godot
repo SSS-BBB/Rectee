@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Rectee"
-run/main_scene="uid://tw6plv4myh6e"
+run/main_scene="uid://tf45kmur5ae5"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="uid://doarpickefy66"
 
 [autoload]
@@ -26,7 +27,6 @@ UIManager="*res://Utils/Globals/UIManager/UIManager.tscn"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
-window/stretch/aspect="ignore"
 
 [input]
 
