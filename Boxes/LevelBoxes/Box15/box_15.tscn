@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://2ai1mlokpyr4"]
+[gd_scene load_steps=25 format=4 uid="uid://2ai1mlokpyr4"]
 
 [ext_resource type="PackedScene" uid="uid://dhckft25x6wlh" path="res://Boxes/BoxTemplate/box_template.tscn" id="1_eb3pl"]
 [ext_resource type="PackedScene" uid="uid://m235qtmjqyt0" path="res://Entities/Characters/Shooters/BossShooter/BossShooter/boss_shooter.tscn" id="2_wypbi"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b5doisq06etht" path="res://Entities/Objects/Spikes/Textures/spikes.png" id="6_uvfai"]
 [ext_resource type="PackedScene" uid="uid://c8fixtf1k7wfp" path="res://Entities/Objects/Platforms/MovingPlatform/moving_platform.tscn" id="9_q3k4c"]
 [ext_resource type="PackedScene" uid="uid://doe1ycq0xn2nt" path="res://Entities/Objects/Interactables/SpikeSpawnButton/spike_spawn_button.tscn" id="11_uvfai"]
+[ext_resource type="PackedScene" uid="uid://lm1iatwarheh" path="res://UIs/HUDs/InScreenUIs/DialogSystem/DialogArea/dialog_area.tscn" id="12_a3j81"]
+[ext_resource type="Script" uid="uid://c8cbdf1b8hqbo" path="res://UIs/HUDs/InScreenUIs/DialogSystem/dialog_data.gd" id="13_kwele"]
+[ext_resource type="Texture2D" uid="uid://dfdjmoq2w4td2" path="res://UIs/HUDs/InScreenUIs/DialogSystem/SpeakerTextures/rectee_speaker.png" id="14_v4uv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxdf"]
 resource_local_to_scene = true
@@ -53,6 +56,18 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -350, 0)
 }
 point_count = 2
+
+[sub_resource type="Resource" id="Resource_pwh45"]
+script = ExtResource("13_kwele")
+speaker = ExtResource("14_v4uv3")
+translate_text = true
+text = "[D15_1]"
+text_typing_duration = 0.8
+metadata/_custom_type_script = "uid://c8cbdf1b8hqbo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3j81"]
+resource_local_to_scene = true
+size = Vector2(175, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wypbi"]
 resource_local_to_scene = true
@@ -213,6 +228,14 @@ tile_map_data = PackedByteArray("AAAAACgAAgAAAAEAAABHAAAAAgAAAAEAAABGAAAAAgAAAAE
 [node name="GroundLayer" parent="Entities/Tiles" index="1"]
 tile_map_data = PackedByteArray("AABIACQAAgAAAAEAAABJACQAAgAAAAEAAABKACQAAgAAAAEAAABLACQAAgAAAAEAAABMACQAAgAAAAEAAABNACQAAgAAAAEAAABOACQAAgAAAAEAAABIACYAAgAAAAEAAABIACcAAgAAAAEAAABJACYAAgAAAAEAAABJACcAAgAAAAEAAABKACYAAgAAAAEAAABKACcAAgAAAAEAAABLACYAAgAAAAEAAABLACcAAgAAAAEAAABMACYAAgAAAAEAAABMACcAAgAAAAEAAABNACYAAgAAAAEAAABNACcAAgAAAAEAAABOACYAAgAAAAEAAABOACcAAgAAAAEAAABIACUAAgAAAAEAAABJACUAAgAAAAEAAABKACUAAgAAAAEAAABLACUAAgAAAAEAAABMACUAAgAAAAEAAABNACUAAgAAAAEAAABOACUAAgAAAAEAAABGAA0AAgAAAAEAAABGAA4AAgAAAAEAAABGAA8AAgAAAAEAAABGABAAAgAAAAEAAABGABEAAgAAAAEAAABGABIAAgAAAAEAAABGABMAAgAAAAEAAABHAA0AAgAAAAEAAABHAA4AAgAAAAEAAABHAA8AAgAAAAEAAABHABAAAgAAAAEAAABHABEAAgAAAAEAAABHABIAAgAAAAEAAABHABMAAgAAAAEAAABIAA0AAgAAAAEAAABIAA4AAgAAAAEAAABIAA8AAgAAAAEAAABIABAAAgAAAAEAAABIABEAAgAAAAEAAABIABIAAgAAAAEAAABIABMAAgAAAAEAAABJAA0AAgAAAAEAAABJAA4AAgAAAAEAAABJAA8AAgAAAAEAAABJABAAAgAAAAEAAABJABEAAgAAAAEAAABJABIAAgAAAAEAAABJABMAAgAAAAEAAABKAA0AAgAAAAEAAABKAA4AAgAAAAEAAABKAA8AAgAAAAEAAABKABAAAgAAAAEAAABKABEAAgAAAAEAAABKABIAAgAAAAEAAABKABMAAgAAAAEAAABLAA0AAgAAAAEAAABLAA4AAgAAAAEAAABLAA8AAgAAAAEAAABLABAAAgAAAAEAAABLABEAAgAAAAEAAABLABIAAgAAAAEAAABLABMAAgAAAAEAAABMAA0AAgAAAAEAAABMAA4AAgAAAAEAAABMAA8AAgAAAAEAAABMABAAAgAAAAEAAABMABEAAgAAAAEAAABMABIAAgAAAAEAAABMABMAAgAAAAEAAABNAA0AAgAAAAEAAABNAA4AAgAAAAEAAABNAA8AAgAAAAEAAABNABAAAgAAAAEAAABNABEAAgAAAAEAAABNABIAAgAAAAEAAABNABMAAgAAAAEAAABOAA0AAgAAAAEAAABOAA4AAgAAAAEAAABOAA8AAgAAAAEAAABOABAAAgAAAAEAAABOABEAAgAAAAEAAABOABIAAgAAAAEAAABOABMAAgAAAAEAAABIACMAAgAAAAEAAABJACMAAgAAAAEAAABKACMAAgAAAAEAAABLACMAAgAAAAEAAABMACMAAgAAAAEAAABNACMAAgAAAAEAAABOACMAAgAAAAEAAAA=")
 
+[node name="DialogArea" parent="Areas/DialogAreas" index="0" instance=ExtResource("12_a3j81")]
+position = Vector2(94, 694)
+dialog_data = Array[ExtResource("13_kwele")]([SubResource("Resource_pwh45")])
+
+[node name="CollisionShape2D" parent="Areas/DialogAreas/DialogArea" index="0"]
+position = Vector2(9.5, 7.5)
+shape = SubResource("RectangleShape2D_a3j81")
+
 [node name="CollisionShape2D" parent="Areas/DeadAreas/DeadArea" index="0"]
 shape = SubResource("RectangleShape2D_wypbi")
 
@@ -220,4 +243,5 @@ shape = SubResource("RectangleShape2D_wypbi")
 [editable path="Entities/Actors/Shooters/BossShooters/BossShooter"]
 [editable path="Entities/Actors/Shooters/BossShooters/BossShooter/BossShooterBody/HealthDisplay"]
 [editable path="Entities/Objects/Interactables/Door/Door"]
+[editable path="Areas/DialogAreas/DialogArea"]
 [editable path="Areas/DeadAreas/DeadArea"]
