@@ -8,13 +8,12 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gy20a"]
 bg_color = Color(0, 0.501961, 0, 1)
 
-[node name="HealthDisplay" type="Control" node_paths=PackedStringArray("health_component")]
+[node name="HealthDisplay" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_3mgdb")
-health_component = NodePath("")
 
 [node name="BorderRect" type="ColorRect" parent="."]
 layout_mode = 0

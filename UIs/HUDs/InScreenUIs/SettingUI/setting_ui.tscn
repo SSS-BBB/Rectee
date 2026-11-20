@@ -136,11 +136,9 @@ theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = ExtResource("4_ielgi")
 alignment = 1
 selected = 0
-item_count = 2
+item_count = 1
 popup/item_0/text = "[en]"
 popup/item_0/id = 0
-popup/item_1/text = "[th]"
-popup/item_1/id = 1
 script = ExtResource("6_ivrcw")
 
 [node name="MovementLabel" type="Label" parent="CanvasLayer/BackgroundRect"]

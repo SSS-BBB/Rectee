@@ -68,16 +68,6 @@ func _on_quit_to_menu_button_pressed():
 			reset_ui()
 	)
 
-func _on_exit_game_button_pressed():
-	if not can_button_be_pressed():
-		return
-	
-	show_confirmation(tr("[ExitConfirmationTitle]"), tr("[ExitGameConfirmation]"),
-		func():
-			reset_ui()
-			get_tree().quit()
-	)
-
 func _on_restart_button_pressed():
 	if not can_button_be_pressed():
 		return

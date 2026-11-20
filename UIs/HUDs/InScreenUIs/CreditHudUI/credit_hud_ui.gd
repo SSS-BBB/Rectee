@@ -16,7 +16,6 @@ func _on_language_changed():
 	$CanvasLayer/BackgroundRect/VBoxContainer/ArtCreditLabel.text = tr("[ArtCreditLabel]")
 	$CanvasLayer/BackgroundRect/VBoxContainer/SoundCreditLabel.text = tr("[SoundCreditLabel]")
 	$CanvasLayer/BackgroundRect/VBoxContainer/ProgrammingCreditLabel.text = tr("[ProgrammingCreditLabel]")
-	$CanvasLayer/BackgroundRect/LinkLabel.text = tr("[LinkLabel]")
 
 func _on_back_button_pressed():
 	visible = false

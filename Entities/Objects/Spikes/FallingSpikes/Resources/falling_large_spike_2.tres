@@ -7,5 +7,4 @@
 script = ExtResource("1_n5mjb")
 texture = ExtResource("2_rppib")
 texture_region = Rect2(16, 64, 15, 32)
-damage = 1
 metadata/_custom_type_script = "uid://c5uc1pjhih7m1"

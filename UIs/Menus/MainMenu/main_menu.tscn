@@ -115,15 +115,6 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("3_en46i")
 text = "[CreditButton]"
 
-[node name="ExitButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_oemvj")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = ExtResource("3_en46i")
-text = "[ExitButton]"
-
 [node name="ResetLevelButton" type="Button" parent="CanvasLayer/BackgroundRect"]
 visible = false
 layout_mode = 1
@@ -162,7 +153,6 @@ layout_mode = 1
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/SelectBoxButton" to="." method="_on_select_box_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ResetLevelButton" to="." method="_on_reset_level_button_pressed"]
 
 [editable path="HudUIs/SceneTransition"]

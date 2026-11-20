@@ -140,25 +140,8 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("3_5cfgx")
 text = "[RestartButton]"
 
-[node name="ExitGameButton" type="Button" parent="CanvasLayer/BackgroundRect/ButtonContainer"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 5.0
-offset_top = 240.0
-offset_right = -5.0
-offset_bottom = 284.0
-grow_horizontal = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_5cfgx")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("3_5cfgx")
-text = "[ExitButton]"
-
 [connection signal="button_down" from="CanvasLayer/BackgroundRect/ButtonContainer/ResumeButton" to="." method="_on_resume_button_button_down"]
 [connection signal="button_up" from="CanvasLayer/BackgroundRect/ButtonContainer/ResumeButton" to="." method="_on_resume_button_button_up"]
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonContainer/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/BackgroundRect/ButtonContainer/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

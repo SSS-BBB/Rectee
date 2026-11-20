@@ -33,7 +33,6 @@ func _on_language_changed():
 	$CanvasLayer/BackgroundRect/VolumeLabel.text = tr("[VolumeSettingLabel]")
 	$CanvasLayer/BackgroundRect/LanguageLabel.text = tr("[LanguageSettingLabel]")
 	language_option_button.set_item_text(0, tr("[en]"))
-	language_option_button.set_item_text(1, tr("[th]"))
 	$CanvasLayer/BackgroundRect/MovementLabel.text = tr("[MovementSettingLabel]")
 	$CanvasLayer/BackgroundRect/OkButton.text = tr("[DoneSettingButton]")
 

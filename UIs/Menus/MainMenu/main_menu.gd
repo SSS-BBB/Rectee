@@ -40,7 +40,6 @@ func _on_lanuage_changed():
 	$CanvasLayer/BackgroundRect/ButtonBoxContainer/SelectBoxButton.text = tr("[SelectBoxButton]")
 	$CanvasLayer/BackgroundRect/ButtonBoxContainer/SettingButton.text = tr("[SettingButton]")
 	$CanvasLayer/BackgroundRect/ButtonBoxContainer/CreditButton.text = tr("[CreditButton]")
-	$CanvasLayer/BackgroundRect/ButtonBoxContainer/ExitButton.text = tr("[ExitButton]")
 
 func _on_play_button_pressed():
 	if level_scene_path and level_scene_path.size() > 0:
@@ -77,12 +76,6 @@ func _on_credit_button_pressed():
 	set_buttons_status(false)
 	credit_hud_ui.visible = true
 	credit_hud_ui.back_button_pressed_callback = set_buttons_status.bind(true)
-
-func _on_exit_button_pressed():
-	set_buttons_status(false)
-	UIManager.show_confirmation_ui(tr("[ExitConfirmationTitle]"), tr("[ExitGameConfirmation]"), 
-	func(): get_tree().quit(), set_buttons_status.bind(true)
-	)
 
 func _on_reset_level_button_pressed():
 	GameManager.current_player_level = 1
