@@ -75,19 +75,32 @@ func reload_current_scene():
 func save_setting(to_save: String, value):
 	var save_file = FileAccess.open(SAVE_SETTINGS_LOCATION, FileAccess.WRITE)
 	setting_data[to_save] = value
-	save_file.store_var(setting_data.duplicate())
+	
+	var json_text = JSON.stringify(setting_data, "\t")
+	save_file.store_string(json_text)
 	save_file.close()
 
 func save_game(to_save: String, value):
 	var save_file := FileAccess.open(SAVE_GAME_DATAS_LOCATION, FileAccess.WRITE)
 	game_data[to_save] = value
-	save_file.store_var(game_data.duplicate())
+	
+	var json_text = JSON.stringify(game_data, "\t")
+	save_file.store_string(json_text)
 	save_file.close()
 
 func load_setting():
 	if FileAccess.file_exists(SAVE_SETTINGS_LOCATION):
 		var file := FileAccess.open(SAVE_SETTINGS_LOCATION, FileAccess.READ)
-		var save_data = file.get_var()
+		
+		var json_text = file.get_as_text()
+		var json = JSON.new()
+		var parse_result = json.parse(json_text)
+		if parse_result != OK:
+			save_setting("Language", Language.en)
+			file.close()
+			return
+		
+		var save_data = json.data
 		file.close()
 		
 		var new_setting_data = save_data.duplicate()
@@ -98,7 +111,16 @@ func load_setting():
 func load_game_data():
 	if FileAccess.file_exists(SAVE_GAME_DATAS_LOCATION):
 		var file := FileAccess.open(SAVE_GAME_DATAS_LOCATION, FileAccess.READ)
-		var save_data = file.get_var()
+		
+		var json_text = file.get_as_text()
+		var json = JSON.new()
+		var parse_result = json.parse(json_text)
+		if parse_result != OK:
+			save_game("CurrentPlayerLevel", 1)
+			file.close()
+			return
+		
+		var save_data = json.data
 		file.close()
 		
 		var new_game_data = save_data.duplicate()
